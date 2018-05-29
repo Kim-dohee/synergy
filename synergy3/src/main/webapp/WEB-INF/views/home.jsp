@@ -6,10 +6,7 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  안녕하세요
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<a href="${pageContext.request.contextPath}/userInsert">userInsert</a>
+<a href="${pageContext.request.contextPath}/donatorInsert">donatorInsert</a>
 </body>
 </html>

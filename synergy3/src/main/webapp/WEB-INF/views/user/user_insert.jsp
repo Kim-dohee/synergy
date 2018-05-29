@@ -1,12 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>user_insert.jsp</title>
 </head>
 <body>
-
+<form action="${pageContext.request.contextPath}/userInsert" method="post">
+	userId <input type="text" name="userId"><br>
+	userPw <input type="text" name="userPw"><br>
+	userName <input type="text" name="userName"><br>
+	userPhone <input type="text" name="userPhone"><br>
+	userEmail <input type="text" name="userEmail"><br>
+	userNick <input type="text" name="userNick"><br>
+	<input type="submit" value="입력">
+</form>
 </body>
 </html>
