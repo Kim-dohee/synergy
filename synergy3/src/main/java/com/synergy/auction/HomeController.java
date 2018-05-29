@@ -1,4 +1,4 @@
-package synergy.spring.com;
+package com.synergy.auction;
 
 import java.text.DateFormat;
 import java.util.Date;
