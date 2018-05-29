@@ -8,5 +8,6 @@
 <body>
 <a href="${pageContext.request.contextPath}/userInsert">userInsert</a>
 <a href="${pageContext.request.contextPath}/donatorInsert">donatorInsert</a>
+<a href="${pageContext.request.contextPath}/adminInsert">adminInsert</a>
 </body>
 </html>

@@ -54,17 +54,8 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/synergy/auction/user/service/UserMapper.xml</value>
-				<value>classpath:com/synergy/auction/donator/service/DonatorMapper.xml</value>
-			<!-- 	<value>classpath:com/test/pds/article/service/ArticleMapper.xml</value>
-				<value>classpath:com/test/pds/article/service/ArticleFileMapper.xml</value>
-				<value>classpath:com/test/pds/board/service/BoardMapper.xml</value>
-				<value>classpath:com/test/pds/board/service/BoardFileMapper.xml</value>
-				<value>classpath:com/test/pds/resume/service/ResumeMapper.xml</value>
-				<value>classpath:com/test/pds/resume/service/ResumeFileMapper.xml</value>
-				<value>classpath:com/test/pds/notice/service/NoticeMapper.xml</value>
-				<value>classpath:com/test/pds/notice/service/NoticeFileMapper.xml</value>
-				<value>classpath:com/test/pds/gallery/service/GalleryFileMapper.xml</value>
-				<value>classpath:com/test/pds/gallery/service/GalleryMapper.xml</value> -->
+				<!-- <value>classpath:com/synergy/auction/donator/service/DonatorMapper.xml</value> -->
+				<value>classpath:com/synergy/auction/admin/service/AdminMapper.xml</value>
 			</list>
 		</property>
 	</bean>

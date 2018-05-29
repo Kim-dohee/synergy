@@ -24,6 +24,29 @@
 			,now()
 		)
 	</insert>
+	
+	<select id="userSelectOne"
+			parameterType="com.synergy.auction.user.service.UserDto"
+			resultType="com.synergy.auction.user.service.UserDto">
+		SELECT 
+			user_no
+			,user_id
+		FROM 
+			user 
+		WHERE 
+			user_id=#{userId}
+	</select>
+	
+	<insert id="cashRecordInsert"
+			parameterType="com.synergy.auction.user.service.CashRecordDto">
+		INSERT INTO cash_record(
+			user_id
+			,cashrecord_total
+		) VALUES (
+			#{userId}
+			,80
+		)
+	</insert>
 
 
 </mapper>

@@ -3,7 +3,7 @@ package com.synergy.auction.user.service;
 
 public class UserDto {
 
-	private String userNo;
+	private int userNo;
 	private String creditRightNo;
 	private String userId;
 	private String userPw;
@@ -13,10 +13,10 @@ public class UserDto {
 	private String userNick;
 	private String userJoindate;
 	
-	public String getUserNo() {
+	public int getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(String userNo) {
+	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
 	public String getCreditRightNo() {

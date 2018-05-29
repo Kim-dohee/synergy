@@ -15,5 +15,14 @@ public class UserDao {
 		int row = sqlSession.insert(NS+"userInsert", userDto); 
 		return row; 
 	} 
+	
+	public int cashRecordInsert(UserDto userDto) { 
+		int row = sqlSession.insert(NS+"cashRecordInsert", userDto); 
+		return row; 
+	} 
+	
+	public String userSelectOne(String userId) { 
+		return sqlSession.selectOne(NS+"userSelectOne", userId); 
+	} 
 
 }

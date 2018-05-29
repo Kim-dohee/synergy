@@ -12,4 +12,13 @@ public class UserService {
 		int row = userDao.userInsert(userDto); 
 		return row; 
 	} 
+	
+	public int cashRecordInsert(UserDto userDto) { 
+		int row = userDao.cashRecordInsert(userDto); 
+		return row; 
+	} 
+	
+	public String userSelectOne(String userId) { 
+		return userDao.userSelectOne(userId); 
+	} 
 }
