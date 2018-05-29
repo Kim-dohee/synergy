@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.synergy.auction.donator.service.DonatorMapper">
+	<insert id="donatorInsert"
+			parameterType="com.synergy.auction.donator.service.DonatorDto">
+		INSERT INTO donator(
+			donator_id
+			,donator_pw
+			,donator_business_no
+			,donator_name
+			,donator_telephone
+			,donator_homepage
+			,donator_join_date
+		) VALUES (
+			#{donatorId}
+			,#{donatorPw}
+			,#{donatorBusinessNo}
+			,#{donatorName}
+			,#{donatorTelephone}
+			,#{donatorHomepage}
+			,now()
+		)
+	</insert>
+	
+	<select id="donatorSelectOne" 
+			parameterType="com.synergy.auction.donator.service.DonatorDto" 
+			resultType="com.synergy.auction.donator.service.DonatorDto">
+		SELECT 
+			donator_no AS donatorNo
+			,donator_id AS donatorId
+			,donator_pw AS donatorPw
+			,donator_business_no AS donatorBusinessNo
+			,donator_name AS donatorName
+			,donator_telephone AS donatorTelephone
+			,donator_homepage AS donatorHomepage
+			,donator_join_date AS donatorJoinDate
+		FROM donator
+		WHERE donator_id = #{donatorId}
+	</select>
+</mapper>
