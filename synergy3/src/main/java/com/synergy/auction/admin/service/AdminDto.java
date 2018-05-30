@@ -10,7 +10,14 @@ public class AdminDto {
 	private int adminPhone;
 	private String adminAddress;
 	private String adminJoindate;
+	private String adminLevel;
 
+	public String getAdminLevel() {
+		return adminLevel;
+	}
+	public void setAdminLevel(String adminLevel) {
+		this.adminLevel = adminLevel;
+	}
 	public int getAdminNo() {
 		return adminNo;
 	}
@@ -58,6 +65,7 @@ public class AdminDto {
 	public String toString() {
 		return "AdminDto [adminNo=" + adminNo + ", adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
 				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoindate="
-				+ adminJoindate + "]";
+				+ adminJoindate + ", adminLevel=" + adminLevel + "]";
 	}
+
 }

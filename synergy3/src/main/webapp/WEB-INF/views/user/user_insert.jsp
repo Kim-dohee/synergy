@@ -1,12 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>user_insert.jsp</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../module/top.jsp"></jsp:include>
+
 <form action="${pageContext.request.contextPath}/userInsert" method="post">
 	userId <input type="text" name="userId"><br>
 	userPw <input type="text" name="userPw"><br>
@@ -16,5 +10,4 @@
 	userNick <input type="text" name="userNick"><br>
 	<input type="submit" value="입력">
 </form>
-</body>
-</html>
+<jsp:include page="../module/footer.jsp"></jsp:include>

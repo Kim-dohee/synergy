@@ -12,7 +12,14 @@ public class UserDto {
 	private String userEmail;
 	private String userNick;
 	private String userJoindate;
+	private String userLevel;
 	
+	public String getUserLevel() {
+		return userLevel;
+	}
+	public void setUserLevel(String userLevel) {
+		this.userLevel = userLevel;
+	}
 	public int getUserNo() {
 		return userNo;
 	}
@@ -67,11 +74,13 @@ public class UserDto {
 	public void setUserJoindate(String userJoindate) {
 		this.userJoindate = userJoindate;
 	}
+
 	@Override
 	public String toString() {
 		return "UserDto [userNo=" + userNo + ", creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw="
 				+ userPw + ", userName=" + userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail
-				+ ", userNick=" + userNick + ", userJoindate=" + userJoindate + "]";
+				+ ", userNick=" + userNick + ", userJoindate=" + userJoindate + ", userLevel=" + userLevel + "]";
 	}
+
 	
 }

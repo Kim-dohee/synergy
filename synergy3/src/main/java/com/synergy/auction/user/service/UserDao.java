@@ -1,5 +1,7 @@
 package com.synergy.auction.user.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,13 +18,18 @@ public class UserDao {
 		return row; 
 	} 
 	
-	public int cashRecordInsert(UserDto userDto) { 
-		int row = sqlSession.insert(NS+"cashRecordInsert", userDto); 
+	public int creditRecordInsert(int userNo) { 
+		int row = sqlSession.insert(NS+"creditRecordInsert", userNo); 
 		return row; 
 	} 
 	
-	public String userSelectOne(String userId) { 
-		return sqlSession.selectOne(NS+"userSelectOne", userId); 
+	public UserDto userSelectOne(String userId) { 
+		System.out.println(userId+"123");
+		return sqlSession.selectOne(NS + "userSelectOne", userId); 
+	} 
+	
+	public UserDto userSelectOne(UserDto userDto) { 
+		return sqlSession.selectOne(NS + "userSelectOne", userDto); 
 	} 
 
 }

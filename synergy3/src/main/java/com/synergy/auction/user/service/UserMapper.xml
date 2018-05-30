@@ -14,6 +14,7 @@
 			,user_email
 			,user_nick
 			,user_joindate
+			,user_level
 		) VALUES (
 			#{userId}
 			,#{userPw}
@@ -22,31 +23,27 @@
 			,#{userEmail}
 			,#{userNick}
 			,now()
+			,일반회원
 		)
 	</insert>
 	
-	<select id="userSelectOne"
-			parameterType="com.synergy.auction.user.service.UserDto"
-			resultType="com.synergy.auction.user.service.UserDto">
-		SELECT 
-			user_no
-			,user_id
+	<select id="userSelectOne" parameterType="String" resultType="com.synergy.auction.user.service.UserDto"> 
+		SELECT
+			user_no AS userNo
 		FROM 
 			user 
-		WHERE 
-			user_id=#{userId}
-	</select>
+		WHERE user_id=#{userId} 
+	</select> 
 	
-	<insert id="cashRecordInsert"
-			parameterType="com.synergy.auction.user.service.CashRecordDto">
-		INSERT INTO cash_record(
-			user_id
-			,cashrecord_total
-		) VALUES (
-			#{userId}
-			,80
+	<insert id="creditRecordInsert"  
+		parameterType="com.synergy.auction.user.service.CashRecordDto">  
+		INSERT INTO credit_record(  
+			user_no
+			,credit_record_now_score
+		) VALUES (  
+			#{userNo}  
+			,80  
 		)
-	</insert>
-
-
+	</insert>  
+	
 </mapper>

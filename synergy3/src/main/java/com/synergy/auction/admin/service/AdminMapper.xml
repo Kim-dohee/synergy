@@ -13,6 +13,7 @@
 			,admin_phone
 			,admin_address
 			,admin_joindate
+			,admin_level
 		) VALUES (
 			#{adminId}
 			,#{adminPw}
@@ -20,6 +21,7 @@
 			,#{adminPhone}
 			,#{adminAddress}
 			,now()
+			,관리자
 		)
 	</insert>
 
