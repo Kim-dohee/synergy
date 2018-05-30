@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/login_main.jsp">회원가입</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/loginMain">회원가입</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
