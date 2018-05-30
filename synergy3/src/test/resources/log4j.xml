@@ -11,8 +11,8 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="synergy.spring.com">
-		<level value="info" />
+	<logger name="com.synergy.auction">
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

@@ -23,7 +23,7 @@ public class LoginController {
 		
 		logger.info("LoginController.login >>"+"id:"+id+"pw:"+pw);
 		/*id,pw 검색*/
-		loginService.login(id);
+		loginService.login(id,pw);
 		return "home";
 	}
 	
