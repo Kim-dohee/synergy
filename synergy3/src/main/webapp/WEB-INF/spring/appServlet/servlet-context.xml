@@ -54,7 +54,7 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/synergy/auction/user/service/UserMapper.xml</value>
-				<!-- <value>classpath:com/synergy/auction/donator/service/DonatorMapper.xml</value> -->
+				<value>classpath:com/synergy/auction/donator/service/DonatorMapper.xml</value>
 				<value>classpath:com/synergy/auction/admin/service/AdminMapper.xml</value>
 			</list>
 		</property>

@@ -25,19 +25,4 @@
 		)
 	</insert>
 	
-	<select id="donatorSelectOne" 
-			parameterType="com.synergy.auction.donator.service.DonatorDto" 
-			resultType="com.synergy.auction.donator.service.DonatorDto">
-		SELECT 
-			donator_no AS donatorNo
-			,donator_id AS donatorId
-			,donator_pw AS donatorPw
-			,donator_business_no AS donatorBusinessNo
-			,donator_name AS donatorName
-			,donator_telephone AS donatorTelephone
-			,donator_homepage AS donatorHomepage
-			,donator_join_date AS donatorJoinDate
-		FROM donator
-		WHERE donator_id = #{donatorId}
-	</select>
 </mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.synergy.auction.login.service.LoginMapper">
+	
+	<select id="donatorLoginSelectOne" 
+			parameterType="String" 
+			resultType="com.synergy.auction.donator.service.DonatorDto">
+		SELECT 
+			donator_id AS donatorId
+			,donator_pw AS donatorPw
+		FROM donator
+		WHERE donator_id = #{id}
+	</select>
+	<select id="userLoginSelectOne" 
+			parameterType="String" 
+			resultType="com.synergy.auction.user.service.UserDto">
+		SELECT 
+			user_id AS userId
+			,user_pw AS userPw
+		FROM user
+		WHERE user_id = #{id}
+	</select>
+	<select id="adminLoginSelectOne" 
+			parameterType="String" 
+			resultType="com.synergy.auction.admin.service.AdminDto">
+		SELECT 
+			admin_id AS adminId
+			,admin_pw AS adminPw
+		FROM admin
+		WHERE admin_id = #{id}
+	</select>
+</mapper>

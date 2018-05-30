@@ -24,18 +24,20 @@ public class DonatorController {
 		return "donator/donator_insert";
 	}
 	
+	/*기부단체 회원가입 화면*/
 	@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
 	public String donatorInsert(DonatorDto donatorDto) {
 		logger.info("DonatorController.donatorInsert toString() >>"+donatorDto.toString());
+		/*회원정보 입력*/
 		donatorService.donatorInsert(donatorDto);
 		return "home";
 	}
 	
-	/*@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
+	/*기부단체 회원수정 화면
+	@RequestMapping(value = "/donatorSelectOne", method = RequestMethod.POST)
 	public String donatorSelectOne(DonatorDto donatorDto) {
-		logger.info("DonatorController.donatorInsert toString() >>"+donatorDto.toString());
-		donatorService.donatorInsert(donatorDto);
-		return "home";
-	}
-*/
+		회원정보 가져오기
+		donatorService.donatorSelectOne(donatorDto);
+		return "donator/donator_update.jsp";
+	}*/
 }

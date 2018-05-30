@@ -16,8 +16,8 @@ public class DonatorService {
 		return row; 
 	} 
 	
-	/*기부단체 회원수정을 위해 정보 가져오기*/
+	/*기부단체 회원수정을 위해 정보 가져오기
 	public DonatorDto donatorSelectOne(DonatorDto donatorDto) {
 		return donatorDao.donatorSelectOne(donatorDto);
-	}
+	}*/
 }
