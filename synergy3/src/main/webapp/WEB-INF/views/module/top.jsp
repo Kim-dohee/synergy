@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,20 +30,23 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <form action="${pageContext.request.contextPath}/login" method="post" class="form-inline">
-		  <div class="form-group">
-		    <input type="text" class="form-control" name="id" placeholder="아이디">
-		  </div>&nbsp &nbsp
-		  <div class="form-group">
-		    <input type="password" class="form-control" name="pw" placeholder="비밀번호">
-		  </div>&nbsp &nbsp
-		  <div class="checkbox">
-		    <label>
-		      <input type="checkbox"> <p class="text-muted">Remember me</p>
-		    </label>
-		  </div>&nbsp &nbsp
-		  <input type="submit" class="btn btn-default" value="로그인"></button>
-		</form>
+        <!-- 로그인 -->
+        <c:if test="${empty sessionScope.id}"> 
+	        <form action="${pageContext.request.contextPath}/login" method="post" class="form-inline">
+			  <div class="form-group">
+			    <input type="text" class="form-control" name="id" placeholder="아이디">
+			  </div>&nbsp &nbsp
+			  <div class="form-group">
+			    <input type="password" class="form-control" name="pw" placeholder="비밀번호">
+			  </div>&nbsp &nbsp
+			  <div class="checkbox">
+			    <label>
+			      <input type="checkbox"> <p class="text-muted">Remember me</p>
+			    </label>
+			  </div>&nbsp &nbsp
+			  <input type="submit" class="btn btn-default" value="로그인"></button>
+			</form>
+		</c:if>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">

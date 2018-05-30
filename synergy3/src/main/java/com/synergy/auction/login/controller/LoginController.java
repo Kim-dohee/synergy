@@ -1,5 +1,7 @@
 package com.synergy.auction.login.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +19,21 @@ public class LoginController {
 	
 	@Autowired 
 	private LoginService loginService;
+	
 	/*로그인 처리*/
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(String id,String pw) {
+	public String login(HttpSession session,String id,String pw) {
 		
-		logger.info("LoginController.login >>"+"id:"+id+"pw:"+pw);
+		logger.debug("LoginController.login >>"+"i:"+id+"pw:"+pw);
 		/*id,pw 검색*/
-		loginService.login(id,pw);
+		String level = loginService.login(id,pw);
+		/*id,pw일치하면 id,level세션설정*/
+		if(level!=null) {
+			session.setAttribute("id", id);
+			session.setAttribute("level", level);
+		}
+		logger.debug("LoginController.login sessionId>>"+session.getAttribute("id"));
+		logger.debug("LoginController.login sessionLevel>>"+session.getAttribute("level"));
 		return "home";
 	}
 	

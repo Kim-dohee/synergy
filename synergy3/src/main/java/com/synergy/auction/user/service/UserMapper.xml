@@ -14,7 +14,6 @@
 			,user_email
 			,user_nick
 			,user_joindate
-			,user_level
 		) VALUES (
 			#{userId}
 			,#{userPw}
@@ -23,7 +22,6 @@
 			,#{userEmail}
 			,#{userNick}
 			,now()
-			,일반회원
 		)
 	</insert>
 	
@@ -36,7 +34,7 @@
 	</select> 
 	
 	<insert id="creditRecordInsert"  
-		parameterType="com.synergy.auction.user.service.CashRecordDto">  
+		parameterType="com.synergy.auction.user.service.CreditRecordDto">  
 		INSERT INTO credit_record(  
 			user_no
 			,credit_record_now_score

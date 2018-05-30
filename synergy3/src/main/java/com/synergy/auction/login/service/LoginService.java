@@ -1,7 +1,5 @@
 package com.synergy.auction.login.service;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,7 @@ public class LoginService {
 		DonatorDto donatorLogin;
 		UserDto userLogin;
 		AdminDto adminLogin;
-		
+		String level = null;
 		/*기부단체 id,pw 검색*/
 		donatorLogin = loginDao.donatorLoginSelectOne(id);	
 		logger.debug("LoginService.login donatorid >>"+donatorLogin.getDonatorId());
@@ -40,26 +38,26 @@ public class LoginService {
 		logger.debug("LoginService.adminlogin id >>"+adminLogin.getAdminId());
 		logger.debug("LoginService.adminlogin pw >>"+adminLogin.getAdminPw());
 		
-		/*기부단체 id,pw일치 확인 후 설정*/
+		/*기부단체 id,pw일치 확인*/
 		if(donatorLogin.getDonatorId().equals(id)) {
 			if(donatorLogin.getDonatorPw().equals(pw)) {
-				return "login";
+				level = "기부단체";
 			}
 		}
 		
-		/*일반회원 id,pw일치 확인 후 세션설정*/
+		/*일반회원 id,pw일치 확인*/
 		if(userLogin.getUserId().equals(id)) {
 			if(userLogin.getUserPw().equals(pw)) {
-				return "login";
+				level = "일반회원";
 			}
 		}
 		
 		/*관리자 id,pw일치 확인 후 세션설정*/
 		if(adminLogin.getAdminId().equals(id)) {
 			if(adminLogin.getAdminPw().equals(pw)) {
-				return "login";
+				level = "관리자";
 			}
 		}
-		return "login";
+		return level;
 	} 
 }
