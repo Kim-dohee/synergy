@@ -42,4 +42,12 @@ public class LoginController {
 	public String donatorInsert() {
 		return "login/login_main";
 	}
+
+	//로그아웃
+	@RequestMapping(value= "/logout", method=RequestMethod.GET)  
+	public String logout(HttpSession session) {  
+		session.invalidate();  
+		return "home";  
+	}  
+
 }

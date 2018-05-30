@@ -2,6 +2,8 @@ package com.synergy.auction.user.controller;
 
 
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ import com.synergy.auction.user.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	//회원가입 화면
@@ -47,14 +49,17 @@ public class UserController {
 	}
 
 	//회원수정 화면
-	@RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
-	public String userUpdate(Model model, UserDto userDto) {
-		model.addAttribute("user", userService.userSelectOne(userDto));
+	@RequestMapping(value = "/user_update", method = RequestMethod.GET)
+	public String userUpdate(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("id");
+		logger.debug(id);
+		model.addAttribute("user", userService.userSelectOne(id));
 		return "user/user_update";
 	}
 	//회원수정
 	@RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
 	public String userUpdate(UserDto userDto) {
+		userService.userUpdate(userDto);
 		return "user/user_update";
 	}
 }

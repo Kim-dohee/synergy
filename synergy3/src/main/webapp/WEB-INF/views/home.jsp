@@ -193,7 +193,7 @@
 
     </div>
    
-<jsp:include page="./module/top.jsp"></jsp:include>
+<jsp:include page="./module/footer.jsp"></jsp:include>
 
   </body>
 

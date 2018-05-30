@@ -25,11 +25,15 @@ public class UserDao {
 	
 	public UserDto userSelectOne(String userId) { 
 		System.out.println(userId+"123");
-		return sqlSession.selectOne(NS + "userSelectOne", userId); 
+		return sqlSession.selectOne(NS + "userSelectOneId", userId); 
 	} 
 	
 	public UserDto userSelectOne(UserDto userDto) { 
 		return sqlSession.selectOne(NS + "userSelectOne", userDto); 
+	}
+
+	public int userUpdate(UserDto userDto) {
+		return sqlSession.update(NS + "userUpdate", userDto); 
 	} 
 
 }
