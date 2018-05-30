@@ -51,9 +51,9 @@ public class UserController {
 	//회원수정 화면
 	@RequestMapping(value = "/user_update", method = RequestMethod.GET)
 	public String userUpdate(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("id");
-		logger.debug(id);
-		model.addAttribute("user", userService.userSelectOne(id));
+		String userId = (String)session.getAttribute("id");
+		logger.debug(userId);
+		model.addAttribute("user", userService.userSelectOne(userId));
 		return "user/user_update";
 	}
 	//회원수정

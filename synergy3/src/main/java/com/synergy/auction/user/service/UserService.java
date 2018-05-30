@@ -22,9 +22,6 @@ public class UserService {
 	public UserDto userSelectOne(String userId) { 
 		return userDao.userSelectOne(userId); 
 	} 
-	public UserDto userSelectOne(UserDto userDto) { 
-		return userDao.userSelectOne(userDto); 
-	}
 	public int userUpdate(UserDto userDto) {
 		int row = userDao.userUpdate(userDto);
 		return row;
