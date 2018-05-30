@@ -31,11 +31,11 @@ public class DonatorController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
 	public String donatorSelectOne(DonatorDto donatorDto) {
 		logger.info("DonatorController.donatorInsert toString() >>"+donatorDto.toString());
 		donatorService.donatorInsert(donatorDto);
 		return "home";
 	}
-
+*/
 }
