@@ -49,17 +49,24 @@ public class UserController {
 	}
 
 	//회원수정 화면
-	@RequestMapping(value = "/user_update", method = RequestMethod.GET)
+	@RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
 	public String userUpdate(HttpSession session, Model model) {
 		String userId = (String)session.getAttribute("id");
 		logger.debug(userId);
 		model.addAttribute("user", userService.userSelectOne(userId));
+		System.out.println("aaaaaaaaaaaaa"+userService.userSelectOne(userId));
 		return "user/user_update";
 	}
 	//회원수정
 	@RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
 	public String userUpdate(UserDto userDto) {
 		userService.userUpdate(userDto);
-		return "user/user_update";
+		return "home";
+	}
+	//회원탈퇴
+	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
+	public String userDelete(UserDto userDto) {
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		return "home";
 	}
 }

@@ -24,10 +24,12 @@ public class UserDao {
 	} 
 	
 	public UserDto userSelectOne(String userId) { 
-		return sqlSession.selectOne(NS + "userSelectOneId", userId); 
+		return sqlSession.selectOne(NS + "userSelectOne", userId); 
 	} 
+	
 	public int userUpdate(UserDto userDto) {
-		return sqlSession.update(NS + "userUpdate", userDto); 
+		int row = sqlSession.update(NS + "userUpdate", userDto); 
+		return row; 
 	} 
 
 }

@@ -28,6 +28,14 @@
 	<select id="userSelectOne" parameterType="String" resultType="com.synergy.auction.user.service.UserDto"> 
 		SELECT
 			user_no AS userNo
+			,credit_right_no AS creditRightNo
+			,user_id AS userId
+			,user_pw AS userPw
+			,user_name AS userName
+			,user_phone AS userPhone
+			,user_email AS userEmail
+			,user_nick AS userNick
+			,user_joindate AS userJoindate
 		FROM 
 			user 
 		WHERE user_id=#{userId} 
@@ -43,5 +51,14 @@
 			,80  
 		)
 	</insert>  
+	<update id="userUpdate" parameterType="com.synergy.auction.user.service.UserDto"> 
+		UPDATE user SET 
+			user_pw = #{userPw} 
+			,user_nick = #{userNick} 
+			,user_phone = #{userPhone} 
+			,user_email = #{userEmail} 
+		WHERE user_no = #{userNo} 
+	</update> 
+	
 	
 </mapper>

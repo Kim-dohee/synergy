@@ -1,5 +1,7 @@
 package com.synergy.auction.login.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,5 +35,9 @@ public class LoginDao {
 	/*관리자 id와 비밀번호 검색*/
 	public AdminDto adminLoginSelectOne(String id) { 
 		return sqlSession.selectOne(NS+"adminLoginSelectOne", id); 
+	}
+
+	public int idcheck(String id) {
+		return sqlSession.selectOne(NS+"idcheck", id); 
 	}
 }

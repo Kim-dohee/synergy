@@ -10,7 +10,6 @@
 		SELECT 
 			donator_id AS donatorId
 			,donator_pw AS donatorPw
-			,donator_level AS donatorLevel
 		FROM donator
 		WHERE donator_id = #{id}
 	</select>
@@ -20,7 +19,6 @@
 		SELECT 
 			user_id AS userId
 			,user_pw AS userPw
-			,user_level AS userLevel
 		FROM user
 		WHERE user_id = #{id}
 	</select>
@@ -30,8 +28,16 @@
 		SELECT 
 			admin_id AS adminId
 			,admin_pw AS adminPw
-			,admin_level AS adminLevel
 		FROM admin
 		WHERE admin_id = #{id}
 	</select>
+	<select id="idcheck" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM 
+			user
+			,admin
+			,donator
+		WHERE
+          user_id = #{id}
+	</select>
+	
 </mapper>

@@ -1,15 +1,19 @@
 /*[김도희]*/
 package com.synergy.auction.donator.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.donator.service.DonatorService;
+import com.synergy.auction.user.service.UserDto;
 @Controller
 public class DonatorController {
 
@@ -40,4 +44,17 @@ public class DonatorController {
 		donatorService.donatorSelectOne(donatorDto);
 		return "donator/donator_update.jsp";
 	}*/
+	@RequestMapping(value = "/donatorUpdate", method = RequestMethod.GET)
+	public String donatorUpdate(HttpSession session, Model model) {
+		String donatorId = (String)session.getAttribute("id");
+		model.addAttribute("donator", donatorService.donatorSelectOne(donatorId));
+		System.out.println("aaaaaaaaaaaaa"+donatorService.donatorSelectOne(donatorId));
+		return "donator/donator_update";
+	}
+	
+	@RequestMapping(value = "/donatorUpdate", method = RequestMethod.POST)
+	public String donatorUpdate(DonatorDto donator) {
+		donatorService.donatorUpdate(donator);
+		return "home";
+	}
 }

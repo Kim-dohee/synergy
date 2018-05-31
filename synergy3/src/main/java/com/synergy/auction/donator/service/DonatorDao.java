@@ -19,7 +19,12 @@ public class DonatorDao {
 		return row; 
 	} 
 		
-/*	public DonatorDto donatorSelectOne(DonatorDto donatorDto) { 
-		return sqlSession.selectOne(NS+"donatorSelectOne", donatorDto);  
-	} */
+	public DonatorDto donatorSelectOne(String donatorId) { 
+		return sqlSession.selectOne(NS+"donatorSelectOne", donatorId);  
+	}
+
+	public int donatorUpdate(DonatorDto donator) {
+		int row = sqlSession.update(NS + "donatorUpdate", donator); 
+		return row;
+	} 
 }
