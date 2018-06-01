@@ -6,12 +6,24 @@
 <mapper namespace="com.synergy.auction.cash.service.CashRecordMapper">
 	<insert id="cashRecordTotalInsert"
 			parameterType="String">
-			INSERT INTO cash_record(
-				user_id
-				,cashrecord_total
-			) VALUES (
-				#{userId}
-				,0
-			)
+		INSERT INTO cash_record(
+			user_id
+			,cashrecord_total
+		) VALUES (
+			#{userId}
+			,0
+		)
 	</insert>
+	<insert id="cashRecordInsert"
+			parameterType="String">
+		INSERT INTO cash_record(
+			user_id
+			,cash_category_no
+			,cashrecord_change
+		)VALUES (
+			#{userId}
+			,1
+			,#{cashRecordChange}
+		)
+	</insert>		
 </mapper>  

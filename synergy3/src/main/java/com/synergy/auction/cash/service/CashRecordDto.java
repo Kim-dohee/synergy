@@ -5,10 +5,10 @@ public class CashRecordDto {
 
 	private int cashRecordNo; //캐시이력넘버
 	private int cashCategoryNo; //캐시카테고리넘버
-	private int userId; //일반회원아이디
-	private int cashrecordChange; //캐시변동
-	private String cashrecordChangedate; //캐시변동날짜
-	private int cashrecordTotal; //총액
+	private String userId; //일반회원아이디
+	private int cashRecordChange; //캐시변동
+	private String cashRecordChangedate; //캐시변동날짜
+	private int cashRecordTotal; //총액
 	
 	public int getCashRecordNo() {
 		return cashRecordNo;
@@ -22,36 +22,36 @@ public class CashRecordDto {
 	public void setCashCategoryNo(int cashCategoryNo) {
 		this.cashCategoryNo = cashCategoryNo;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public int getCashrecordChange() {
-		return cashrecordChange;
+	public int getCashRecordChange() {
+		return cashRecordChange;
 	}
-	public void setCashrecordChange(int cashrecordChange) {
-		this.cashrecordChange = cashrecordChange;
+	public void setCashRecordChange(int cashRecordChange) {
+		this.cashRecordChange = cashRecordChange;
 	}
-	public String getCashrecordChangedate() {
-		return cashrecordChangedate;
+	public String getCashRecordChangedate() {
+		return cashRecordChangedate;
 	}
-	public void setCashrecordChangedate(String cashrecordChangedate) {
-		this.cashrecordChangedate = cashrecordChangedate;
+	public void setCashRecordChangedate(String cashRecordChangedate) {
+		this.cashRecordChangedate = cashRecordChangedate;
 	}
-	public int getCashrecordTotal() {
-		return cashrecordTotal;
+	public int getCashRecordTotal() {
+		return cashRecordTotal;
 	}
-	public void setCashrecordTotal(int cashrecordTotal) {
-		this.cashrecordTotal = cashrecordTotal;
+	public void setCashRecordTotal(int cashRecordTotal) {
+		this.cashRecordTotal = cashRecordTotal;
 	}
 	
 	@Override
 	public String toString() {
 		return "CashRecordDto [cashRecordNo=" + cashRecordNo + ", cashCategoryNo=" + cashCategoryNo + ", userId="
-				+ userId + ", cashrecordChange=" + cashrecordChange + ", cashrecordChangedate=" + cashrecordChangedate
-				+ ", cashrecordTotal=" + cashrecordTotal + "]";
+				+ userId + ", cashRecordChange=" + cashRecordChange + ", cashRecordChangedate=" + cashRecordChangedate
+				+ ", cashRecordTotal=" + cashRecordTotal + "]";
 	}
-	
+		
 }

@@ -15,5 +15,11 @@ public class CashRecordService {
 	public int cashRecordTotalInsert(String userId) { 
 		int row = cashRecordDao.cashRecordTotalInsert(userId); 
 		return row; 
-	} 
+	}
+	
+	//캐쉬금액 충전
+	public int cashRecordInsert(CashRecordDto cashRecordDto) { 
+		int row = cashRecordDao.cashRecordInsert(cashRecordDto); 
+		return row; 
+	}
 }

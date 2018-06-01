@@ -18,4 +18,10 @@ public class CashRecordDao {
 		int row = sqlSession.insert(NS+"cashRecordTotalInsert", userId); 
 		return row; 
 	}
+	
+	//캐쉬금액 충전
+	public int cashRecordInsert(CashRecordDto cashRecordDto) { 
+		int row = sqlSession.insert(NS+"cashRecordInsert", cashRecordDto); 
+		return row; 
+	}
 }

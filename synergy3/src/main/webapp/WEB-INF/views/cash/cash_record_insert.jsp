@@ -7,7 +7,7 @@
 	<script>
 	//입력값이 숫자만 가능
 	$(document).ready(function(){
-		$("#cash").keyup(function(){
+		$("#cashRecordChangedate").keyup(function(){
 			$(this).val($(this).val().replace(/[^0-9]/g,""));
 		})		
 	});
@@ -19,7 +19,7 @@
             <div class="form-group" id="divCash">
                 <label for="inputCash" class="col-lg-2 control-label">캐쉬 충전 금액</label>
                 <div class="col-lg-8">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" name="cash" id="cash" data-rule-required="true" placeholder="금액(숫자)만 입력 가능합니다" maxlength="30" onKeyPress="return numkeyCheck(event)">
+                    <input type="text" class="form-control onlyAlphabetAndNumber" name="cashRecordChangedate" id="cashRecordChangedate" data-rule-required="true" placeholder="금액(숫자)만 입력 가능합니다" maxlength="30" onKeyPress="return numkeyCheck(event)">
                 </div>
             </div>
 			<div class="form-group">
