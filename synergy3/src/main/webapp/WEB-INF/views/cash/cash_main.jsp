@@ -10,7 +10,7 @@
 			<div class="card h-100">
 				<h4 class="card-header">충전</h4>
 				<div class="card-body">
-					<a href="${pageContext.request.contextPath}/cashInsert">cashInsert</a>
+					<a href="${pageContext.request.contextPath}/cashRecordInsert">cashRecordInsert</a>
 				</div>
 			</div>
 		</div>

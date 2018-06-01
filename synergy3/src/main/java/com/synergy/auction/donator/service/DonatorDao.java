@@ -13,16 +13,18 @@ public class DonatorDao {
 	private SqlSessionTemplate sqlSession;
 	final String NS = "com.synergy.auction.donator.service.DonatorMapper.";
 		
-	/*기부단체 회원가입*/
+	//기부단체 회원가입
 	public int donatorInsert(DonatorDto donatorDto) { 
 		int row = sqlSession.insert(NS+"donatorInsert", donatorDto); 
 		return row; 
 	} 
-		
+	
+	//기부단체 회원정보수정을위한 검색
 	public DonatorDto donatorSelectOne(String donatorId) { 
 		return sqlSession.selectOne(NS+"donatorSelectOne", donatorId);  
 	}
 
+	//기부단체 회원정보 수정
 	public int donatorUpdate(DonatorDto donator) {
 		int row = sqlSession.update(NS + "donatorUpdate", donator); 
 		return row;

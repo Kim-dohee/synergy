@@ -14,14 +14,14 @@ public class CashController {
 	}
 	
 	//캐쉬 충전화면
-	@RequestMapping(value = "/cashInsert", method = RequestMethod.GET)
-	public String cashInsertView() {
-		return "cash/cash_insert";
+	@RequestMapping(value = "/cashRecordInsert", method = RequestMethod.GET)
+	public String cashRecordInsertView() {
+		return "cash/cash_record_insert";
 	}
 	
 	//캐쉬 충전
-	@RequestMapping(value = "/cashInsert", method = RequestMethod.POST)
-	public String cashInsert() {
+	@RequestMapping(value = "/cashRecordInsert", method = RequestMethod.POST)
+	public String cashRecordInsert() {
 		return "home";
 	}
 	

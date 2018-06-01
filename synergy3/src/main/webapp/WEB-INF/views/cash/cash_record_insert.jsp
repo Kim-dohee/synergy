@@ -14,7 +14,7 @@
 	</script>	
 </head>
 <body>
-	<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/cashInsert">
+	<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/cashRecordInsert">
 	       <br><h1 class="text-center">캐쉬 충전</h1><br>
             <div class="form-group" id="divCash">
                 <label for="inputCash" class="col-lg-2 control-label">캐쉬 충전 금액</label>
