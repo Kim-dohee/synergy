@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.donator.service.DonatorService;
 import com.synergy.auction.user.service.UserDto;
@@ -19,6 +21,8 @@ public class DonatorController {
 
 	@Autowired
 	private DonatorService donatorService;
+	@Autowired
+	private CashRecordService cashRecordService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonatorController.class);
 	
@@ -29,10 +33,11 @@ public class DonatorController {
 	
 	/*기부단체 회원가입 화면*/
 	@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
-	public String donatorInsert(DonatorDto donatorDto) {
+	public String donatorInsert(DonatorDto donatorDto,@RequestParam(value="donatorId") String donatorId) {
 		logger.info("DonatorController.donatorInsert toString() >>"+donatorDto.toString());
 		/*회원정보 입력*/
 		donatorService.donatorInsert(donatorDto);
+		cashRecordService.cashRecordTotalInsert(donatorId);
 		return "home";
 	}
 
