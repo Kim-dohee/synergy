@@ -16,11 +16,11 @@ import com.synergy.auction.cash.service.CashRecordService;
 @Controller
 public class CashController {
 
-	@Autowired 
-	private CashRecordDto cashRecordDto;
+	
+	
 	@Autowired 
 	private CashRecordService cashRecordService;
-	
+	private CashRecordDto cashRecordDto;
 	private static final Logger logger = LoggerFactory.getLogger(CashController.class);
 	
 	//캐쉬메인 화면
@@ -42,6 +42,7 @@ public class CashController {
 		logger.debug("CashController.cashRecordInsert >> cashRecordChange :"+cashRecordChange);
 		//CashRecordDto타입으로 세팅
 		String userId = (String) session.getAttribute("id");
+		logger.debug("CashController.cashRecordInsert >> cashRecordChange :"+userId);
 		cashRecordDto.setUserId(userId);
 		cashRecordDto.setCashRecordChange(cashRecordChange);
 		//캐쉬 충전
