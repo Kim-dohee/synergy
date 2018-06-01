@@ -229,11 +229,7 @@
 				Action</a>
 		</div>
 	</div>
-
 </div>
-
 <jsp:include page="./module/footer.jsp"></jsp:include>
-
 </body>
-
 </html>

@@ -63,20 +63,26 @@
 							<li class="nav-item">
 								<a class="nav-link" href="${pageContext.request.contextPath}/loginMain">회원가입</a>
 							</li>
-						</c:if>
-						<li class="nav-item">
-							<c:if test="${!empty sessionScope.id}">
-								<c:if test="${sessionScope.level eq '관리자'}">
-									<a class="nav-link" href="${pageContext.request.contextPath}/adminUpdate">마이 페이지</a>
+						</c:if>					
+						<c:if test="${!empty sessionScope.id}">		
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								마이페이지
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+								<c:if test="${sessionScope.level eq '관리자'}">	
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/adminUpdate">회원수정</a>
 								</c:if>
 								<c:if test="${sessionScope.level eq '일반회원'}">
-									<a class="nav-link" href="${pageContext.request.contextPath}/userUpdate">마이 페이지</a>
-								</c:if>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/userUpdate">회원수정</a>
+								</c:if>	
 								<c:if test="${sessionScope.level eq '기부단체'}">
-									<a class="nav-link" href="${pageContext.request.contextPath}/donatorUpdate">마이 페이지</a>
-								</c:if>
-							</c:if>
-						</li>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/donatorUpdate">회원수정</a>
+								</c:if>	
+								<a class="dropdown-item" href="${pageContext.request.contextPath}/cashMain">캐쉬</a>
+								</div>
+							</li>
+						</c:if>	
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								경매

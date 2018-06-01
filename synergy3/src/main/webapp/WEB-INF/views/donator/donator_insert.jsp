@@ -1,24 +1,4 @@
 <!-- [김도희] -->
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-</head>
-<body>
-	<form action="${pageContext.request.contextPath}/donatorInsert" method="post">
-		donatorId <input type="text" name=""><br>
-		donatorPw <input type="text" name=""><br>
-		donatorBusinessNo <input type="text" name=""><br>
-		donatorName <input type="text" name=""><br>
-		donatorTelephone <input type="text" name=""><br>
-		donatorHomepage <input type="text" name=""><br>
-		<input type="submit" value="입력">
-	</form>
-</body>
-</html> --%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../module/top.jsp"></jsp:include>
 
@@ -282,11 +262,11 @@ $(function(){
                 <label for="provision" class="col-lg-2 control-label">회원가입약관</label>
                 <div class="col-lg-8" id="provision">
                     <textarea class="form-control" rows="8" style="resize:none" readonly>
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
                     </textarea>
                     <div class="radio">
                         <label>
@@ -306,11 +286,11 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                 <label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
                 <div class="col-lg-8" id="memberInfo">
                     <textarea class="form-control" rows="8" style="resize:none" readonly>
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
-Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
+						Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
                     </textarea>
                     <div class="radio">
                         <label>
@@ -376,37 +356,6 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                     <input type="tel" class="form-control onlyNumber" name="donatorTelephone" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                 </div>
             </div>
-		<!-- <div class="form-group">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">성별</label>
-                <div class="col-lg-10">
-                    <select class="form-control" id="gender">
-                        <option value="M">남</option>
-                        <option value="F">여</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmailReceiveYn" class="col-lg-2 control-label">이메일 수신여부</label>
-                <div class="col-lg-10">
-                    <label class="radio-inline">
-                        <input type="radio" id="emailReceiveYn" name="emailReceiveYn" value="Y" checked> 동의합니다.
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="emailReceiveYn" name="emailReceiveYn" value="N"> 동의하지 않습니다.
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">SMS 수신여부</label>
-                <div class="col-lg-10">
-                    <label class="radio-inline">
-                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="Y" checked> 동의합니다.
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="N"> 동의하지 않습니다.
-                    </label>
-                </div>
-            </div> -->
 		<div class="form-group">
             <div class="col-lg-offset-2 col-lg-8">
                 <button type="button" class="btn btn-default" id="btn">Sign in</button>

@@ -25,14 +25,14 @@ public class LoginController {
 	@Autowired 
 	private LoginService loginService;
 	
-	/*로그인 처리*/
+	//로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpSession session,String id,String pw) {
 		
 		logger.debug("LoginController.login >>"+"id:"+id+"pw:"+pw);
-		/*id,pw 검색*/
+		//id,pw 검색
 		String level = loginService.login(id,pw);
-		/*id,pw일치하면 id,level세션설정*/
+		//id,pw일치하면 id,level세션설정
 		if(level!=null) {
 			session.setAttribute("id", id);
 			session.setAttribute("level", level);
@@ -42,7 +42,7 @@ public class LoginController {
 		return "home";
 	}
 	
-	/*일반회원,기부단체 회원가입 화면*/
+	//일반회원,기부단체 회원가입 화면
 	@RequestMapping(value = "/loginMain", method = RequestMethod.GET)
 	public String donatorInsert() {
 		return "login/login_main";

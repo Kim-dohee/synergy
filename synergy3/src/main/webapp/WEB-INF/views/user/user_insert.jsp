@@ -354,9 +354,9 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                     <input type="tel" class="form-control onlyNumber" name="userPhone" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                 </div>
             </div>
-		<!-- <div class="form-group">
+		<div class="form-group">
                 <label for="inputPhoneNumber" class="col-lg-2 control-label">성별</label>
-                <div class="col-lg-10">
+                <div class="col-lg-6">
                     <select class="form-control" id="gender">
                         <option value="M">남</option>
                         <option value="F">여</option>
@@ -365,7 +365,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
             </div>
             <div class="form-group">
                 <label for="inputEmailReceiveYn" class="col-lg-2 control-label">이메일 수신여부</label>
-                <div class="col-lg-10">
+                <div class="col-lg-6">
                     <label class="radio-inline">
                         <input type="radio" id="emailReceiveYn" name="emailReceiveYn" value="Y" checked> 동의합니다.
                     </label>
@@ -376,7 +376,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
             </div>
             <div class="form-group">
                 <label for="inputPhoneNumber" class="col-lg-2 control-label">SMS 수신여부</label>
-                <div class="col-lg-10">
+                <div class="col-lg-6">
                     <label class="radio-inline">
                         <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="Y" checked> 동의합니다.
                     </label>
@@ -384,7 +384,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                         <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="N"> 동의하지 않습니다.
                     </label>
                 </div>
-            </div> -->
+            </div> 
 		<div class="form-group">
             <div class="col-lg-offset-2 col-lg-12">
                 <button type="button" class="btn btn-default" id="btn">Sign in</button>
