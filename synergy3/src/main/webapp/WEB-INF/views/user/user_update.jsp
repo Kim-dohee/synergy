@@ -7,13 +7,14 @@
 <!-- 본문 들어가는 부분 -->
 
 
-<div style="background-color: #BDBDBD">
+<div style="background-color: #BDBDBD;font-size:16px">
 	<br> <br> <br> <br>
 	<form class="form-horizontal" role="form" method="post"
 		action="${pageContext.request.contextPath}/userUpdate" id="frm">
+		<h1 class="text-center">회원정보수정</h1><br>
 		<div class="form-group" id="divId">
-			<label for="inputId" class="col-lg-2 control-label">아이디</label>
-			<div class="col-lg-8">
+			<label for="inputId" class="col-lg-4 control-label">아이디</label>
+			<div class="col-lg-4">
 				<input type="text" class="form-control onlyAlphabetAndNumber"
 					value="${user.userId}" readonly name="userId" id="id"
 					data-rule-required="true"
@@ -21,24 +22,24 @@
 			</div>
 		</div>
 		<div class="form-group" id="divPassword">
-			<label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
-			<div class="col-lg-8">
+			<label for="inputPassword" class="col-lg-4 control-label">패스워드</label>
+			<div class="col-lg-4">
 				<input type="password" class="form-control" value="${user.userPw}"
 					name="userPw" id="password" data-rule-required="true"
 					placeholder="패스워드" maxlength="30">
 			</div>
 		</div>
 		<div class="form-group" id="divPasswordCheck">
-			<label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드
+			<label for="inputPasswordCheck" class="col-lg-4 control-label">패스워드
 				확인</label>
-			<div class="col-lg-8">
+			<div class="col-lg-4">
 				<input type="password" class="form-control" id="passwordCheck"
 					data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
 			</div>
 		</div>
 		<div class="form-group" id="divName">
-			<label for="inputName" class="col-lg-2 control-label">이름</label>
-			<div class="col-lg-8">
+			<label for="inputName" class="col-lg-4 control-label">이름</label>
+			<div class="col-lg-4">
 				<input type="text" class="form-control onlyHangul"
 					value="${user.userName}" readonly name="userName" id="name"
 					data-rule-required="true" placeholder="한글만 입력 가능합니다."
@@ -46,25 +47,25 @@
 			</div>
 		</div>
 		<div class="form-group" id="divNickname">
-			<label for="inputNickname" class="col-lg-2 control-label">별명</label>
-			<div class="col-lg-8">
+			<label for="inputNickname" class="col-lg-4 control-label">별명</label>
+			<div class="col-lg-4">
 				<input type="text" class="form-control" value="${user.userNick}"
 					name="userNick" id="nickname" data-rule-required="true"
 					placeholder="별명" maxlength="15">
 			</div>
 		</div>
 		<div class="form-group" id="divEmail">
-			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-			<div class="col-lg-8">
+			<label for="inputEmail" class="col-lg-4 control-label">이메일</label>
+			<div class="col-lg-4">
 				<input type="text" class="form-control" value="${user.userEmail}"
 					name="userEmail" id="email" data-rule-required="true"
 					placeholder="이메일" maxlength="40">
 			</div>
 		</div>
 		<div class="form-group" id="divPhoneNumber">
-			<label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰
+			<label for="inputPhoneNumber" class="col-lg-4 control-label">휴대폰
 				번호</label>
-			<div class="col-lg-8">
+			<div class="col-lg-4">
 				<input type="tel" class="form-control onlyNumber"
 					value="${user.userPhone}" name="userPhone" id="phoneNumber"
 					data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요."
@@ -72,12 +73,12 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-lg-offset-2 col-lg-10">
+			<div class="col-lg-offset-4 col-lg-4">
 				<button type="button" class="btn btn-default" id="btn">수정 완료</button>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-lg-offset-2 col-lg-10">
+			<div class="col-lg-offset-4 col-lg-4">
 				<button type="button" class="btn btn-default" id="delbtn">회원 탈퇴</button>
 			</div>
 		</div>

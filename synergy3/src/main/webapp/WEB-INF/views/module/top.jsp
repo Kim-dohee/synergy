@@ -40,10 +40,10 @@
 					<c:if test="${empty sessionScope.id}"> 
 						<form action="${pageContext.request.contextPath}/login" method="post" class="form-inline">
 							<div class="form-group">
-								<input type="text" class="form-control" name="id" placeholder="아이디">
+								<input type="text" class="form-control input-sm" name="id" placeholder="아이디">
 							</div>&nbsp &nbsp
 							<div class="form-group">
-								<input type="password" class="form-control" name="pw" placeholder="비밀번호">
+								<input type="password" class="form-control input-sm" name="pw" placeholder="비밀번호">
 							</div>&nbsp &nbsp
 							<div class="checkbox">
 								<label>
@@ -74,7 +74,7 @@
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/adminUpdate">회원수정</a>
 								</c:if>
 								<c:if test="${sessionScope.level eq '일반회원'}">
-									<a class="dropdown-item" href="${pageContext.request.contextPath}/userUpdate">회원수정</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/userDetail">회원정보</a>
 								</c:if>	
 								<c:if test="${sessionScope.level eq '기부단체'}">
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/donatorUpdate">회원수정</a>

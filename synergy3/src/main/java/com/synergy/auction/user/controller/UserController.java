@@ -41,17 +41,28 @@ public class UserController {
 	}
 
 	//회원가입할때 만든 id로 no값을구해서 신용점수,캐쉬 초기화 
-		@RequestMapping(value = "/creditRecordInsert", method = RequestMethod.GET)
-		public String creditCashInsert(Model model, UserDto userDto
-								,@RequestParam(value="userId") String userId) {
-			logger.debug("UserController.creditCashInsert id>>"+userService.userSelectOne(userId));
-			//신용점수 80점으로 초기화
-			userService.creditRecordInsert(userId);
-			//캐쉬 0원으로 초기화
-			cashRecordService.cashRecordTotalInsert(userId);
-			return "home";
-		}
-
+	
+	@RequestMapping(value = "/creditRecordInsert", method = RequestMethod.GET)
+	public String creditCashInsert(Model model, UserDto userDto
+							,@RequestParam(value="userId") String userId) {
+		logger.debug("UserController.creditCashInsert id>>"+userService.userSelectOne(userId));
+		//신용점수 80점으로 초기화
+		userService.creditRecordInsert(userId);
+		//캐쉬 0원으로 초기화
+		cashRecordService.cashRecordTotalInsert(userId);
+		return "home";
+	}
+		
+	//회원정보 화면
+	@RequestMapping(value = "/userDetail", method = RequestMethod.GET)
+	public String userDetail(HttpSession session, Model model) {
+		String userId = (String)session.getAttribute("id");
+		model.addAttribute("user", userService.userSelectOne(userId));
+		
+		return "user/user_detail";
+	}
+	
+		
 	//회원수정 화면
 	@RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
 	public String userUpdate(HttpSession session, Model model) {
