@@ -70,6 +70,6 @@ public class UserController {
 		userService.userDelete(userDto);
 		String Id = (String)session.getAttribute("id");
 		session.invalidate(); 
-		return "remove?Id="+Id;
+		return "redirect:/remove?Id="+Id;
 	}
 }

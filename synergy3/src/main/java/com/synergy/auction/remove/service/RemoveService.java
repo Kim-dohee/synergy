@@ -10,13 +10,8 @@ public class RemoveService {
 	@Autowired
 	private RemoveDao removeDao;
 	
-
-	/*public UserDto userSelectOne(String userId) { 
-		return removeDao.userSelectOne(userId); 
-	} */
-	
-	public int remove(String id) { 
-		int row = removeDao.remove(id); 
+	public int removeInsert(String id) { 
+		int row = removeDao.removeInsert(id); 
 		return row; 
 	} 
 }

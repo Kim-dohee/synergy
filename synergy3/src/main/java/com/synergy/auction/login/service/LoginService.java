@@ -70,7 +70,9 @@ public class LoginService {
 	}
 
 	public int idcheck(String id) {
-		int row = loginDao.idcheck(id);
-		return row;
+		List<Object> row = loginDao.idcheck(id);
+		int count = Integer.parseInt((String) row.get(0))+Integer.parseInt((String) row.get(1))+Integer.parseInt((String) row.get(2));
+		System.out.print(count);
+		return count;
 	} 
 }

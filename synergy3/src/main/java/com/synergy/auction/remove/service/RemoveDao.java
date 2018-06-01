@@ -10,8 +10,8 @@ public class RemoveDao {
 	private SqlSessionTemplate sqlSession;
 	final String NS = "com.synergy.auction.remove.service.RemoveMapper.";
 	
-	public int remove(String id) { 
-		int row = sqlSession.insert(NS+"adminInsert", id); 
+	public int removeInsert(String id) { 
+		int row = sqlSession.insert(NS+"removeInsert", id); 
 		return row; 
 	} 
 

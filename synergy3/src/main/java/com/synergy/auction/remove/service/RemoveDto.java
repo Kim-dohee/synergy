@@ -2,70 +2,31 @@
 package com.synergy.auction.remove.service;
 
 public class RemoveDto {
-
-	private int adminNo;
-	private String adminId;
-	private String adminPw;
-	private String adminName;
-	private int adminPhone;
-	private String adminAddress;
-	private String adminJoindate;
-	private String adminLevel;
-
-	public String getAdminLevel() {
-		return adminLevel;
+	private int removeNo;
+	private String removeId;
+	private int removeDate;
+	public int getRemoveNo() {
+		return removeNo;
 	}
-	public void setAdminLevel(String adminLevel) {
-		this.adminLevel = adminLevel;
+	public void setRemoveNo(int removeNo) {
+		this.removeNo = removeNo;
 	}
-	public int getAdminNo() {
-		return adminNo;
+	public String getRemoveId() {
+		return removeId;
 	}
-	public void setAdminNo(int adminNo) {
-		this.adminNo = adminNo;
+	public void setRemoveId(String removeId) {
+		this.removeId = removeId;
 	}
-	public String getAdminId() {
-		return adminId;
+	public int getRemoveDate() {
+		return removeDate;
 	}
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
-	}
-	public String getAdminPw() {
-		return adminPw;
-	}
-	public void setAdminPw(String adminPw) {
-		this.adminPw = adminPw;
-	}
-	public String getAdminName() {
-		return adminName;
-	}
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
-	public int getAdminPhone() {
-		return adminPhone;
-	}
-	public void setAdminPhone(int adminPhone) {
-		this.adminPhone = adminPhone;
-	}
-	public String getAdminAddress() {
-		return adminAddress;
-	}
-	public void setAdminAddress(String adminAddress) {
-		this.adminAddress = adminAddress;
-	}
-	public String getAdminJoindate() {
-		return adminJoindate;
-	}
-	public void setAdminJoindate(String adminJoindate) {
-		this.adminJoindate = adminJoindate;
+	public void setRemoveDate(int removeDate) {
+		this.removeDate = removeDate;
 	}
 	
 	@Override
 	public String toString() {
-		return "AdminDto [adminNo=" + adminNo + ", adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
-				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoindate="
-				+ adminJoindate + ", adminLevel=" + adminLevel + "]";
+		return "RemoveDto [removeNo=" + removeNo + ", removeId=" + removeId + ", removeDate=" + removeDate + "]";
 	}
-
+	
 }

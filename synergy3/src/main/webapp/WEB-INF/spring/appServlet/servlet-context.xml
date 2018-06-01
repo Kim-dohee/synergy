@@ -57,6 +57,7 @@
 				<value>classpath:com/synergy/auction/donator/service/DonatorMapper.xml</value>
 				<value>classpath:com/synergy/auction/admin/service/AdminMapper.xml</value>
 				<value>classpath:com/synergy/auction/login/service/LoginMapper.xml</value>
+				<value>classpath:com/synergy/auction/remove/service/RemoveMapper.xml</value>
 				<!-- <value>classpath:com/synergy/auction/cash/service/CashMapper.xml</value> -->
 			</list>
 		</property>

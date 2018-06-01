@@ -31,13 +31,12 @@
 		FROM admin
 		WHERE admin_id = #{id}
 	</select>
-	<select id="idcheck" parameterType="String" resultType="Integer">
-		SELECT COUNT(*) FROM 
-			user
-			,admin
-			,donator
-		WHERE
-          user_id = #{id}
+	<select id="idcheck" parameterType="String" resultType="String">
+		SELECT COUNT(*) FROM user WHERE user_id = #{id}
+		UNION ALL
+		SELECT COUNT(*) FROM donator WHERE donator_id = #{id}
+		UNION ALL
+		SELECT COUNT(*) FROM admin WHERE admin_id = #{id}
 	</select>
 	
 </mapper>

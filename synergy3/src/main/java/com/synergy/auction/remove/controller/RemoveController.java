@@ -17,10 +17,9 @@ public class RemoveController {
 	private RemoveService removeService;
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String remove(@RequestParam(value="Id") String Id) {
-		/*removeService.removeSelectOne(Id);*/
-		removeService.remove(Id);
-		return "admin/admin_insert";
+	public String removeInsert(@RequestParam(value="Id") String Id) {
+		removeService.removeInsert(Id);
+		return "home";
 	}
 
 }
