@@ -36,7 +36,7 @@ public class LoginDao {
 	public AdminDto adminLoginSelectOne(String id) { 
 		return sqlSession.selectOne(NS+"adminLoginSelectOne", id); 
 	}
-
+	/*회원가입시 id 중복확인*/
 	public int idcheck(String id) {
 		return sqlSession.selectOne(NS+"idcheck", id); 
 	}

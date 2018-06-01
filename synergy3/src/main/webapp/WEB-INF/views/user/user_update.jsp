@@ -11,7 +11,6 @@
 	<br> <br> <br> <br>
 	<form class="form-horizontal" role="form" method="post"
 		action="${pageContext.request.contextPath}/userUpdate" id="frm">
-		<input type="hidden" name="userNo" value="${user.userNo}">
 		<div class="form-group" id="divId">
 			<label for="inputId" class="col-lg-2 control-label">아이디</label>
 			<div class="col-lg-8">
@@ -246,7 +245,7 @@
 			var result = confirm('정말로 탈퇴하시겠습니까?????????'); 
 				if(result){
 					alert("확인 버튼을 눌렀습니다.");
-					location.href = '${pageContext.request.contextPath}/userDelete';
+					location.href = '${pageContext.request.contextPath}/userDelete?userId='+${user.userId};
 				} else {
 					alert("취소 버튼을 눌렀습니다.");
 				}

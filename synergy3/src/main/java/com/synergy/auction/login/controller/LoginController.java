@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +28,7 @@ public class LoginController {
 	
 	//로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpSession session,String id,String pw) {
+	public String login(ModelMap modelMap, HttpSession session,String id,String pw) {
 		
 		logger.debug("LoginController.login >>"+"id:"+id+"pw:"+pw);
 		//id,pw 검색
@@ -36,10 +37,14 @@ public class LoginController {
 		if(level!=null) {
 			session.setAttribute("id", id);
 			session.setAttribute("level", level);
+			modelMap.addAttribute("message", "로그인 성공!");
+			modelMap.addAttribute("returnUrl", "home");
+			return "alertAndRedirect";
+		} else { 
+			modelMap.addAttribute("message", "로그인 실패!");
+			modelMap.addAttribute("returnUrl", "home");
+			return "alertAndRedirect";
 		}
-		logger.debug("LoginController.login sessionId>>"+session.getAttribute("id"));
-		logger.debug("LoginController.login sessionLevel>>"+session.getAttribute("level"));
-		return "home";
 	}
 	
 	//일반회원,기부단체 회원가입 화면
@@ -50,9 +55,11 @@ public class LoginController {
 
 	//로그아웃
 	@RequestMapping(value= "/logout", method=RequestMethod.GET)  
-	public String logout(HttpSession session) {  
+	public String logout(ModelMap modelMap, HttpSession session) {  
+		modelMap.addAttribute("message", "로그아웃 되었습니다.");
+		modelMap.addAttribute("returnUrl", "home");
 		session.invalidate();  
-		return "home";  
+		return "alertAndRedirect";
 	}  
 	
 	//회원가입시 아이디 체크 @RequestBody는 POST방식으로 전달된 HTTP 요청 데이터의 BODY를 통으로 읽어오게 한다.

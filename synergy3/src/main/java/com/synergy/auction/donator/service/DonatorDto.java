@@ -4,7 +4,6 @@ package com.synergy.auction.donator.service;
 /*기부단체*/
 public class DonatorDto {
 
-	private int donatorNo; //기부단체넘버
 	private String donatorId; //아이디
 	private String donatorPw; //비밀번호
 	private int donatorBusinessNo; //사업자등록번호
@@ -13,12 +12,6 @@ public class DonatorDto {
 	private String donatorHomepage; //홈페이지
 	private String donatorJoinDate; //가입날짜
 	
-	public int getDonatorNo() {
-		return donatorNo;
-	}
-	public void setDonatorNo(int donatorNo) {
-		this.donatorNo = donatorNo;
-	}
 	public String getDonatorId() {
 		return donatorId;
 	}
@@ -64,7 +57,7 @@ public class DonatorDto {
 	
 	@Override
 	public String toString() {
-		return "DonatorDto [donatorNo=" + donatorNo + ", donatorId=" + donatorId + ", donatorPw=" + donatorPw
+		return "DonatorDto [donatorId=" + donatorId + ", donatorPw=" + donatorPw
 				+ ", donatorBusinessNo=" + donatorBusinessNo + ", donatorName=" + donatorName + ", donatorTelephone="
 				+ donatorTelephone + ", donatorHomepage=" + donatorHomepage + ", donatorJoinDate=" + donatorJoinDate
 				+ "]";

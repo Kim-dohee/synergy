@@ -27,8 +27,7 @@
 	
 	<select id="donatorSelectOne" parameterType="String" resultType="com.synergy.auction.donator.service.DonatorDto"> 
 		SELECT
-			donator_no AS donatorNo
-			,donator_id AS donatorId
+			donator_id AS donatorId
 			,donator_pw AS donatorPw
 			,donator_business_no AS donatorBusinessNo
 			,donator_name AS donatorName
@@ -46,7 +45,7 @@
 			,donator_business_no = #{donatorBusinessNo} 
 			,donator_homepage = #{donatorHomepage} 
 			,donator_telephone = #{donatorTelephone} 
-		WHERE donator_no = #{donatorNo} 
+		WHERE donator_id = #{donatorId} 
 	</update> 
 	
 </mapper>

@@ -1,8 +1,9 @@
 /*최상욱*/
-package com.synergy.auction.admin.service;
+package com.synergy.auction.remove.service;
 
-public class AdminDto {
+public class RemoveDto {
 
+	private int adminNo;
 	private String adminId;
 	private String adminPw;
 	private String adminName;
@@ -16,6 +17,12 @@ public class AdminDto {
 	}
 	public void setAdminLevel(String adminLevel) {
 		this.adminLevel = adminLevel;
+	}
+	public int getAdminNo() {
+		return adminNo;
+	}
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
 	}
 	public String getAdminId() {
 		return adminId;
@@ -56,7 +63,7 @@ public class AdminDto {
 	
 	@Override
 	public String toString() {
-		return "AdminDto [adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
+		return "AdminDto [adminNo=" + adminNo + ", adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
 				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoindate="
 				+ adminJoindate + ", adminLevel=" + adminLevel + "]";
 	}

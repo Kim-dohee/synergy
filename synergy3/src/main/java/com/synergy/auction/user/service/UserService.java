@@ -14,16 +14,22 @@ public class UserService {
 		int row = userDao.userInsert(userDto); 
 		return row; 
 	} 
-	public int creditRecordInsert(int userNo) { 
-		int row = userDao.creditRecordInsert(userNo); 
+	public int creditRecordInsert(String userId) { 
+		int row = userDao.creditRecordInsert(userId); 
 		return row; 
 	} 
 
 	public UserDto userSelectOne(String userId) { 
 		return userDao.userSelectOne(userId); 
 	} 
+
 	public int userUpdate(UserDto userDto) {
 		int row = userDao.userUpdate(userDto);
+		return row;
+	} 
+
+	public int userDelete(UserDto userDto) {
+		int row = userDao.userDelete(userDto);
 		return row;
 	} 
 

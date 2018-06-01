@@ -2,6 +2,8 @@ package com.synergy.auction.login.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,6 @@ public class LoginService {
 	
 	/*아이디,비밀번호 확인*/
 	public String login(String id,String pw) { 
-		
 		DonatorDto donatorLogin;
 		UserDto userLogin;
 		AdminDto adminLogin;

@@ -42,9 +42,9 @@ public class UserController {
 	public String creditRecordInsert(Model model, UserDto userDto
 							,@RequestParam(value="userId") String userId) {
 		System.out.println(userService.userSelectOne(userId));
-		UserDto list = userService.userSelectOne(userId);
-		int userNo = list.getUserNo();
-		userService.creditRecordInsert(userNo);
+/*		UserDto list = userService.userSelectOne(userId);
+		int userNo = list.getUserNo();*/
+		userService.creditRecordInsert(userId);
 		return "home";
 	}
 
@@ -65,8 +65,11 @@ public class UserController {
 	}
 	//회원탈퇴
 	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
-	public String userDelete(UserDto userDto) {
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		return "home";
+	public String userDelete(HttpSession session, UserDto userDto) {
+		System.out.println("aaaaaaaaaaaaa"+userDto);
+		userService.userDelete(userDto);
+		String Id = (String)session.getAttribute("id");
+		session.invalidate(); 
+		return "remove?Id="+Id;
 	}
 }

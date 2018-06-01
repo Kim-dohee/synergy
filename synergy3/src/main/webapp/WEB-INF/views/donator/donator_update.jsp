@@ -31,7 +31,6 @@
  <div style="background-color:#BDBDBD">
  <br> <br> <br> <br>
 	<form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath}/donatorUpdate">
-	<input type="hidden" name="donatorNo" value="${donator.donatorNo}">
 		<div class="form-group" id="divId">
 			<label for="inputId" class="col-lg-2 control-label">아이디</label>
 				<div class="col-lg-8">

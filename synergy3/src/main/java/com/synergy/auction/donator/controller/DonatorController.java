@@ -19,7 +19,6 @@ public class DonatorController {
 
 	@Autowired
 	private DonatorService donatorService;
-	private DonatorDto donatorDto;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonatorController.class);
 	
@@ -36,14 +35,7 @@ public class DonatorController {
 		donatorService.donatorInsert(donatorDto);
 		return "home";
 	}
-	
-	/*기부단체 회원수정 화면
-	@RequestMapping(value = "/donatorSelectOne", method = RequestMethod.POST)
-	public String donatorSelectOne(DonatorDto donatorDto) {
-		회원정보 가져오기
-		donatorService.donatorSelectOne(donatorDto);
-		return "donator/donator_update.jsp";
-	}*/
+
 	@RequestMapping(value = "/donatorUpdate", method = RequestMethod.GET)
 	public String donatorUpdate(HttpSession session, Model model) {
 		String donatorId = (String)session.getAttribute("id");

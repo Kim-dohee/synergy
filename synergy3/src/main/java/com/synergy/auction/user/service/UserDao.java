@@ -18,8 +18,8 @@ public class UserDao {
 		return row; 
 	} 
 	
-	public int creditRecordInsert(int userNo) { 
-		int row = sqlSession.insert(NS+"creditRecordInsert", userNo); 
+	public int creditRecordInsert(String userId) { 
+		int row = sqlSession.insert(NS+"creditRecordInsert", userId); 
 		return row; 
 	} 
 	
@@ -29,6 +29,11 @@ public class UserDao {
 	
 	public int userUpdate(UserDto userDto) {
 		int row = sqlSession.update(NS + "userUpdate", userDto); 
+		return row; 
+	} 
+	
+	public int userDelete(UserDto userDto) {
+		int row = sqlSession.update(NS + "userDelete", userDto); 
 		return row; 
 	} 
 

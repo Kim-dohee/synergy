@@ -3,7 +3,6 @@ package com.synergy.auction.user.service;
 
 public class UserDto {
 
-	private int userNo;
 	private String creditRightNo;
 	private String userId;
 	private String userPw;
@@ -19,12 +18,6 @@ public class UserDto {
 	}
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
-	}
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 	public String getCreditRightNo() {
 		return creditRightNo;
@@ -77,7 +70,7 @@ public class UserDto {
 
 	@Override
 	public String toString() {
-		return "UserDto [userNo=" + userNo + ", creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw="
+		return "UserDto [creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw="
 				+ userPw + ", userName=" + userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail
 				+ ", userNick=" + userNick + ", userJoindate=" + userJoindate + ", userLevel=" + userLevel + "]";
 	}

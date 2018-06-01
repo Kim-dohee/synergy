@@ -27,8 +27,7 @@
 	
 	<select id="userSelectOne" parameterType="String" resultType="com.synergy.auction.user.service.UserDto"> 
 		SELECT
-			user_no AS userNo
-			,credit_right_no AS creditRightNo
+			credit_right_no AS creditRightNo
 			,user_id AS userId
 			,user_pw AS userPw
 			,user_name AS userName
@@ -44,10 +43,10 @@
 	<insert id="creditRecordInsert"  
 		parameterType="com.synergy.auction.user.service.CreditRecordDto">  
 		INSERT INTO credit_record(  
-			user_no
+			user_id
 			,credit_record_now_score
 		) VALUES (  
-			#{userNo}  
+			#{userId}  
 			,80  
 		)
 	</insert>  
@@ -57,8 +56,15 @@
 			,user_nick = #{userNick} 
 			,user_phone = #{userPhone} 
 			,user_email = #{userEmail} 
-		WHERE user_no = #{userNo} 
+		WHERE user_id = #{userId} 
 	</update> 
+	
+	<delete id="userDelete" parameterType="com.synergy.auction.user.service.UserDto">
+		DELETE FROM 
+			user 
+		WHERE 
+			user_id = #{userId}
+	</delete>
 	
 	
 </mapper>
