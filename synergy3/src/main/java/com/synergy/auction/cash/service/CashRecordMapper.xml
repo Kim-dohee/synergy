@@ -8,7 +8,7 @@
 			parameterType="String">
 		INSERT INTO cash_record(
 			user_id
-			,cashrecord_total
+			,cash_record_total
 			,cash_record_change_date
 		) VALUES (
 			#{userId}
