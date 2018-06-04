@@ -66,8 +66,11 @@ public class LoginController {
 		return "alertAndRedirect";
 	}  
 	
-	//회원가입시 아이디 체크 @RequestBody는 POST방식으로 전달된 HTTP 요청 데이터의 BODY를 통으로 읽어오게 한다.
-	//@ResponseBody는 뷰를 생성해서 내려주는 것이 아닌 JSON이나 XML등의 스트링 데이터를 넘겨줄때 사용한다.
+	/*
+	 * 회원가입시 아이디 체크 @RequestBody는 POST방식으로 전달된 HTTP 요청 데이터의 BODY를 통으로 읽어오게 한다.
+	@ResponseBody는 뷰를 생성해서 내려주는 것이 아닌 JSON이나 XML등의 스트링 데이터를 넘겨줄때 사용한다.
+	*
+	*/
 	@RequestMapping(value= "/idcheck", method=RequestMethod.POST)  
 	@ResponseBody
 	public Map<Object, Object> idcheck(@RequestBody String id) {

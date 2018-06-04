@@ -56,7 +56,8 @@ public class CashController {
 		cashRecordService.cashRecordInsert(cashRecordDto);
 		//가장최근의 캐쉬총금액과 '충전금액을  더하여 '현 총잔액' 구하기
 		cashRecordService.cashRecordTotalUpdate(cashRecordDto);
-		return "home";
+		model.addAttribute("cashRecordChange", cashRecordChange);
+		return "cash/cash_record_insert_commit";
 	}
 	
 	//캐쉬 사용내역 검색(페이징)
