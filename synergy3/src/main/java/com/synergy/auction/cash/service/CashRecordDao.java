@@ -1,6 +1,7 @@
 package com.synergy.auction.cash.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class CashRecordDao {
 	}
 	
 	//캐쉬사용내역 검색
-	public List<CashRecordDto> cashRecordSelect(String userId) { 
-		return sqlSession.selectList(NS+"cashRecordSelect", userId); 		
+	public List<CashRecordDto> cashRecordSelect(Map<String, Object> map) { 
+		return sqlSession.selectList(NS+"cashRecordSelect", map); 		
 	}
 	
 	//캐쉬사용내역 페이징을 위한 row수 구하기

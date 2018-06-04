@@ -65,11 +65,9 @@ public class CashController {
 									,@RequestParam(value="userId") String userId
 									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
 		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
-		List<CashRecordDto> list = cashRecordService.cashRecordSelect(userId);
-		model.addAttribute("list",list);
-		Map<String, Object> map = cashRecordService.totalCashRecord(currentPage);
+		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
+		model.addAttribute("list",map.get("list"));
 		model.addAttribute("lastPage",map.get("lastPage"));
-		model.addAttribute("currentPage",currentPage);
 		return "cash/cash_record_select";
 	}
 }

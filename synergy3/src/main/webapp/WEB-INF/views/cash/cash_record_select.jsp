@@ -29,11 +29,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
+		</div>	 
 	</form>
 	<c:forEach var="start" begin="1" end="${lastPage}">
 		<a href="${pageContext.request.contextPath}/cashRecordSelect?currentPage=${start}&userId=${sessionScope.id}">[${start}]</a>
-	</c:forEach><br>	       
+	</c:forEach><br>      
 </body>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>

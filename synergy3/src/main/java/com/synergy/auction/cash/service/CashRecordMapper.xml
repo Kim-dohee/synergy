@@ -46,7 +46,7 @@
 		WHERE user_id = #{userId} AND cash_record_total IS NULL;
 	</update>
 	<select id="cashRecordSelect" 
-			parameterType="String" 
+			parameterType="java.util.Map" 
 			resultType="com.synergy.auction.cash.service.CashRecordDto">	
 		SELECT 
 			cash_record_change AS cashRecordChange
@@ -55,7 +55,7 @@
 		FROM cash_record 
 		WHERE user_id = #{userId}
 		ORDER BY cash_record_change_date ASC
-		LIMIT 1,1000000;
+		LIMIT #{beginRow},10;
 	</select>
 	<select id="totalCashRecord"  
 			resultType="Integer">
