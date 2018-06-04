@@ -31,17 +31,17 @@ public class LoginService {
 		String level = null;
 		//기부단체 id,pw 검색
 		donatorLogin = loginDao.donatorLoginSelectOne(id);	
-		logger.debug("LoginService.login donatorid >>"+donatorLogin.getDonatorId());
-		logger.debug("LoginService.login donatorpw >>"+donatorLogin.getDonatorPw());
+		/*logger.debug("LoginService.login donatorid >>"+donatorLogin.getDonatorId());
+		logger.debug("LoginService.login donatorpw >>"+donatorLogin.getDonatorPw());*/
 		//일반회원 id,pw 검색
 		userLogin = loginDao.userLoginSelectOne(id);
-		logger.debug("LoginService.login userid >>"+userLogin.getUserId());
-		logger.debug("LoginService.login userpw >>"+userLogin.getUserPw());
+		/*logger.debug("LoginService.login userid >>"+userLogin.getUserId());
+		logger.debug("LoginService.login userpw >>"+userLogin.getUserPw());*/
 		//관리자 id,pw 검색
 		adminLogin = loginDao.adminLoginSelectOne(id);
-		logger.debug("LoginService.adminlogin id >>"+adminLogin.getAdminId());
+		/*logger.debug("LoginService.adminlogin id >>"+adminLogin.getAdminId());
 		logger.debug("LoginService.adminlogin pw >>"+adminLogin.getAdminPw());
-		logger.debug("LoginService.adminlogin pw >>"+adminLogin);
+		logger.debug("LoginService.adminlogin pw >>"+adminLogin);*/
 		
 		//기부단체 id,pw일치 확인
 		if(donatorLogin != null) {

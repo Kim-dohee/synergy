@@ -51,12 +51,6 @@ public class LoginController {
 		}
 	}
 	
-	//일반회원,기부단체 회원가입 화면
-	@RequestMapping(value = "/loginMain", method = RequestMethod.GET)
-	public String donatorInsert() {
-		return "login/login_main";
-	}
-
 	//로그아웃
 	@RequestMapping(value= "/logout", method=RequestMethod.GET)  
 	public String logout(ModelMap modelMap, HttpSession session) {  
