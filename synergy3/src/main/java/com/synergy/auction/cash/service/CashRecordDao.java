@@ -42,4 +42,9 @@ public class CashRecordDao {
 	public List<CashRecordDto> cashRecordSelect(String userId) { 
 		return sqlSession.selectList(NS+"cashRecordSelect", userId); 		
 	}
+	
+	//캐쉬사용내역 페이징을 위한 row수 구하기
+	public int totalCashRecord() { 
+		return sqlSession.selectOne(NS+"totalCashRecord"); 
+	}
 }

@@ -1,6 +1,8 @@
 package com.synergy.auction.cash.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +41,21 @@ public class CashRecordService {
 	//캐쉬사용내역 검색
 	public List<CashRecordDto> cashRecordSelect(String userId) { 
 		return cashRecordDao.cashRecordSelect(userId); 		
+	}
+	
+	//캐쉬사용내역 페이징
+	public Map<String, Object> totalCashRecord(int currentPage){
+		int pagePerRow = 10;	
+		//총 row수 구하기
+		int total = cashRecordDao.totalCashRecord();
+		int lastPage = 0;
+		if(total%pagePerRow==0) {
+			lastPage = total/pagePerRow;
+		} else {
+			lastPage = total/pagePerRow+1;
+		}
+		Map<String, Object> returnMap = new HashMap<String,Object>();
+		returnMap.put("lastPage",lastPage);
+		return returnMap;
 	}
 }

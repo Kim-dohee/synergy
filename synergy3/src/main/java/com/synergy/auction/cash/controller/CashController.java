@@ -1,6 +1,7 @@
 package com.synergy.auction.cash.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -58,15 +59,17 @@ public class CashController {
 		return "home";
 	}
 	
-	//캐쉬 사용내역조회 화면
+	//캐쉬 사용내역 검색(페이징)
 	@RequestMapping(value = "/cashRecordSelect", method = RequestMethod.GET)
-	public String cashRecordSelectView(@RequestParam(value="userId") String userId) {
+	public String cashRecordSelect(Model model
+									,@RequestParam(value="userId") String userId
+									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
 		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
-		List<CashRecordDto> cashRecordDto= cashRecordService.cashRecordSelect(userId);
-		
+		List<CashRecordDto> list = cashRecordService.cashRecordSelect(userId);
+		model.addAttribute("list",list);
+		Map<String, Object> map = cashRecordService.totalCashRecord(currentPage);
+		model.addAttribute("lastPage",map.get("lastPage"));
+		model.addAttribute("currentPage",currentPage);
 		return "cash/cash_record_select";
 	}
-	
-	//캐쉬사용내역 검색
-	
 }

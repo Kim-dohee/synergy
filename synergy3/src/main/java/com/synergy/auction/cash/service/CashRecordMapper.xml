@@ -56,5 +56,9 @@
 		WHERE user_id = #{userId}
 		ORDER BY cash_record_change_date ASC
 		LIMIT 1,1000000;
-	</select>			 
+	</select>
+	<select id="totalCashRecord"  
+			resultType="Integer">
+		SELECT COUNT(*) FROM cash_record
+	</select>				 
 </mapper>  
