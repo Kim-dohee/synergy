@@ -69,6 +69,7 @@
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
 								<c:if test="${sessionScope.level eq '관리자'}">	
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/adminUpdate">회원수정</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/userSelect">회원리스트</a>
 								</c:if>
 								<c:if test="${sessionScope.level eq '일반회원'}">
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/userDetail">회원정보</a>

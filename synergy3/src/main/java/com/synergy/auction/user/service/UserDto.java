@@ -9,16 +9,7 @@ public class UserDto {
 	private String userName;
 	private int userPhone;
 	private String userEmail;
-	private String userNick;
 	private String userJoindate;
-	private String userLevel;
-	
-	public String getUserLevel() {
-		return userLevel;
-	}
-	public void setUserLevel(String userLevel) {
-		this.userLevel = userLevel;
-	}
 	public String getCreditRightNo() {
 		return creditRightNo;
 	}
@@ -55,25 +46,18 @@ public class UserDto {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserNick() {
-		return userNick;
-	}
-	public void setUserNick(String userNick) {
-		this.userNick = userNick;
-	}
 	public String getUserJoindate() {
 		return userJoindate;
 	}
 	public void setUserJoindate(String userJoindate) {
 		this.userJoindate = userJoindate;
 	}
-
 	@Override
 	public String toString() {
-		return "UserDto [creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw="
-				+ userPw + ", userName=" + userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail
-				+ ", userNick=" + userNick + ", userJoindate=" + userJoindate + ", userLevel=" + userLevel + "]";
+		return "UserDto [creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw=" + userPw + ", userName="
+				+ userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate=" + userJoindate
+				+ "]";
 	}
-
+	
 	
 }

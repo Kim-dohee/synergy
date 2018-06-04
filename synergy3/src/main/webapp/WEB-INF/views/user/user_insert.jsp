@@ -48,16 +48,6 @@ $(function(){
 			divName.addClass("has-success");
 		}
 	});
-	$('#nickname').keyup(function(event){
-		var divNickname = $('#divNickname');
-		if($.trim($('#nickname').val())==""){
-			divNickname.removeClass("has-success");
-			divNickname.addClass("has-error");
-		}else{
-			divNickname.removeClass("has-error");
-			divNickname.addClass("has-success");
-		}
-	});
 	$('#email').keyup(function(event){
 		var divEmail = $('#divEmail');
 		if($.trim($('#email').val())==""){
@@ -87,7 +77,6 @@ $(function(){
 		var divPassword = $('#divPassword');
 		var divPasswordCheck = $('#divPasswordCheck');
 		var divName = $('#divName');
-		var divNickname = $('#divNickname');
 		var divEmail = $('#divEmail');
 		var divPhoneNumber = $('#divPhoneNumber');
 		//회원가입약관
@@ -167,17 +156,6 @@ $(function(){
 		}else{
 			divName.removeClass("has-error");
 			divName.addClass("has-success");
-		}
-		//별명
-		if($('#nickname').val()==""){
-			alert("별명을 입력하여 주시기 바랍니다.");
-			divNickname.removeClass("has-success");
-			divNickname.addClass("has-error");
-			$('#nickname').focus();
-			return false;
-		}else{
-			divNickname.removeClass("has-error");
-			divNickname.addClass("has-success");
 		}
 		//이메일
 		if($('#email').val()==""){
@@ -334,14 +312,6 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                     <input type="text" class="form-control onlyHangul" name="userName" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                 </div>
             </div>
-             
-            <div class="form-group" id="divNickname">
-                <label for="inputNickname" class="col-lg-4 control-label">별명</label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" name="userNick" id="nickname" data-rule-required="true" placeholder="별명" maxlength="15">
-                </div>
-            </div>
-             
             <div class="form-group" id="divEmail">
                 <label for="inputEmail" class="col-lg-4 control-label">이메일</label>
                 <div class="col-lg-6">

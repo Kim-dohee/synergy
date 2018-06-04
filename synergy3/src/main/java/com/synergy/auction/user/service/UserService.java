@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.synergy.auction.cash.service.CashRecordDto;
+
 @Service
 public class UserService {
 	@Autowired
@@ -32,5 +34,9 @@ public class UserService {
 		int row = userDao.userDelete(userDto);
 		return row;
 	} 
+	
+	public List<UserDto> userSelect(UserDto userDto) { 
+		return userDao.userSelect(userDto); 		
+	}
 
 }

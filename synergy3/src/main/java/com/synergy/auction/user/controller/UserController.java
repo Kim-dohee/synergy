@@ -2,6 +2,8 @@ package com.synergy.auction.user.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -95,12 +97,14 @@ public class UserController {
 		System.out.println("aaaaaaaaaaaaa"+userService.userSelectOne(userId));
 		return "user/user_update";
 	}
+	
 	//회원수정
 	@RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
 	public String userUpdate(UserDto userDto) {
 		userService.userUpdate(userDto);
 		return "home";
 	}
+
 	//회원탈퇴
 	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
 	public String userDelete(HttpSession session, UserDto userDto) {
@@ -109,5 +113,13 @@ public class UserController {
 		String Id = (String)session.getAttribute("id");
 		session.invalidate(); 
 		return "redirect:/remove?Id="+Id;
+	}
+	
+	//회원 리스트
+	@RequestMapping(value = "/userSelect", method = RequestMethod.GET)
+	public String userSelect(Model model,UserDto userDto) {
+		List<UserDto> list = userService.userSelect(userDto);
+		model.addAttribute("list",list);
+		return "user/user_select";
 	}
 }

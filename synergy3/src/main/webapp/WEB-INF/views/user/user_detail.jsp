@@ -23,14 +23,6 @@
 					data-rule-required="true" readonly>
 			</div>
 		</div>
-		<div class="form-group" id="divNickname">
-			<label for="inputNickname" class="col-lg-2 control-label">별명</label>
-			<div class="col-lg-6">
-				<input type="text" class="form-control" value="${user.userNick}"
-					id="nickname" data-rule-required="true"
-					readonly>
-			</div>
-		</div>
 		<div class="form-group" id="divEmail">
 			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
 			<div class="col-lg-6">

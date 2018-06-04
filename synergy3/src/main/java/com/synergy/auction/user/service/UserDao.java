@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.synergy.auction.cash.service.CashRecordDto;
+
 @Repository
 public class UserDao {
 	@Autowired 
@@ -36,5 +38,9 @@ public class UserDao {
 		int row = sqlSession.update(NS + "userDelete", userDto); 
 		return row; 
 	} 
+	
+	public List<UserDto> userSelect(UserDto userDto) { 
+		return sqlSession.selectList(NS+"userSelect", userDto); 		
+	}
 
 }
