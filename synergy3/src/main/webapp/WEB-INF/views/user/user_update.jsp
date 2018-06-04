@@ -153,8 +153,8 @@
 
 <!-- 본문 들어가는 부분 -->
 
-<div style="background-color: #BDBDBD;font-size:16px">
-	<br> <br> <br> <br>
+<div style="background-image:url('${pageContext.request.contextPath}/resources/image/background.jpg');background-size:100% 100%;font-size:16px">
+	<br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br>
 	<form class="form-horizontal" role="form" method="post"
 		action="${pageContext.request.contextPath}/userUpdate" id="frm">
 		<h1 class="text-center">회원정보수정</h1><br>
@@ -167,6 +167,7 @@
 					placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
 			</div>
 		</div>
+		<br>
 		<div class="form-group" id="divPassword">
 			<label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
 			<div class="col-lg-6">
@@ -175,6 +176,7 @@
 					placeholder="패스워드" maxlength="30">
 			</div>
 		</div>
+		<br>
 		<div class="form-group" id="divPasswordCheck">
 			<label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드
 				확인</label>
@@ -183,6 +185,7 @@
 					data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
 			</div>
 		</div>
+		<br>
 		<div class="form-group" id="divName">
 			<label for="inputName" class="col-lg-2 control-label">이름</label>
 			<div class="col-lg-6">
@@ -192,6 +195,7 @@
 					maxlength="15">
 			</div>
 		</div>
+		<br>
 		<div class="form-group" id="divEmail">
 			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
 			<div class="col-lg-6">
@@ -200,6 +204,7 @@
 					placeholder="이메일" maxlength="40">
 			</div>
 		</div>
+		<br>
 		<div class="form-group" id="divPhoneNumber">
 			<label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰
 				번호</label>
@@ -210,13 +215,10 @@
 					maxlength="11">
 			</div>
 		</div>
+		<br>
 		<div class="form-group">
 			<div class="col-lg-offset-4 col-lg-2">
 				<button type="button" class="btn btn-default" id="btn">수정 완료</button>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-lg-offset-4 col-lg-2">
 				<button type="button" class="btn btn-default" id="delbtn">회원 탈퇴</button>
 			</div>
 		</div>
