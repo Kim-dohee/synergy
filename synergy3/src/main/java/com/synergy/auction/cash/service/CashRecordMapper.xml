@@ -9,21 +9,40 @@
 		INSERT INTO cash_record(
 			user_id
 			,cashrecord_total
+			,cash_record_change_date
 		) VALUES (
 			#{userId}
 			,0
+			,now()
 		)
 	</insert>
 	<insert id="cashRecordInsert"
-			parameterType="String">
+			parameterType="com.synergy.auction.cash.service.CashRecordDto">
 		INSERT INTO cash_record(
 			user_id
 			,cash_category_no
-			,cashrecord_change
+			,cash_record_change
+			,cash_record_change_date
 		)VALUES (
 			#{userId}
 			,1
 			,#{cashRecordChange}
+			,now()
 		)
-	</insert>		
+	</insert>
+	<select id="cashRecordTotalSelect" 
+			parameterType="String" 
+			resultType="Integer">
+		SELECT cash_record_total 
+		FROM cash_record 
+		WHERE user_id = #{userId} 
+		ORDER BY cash_record_change_date DESC 
+		LIMIT 1
+	</select>
+	<update id="cashRecordTotalUpdate"
+			parameterType="com.synergy.auction.cash.service.CashRecordDto">
+		UPDATE cash_record SET
+			cash_record_total = #{cashRecordChange}+#{cashRecordTotal}
+		WHERE user_id = #{userId} AND cash_record_total IS NULL;
+	</update>		 
 </mapper>  

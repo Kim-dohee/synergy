@@ -7,7 +7,7 @@ public class CashRecordDto {
 	private int cashCategoryNo; //캐시카테고리넘버
 	private String userId; //일반회원아이디
 	private int cashRecordChange; //캐시변동
-	private String cashRecordChangedate; //캐시변동날짜
+	private String cashRecordChangeDate; //캐시변동날짜
 	private int cashRecordTotal; //총액
 	
 	public int getCashRecordNo() {
@@ -34,11 +34,11 @@ public class CashRecordDto {
 	public void setCashRecordChange(int cashRecordChange) {
 		this.cashRecordChange = cashRecordChange;
 	}
-	public String getCashRecordChangedate() {
-		return cashRecordChangedate;
+	public String getCashRecordChangeDate() {
+		return cashRecordChangeDate;
 	}
-	public void setCashRecordChangedate(String cashRecordChangedate) {
-		this.cashRecordChangedate = cashRecordChangedate;
+	public void setCashRecordChangeDate(String cashRecordChangeDate) {
+		this.cashRecordChangeDate = cashRecordChangeDate;
 	}
 	public int getCashRecordTotal() {
 		return cashRecordTotal;
@@ -50,8 +50,8 @@ public class CashRecordDto {
 	@Override
 	public String toString() {
 		return "CashRecordDto [cashRecordNo=" + cashRecordNo + ", cashCategoryNo=" + cashCategoryNo + ", userId="
-				+ userId + ", cashRecordChange=" + cashRecordChange + ", cashRecordChangedate=" + cashRecordChangedate
+				+ userId + ", cashRecordChange=" + cashRecordChange + ", cashRecordChangeDate=" + cashRecordChangeDate
 				+ ", cashRecordTotal=" + cashRecordTotal + "]";
 	}
-		
+	
 }

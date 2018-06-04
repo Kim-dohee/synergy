@@ -19,9 +19,20 @@ public class CashRecordDao {
 		return row; 
 	}
 	
+	//가장최근의 total캐쉬금액 검색
+	public int cashRecordTotalSelect(String userId) { 
+		return sqlSession.selectOne(NS+"cashRecordTotalSelect", userId); 		
+	}	
+	
 	//캐쉬금액 충전
 	public int cashRecordInsert(CashRecordDto cashRecordDto) { 
 		int row = sqlSession.insert(NS+"cashRecordInsert", cashRecordDto); 
 		return row; 
-	}
+	}	
+	
+	//가장최근의 캐쉬총금액과 '충전금액을  더하여 '현 총잔액' 구하기
+	public int cashRecordTotalUpdate(CashRecordDto cashRecordDto) { 
+		int row = sqlSession.update(NS+"cashRecordTotalUpdate", cashRecordDto); 		
+		return row;
+	}	
 }
