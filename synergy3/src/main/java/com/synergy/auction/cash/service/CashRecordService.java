@@ -1,5 +1,7 @@
 package com.synergy.auction.cash.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,8 @@ public class CashRecordService {
 	}	
 	
 	//캐쉬금액 충전
-	public int cashRecordInsert(CashRecordDto cashRecordDto) { 
-		int row = cashRecordDao.cashRecordInsert(cashRecordDto); 
+	public int cashRecordInsert(CashRecordDto cashRecordDto) { 		
+		int row = cashRecordDao.cashRecordInsert(cashRecordDto); 			
 		return row; 
 	}
 	
@@ -32,5 +34,10 @@ public class CashRecordService {
 	public int cashRecordTotalUpdate(CashRecordDto cashRecordDto) { 
 		int row = cashRecordDao.cashRecordTotalUpdate(cashRecordDto); 		
 		return row;
-	}	
+	}
+	
+	//캐쉬사용내역 검색
+	public List<CashRecordDto> cashRecordSelect(String userId) { 
+		return cashRecordDao.cashRecordSelect(userId); 		
+	}
 }

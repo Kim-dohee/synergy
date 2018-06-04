@@ -1,5 +1,7 @@
 package com.synergy.auction.cash.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -28,7 +30,7 @@ public class CashController {
 		return "cash/cash_main";
 	}
 	
-	//캐쉬 충전화면
+	//캐쉬 충전 화면
 	@RequestMapping(value = "/cashRecordInsert", method = RequestMethod.GET)
 	public String cashRecordInsertView() {
 		return "cash/cash_record_insert";
@@ -48,7 +50,7 @@ public class CashController {
 		//가장최근의 총금액 검색
 		int cashRecordTotal = cashRecordService.cashRecordTotalSelect(userId);
 		cashRecordDto.setCashRecordTotal(cashRecordTotal);
-		logger.debug("CashController.cashRecordTotalSelect >> cashRecordTotal :"+cashRecordTotal);
+		logger.debug("CashController.cashRecordInsert >> cashRecordTotal :"+cashRecordTotal);
 		//캐쉬 충전
 		cashRecordService.cashRecordInsert(cashRecordDto);
 		//가장최근의 캐쉬총금액과 '충전금액을  더하여 '현 총잔액' 구하기
@@ -57,8 +59,14 @@ public class CashController {
 	}
 	
 	//캐쉬 사용내역조회 화면
-	@RequestMapping(value = "/cashSelect", method = RequestMethod.GET)
-	public String cashSelect() {
-		return "cash/cash_select";
+	@RequestMapping(value = "/cashRecordSelect", method = RequestMethod.GET)
+	public String cashRecordSelectView(@RequestParam(value="userId") String userId) {
+		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
+		List<CashRecordDto> cashRecordDto= cashRecordService.cashRecordSelect(userId);
+		
+		return "cash/cash_record_select";
 	}
+	
+	//캐쉬사용내역 검색
+	
 }

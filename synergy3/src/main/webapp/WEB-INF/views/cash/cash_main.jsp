@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../module/top.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <div class="container">
 	<br> <br> <br> <br>
@@ -18,7 +19,7 @@
 			<div class="card h-100">
 				<h4 class="card-header">사용 내역 조회</h4>
 				<div class="card-body">
-					<a href="${pageContext.request.contextPath}/cashSelect">cashSelect</a>
+					<a href="${pageContext.request.contextPath}/cashRecordSelect?userId=${sessionScope.id}">cashSelect</a>
 				</div>
 			</div>
 		</div>

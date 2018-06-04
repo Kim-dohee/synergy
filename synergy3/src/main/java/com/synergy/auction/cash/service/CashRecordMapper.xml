@@ -44,5 +44,17 @@
 		UPDATE cash_record SET
 			cash_record_total = #{cashRecordChange}+#{cashRecordTotal}
 		WHERE user_id = #{userId} AND cash_record_total IS NULL;
-	</update>		 
+	</update>
+	<select id="cashRecordSelect" 
+			parameterType="String" 
+			resultType="com.synergy.auction.cash.service.CashRecordDto">	
+		SELECT 
+			cash_record_change AS cashRecordChange
+			,cash_record_change_date AS cashRecordChangeDate
+			,cash_record_total AS cashRecordTotal 
+		FROM cash_record 
+		WHERE user_id = #{userId}
+		ORDER BY cash_record_change_date ASC
+		LIMIT 1,1000000;
+	</select>			 
 </mapper>  

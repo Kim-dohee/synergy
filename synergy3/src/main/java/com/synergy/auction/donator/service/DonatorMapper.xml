@@ -34,8 +34,7 @@
 			,donator_telephone AS donatorTelephone
 			,donator_homepage AS donatorHomepage
 			,donator_join_date AS donatorJoinDate
-		FROM 
-			donator 
+		FROM donator 
 		WHERE donator_id=#{donatorId} 
 	</select> 
 	

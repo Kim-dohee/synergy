@@ -1,5 +1,7 @@
 package com.synergy.auction.cash.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,5 +36,10 @@ public class CashRecordDao {
 	public int cashRecordTotalUpdate(CashRecordDto cashRecordDto) { 
 		int row = sqlSession.update(NS+"cashRecordTotalUpdate", cashRecordDto); 		
 		return row;
-	}	
+	}
+	
+	//캐쉬사용내역 검색
+	public List<CashRecordDto> cashRecordSelect(String userId) { 
+		return sqlSession.selectList(NS+"cashRecordSelect", userId); 		
+	}
 }
