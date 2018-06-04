@@ -59,8 +59,7 @@
 	<delete id="userDelete" parameterType="com.synergy.auction.user.service.UserDto">
 		DELETE FROM 
 			user 
-		WHERE 
-			user_id = #{userId}
+		WHERE user_id = #{userId}
 	</delete>
 	
 	<select id="userSelect" parameterType="java.util.List" resultType="com.synergy.auction.user.service.UserDto">

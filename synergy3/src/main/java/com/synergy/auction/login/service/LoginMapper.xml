@@ -44,7 +44,7 @@
 			user_id AS userId
 		FROM user
 		WHERE user_Name = #{userName}
-		and user_Email = #{userEmail}
+		AND user_Email = #{userEmail}
 	</select>
 	
 	<select id="pwSearch" parameterType="java.util.Map" resultType="com.synergy.auction.user.service.UserDto">
@@ -52,8 +52,8 @@
 			user_pw AS userPw
 		FROM user
 		WHERE user_Name = #{userName}
-		and user_Email = #{userEmail}
-		and user_Id = #{userId}
+		AND user_Email = #{userEmail}
+		AND user_Id = #{userId}
 	</select>
 	
 </mapper>

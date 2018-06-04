@@ -44,7 +44,6 @@ public class UserController {
 	}
 
 	//회원가입할때 만든 id로 no값을구해서 신용점수,캐쉬 초기화 
-	
 	@RequestMapping(value = "/creditRecordInsert", method = RequestMethod.GET)
 	public String creditCashInsert(Model model, UserDto userDto
 							,@RequestParam(value="userId") String userId) {
