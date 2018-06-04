@@ -257,7 +257,7 @@ $(function(){
         <form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/userInsert">
         <h1 class="text-center">일반회원 회원가입</h1><br>
             <div class="form-group">
-                <label for="provision" class="col-lg-2 control-label">회원가입약관</label>
+                <label for="provision" class="col-lg-4 control-label">회원가입약관</label>
                 <div class="col-lg-6" id="provision">
                     <textarea class="form-control" rows="6" style="resize:none" readonly>
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
@@ -281,7 +281,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                 </div>
             </div>
             <div class="form-group">
-                <label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
+                <label for="memberInfo" class="col-lg-4 control-label">개인정보취급방침</label>
                 <div class="col-lg-6" id="memberInfo">
                     <textarea class="form-control" rows="6" style="resize:none" readonly>
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
@@ -305,51 +305,51 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
                 </div>
             </div>
             <div class="form-group" id="divId">
-                <label for="inputId" class="col-lg-2 control-label">아이디</label>
+                <label for="inputId" class="col-lg-4 control-label">아이디</label>
                 <div class="col-lg-6">
                     <input type="text" class="form-control onlyAlphabetAndNumber" name="userId" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputId" class="col-lg-2 control-label"></label>
+                <label for="inputId" class="col-lg-4 control-label"></label>
                 <div class="col-lg-6">
                     <input type="button" class="btn btn-default" value="아이디 중복확인" name="idcheck" id="idcheck">
                 </div>
             </div>
             <div class="form-group" id="divPassword">
-                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
+                <label for="inputPassword" class="col-lg-4 control-label">패스워드</label>
                 <div class="col-lg-6">
                     <input type="password" class="form-control" name="userPw" id="password" data-rule-required="true" placeholder="패스워드" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
+                <label for="inputPasswordCheck" class="col-lg-4 control-label">패스워드 확인</label>
                 <div class="col-lg-6">
                     <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divName">
-                <label for="inputName" class="col-lg-2 control-label">이름</label>
+                <label for="inputName" class="col-lg-4 control-label">이름</label>
                 <div class="col-lg-6">
                     <input type="text" class="form-control onlyHangul" name="userName" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divNickname">
-                <label for="inputNickname" class="col-lg-2 control-label">별명</label>
+                <label for="inputNickname" class="col-lg-4 control-label">별명</label>
                 <div class="col-lg-6">
                     <input type="text" class="form-control" name="userNick" id="nickname" data-rule-required="true" placeholder="별명" maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divEmail">
-                <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+                <label for="inputEmail" class="col-lg-4 control-label">이메일</label>
                 <div class="col-lg-6">
                     <input type="text" class="form-control" name="userEmail" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
+                <label for="inputPhoneNumber" class="col-lg-4 control-label">휴대폰 번호</label>
                 <div class="col-lg-6">
                     <input type="tel" class="form-control onlyNumber" name="userPhone" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                 </div>

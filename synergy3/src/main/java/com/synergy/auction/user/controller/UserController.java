@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,7 +63,29 @@ public class UserController {
 		return "user/user_detail";
 	}
 	
-		
+	//회원수정 전 비밀번호 확인 화면
+	@RequestMapping(value = "/userUpdateConfirm", method = RequestMethod.GET)
+	public String userUpdateConfirm() {
+		return "user/user_update_confirm";
+	}
+	
+	@RequestMapping(value = "/userUpdateConfirm", method = RequestMethod.POST)
+	public String userUpdateConfirm(HttpSession session, Model model, ModelMap modelMap
+									,@RequestParam(value="userPw") String userPw) {
+		String userId = (String)session.getAttribute("id");
+		if(userId.equals(userPw)) {
+			model.addAttribute("user", userService.userSelectOne(userId));
+			modelMap.addAttribute("message", "비밀번호 일치");
+			modelMap.addAttribute("returnUrl", "userUpdate");
+			return "alertAndRedirect";
+		}
+		else {
+			modelMap.addAttribute("message", "비밀번호 확인해주세요");
+			modelMap.addAttribute("returnUrl", "userUpdateConfirm");
+			return "alertAndRedirect";
+		}
+	}
+	
 	//회원수정 화면
 	@RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
 	public String userUpdate(HttpSession session, Model model) {

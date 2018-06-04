@@ -32,7 +32,7 @@
     <!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="#">Synergy</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/">Synergy</a>
 					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -41,17 +41,14 @@
 						<form action="${pageContext.request.contextPath}/login" method="post" class="form-inline">
 							<div class="form-group">
 								<input type="text" class="form-control input-sm" name="id" placeholder="아이디">
-							</div>&nbsp &nbsp
+							</div>&nbsp; &nbsp;
 							<div class="form-group">
 								<input type="password" class="form-control input-sm" name="pw" placeholder="비밀번호">
-							</div>&nbsp &nbsp
-							<div class="checkbox">
-								<label>
-									<input type="checkbox"> <p class="text-muted">Remember me</p>
-								</label>
-							</div>&nbsp &nbsp
-							<input type="submit" class="btn btn-default" value="로그인"></button>
+							</div>&nbsp; &nbsp;
+							<input type="submit" class="btn btn-default" value="로그인">
 						</form>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/idSearch">ID찾기</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/pwSearch">PW찾기</a>
 					</c:if>
 					<c:if test="${!empty sessionScope.id}">
 						<font style="color:white;">${sessionScope.id}님 (${sessionScope.level})</font>

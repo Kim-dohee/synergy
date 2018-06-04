@@ -1,6 +1,7 @@
 package com.synergy.auction.login.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,14 +10,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.synergy.auction.login.service.LoginDao;
 import com.synergy.auction.login.service.LoginService;
+import com.synergy.auction.user.service.UserDto;
 
 @Controller
 public class LoginController {
@@ -73,4 +77,43 @@ public class LoginController {
 		map.put("cnt", count);
 		return map;
 	}  
+	
+	//아이디 찾기 화면
+	@RequestMapping(value = "/idSearch", method = RequestMethod.GET)
+	public String idSearch() {
+		return "login/id_search";
+	}
+	
+	@RequestMapping(value = "/idSearch", method = RequestMethod.POST)
+	public String idSearch(Model model,
+							@RequestParam(value="userName") String userName
+							,@RequestParam(value="userEmail") String userEmail) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("userName", userName);
+		map.put("userEmail", userEmail);
+		List<Object> list = loginService.idSearch(map);
+		model.addAttribute("list", list);
+		return "login/id_search_result";
+	}
+	
+	//비밀번호 찾기 화면
+	@RequestMapping(value = "/pwSearch", method = RequestMethod.GET)
+	public String pwSearch() {
+		return "login/pw_search";
+	}	
+	
+	@RequestMapping(value = "/pwSearch", method = RequestMethod.POST)
+	public String idSearch(Model model,
+							@RequestParam(value="userId") String userId
+							,@RequestParam(value="userName") String userName
+							,@RequestParam(value="userEmail") String userEmail) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("userId", userId);
+		map.put("userName", userName);
+		map.put("userEmail", userEmail);
+		List<Object> list = loginService.pwSearch(map);
+		model.addAttribute("list", list);
+		return "login/pw_search_result";
+	}
+	
 }

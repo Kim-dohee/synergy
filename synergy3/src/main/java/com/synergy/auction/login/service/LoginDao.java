@@ -1,6 +1,7 @@
 package com.synergy.auction.login.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -39,5 +40,13 @@ public class LoginDao {
 	/*회원가입시 id 중복확인*/
 	public List<Object> idcheck(String id) {
 		return sqlSession.selectList(NS+"idcheck", id); 
+	}
+	/*id 찾기*/
+	public List<Object> idSearch(Map<Object, Object> map) {
+		return sqlSession.selectList(NS+"idSearch",map); 
+	}
+	/*pw 찾기*/
+	public List<Object> pwSearch(Map<Object, Object> map) {
+		return sqlSession.selectList(NS+"pwSearch",map); 
 	}
 }

@@ -1,6 +1,7 @@
 package com.synergy.auction.login.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -74,5 +75,15 @@ public class LoginService {
 		int count = Integer.parseInt((String) row.get(0))+Integer.parseInt((String) row.get(1))+Integer.parseInt((String) row.get(2));
 		System.out.print(count);
 		return count;
+	} 
+	
+	public List<Object> idSearch(Map<Object, Object> map) {
+		List<Object> row = loginDao.idSearch(map);
+		return row;
+	} 
+	
+	public List<Object> pwSearch(Map<Object, Object> map) {
+		List<Object> row = loginDao.pwSearch(map);
+		return row;
 	} 
 }
