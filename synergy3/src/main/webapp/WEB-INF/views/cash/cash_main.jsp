@@ -2,11 +2,10 @@
 <jsp:include page="../module/top.jsp"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<div class="container">
-	<br> <br> <br> <br>
-	<h1 class="my-4">Welcome to Modern Business</h1>
+	<br> <br> <br>
+	<h1 class="my-4 text-center">캐시</h1><br><br>
 	<!-- Marketing Icons Section -->
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-lg-4 mb-4">
 			<div class="card h-100">
 				<h4 class="card-header">충전</h4>
@@ -24,6 +23,5 @@
 			</div>
 		</div>
 	</div>
-</div>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>
