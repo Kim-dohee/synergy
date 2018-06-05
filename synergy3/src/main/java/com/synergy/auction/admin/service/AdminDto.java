@@ -8,7 +8,7 @@ public class AdminDto {
 	private String adminName;
 	private int adminPhone;
 	private String adminAddress;
-	private String adminJoindate;
+	private String adminJoinDate;
 	private String adminLevel;
 
 	public String getAdminLevel() {
@@ -47,18 +47,18 @@ public class AdminDto {
 	public void setAdminAddress(String adminAddress) {
 		this.adminAddress = adminAddress;
 	}
-	public String getAdminJoindate() {
-		return adminJoindate;
+	public String getAdminJoinDate() {
+		return adminJoinDate;
 	}
-	public void setAdminJoindate(String adminJoindate) {
-		this.adminJoindate = adminJoindate;
+	public void setAdminJoinDate(String adminJoinDate) {
+		this.adminJoinDate = adminJoinDate;
 	}
 	
 	@Override
 	public String toString() {
 		return "AdminDto [adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
-				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoindate="
-				+ adminJoindate + ", adminLevel=" + adminLevel + "]";
+				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoinDate="
+				+ adminJoinDate + ", adminLevel=" + adminLevel + "]";
 	}
 
 }

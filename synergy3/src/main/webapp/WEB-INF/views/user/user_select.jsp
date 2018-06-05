@@ -9,7 +9,7 @@
 </head>
 <body>
 		<br><h1 class="text-center">유저 리스트</h1><br>
-		<div class="container bs-example" data-example-id="simple-table" >
+		<div style="background-color: #BDBDBD;font-size:16px">
 		   <table class="table table-striped" >
 		     <caption>Optional table caption.</caption>
 		     <thead>

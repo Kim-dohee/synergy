@@ -9,9 +9,10 @@
 		<div class="form-group" id="divId">	
 			<c:forEach var="user" items="${list}">
 				<label for="inputId" class="col-lg-4 control-label">아이디 검색 결과</label>
-				<div class="col-lg-6">
+				<div class="col-lg-4">
 					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" name="userId" data-rule-required="true" value="${user.userId}">
 				</div>
+				<div class="col-lg-4"></div>
 			</c:forEach>
 		</div>
 		

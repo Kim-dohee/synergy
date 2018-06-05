@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DonationPlanController {
 
-	@RequestMapping(value = "/donationPlanInsert", method = RequestMethod.GET)
+	@RequestMapping(value = "/donationPlanAgreement", method = RequestMethod.GET)
+	public String donationPlanAgreement() {
+		return "donation/donation_plan_agreement";
+	}
+	
+	@RequestMapping(value = "/donationPlanInsert", method = RequestMethod.POST)
 	public String donationPlanInsert() {
 		return "donation/donation_plan_insert";
 	}

@@ -9,9 +9,10 @@
 		<div class="form-group" id="divId">	
 			<c:forEach var="user" items="${list}">
 				<label for="inputName" class="col-lg-4 control-label">비밀번호 검색 결과</label>
-				<div class="col-lg-6">
+				<div class="col-lg-4">
 					<input type="text" class="form-control onlyAlphabetAndNumber" data-rule-required="true" value="${user.userPw}">
 				</div>
+				<div class="col-lg-4"></div>
 			</c:forEach>
 		</div>
 		

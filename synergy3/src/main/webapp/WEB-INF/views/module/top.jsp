@@ -31,7 +31,7 @@
 	<body>
     <!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<div class="container">
+			<div class="container" style="font-size:16px">
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/">Synergy</a>
 					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -47,8 +47,8 @@
 							</div>&nbsp; &nbsp;
 							<input type="submit" class="btn btn-default" value="로그인">
 						</form>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/idSearch">ID찾기</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/pwSearch">PW찾기</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="text-muted" href="${pageContext.request.contextPath}/idSearch">ID찾기</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;<a class="text-muted" href="${pageContext.request.contextPath}/pwSearch">PW찾기</a>
 					</c:if>
 					<c:if test="${!empty sessionScope.id}">
 						<font style="color:white;">${sessionScope.id}님 (${sessionScope.level})</font>
@@ -98,7 +98,7 @@
 								기부
 							</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-								<a class="dropdown-item" href="blog-home-1.html">기부단체1</a>
+								<a class="dropdown-item" href="donationPlanAgreement">계획서 등록</a>
 								<a class="dropdown-item" href="blog-home-2.html">기부단체2</a>
 								<a class="dropdown-item" href="blog-post.html">기부단체3</a>
 								</div>

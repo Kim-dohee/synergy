@@ -12,7 +12,7 @@
 			,admin_name
 			,admin_phone
 			,admin_address
-			,admin_joindate
+			,admin_join_date
 		) VALUES (
 			#{adminId}
 			,#{adminPw}

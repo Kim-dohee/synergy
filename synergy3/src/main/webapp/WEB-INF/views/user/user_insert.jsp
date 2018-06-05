@@ -81,7 +81,7 @@ $(function(){
 		var divPhoneNumber = $('#divPhoneNumber');
 		//회원가입약관
 		if($('#provisionYn:checked').val()=="N"){
-			alert("회원가입약관에 동의하여 주시기 바랍니다."); //모달 메시지 입력
+			alert("회원가입약관에 동의하여 주시기 바랍니다."); 
 			provision.removeClass("has-success");
 			provision.addClass("has-error");
 			$('#provisionYn').focus();
@@ -230,13 +230,13 @@ $(function(){
                 <!-- 본문 들어가는 부분 -->
                  
  
- <div style="background-color:#BDBDBD">
+<div style="background-color: #BDBDBD;font-size:16px">
  <br> <br> <br> <br>
         <form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/userInsert">
         <h1 class="text-center">일반회원 회원가입</h1><br>
             <div class="form-group">
                 <label for="provision" class="col-lg-4 control-label">회원가입약관</label>
-                <div class="col-lg-6" id="provision">
+                <div class="col-lg-4" id="provision">
                     <textarea class="form-control" rows="6" style="resize:none" readonly>
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
@@ -244,6 +244,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
                     </textarea>
+                <div class="col-lg-4"></div>
                     <div class="radio">
                         <label>
                             <input type="radio" id="provisionYn" name="provisionYn" value="Y" autofocus="autofocus" checked>
@@ -260,7 +261,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
             </div>
             <div class="form-group">
                 <label for="memberInfo" class="col-lg-4 control-label">개인정보취급방침</label>
-                <div class="col-lg-6" id="memberInfo">
+                <div class="col-lg-4" id="memberInfo">
                     <textarea class="form-control" rows="6" style="resize:none" readonly>
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
@@ -268,6 +269,7 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
 Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project Happy Project
                     </textarea>
+                    <div class="col-lg-4"></div>
                     <div class="radio">
                         <label>
                             <input type="radio" id="memberInfoYn" name="memberInfoYn" value="Y" checked>
@@ -284,48 +286,55 @@ Happy Project Happy Project Happy Project Happy Project Happy Project Happy Proj
             </div>
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-4 control-label">아이디</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="text" class="form-control onlyAlphabetAndNumber" name="userId" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group">
                 <label for="inputId" class="col-lg-4 control-label"></label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="button" class="btn btn-default" value="아이디 중복확인" name="idcheck" id="idcheck">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group" id="divPassword">
                 <label for="inputPassword" class="col-lg-4 control-label">패스워드</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="password" class="form-control" name="userPw" id="password" data-rule-required="true" placeholder="패스워드" maxlength="30">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group" id="divPasswordCheck">
                 <label for="inputPasswordCheck" class="col-lg-4 control-label">패스워드 확인</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group" id="divName">
                 <label for="inputName" class="col-lg-4 control-label">이름</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="text" class="form-control onlyHangul" name="userName" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group" id="divEmail">
                 <label for="inputEmail" class="col-lg-4 control-label">이메일</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="text" class="form-control" name="userEmail" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
             <div class="form-group" id="divPhoneNumber">
                 <label for="inputPhoneNumber" class="col-lg-4 control-label">휴대폰 번호</label>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <input type="tel" class="form-control onlyNumber" name="userPhone" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                 </div>
+                <div class="col-lg-4"></div>
             </div>
 		<div class="form-group">
-            <div class="col-lg-offset-2 col-lg-12">
+            <div class="col-lg-offset-4 col-lg-12">
                 <button type="button" class="btn btn-default" id="btn">Sign in</button>
 			</div>
             </div>

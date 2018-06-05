@@ -2,13 +2,16 @@
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 </head>
 <body>
-	계획서 등록
-	<img src="${pageContext.request.contextPath}/resources/image/donationplanagreement.png" width="70%" height="10%">
+	<div style="text-align:center;font-size:16px;">
+		<br><br><br><img src="${pageContext.request.contextPath}/resources/image/donationplaninsert.png" width="50%" height="10%">
+	</div>
+
+	
 </body>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>

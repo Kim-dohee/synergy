@@ -2,6 +2,7 @@
 <jsp:include page="../module/top.jsp"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<div>
 	<br> <br> <br>
 	<h1 class="my-4 text-center">캐시</h1><br><br>
 	<!-- Marketing Icons Section -->
@@ -23,5 +24,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>

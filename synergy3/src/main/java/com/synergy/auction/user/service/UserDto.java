@@ -9,7 +9,7 @@ public class UserDto {
 	private String userName;
 	private int userPhone;
 	private String userEmail;
-	private String userJoindate;
+	private String userJoinDate;
 	public String getCreditRightNo() {
 		return creditRightNo;
 	}
@@ -46,16 +46,16 @@ public class UserDto {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserJoindate() {
-		return userJoindate;
+	public String getUserJoinDate() {
+		return userJoinDate;
 	}
-	public void setUserJoindate(String userJoindate) {
-		this.userJoindate = userJoindate;
+	public void setUserJoinDate(String userJoinDate) {
+		this.userJoinDate = userJoinDate;
 	}
 	@Override
 	public String toString() {
 		return "UserDto [creditRightNo=" + creditRightNo + ", userId=" + userId + ", userPw=" + userPw + ", userName="
-				+ userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate=" + userJoindate
+				+ userName + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoinDate=" + userJoinDate
 				+ "]";
 	}
 	

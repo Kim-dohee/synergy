@@ -8,15 +8,17 @@
 		<h1 class="text-center">아이디 찾기</h1><br>
 		<div class="form-group" id="divId">	
 			<label for="inputName" class="col-lg-4 control-label">이름</label>
-			<div class="col-lg-6">
+			<div class="col-lg-4">
 				<input type="text" class="form-control onlyAlphabetAndNumber" name="userName" data-rule-required="true">
 			</div>
+			<div class="col-lg-4"></div>
 		</div>
 		<div class="form-group" id="divId">	
 			<label for="inputIdEmail" class="col-lg-4 control-label">이메일 주소</label>
-			<div class="col-lg-6">
+			<div class="col-lg-4">
 				<input type="text" class="form-control onlyAlphabetAndNumber" name="userEmail" data-rule-required="true">
 			</div>
+			<div class="col-lg-4"></div>
 		</div>
 		<div class="form-group">
 			<div class="col-lg-offset-4 col-lg-4">
