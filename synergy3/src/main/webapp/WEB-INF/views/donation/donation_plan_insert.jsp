@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,3 +11,4 @@
 	<img src="${pageContext.request.contextPath}/resources/image/donationplanagreement.png" width="70%" height="10%">
 </body>
 </html>
+<jsp:include page="../module/footer.jsp"></jsp:include>
