@@ -26,7 +26,7 @@
 	</script>
 </head>
 <body>
-	<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/donationPlanInsert">
+	<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/donationPlanInsertView">
 		<div style="text-align:center;font-size:16px;">
 			<br><br><br><img src="${pageContext.request.contextPath}/resources/image/donationplanagreement.png" width="50%" height="10%"><br>
 			<br><br><div class="form-group">

@@ -8,8 +8,8 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<br> <br> <br>
+	<div style="font-size: 16px; text-align: center">
+		<br><br><br>
 		<h1 class="my-4 text-center">계획서</h1><br><br>
 		<!-- Marketing Icons Section -->
 		<div class="row justify-content-center">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><br><br><br>
 </body>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>
