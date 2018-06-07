@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
 import com.synergy.auction.auction.goods.service.AuctionGoodsService;
 import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.user.service.UserDto;
@@ -36,5 +37,11 @@ public class AuctionGoodsController {
 	@RequestMapping(value = "/auctionGoodsInsert", method = RequestMethod.GET)
 	public String auctionGoodsInsert() {
 		return "auctionGoods/auction_goods_insert";
+	}
+	
+	@RequestMapping(value = "/auctionGoodsInsert", method = RequestMethod.POST)
+	public String auctionGoodsInsert(AuctionGoodsDto auctionGoodsDto) {
+		auctionGoodsService.auctionGoodsInsert(auctionGoodsDto);
+		return "home";
 	}
 }

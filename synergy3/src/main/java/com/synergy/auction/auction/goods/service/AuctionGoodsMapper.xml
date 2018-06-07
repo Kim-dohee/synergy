@@ -4,5 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.synergy.auction.auction.goods.service.AuctionGoodsMapper">
-	
+	<insert id="auctionGoodsInsert"
+			parameterType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
+		INSERT INTO auction_goods(
+			auction_goods_file_no
+			,donation_paln_no
+			,auction_state_no
+			,user_id
+			,small_category_no
+			,auction_goods_min_price
+			,auction_goods_title
+			,auction_goods_content
+			,auction_goods_instance_buy_price
+			,auction_goods_name
+			,auction_goods_bid_unit
+			,auction_goods_date
+			,auction_goods_pay_term
+			,auction_goods_bid_term
+			,auction_goods_bid_start_date
+			,auction_goods_bid_end_date
+			,auction_goods_hits
+		) VALUES (
+			1
+			,1
+			,'등록'
+			,1123
+			,#{smallCategoryNo}
+			,#{auctionGoodsMinPrice}
+			,#{auctionGoodsTitle}
+			,#{auctionGoodsContent}
+			,#{auctionGoodsInstanceBuyPrice}
+			,#{auctionGoodsName}
+			,#{auctionGoodsBidUnit}
+			,now()
+			,3
+			,3
+			,1
+			,1
+			,0
+		)
+	</insert>
 </mapper>
