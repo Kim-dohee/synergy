@@ -14,7 +14,7 @@
 	</script>	
 </head>
 <body>
-	<div style="text-align:center">
+	<div style="text-align:center;font-size:16px">
 		<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/cashRecordInsert">
 		       <br><h1 class="text-center">캐쉬 충전</h1><br>
 	            <div class="row" id="divCash">

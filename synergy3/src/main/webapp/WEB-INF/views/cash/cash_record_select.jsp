@@ -12,9 +12,9 @@
 		<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/cashRecordInsert">
 			<br><h1>캐쉬 사용 내역 조회</h1><br>
 			<div class="container bs-example" data-example-id="simple-table">
-				<table class="table table-striped">
+				<table class="table table-hover">
 					<thead>
-						<tr>
+						<tr class="active">
 							<th>충전 금액</th>
 							<th>현 총잔액</th>
 							<th>충전 날짜</th>

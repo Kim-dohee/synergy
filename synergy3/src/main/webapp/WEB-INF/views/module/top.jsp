@@ -25,7 +25,13 @@
 		<!-- Bootstrap core jquery -->
 		<script src="resources/vendor/jquery/jquery.min.js"></script>
 		<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+		<style>
+		ul{list-style:none;margin:0px; padding:0px; }
+		.one{float:left; background:white;}
+		.one > li{float:left;} 
+		.one ul{display:none;}
+		.one li:hover > ul {display:block;}
+		</style>
 	</head>
 
 	<body>
@@ -82,15 +88,35 @@
 							</li>
 						</c:if>	
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								경매
-							</a>
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-								<a class="dropdown-item" href="portfolio-1-col.html">경매물품1</a>
-								<a class="dropdown-item" href="portfolio-2-col.html">경매물품2</a>
-								<a class="dropdown-item" href="portfolio-3-col.html">경매물품3</a>
-								<a class="dropdown-item" href="portfolio-4-col.html">경매물품4</a>
-								<a class="dropdown-item" href="portfolio-item.html">경매물품5</a>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">경매</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
+									<ul class="one">
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/auctionGoodsSearch">의류</a>
+											<ul class="two border">
+												<li><a class="dropdown-item" href="#">여성의류</a></li>								
+												<li><a class="dropdown-item" href="#">남성의류</a></li>										
+												<li><a class="dropdown-item" href="#">유아동의류</a></li>										
+											</ul>
+										</li>
+									</ul>
+									<ul class="one">
+										<li><a class="dropdown-item text-primary">전자제품</a>
+											<ul class="two border">
+												<li><a class="dropdown-item" href="portfolio-1-col.html">노트북/PC</a></li>								
+												<li><a class="dropdown-item" href="portfolio-1-col.html">휴대용</a></li>										
+												<li><a class="dropdown-item" href="portfolio-1-col.html">주방가전</a></li>										
+											</ul>
+										</li>
+									</ul>
+									<ul class="one">
+										<li><a class="dropdown-item text-primary">잡화</a>
+											<ul class="two border">
+												<li><a class="dropdown-item" href="portfolio-1-col.html">신발</a></li>								
+												<li><a class="dropdown-item" href="portfolio-1-col.html">가방</a></li>										
+												<li><a class="dropdown-item" href="portfolio-1-col.html">쥬얼리/시계</a></li>										
+											</ul>
+										</li>
+									</ul>
 								</div>
 						</li>
 						<li class="nav-item dropdown">
