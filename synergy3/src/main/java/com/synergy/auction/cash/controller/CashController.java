@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.synergy.auction.cash.service.AccountDto;
 import com.synergy.auction.cash.service.CashRecordDto;
 import com.synergy.auction.cash.service.CashRecordService;
 
@@ -42,7 +43,10 @@ public class CashController {
 	public String cashRecordInsert(HttpSession session
 									,Model model
 									,@RequestParam(value="cashRecordChange") int cashRecordChange
-									,CashRecordDto cashRecordDto) {
+									,@RequestParam(value="accountBankName") String accountBankName
+									,@RequestParam(value="accountDepositName") String accountDepositName
+									,CashRecordDto cashRecordDto
+									,AccountDto accountDto) {
 		logger.debug("CashController.cashRecordInsert >> cashRecordChange :"+cashRecordChange);
 		String userId = (String) session.getAttribute("id");
 		logger.debug("CashController.cashRecordInsert >> userId :"+userId);
@@ -57,7 +61,11 @@ public class CashController {
 		//가장최근의 캐쉬총금액과 '충전금액을  더하여 '현 총잔액' 구하기
 		cashRecordService.cashRecordTotalUpdate(cashRecordDto);
 		model.addAttribute("cashRecordChange", cashRecordChange);
+		//계좌 등록
+		logger.debug("CashController.cashRecordInsert >> accountBankName :"+accountBankName);
+		logger.debug("CashController.cashRecordInsert >> accountDepositName :"+accountDepositName);
 		return "cash/cash_record_insert_commit";
+		
 	}
 	
 	//캐쉬 사용내역 검색(페이징)
