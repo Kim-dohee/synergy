@@ -25,22 +25,30 @@ public class DonatorController {
 	private CashRecordService cashRecordService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonatorController.class);
+
+	//약관동의 화면
+	@RequestMapping(value = "/donatorAgreement", method = RequestMethod.GET)
+	public String donatorAgreement() {
+		return "donator/donator_agreement";
+	}
 	
-	@RequestMapping(value = "/donatorInsert", method = RequestMethod.GET)
-	public String donatorInsert() {
+	//기부단체 회원가입 화면
+	@RequestMapping(value = "/donatorInsertView", method = RequestMethod.POST)
+	public String donatorInsertView() {
 		return "donator/donator_insert";
 	}
 	
-	/*기부단체 회원가입 화면*/
+	//기부단체 회원가입 
 	@RequestMapping(value = "/donatorInsert", method = RequestMethod.POST)
 	public String donatorInsert(DonatorDto donatorDto,@RequestParam(value="donatorId") String donatorId) {
 		logger.info("DonatorController.donatorInsert toString() >>"+donatorDto.toString());
-		/*회원정보 입력*/
+		//회원정보 입력
 		donatorService.donatorInsert(donatorDto);
 		cashRecordService.cashRecordTotalInsert(donatorId);
-		return "home";
+		return "donator/donator_insert_commit";
 	}
 
+	//기부단체 회원정보수정을위한 검색
 	@RequestMapping(value = "/donatorUpdate", method = RequestMethod.GET)
 	public String donatorUpdate(HttpSession session, Model model) {
 		String donatorId = (String)session.getAttribute("id");
@@ -49,6 +57,7 @@ public class DonatorController {
 		return "donator/donator_update";
 	}
 	
+	//기부단체 회원정보 수정
 	@RequestMapping(value = "/donatorUpdate", method = RequestMethod.POST)
 	public String donatorUpdate(DonatorDto donator) {
 		donatorService.donatorUpdate(donator);

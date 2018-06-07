@@ -212,6 +212,7 @@ $(function(){
 		<form class="form-horizontal" role="form" id="frm" name="frm"
 		method="post" action="${pageContext.request.contextPath}/userInsert">
 			<br><br><br><img src="${pageContext.request.contextPath}/resources/image/join.png" width="50%" height="10%"><br><br><br>
+			<br><h1 class="text-center">일반회원 회원가입</h1><br>
 			<div class="form-group" id="divId">
 				<label for="inputId" class="col-lg-4 control-label">아이디</label>
 				<div class="col-lg-4">

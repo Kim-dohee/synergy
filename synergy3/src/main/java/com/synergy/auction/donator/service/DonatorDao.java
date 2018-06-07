@@ -1,3 +1,4 @@
+/*[김도희]*/
 package com.synergy.auction.donator.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
