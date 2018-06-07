@@ -1,3 +1,4 @@
+<!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
@@ -8,13 +9,13 @@
 	<script>
 	$(function(){
 		$("#btn").click(function( event ) {
-			var memberInfo = $('#memberInfo');	
+			var memberInfo = $('#planInfo');	
 		//계획서 동의 안내서
-			if($('#memberInfoYn:checked').val()=="N"){
+			if($('#planInfoYn:checked').val()=="N"){
 				alert("계획서안내에 동의하여 주시기 바랍니다.");
 				memberInfo.removeClass("has-success");
 				memberInfo.addClass("has-error");
-				$('#memberInfoYn').focus();
+				$('#planInfoYn').focus();
 				return false;
 			}else{
 				memberInfo.removeClass("has-error");
@@ -29,9 +30,9 @@
 		<div style="text-align:center;font-size:16px;">
 			<br><br><br><img src="${pageContext.request.contextPath}/resources/image/donationplanagreement.png" width="50%" height="10%"><br>
 			<br><br><div class="form-group">
-				<label for="memberInfo" class="col-lg-12 control-label text-center">계획서 동의서 안내</label><br><br><br>
+				<label for="planInfo" class="col-lg-12 control-label text-center">계획서 동의서 안내</label><br><br><br>
 					<div class="col-lg-3 "></div>
-					<div class="col-lg-6 " id="memberInfo">
+					<div class="col-lg-6 " id="planInfo">
 					<textarea class="form-control" rows="20" style="font-size:14px;" readonly>
 <기부금 집행>
 1. 원칙적으로 한국마사회 기부금 전용 통장 개설 및 직불카드 발급(집행이 단순한 경우는 예외로 하되, 기부금 담당자와 사전 협의사항)
@@ -73,9 +74,9 @@
 						<div class="col-lg-4"></div>
 						<div class="radio">
 							<label>
-								<br><input type="radio" id="memberInfoYn" name="memberInfoYn" value="Y" checked>
+								<br><input type="radio" id="planInfoYn" name="planInfoYn" value="Y" checked>
 	                            동의합니다.     
-	                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="memberInfoYn" name="memberInfoYn" value="N">    
+	                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="planInfoYn" name="planInfoYn" value="N">    
 	                                 동의하지 않습니다.
 							</label>
 						</div>

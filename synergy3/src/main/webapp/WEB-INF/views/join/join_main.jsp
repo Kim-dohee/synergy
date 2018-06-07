@@ -9,7 +9,7 @@
 <body>
 	<div style="text-align:center">
 		<br><br><h2>회원가입</h2>
-		<br><a href="${pageContext.request.contextPath}/userInsert"><img src="${pageContext.request.contextPath}/resources/image/user.png" width="20%" height="35%"></a>
+		<br><a href="${pageContext.request.contextPath}/userAgreement"><img src="${pageContext.request.contextPath}/resources/image/user.png" width="20%" height="35%"></a>
 		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;	
 		<a href="${pageContext.request.contextPath}/donatorInsert"><img src="${pageContext.request.contextPath}/resources/image/donator.png" width="20%" height="35%"></a>
 		<br><br><br><br>

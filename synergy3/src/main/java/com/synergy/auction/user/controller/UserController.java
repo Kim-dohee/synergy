@@ -29,9 +29,15 @@ public class UserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	//약관동의 화면
+		@RequestMapping(value = "/userAgreement", method = RequestMethod.GET)
+		public String userAgreement() {
+			return "user/user_agreement";
+		}
+	
 	//회원가입 화면
-	@RequestMapping(value = "/userInsert", method = RequestMethod.GET)
-	public String userInsert() {
+	@RequestMapping(value = "/userInsertView", method = RequestMethod.POST)
+	public String userInsertView() {
 		return "user/user_insert";
 	}
 
@@ -52,7 +58,7 @@ public class UserController {
 		userService.creditRecordInsert(userId);
 		//캐쉬 0원으로 초기화
 		cashRecordService.cashRecordTotalInsert(userId);
-		return "home";
+		return "user/user_insert_commit";
 	}
 		
 	//회원정보 화면

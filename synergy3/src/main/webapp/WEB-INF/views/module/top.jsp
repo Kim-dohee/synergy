@@ -98,7 +98,7 @@
 								기부
 							</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-								<a class="dropdown-item" href="donationPlanAgreement">계획서 등록</a>
+								<a class="dropdown-item" href="donationPlanMain">계획서</a>
 								<a class="dropdown-item" href="blog-home-2.html">기부단체2</a>
 								<a class="dropdown-item" href="blog-post.html">기부단체3</a>
 								</div>
