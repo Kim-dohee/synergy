@@ -24,6 +24,7 @@ public class DonationPlanController {
 
 	@Autowired
 	private FileService fileService;
+	@Autowired
 	private DonationPlanService donationPlanService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
@@ -74,9 +75,11 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert toString>>"+donationPlanDto.toString());
 		//기부금 계획서 등록
 		donationPlanService.donationPlanInsert(donationPlanDto);
-		//기부금 계획서 파일 등록
-		fileService.fileInsert(fileName);
-		//기부금 계획서 파일 no 검색		
+		//기부금 계획서 넘버 검색
+		//파일이 존재할 경우,기부금 계획서 파일 등록
+		if(fileName != null) {
+			fileService.fileInsert(fileName);	
+		}
 		return "home";
 	}
 }

@@ -6,6 +6,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	<script>
+	//모집목표액 숫자만 허용
+		$(document).ready(function(){
+			$("#donationPlanGoalPrice").keyup(function(){
+				$(this).val($(this).val().replace(/[^0-9]/g,""));
+			})		
+		});
+	</script>
 </head>
 <body>
 	<div style="text-align:center;font-size:16px;">
@@ -30,7 +38,7 @@
 		            </tr>
 		            <tr>	            
 		                <th class="active">모집 목표액</th>
-		                <td><input type="text" placeholder="숫자만 입력하세요" name="donationPlanGoalPrice" class="form-control"/></td>	            
+		                <td><input type="text" placeholder="숫자만 입력하세요" id="donationPlanGoalPrice" name="donationPlanGoalPrice" class="form-control"/></td>	            
 		            </tr>
 		            <tr>	            
 		                <th class="active">기부금 사용기간</th>
