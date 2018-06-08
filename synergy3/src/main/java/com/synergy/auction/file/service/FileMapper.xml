@@ -14,7 +14,7 @@
 			,file_size
 			,file_date
 		)VALUES (
-			'donation_paln'
+			'donation_plan'
 			,#{fileName}
 			,#{fileType}
 			,#{fileExt}

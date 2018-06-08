@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.synergy.auction.donation.plan.service.DonationPlanMapper">
+ 	<insert id="donationPlanInsert"
+			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		INSERT INTO donation_plan (
+			donator_id
+			, donation_plan_title
+			, donation_plan_content
+			, donation_plan_purpose
+			, donation_plan_use_term
+			, donation_plan_goal_price
+			, donation_plan_date
+		) VALUES (
+			#{donatorId}
+			,#{donationPlanTitle}
+			,#{donationPlanContent}
+			,#{donationPlanPurpose}
+			,#{donationPlanUseTerm}
+			,#{donationPlanGoalPrice}
+			,now()
+		)
+	</insert>		
+ </mapper>  
+  
