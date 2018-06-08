@@ -60,5 +60,19 @@
 	<select id="totalCashRecord"  
 			resultType="Integer">
 		SELECT COUNT(*) FROM cash_record
-	</select>				 
+	</select>
+	<insert id="accountInsert"
+			parameterType="com.synergy.auction.cash.service.AccountDto">
+		INSERT INTO account (
+			user_id
+			,account_method
+			,account_bank_name
+			,account_deposit_name
+		)VALUES (
+			#{userId}
+			, '무통장입금'
+			,#{accountBankName}
+			,#{accountDepositName}
+		)
+	</insert>						 
 </mapper>  

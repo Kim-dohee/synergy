@@ -10,6 +10,7 @@ public class FileDto {
 	private String fileType; //파일 타입
 	private String fileExt; //파일 확장자
 	private int fileSize; //파일 사이즈
+	private String fileDate; //파일 날짜
 	
 	public int getFileNo() {
 		return fileNo;
@@ -53,12 +54,18 @@ public class FileDto {
 	public void setFileSize(int fileSize) {
 		this.fileSize = fileSize;
 	}
+	public String getFileDate() {
+		return fileDate;
+	}
+	public void setFileDate(String fileDate) {
+		this.fileDate = fileDate;
+	}
 	
 	@Override
 	public String toString() {
 		return "FileDto [fileNo=" + fileNo + ", fileFkNo=" + fileFkNo + ", fileTableName=" + fileTableName
 				+ ", fileName=" + fileName + ", fileType=" + fileType + ", fileExt=" + fileExt + ", fileSize="
-				+ fileSize + "]";
+				+ fileSize + ", fileDate=" + fileDate + "]";
 	}
-	
+		
 }

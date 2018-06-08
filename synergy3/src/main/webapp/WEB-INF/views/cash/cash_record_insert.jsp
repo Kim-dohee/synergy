@@ -56,7 +56,7 @@
 						<th class="active">입금 예정인</th>
 						<td><input type="text"
 							class="form-control onlyAlphabetAndNumber"
-							name="accountDepositName" id="cashRecordChange"
+							name="accountDepositName" id="accountDepositName"
 							data-rule-required="true" placeholder="EX) 박근혜">
 						</td>
 					</tr>

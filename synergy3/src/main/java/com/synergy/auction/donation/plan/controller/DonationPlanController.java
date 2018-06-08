@@ -1,20 +1,26 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.synergy.auction.donator.controller.DonatorController;
+import com.synergy.auction.file.service.FileService;
 
 @Controller
 public class DonationPlanController {
 
+	@Autowired
+	private FileService fileService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
 	//기부계획서 메인 화면
@@ -42,13 +48,15 @@ public class DonationPlanController {
 									,@RequestParam(value="donationPalnPurpose") String donationPalnPurpose
 									,@RequestParam(value="donationPalnGoalPrice") int donationPalnGoalPrice
 									,@RequestParam(value="donationPalnUseTerm") String donationPalnUseTerm
-									,HttpServletRequest request) {
+									,@RequestParam(value="fileName") MultipartFile fileName
+									) {	
 		logger.debug("DonationPlanController.donationPlanInsert donationPalnTitle>>"+donationPalnTitle);
 		logger.debug("DonationPlanController.donationPlanInsert donationPalnContent>>"+donationPalnContent);
 		logger.debug("DonationPlanController.donationPlanInsert donationPalnPurpose>>"+donationPalnPurpose);
 		logger.debug("DonationPlanController.donationPlanInsert donationPalnGoalPrice>>"+donationPalnGoalPrice);
-		logger.debug("DonationPlanController.donationPlanInsert donationPalnUseTerm>>"+donationPalnUseTerm);
-
+		logger.debug("DonationPlanController.donationPlanInsert fileName>>"+fileName);
+		//기부금 계획서 파일 등록
+		fileService.fileInsert(fileName);
 		return "home";
 	}
 }

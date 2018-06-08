@@ -33,6 +33,12 @@ public class CashRecordDao {
 		return row; 
 	}	
 	
+	//캐쉬금액 충전시 계좌(아이디,입금방법,은행명,입금예정인)도 등록
+	public int accountInsert(AccountDto accountDto) { 
+		int row = sqlSession.insert(NS+"accountInsert", accountDto); 
+		return row; 
+	}	
+	
 	//가장최근의 캐쉬총금액과 '충전금액을  더하여 '현 총잔액' 구하기
 	public int cashRecordTotalUpdate(CashRecordDto cashRecordDto) { 
 		int row = sqlSession.update(NS+"cashRecordTotalUpdate", cashRecordDto); 		
@@ -48,4 +54,5 @@ public class CashRecordDao {
 	public int totalCashRecord() { 
 		return sqlSession.selectOne(NS+"totalCashRecord"); 
 	}
+	
 }

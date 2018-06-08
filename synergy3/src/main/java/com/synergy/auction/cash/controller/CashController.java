@@ -64,6 +64,11 @@ public class CashController {
 		//계좌 등록
 		logger.debug("CashController.cashRecordInsert >> accountBankName :"+accountBankName);
 		logger.debug("CashController.cashRecordInsert >> accountDepositName :"+accountDepositName);
+		logger.debug("CashController.cashRecordInsert >> userId :"+userId);
+		accountDto.setUserId(userId);
+		accountDto.setAccountBankName(accountBankName);
+		accountDto.setAccountDepositName(accountDepositName);
+		cashRecordService.accountInsert(accountDto);
 		return "cash/cash_record_insert_commit";
 		
 	}

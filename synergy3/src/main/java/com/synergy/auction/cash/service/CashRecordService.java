@@ -6,10 +6,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.synergy.auction.donator.service.DonatorDto;
 
 @Service
+@Transactional
 public class CashRecordService {
 
 	@Autowired
@@ -29,6 +31,12 @@ public class CashRecordService {
 	//캐쉬금액 충전
 	public int cashRecordInsert(CashRecordDto cashRecordDto) { 		
 		int row = cashRecordDao.cashRecordInsert(cashRecordDto); 			
+		return row; 
+	}
+	
+	//캐쉬금액 충전시 계좌(아이디,입금방법,은행명,입금예정인)도 등록
+	public int accountInsert(AccountDto accountDto) { 		
+		int row = cashRecordDao.accountInsert(accountDto); 			
 		return row; 
 	}
 	
