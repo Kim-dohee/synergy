@@ -23,6 +23,15 @@
 			,#{donationPlanGoalPrice}
 			,now()
 		)
-	</insert>		
+	</insert>
+	<select id="donationPlanNoSelectOne" 
+			parameterType="String" 
+			resultType="Integer">
+		SELECT donation_plan_no 
+		FROM donation_plan 
+		WHERE donator_id=#{donatorId} 
+		ORDER BY donation_plan_date DESC
+		LIMIT 1	
+	</select>		 		
  </mapper>  
   

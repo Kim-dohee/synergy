@@ -76,6 +76,8 @@ public class DonationPlanController {
 		//기부금 계획서 등록
 		donationPlanService.donationPlanInsert(donationPlanDto);
 		//기부금 계획서 넘버 검색
+		int donationPlanNo = donationPlanService.donationPlanNoSelectOne(donatorId);
+		logger.debug("DonationPlanController.donationPlanInsert donationPlanNo>>"+donationPlanNo);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
 			fileService.fileInsert(fileName);	

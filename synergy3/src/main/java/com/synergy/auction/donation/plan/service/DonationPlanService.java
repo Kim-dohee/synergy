@@ -15,4 +15,9 @@ public class DonationPlanService {
 		int row = donationPlanDao.donationPlanInsert(donationPlanDto); 
 		return row; 
 	}
+	
+	//기부금 계획서 넘버 검색
+	public int donationPlanNoSelectOne(String donatorId) { 
+		return donationPlanDao.donationPlanNoSelectOne(donatorId);  
+	}
 }
