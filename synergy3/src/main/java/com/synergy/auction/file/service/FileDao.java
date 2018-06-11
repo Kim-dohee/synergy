@@ -17,5 +17,10 @@ public class FileDao {
 	public int fileInsert(FileDto fileDto) { 
 		int row = sqlSession.insert(NS+"fileInsert", fileDto); 
 		return row; 
-	} 
+	}
+	
+	//파일넘버 검색
+	public int fileNoSelect(int donationPlanNo) { 
+		return sqlSession.selectOne(NS+"fileNoSelect", donationPlanNo); 
+	}
 }

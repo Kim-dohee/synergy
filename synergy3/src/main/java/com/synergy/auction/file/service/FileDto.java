@@ -4,7 +4,7 @@ package com.synergy.auction.file.service;
 public class FileDto {
 
 	private int fileNo; //파일 넘버
-	private String fileFkNo; //파일 외래키
+	private int fileTableNo; //파일 외래키
 	private String fileTableName; //테이블 이름
 	private String fileName; //파일 이름
 	private String fileType; //파일 타입
@@ -18,11 +18,11 @@ public class FileDto {
 	public void setFileNo(int fileNo) {
 		this.fileNo = fileNo;
 	}
-	public String getFileFkNo() {
-		return fileFkNo;
+	public int getFileTableNo() {
+		return fileTableNo;
 	}
-	public void setFileFkNo(String fileFkNo) {
-		this.fileFkNo = fileFkNo;
+	public void setFileTableNo(int fileTableNo) {
+		this.fileTableNo = fileTableNo;
 	}
 	public String getFileTableName() {
 		return fileTableName;
@@ -63,7 +63,7 @@ public class FileDto {
 	
 	@Override
 	public String toString() {
-		return "FileDto [fileNo=" + fileNo + ", fileFkNo=" + fileFkNo + ", fileTableName=" + fileTableName
+		return "FileDto [fileNo=" + fileNo + ", fileTableNo=" + fileTableNo + ", fileTableName=" + fileTableName
 				+ ", fileName=" + fileName + ", fileType=" + fileType + ", fileExt=" + fileExt + ", fileSize="
 				+ fileSize + ", fileDate=" + fileDate + "]";
 	}

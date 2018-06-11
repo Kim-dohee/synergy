@@ -24,7 +24,7 @@ public class FileService {
 	private static final Logger logger = LoggerFactory.getLogger(FileService.class);
 	
 	//기부금 계획서 파일 등록
-	public void fileInsert(MultipartFile fileName) {
+	public void fileInsert(MultipartFile fileName,int donationPlanNo) {
 		
 		UUID uuid = UUID.randomUUID();
 		//파일 이름
@@ -44,6 +44,7 @@ public class FileService {
 		fileDto.setFileType(fileType);
 		fileDto.setFileExt(fileExt);
 		fileDto.setFileSize(newfileSize);
+		fileDto.setFileTableNo(donationPlanNo);
 		
 		//파일이 존재할경우 해당경로에 저장
 		if(!fileName.isEmpty()) {
@@ -59,5 +60,10 @@ public class FileService {
 			//파일 등록
 			fileDao.fileInsert(fileDto);
 		}
+	}
+	
+	//파일넘버 검색
+	public int fileNoSelect(int donationPlanNo) {
+		return fileDao.fileNoSelect(donationPlanNo);
 	}
 }

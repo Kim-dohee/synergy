@@ -7,14 +7,16 @@
 	<insert id="fileInsert"
 			parameterType="com.synergy.auction.file.service.FileDto">
 		INSERT INTO file (
-			file_table_name
+			file_table_no
+			,file_table_name
 			,file_name
 			,file_type
 			,file_ext
 			,file_size
 			,file_date
 		)VALUES (
-			'donation_plan'
+			#{fileTableNo}
+			,'donation_plan'
 			,#{fileName}
 			,#{fileType}
 			,#{fileExt}
@@ -22,4 +24,12 @@
 			,now()
 		)
 	</insert>
+	<select id="fileNoSelect"
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT file_no 
+		FROM file 
+		WHERE file_table_no=#{donationPlanNo} 
+		AND file_table_name='donation_plan'
+	</select>		
 </mapper>			  

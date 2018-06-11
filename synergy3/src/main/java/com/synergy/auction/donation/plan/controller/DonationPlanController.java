@@ -80,8 +80,14 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanNo>>"+donationPlanNo);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
-			fileService.fileInsert(fileName);	
+			fileService.fileInsert(fileName,donationPlanNo);	
 		}
-		return "home";
+		//파일넘버 검색 후 기부금계획서등록파일넘버에 등록
+		int donationPlanFileNo = fileService.fileNoSelect(donationPlanNo);
+		logger.debug("DonationPlanController.donationPlanInsert donationPlanFileNo>>"+donationPlanFileNo);
+		donationPlanDto.setDonationPlanNo(donationPlanNo);
+		donationPlanDto.setDonationPlanFileNo(donationPlanFileNo);
+		donationPlanService.donationPlanFileNoUpdate(donationPlanDto);
+		return "donation/donation_plan_commit";
 	}
 }

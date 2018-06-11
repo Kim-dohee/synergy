@@ -32,6 +32,12 @@
 		WHERE donator_id=#{donatorId} 
 		ORDER BY donation_plan_date DESC
 		LIMIT 1	
-	</select>		 		
+	</select>
+	<update id="donationPlanFileNoUpdate"
+			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto" >
+		UPDATE donation_plan
+		SET donation_plan_file_no=#{donationPlanFileNo}
+		WHERE donation_plan_no=#{donationPlanNo}
+	</update>		 		
  </mapper>  
   

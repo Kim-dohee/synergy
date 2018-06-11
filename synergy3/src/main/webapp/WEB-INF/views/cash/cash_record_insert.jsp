@@ -40,6 +40,7 @@
 							class="form-control onlyAlphabetAndNumber"
 							name="cashRecordChange" data-rule-required="true"
 							placeholder="금액(숫자)만 입력 가능합니다" maxlength="30"
+							id="cashRecordChange"
 							onKeyPress="return numkeyCheck(event)"></td>
 					</tr>
 					<tr>

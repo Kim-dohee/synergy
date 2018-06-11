@@ -22,5 +22,10 @@ public class DonationPlanDao {
 	public int donationPlanNoSelectOne(String donatorId) { 
 		return sqlSession.selectOne(NS+"donationPlanNoSelectOne", donatorId); 
 	}
-		
+	
+	//기부금계획서파일넘버 수정
+	public int donationPlanFileNoUpdate(DonationPlanDto donationPlanDto) { 
+		int row =  sqlSession.update(NS+"donationPlanFileNoUpdate", donationPlanDto); 
+		return row;
+	}
 }

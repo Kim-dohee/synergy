@@ -6,7 +6,7 @@ public class DonationPlanDto {
 
 	private int donationPlanNo; //기부금 계획서 넘버
 	private String donatorId; //기부단체아이디
-	private String donationPlanFileNo; //파일 넘버
+	private int donationPlanFileNo; //파일 넘버
 	private String donationPlanTitle; //제목
 	private String donationPlanContent; //내용
 	private String donationPlanPurpose; //목적
@@ -26,10 +26,10 @@ public class DonationPlanDto {
 	public void setDonatorId(String donatorId) {
 		this.donatorId = donatorId;
 	}
-	public String getDonationPlanFileNo() {
+	public int getDonationPlanFileNo() {
 		return donationPlanFileNo;
 	}
-	public void setDonationPlanFileNo(String donationPlanFileNo) {
+	public void setDonationPlanFileNo(int donationPlanFileNo) {
 		this.donationPlanFileNo = donationPlanFileNo;
 	}
 	public String getDonationPlanTitle() {
@@ -77,5 +77,5 @@ public class DonationPlanDto {
 				+ ", donationPlanUseTerm=" + donationPlanUseTerm + ", donationPlanGoalPrice=" + donationPlanGoalPrice
 				+ ", donationPlanDate=" + donationPlanDate + "]";
 	}
-
+		
 }
