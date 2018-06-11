@@ -2,6 +2,7 @@ package com.synergy.auction.file.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -65,5 +66,15 @@ public class FileService {
 	//파일넘버 검색
 	public int fileNoSelect(int donationPlanNo) {
 		return fileDao.fileNoSelect(donationPlanNo);
+	}
+	
+	//이미지파일넘버 검색
+	public int ImageFileNoSelect(int donationPlanNo) { 
+		return fileDao.ImageFileNoSelect(donationPlanNo); 
+	}
+	
+	//기부금 이미지 파일(이름,확장자)검색
+	public List<FileDto> ImageFileSelect(FileDto fileDto) { 
+		return fileDao.ImageFileSelect(fileDto); 
 	}
 }

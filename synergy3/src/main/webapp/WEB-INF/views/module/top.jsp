@@ -122,15 +122,24 @@
 								</div>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								기부
-							</a>
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-								<c:if test="${sessionScope.level eq '기부단체'}">
-									<a class="dropdown-item" href="donationPlanMain">계획서</a>
-								</c:if>
-								<a class="dropdown-item" href="blog-home-2.html">기부단체2</a>
-								<a class="dropdown-item" href="blog-post.html">기부단체3</a>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">기부</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
+									<c:if test="${sessionScope.level eq '기부단체'}">
+									<ul class="one">
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationPlanMain">계획서</a></li>
+									</ul>
+									</c:if>	
+										<ul class="one">
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/auctionGoodsSearch">기부하기</a>
+											<ul class="two border">
+												<li><a class="dropdown-item" href="${pageContext.request.contextPath}/donationAll">전체기부</a></li>								
+												<li><a class="dropdown-item" href="#">아동기부</a></li>								
+												<li><a class="dropdown-item" href="#">국내기부</a></li>								
+												<li><a class="dropdown-item" href="#">북한기부</a></li>										
+												<li><a class="dropdown-item" href="#">해외기부</a></li>										
+											</ul>
+										</li>
+									</ul>
 								</div>
 						</li>
 						<li class="nav-item">

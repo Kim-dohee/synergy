@@ -26,4 +26,10 @@ public class DonationPlanService {
 		int row = donationPlanDao.donationPlanFileNoUpdate(donationPlanDto);  
 		return row;
 	}
+	
+	//기부금계획서이미지넘버 수정
+		public int donationPlanImageNoUpdate(DonationPlanDto donationPlanDto) { 
+			int row =  donationPlanDao.donationPlanImageNoUpdate(donationPlanDto);
+			return row;
+		}
 }

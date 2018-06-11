@@ -28,4 +28,10 @@ public class DonationPlanDao {
 		int row =  sqlSession.update(NS+"donationPlanFileNoUpdate", donationPlanDto); 
 		return row;
 	}
+	
+	//기부금계획서이미지넘버 수정
+	public int donationPlanImageNoUpdate(DonationPlanDto donationPlanDto) { 
+		int row =  sqlSession.update(NS+"donationPlanImageNoUpdate", donationPlanDto); 
+		return row;
+	}
 }

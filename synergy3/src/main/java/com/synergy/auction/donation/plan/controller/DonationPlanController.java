@@ -32,19 +32,19 @@ public class DonationPlanController {
 	//기부계획서 메인 화면
 	@RequestMapping(value = "/donationPlanMain", method = RequestMethod.GET)
 	public String donationPlanMain() {
-		return "donation/donation_plan_main";
+		return "donationPlan/donation_plan_main";
 	}
 	
 	//기부계획서등록 동의 화면
 	@RequestMapping(value = "/donationPlanAgreement", method = RequestMethod.GET)
 	public String donationPlanAgreement() {
-		return "donation/donation_plan_agreement";
+		return "donationPlan/donation_plan_agreement";
 	}
 	
 	//기부계획서 등록화면
 	@RequestMapping(value = "/donationPlanInsertView", method = RequestMethod.POST)
 	public String donationPlanInsertView() {
-		return "donation/donation_plan_insert";
+		return "donationPlan/donation_plan_insert";
 	}
 	
 	//기부계획서 등록처리
@@ -56,6 +56,7 @@ public class DonationPlanController {
 									,@RequestParam(value="donationPlanGoalPrice") int donationPlanGoalPrice
 									,@RequestParam(value="donationPlanUseTerm") String donationPlanUseTerm
 									,@RequestParam(value="fileName") MultipartFile fileName
+									,@RequestParam(value="fileImage") MultipartFile fileImage
 									,DonationPlanDto donationPlanDto) {	
 		String donatorId = (String) session.getAttribute("id");
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanTitle>>"+donationPlanTitle);
@@ -65,6 +66,7 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanUseTerm>>"+donationPlanUseTerm);
 		logger.debug("DonationPlanController.donationPlanInsert donatorId>>"+donatorId);
 		logger.debug("DonationPlanController.donationPlanInsert fileName>>"+fileName);
+		logger.debug("DonationPlanController.donationPlanInsert fileImage>>"+fileImage);
 		
 		donationPlanDto.setDonatorId(donatorId);
 		donationPlanDto.setDonationPlanTitle(donationPlanTitle);
@@ -80,14 +82,25 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanNo>>"+donationPlanNo);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
-			fileService.fileInsert(fileName,donationPlanNo);	
+			fileService.fileInsert(fileName,donationPlanNo);
+			
 		}
-		//파일넘버 검색 후 기부금계획서등록파일넘버에 등록
+		//파일넘버 검색 후 기부금계획서파일넘버에 등록
 		int donationPlanFileNo = fileService.fileNoSelect(donationPlanNo);
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanFileNo>>"+donationPlanFileNo);
 		donationPlanDto.setDonationPlanNo(donationPlanNo);
 		donationPlanDto.setDonationPlanFileNo(donationPlanFileNo);
 		donationPlanService.donationPlanFileNoUpdate(donationPlanDto);
-		return "donation/donation_plan_commit";
+		//파일이 존재할 경우,기부금 이미지 등록
+		if(fileName != null) {
+			fileService.fileInsert(fileImage,donationPlanNo);	
+		}
+		//이미지넘버 검색 후 기부금계획서이미지넘버에 등록
+		int donationPlanImageNo = fileService.ImageFileNoSelect(donationPlanNo);
+		donationPlanDto.setDonationPlanImageNo(donationPlanImageNo);
+		logger.debug("DonationPlanController.donationPlanInsert donationPlanImageNo>>"+donationPlanImageNo);
+		donationPlanService.donationPlanImageNoUpdate(donationPlanDto);
+		//기부금 이미지 파일(이름,확장자)검색
+		return "donationPlan/donation_plan_commit";
 	}
 }

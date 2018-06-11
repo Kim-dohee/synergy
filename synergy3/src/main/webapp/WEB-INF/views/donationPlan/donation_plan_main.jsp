@@ -8,6 +8,8 @@
 	<title>Insert title here</title>
 </head>
 <body>
+	<br><br><br>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 계획서 </h4>
 	<div style="font-size: 16px; text-align: center">
 		<br><br><br>
 		<h1 class="my-4 text-center">계획서</h1><br><br>

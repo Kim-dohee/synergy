@@ -30,6 +30,25 @@
 		SELECT file_no 
 		FROM file 
 		WHERE file_table_no=#{donationPlanNo} 
-		AND file_table_name='donation_plan'
+		AND file_table_name='donation_plan' 
+		AND file_ext IN('hwp','txt','rtf','hwp','asv','pdf','doc','ppt','mdb','htm')
+	</select>
+	<select id="ImageFileNoSelect"
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT file_no 
+		FROM file 
+		WHERE file_table_no=#{donationPlanNo}
+		AND file_table_name='donation_plan' 
+		AND file_ext IN('jpg','png','jpeg')	
+	</select>
+	<select id="ImageFileSelect"
+			parameterType="Integer"
+			resultType="com.synergy.auction.file.service.FileDto">
+		SELECT 
+			file_name AS fileName
+			,file_ext AS fileExt
+		FROM file 
+		WHERE file_no=#{fileNo};
 	</select>		
 </mapper>			  

@@ -7,6 +7,7 @@ public class DonationPlanDto {
 	private int donationPlanNo; //기부금 계획서 넘버
 	private String donatorId; //기부단체아이디
 	private int donationPlanFileNo; //파일 넘버
+	private int donationPlanImageNo; //이미지 넘버
 	private String donationPlanTitle; //제목
 	private String donationPlanContent; //내용
 	private String donationPlanPurpose; //목적
@@ -31,6 +32,12 @@ public class DonationPlanDto {
 	}
 	public void setDonationPlanFileNo(int donationPlanFileNo) {
 		this.donationPlanFileNo = donationPlanFileNo;
+	}
+	public int getDonationPlanImageNo() {
+		return donationPlanImageNo;
+	}
+	public void setDonationPlanImageNo(int donationPlanImageNo) {
+		this.donationPlanImageNo = donationPlanImageNo;
 	}
 	public String getDonationPlanTitle() {
 		return donationPlanTitle;
@@ -72,10 +79,10 @@ public class DonationPlanDto {
 	@Override
 	public String toString() {
 		return "DonationPlanDto [donationPlanNo=" + donationPlanNo + ", donatorId=" + donatorId
-				+ ", donationPlanFileNo=" + donationPlanFileNo + ", donationPlanTitle=" + donationPlanTitle
-				+ ", donationPlanContent=" + donationPlanContent + ", donationPlanPurpose=" + donationPlanPurpose
-				+ ", donationPlanUseTerm=" + donationPlanUseTerm + ", donationPlanGoalPrice=" + donationPlanGoalPrice
-				+ ", donationPlanDate=" + donationPlanDate + "]";
+				+ ", donationPlanFileNo=" + donationPlanFileNo + ", donationPlanImageNo=" + donationPlanImageNo
+				+ ", donationPlanTitle=" + donationPlanTitle + ", donationPlanContent=" + donationPlanContent
+				+ ", donationPlanPurpose=" + donationPlanPurpose + ", donationPlanUseTerm=" + donationPlanUseTerm
+				+ ", donationPlanGoalPrice=" + donationPlanGoalPrice + ", donationPlanDate=" + donationPlanDate + "]";
 	}
-		
+	
 }

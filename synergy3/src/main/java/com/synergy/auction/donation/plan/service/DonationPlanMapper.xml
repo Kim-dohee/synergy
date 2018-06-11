@@ -38,6 +38,12 @@
 		UPDATE donation_plan
 		SET donation_plan_file_no=#{donationPlanFileNo}
 		WHERE donation_plan_no=#{donationPlanNo}
+	</update>
+	<update id="donationPlanImageNoUpdate"
+			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto" >
+		UPDATE donation_plan
+		SET donation_plan_image_no=#{donationPlanImageNo}
+		WHERE donation_plan_no=#{donationPlanNo}
 	</update>		 		
  </mapper>  
   

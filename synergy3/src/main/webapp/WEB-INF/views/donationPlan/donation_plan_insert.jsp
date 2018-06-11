@@ -26,12 +26,23 @@
 				}else if($('#donationPlanUseTerm').val()==""){
 					alert("기부금사용기간을 입력하세요");
 				}else if($('#fileName').val().length <1) {
-					alert('파일을 선택하세요');
+					alert('계획서 첨부파일을 선택하세요');
+				}else if($('#fileImage').val().length <1) {
+					alert('기부금 이미지 첨부파일을 선택하세요');
 				}else {
-					$("#submit").attr("type","submit");
+					//파일 확장자 확인
+					var imageExt = $('#fileImage').val().split('.').pop().toLowerCase();
+					var	fileExt = $('#fileName').val().split('.').pop().toLowerCase();
+					if($.inArray(imageExt,['png','jpg','jpeg'])==-1){
+						alert('이미지 파일(png,jpg,jpeg)만 업로드 할수 있습니다.');
+					 }else if($.inArray(fileExt,['hwp','txt','rtf' ,'hwp' ,'asv' ,'pdf' ,'doc' ,'ppt' ,'mdb' ,'htm'])==-1){
+						alert('문서파일(hwp,txt,rtf,hwp,asv,pdf,doc,ppt,mdb,htm)만 업로드 할수 있습니다')
+					 } else {
+							$("#submit").attr("type","submit");
+					 } 
 				}
 			});
-		
+			 
 		});
 	</script>
 </head>
@@ -66,8 +77,12 @@
 		                <td><input name="donationPlanUseTerm" id="donationPlanUseTerm" type="date">이내</td>	            
 		            </tr>
 		            <tr>	           
-		                <th class="active">첨부파일 </th>
-		                <td><input type="file" name="fileName" id="fileName" class="fileName"></td>	            
+		                <th class="active">계획서 첨부파일 </th>
+		                <td><input type="file" name="fileName" id="fileName"></td>	            
+		            </tr>
+		            <tr>	           
+		                <th class="active">기부금 이미지 첨부파일 </th>
+		                <td><input type="file" name="fileImage" id="fileImage"></td>	            
 		            </tr>    
 		    	</tbody>
 			</table><br>		

@@ -1,5 +1,7 @@
 package com.synergy.auction.file.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,5 +24,15 @@ public class FileDao {
 	//파일넘버 검색
 	public int fileNoSelect(int donationPlanNo) { 
 		return sqlSession.selectOne(NS+"fileNoSelect", donationPlanNo); 
+	}
+	
+	//이미지파일넘버 검색
+	public int ImageFileNoSelect(int donationPlanNo) { 
+		return sqlSession.selectOne(NS+"ImageFileNoSelect", donationPlanNo); 
+	}
+	
+	//기부금 이미지 파일(이름,확장자)검색
+	public List<FileDto> ImageFileSelect(FileDto fileDto) { 
+		return sqlSession.selectList(NS+"ImageFileSelect", fileDto); 
 	}
 }
