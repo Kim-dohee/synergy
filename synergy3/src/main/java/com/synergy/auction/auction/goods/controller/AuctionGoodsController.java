@@ -28,11 +28,6 @@ public class AuctionGoodsController {
 	private AuctionGoodsService auctionGoodsService;
 
 	private static final Logger logger = LoggerFactory.getLogger(AuctionGoodsController.class);
-
-	@RequestMapping(value = "/auctionGoodsSearch", method = RequestMethod.GET)
-	public String auctionGoodsSearch() {
-		return "auctionGoods/auction_goods_search";
-	}
 	
 	@RequestMapping(value = "/auctionGoodsInsert", method = RequestMethod.GET)
 	public String auctionGoodsInsert() {
@@ -43,5 +38,21 @@ public class AuctionGoodsController {
 	public String auctionGoodsInsert(AuctionGoodsDto auctionGoodsDto) {
 		auctionGoodsService.auctionGoodsInsert(auctionGoodsDto);
 		return "home";
+	}
+
+	@RequestMapping(value = "/auctionGoodsSearch", method = RequestMethod.GET)
+	public String auctionGoodsSearch(Model model,AuctionGoodsDto auctionGoodsDto) {
+		List<AuctionGoodsDto> list = auctionGoodsService.auctionGoodsSearch(auctionGoodsDto);
+		model.addAttribute("list",list);
+		return "auctionGoods/auction_goods_search";
+	}
+	
+	@RequestMapping(value = "/auctionGoodsDetail", method = RequestMethod.GET)
+	public String auctionGoodsSelectOne(Model model
+										,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo) {
+		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
+		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
+		return "auctionGoods/auction_goods_detail";
 	}
 }

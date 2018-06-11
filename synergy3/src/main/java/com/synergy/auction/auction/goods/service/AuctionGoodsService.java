@@ -18,5 +18,19 @@ public class AuctionGoodsService {
 		return row; 
 	} 
 
+	public List<AuctionGoodsDto> auctionGoodsSearch(AuctionGoodsDto auctionGoodsDto) { 
+		return auctionGoodsDao.auctionGoodsSearch(auctionGoodsDto); 		
+	}
 
+	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 
+		return auctionGoodsDao.auctionGoodsSelectOne(auctionGoodsNo); 
+	} 
+	
+	public BidDto bidSelectOne(String auctionGoodsNo) { 
+		return auctionGoodsDao.bidSelectOne(auctionGoodsNo); 
+	} 
+	
+	public int auctionGoodsHit(String auctionGoodsNo) { 
+		return auctionGoodsDao.auctionGoodsHit(auctionGoodsNo); 
+	} 
 }

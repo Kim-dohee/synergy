@@ -4,6 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.synergy.auction.auction.goods.service.AuctionGoodsMapper">
+	
+	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
+		<result column="auction_goods_no" property="auctionGoodsNo"/> 
+	</resultMap> 
+	<resultMap id="bidSelectOne" type="com.synergy.auction.auction.goods.service.BidDto"> 
+				<result column="user_id" property="userId"/> 
+				<result column="auction_goods_no" property="auctionGoodsNo"/> 
+				<result column="bid_price" property="bidPrice"/> 
+				<result column="bid_date" property="bidDate"/> 
+	</resultMap> 
+
 	<insert id="auctionGoodsInsert"
 			parameterType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
 		INSERT INTO auction_goods(
@@ -27,7 +38,7 @@
 		) VALUES (
 			1
 			,1
-			,'등록'
+			,'입찰전'
 			,1123
 			,#{smallCategoryNo}
 			,#{auctionGoodsMinPrice}
@@ -39,9 +50,85 @@
 			,now()
 			,3
 			,3
-			,1
-			,1
+			,null
+			,null
 			,0
 		)
 	</insert>
+
+	<select id="auctionGoodsSearch" parameterType="java.util.List" resultType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
+		SELECT 
+			auction_goods_no AS auctionGoodsNo
+			,auction_goods_file_no AS auctionGoodsFileNo
+			,donation_paln_no AS donationPalnNo
+			,auction_state_no AS auctionStateNo
+			,user_id AS userId
+			,small_category_no AS smallCategoryNo
+			,auction_goods_min_price AS auctionGoodsMinPrice
+			,auction_goods_title AS auctionGoodsTitle
+			,auction_goods_content AS auctionGoodsContent
+			,auction_goods_instance_buy_price AS auctionGoodsInstanceBuyPrice
+			,auction_goods_name AS auctionGoodsNname
+			,auction_goods_bid_unit AS auctionGoodsBidUnit
+			,auction_goods_date AS auctionGoodsDate
+			,auction_goods_pay_term AS auctionGoodsPayTerm
+			,auction_goods_bid_term AS auctionGoodsBidTerm
+			,auction_goods_bid_start_date AS auctionGoodsBidStartDate
+			,auction_goods_bid_end_date AS auctionGoodsBidEndDate
+			,auction_goods_hits AS auctionGoodsHits
+		FROM
+			auction_goods
+	</select>	
+	
+	<select id="auctionGoodsSelectOne" parameterType="String" resultType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
+		SELECT 
+			auction_goods_no AS auctionGoodsNo
+			,auction_goods_file_no AS auctionGoodsFileNo
+			,donation_paln_no AS donationPalnNo
+			,auction_state_no AS auctionStateNo
+			,user_id AS userId
+			,small_category_no AS smallCategoryNo
+			,auction_goods_min_price AS auctionGoodsMinPrice
+			,auction_goods_title AS auctionGoodsTitle
+			,auction_goods_content AS auctionGoodsContent
+			,auction_goods_instance_buy_price AS auctionGoodsInstanceBuyPrice
+			,auction_goods_name AS auctionGoodsName
+			,auction_goods_bid_unit AS auctionGoodsBidUnit
+			,auction_goods_date AS auctionGoodsDate
+			,auction_goods_pay_term AS auctionGoodsPayTerm
+			,auction_goods_bid_term AS auctionGoodsBidTerm
+			,auction_goods_bid_start_date AS auctionGoodsBidStartDate
+			,auction_goods_bid_end_date AS auctionGoodsBidEndDate
+			,auction_goods_hits AS auctionGoodsHits
+		FROM
+			auction_goods
+		WHERE 
+			auction_goods_no=#{auctionGoodsNo} 
+	</select>	
+	
+	<select id="bidSelectOne" parameterType="String" resultMap="bidSelectOne">
+		SELECT 
+			auction_goods.auction_goods_no
+			,bid.user_id
+			,bid.auction_goods_no
+			,bid.bid_price
+			,bid.bid_date
+		FROM 
+			bid 
+		INNER JOIN
+			auction_goods  
+		ON 
+			bid.auction_goods_no =  auction_goods.auction_goods_no
+		WHERE
+			auction_goods.auction_goods_no = #{auctionGoodsNo}
+	</select>	
+	
+	<update id="auctionGoodsHit" parameterType="String">
+		UPDATE 
+	         auction_goods 
+	       SET 
+	         auction_goods_hits = auction_goods_hits + 1 
+	     WHERE 
+	       auction_goods_no = #{auctionGoodsNo}
+	</update>
 </mapper>

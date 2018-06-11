@@ -36,7 +36,7 @@
 												<input type="hidden" id="auctionGoodsBidUnit" name="auctionGoodsBidUnit" >
 												<input type="hidden" id="auctionGoodsStartPrice" name="auctionGoodsMinPrice" >								
 											<!--   <button name = "addbutton" type="submit">입찰</button> -->
-												 <input class="btn btn-default" id="addButton" type="button" value="입찰"/>
+												<input class="btn btn-default" id="addButton" type="button" value="입찰"/>
 										</div>
 									</form>
 								</td>

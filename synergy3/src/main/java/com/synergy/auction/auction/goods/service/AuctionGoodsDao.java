@@ -19,4 +19,20 @@ public class AuctionGoodsDao {
 		int row = sqlSession.insert(NS+"auctionGoodsInsert", auctionGoodsDto); 
 		return row; 
 	} 
+
+	public List<AuctionGoodsDto> auctionGoodsSearch(AuctionGoodsDto auctionGoodsDto) { 
+		return sqlSession.selectList(NS+"auctionGoodsSearch", auctionGoodsDto); 		
+	}
+	
+	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 
+		return sqlSession.selectOne(NS + "auctionGoodsSelectOne", auctionGoodsNo); 
+	} 
+	
+	public BidDto bidSelectOne(String auctionGoodsNo) { 
+		return sqlSession.selectOne(NS + "bidSelectOne", auctionGoodsNo); 
+	} 
+	
+	public int auctionGoodsHit(String auctionGoodsNo) { 
+		return sqlSession.update(NS + "auctionGoodsHit", auctionGoodsNo); 
+	} 
 }

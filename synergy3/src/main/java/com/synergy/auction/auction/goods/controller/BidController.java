@@ -24,10 +24,10 @@ public class BidController {
 	private static final Logger logger = LoggerFactory.getLogger(BidController.class);
 
 	
-	//상품등록 화면
-	@RequestMapping(value = "/bid", method = RequestMethod.GET)
+	//입찰 등록
+	@RequestMapping(value = "/bidInsert", method = RequestMethod.GET)
 	public String bid(AuctionGoodsDto auctionGoodsDto) {
-		return "bid/bid_form";
+		return "auctionGoods/auction_goods_detail";
 	}
 	
 	

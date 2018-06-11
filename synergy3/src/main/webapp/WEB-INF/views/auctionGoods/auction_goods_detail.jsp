@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script>
+
+</script>
 </head>
 <body>
 	<div style="text-align: center; font-size: 16px;">
@@ -14,8 +15,18 @@
 		<br>
 		<br>
 		<div class="container">
-				<table class="table table-bordered">
+				<table class="table table-bordered" style="font-size: 16px;">
 					<tbody>
+						<tr>
+							<th class="active">상태</th>
+							<td><input type="text"
+								value="${datailList.auctionStateNo}" name="auctionGoodsTitle" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th class="active">조회수</th>
+							<td><input type="text"
+								value="${datailList.auctionGoodsHits}" name="auctionGoodsTitle" class="form-control" /></td>
+						</tr>
 						<tr>
 							<th colspan="2" class="active">제목</th>
 							<td colspan="4"><input type="text"
@@ -60,21 +71,33 @@
 							</select></td>
 						</tr>
 						<tr>
-							<th class="active">조회수</th>
+							<th class="active">현재 입찰가</th>
 							<td><input type="text"
-								value="${datailList.auctionGoodsHits}" name="auctionGoodsTitle" class="form-control" /></td>
+								value="${bidList.bidPrice}" name="auctionGoodsTitle" class="form-control" /></td>
 						</tr>
 					</tbody>
 				</table>
 				<input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'" /> 
-				<a class="btn btn-primary btn-lg" id="bidButton"href="${pageContext.request.contextPath}/bid?
-								auctionGoodsName=${datailList.auctionGoodsName}
-								&userId=${datailList.userId}
-								&auctionGoodsBidUnit=${datailList.auctionGoodsBidUnit}
-								&auctionGoodsMinPrice=${datailList.auctionGoodsMinPrice}
-								&auctionGoodsCode=${datailList.auctionGoodsNo}"= >입찰하기
-
-				</a>
+				<%-- <a class="btn btn-primary btn-lg" id="bidButton"href="${pageContext.request.contextPath}/bid">입찰하기</a> --%>
+				<br>
+				<br>
+				
+				<form action="${pageContext.request.contextPath}/bidInsert" method="POST">
+					<table class="table table-bordered">
+						<tr>
+							<td>현재 입찰가</td>
+							<td><p class="form-control-static">${bidList.bidPrice}</td>
+							<td>입찰 마감날짜</td>
+							<td><input type="text" value="${bidList.bidPrice}" name="bidPrice" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>입찰하기</td>
+							<td><input type="text" name="bidPrice" class="form-control" /></td>
+						</tr>
+					</table>
+				</form>
+				
+				<input type="submit" value="입찰하기">
 				<br>
 				<br>
 		</div>
