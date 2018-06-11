@@ -34,5 +34,9 @@ public class AuctionGoodsDao {
 	
 	public int auctionGoodsHit(String auctionGoodsNo) { 
 		return sqlSession.update(NS + "auctionGoodsHit", auctionGoodsNo); 
+	}
+
+	public int auctionGoodsUpdate(String auctionGoodsNo) {
+		return sqlSession.update(NS + "auctionGoodsUpdate", auctionGoodsNo); 
 	} 
 }

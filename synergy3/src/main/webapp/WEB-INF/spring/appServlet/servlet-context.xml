@@ -60,6 +60,7 @@
 				<value>classpath:com/synergy/auction/remove/service/RemoveMapper.xml</value>
 				<value>classpath:com/synergy/auction/cash/service/CashRecordMapper.xml</value>
 				<value>classpath:com/synergy/auction/auction/goods/service/AuctionGoodsMapper.xml</value>
+				<value>classpath:com/synergy/auction/auction/goods/service/BidMapper.xml</value>
 				<value>classpath:com/synergy/auction/file/service/FileMapper.xml</value>
 				<value>classpath:com/synergy/auction/donation/plan/service/DonationPlanMapper.xml</value>
 			</list>

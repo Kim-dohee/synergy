@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.synergy.auction.auction.goods.service.BidMapper">
+	
+	<insert id="bidInsert"
+			parameterType="com.synergy.auction.auction.goods.service.BidDto">
+		INSERT INTO bid
+			(user_id
+			,auction_goods_no
+			,bid_price
+			,bid_date)
+		VALUES 
+		 	(1
+		 	,#{auctionGoodsNo}
+		 	,#{bidPrice}
+		 	,now())
+	</insert>
+	
+	<insert id="bidInsertAgaing"
+			parameterType="com.synergy.auction.auction.goods.service.BidDto">
+		INSERT INTO bid
+			(user_id
+			,auction_goods_no
+			,bid_price
+			,bid_date)
+		VALUES 
+		 	(1
+		 	,#{auctionGoodsNo}
+		 	,#{bidPrice}
+		 	,now())
+	</insert>
+
+</mapper>

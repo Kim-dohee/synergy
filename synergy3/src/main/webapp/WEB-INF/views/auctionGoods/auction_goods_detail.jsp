@@ -6,7 +6,54 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
+	$(function() {
+		$("#btn").click(function(){
+			if($("#state").val()===("입찰전")){
+				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsert");
+				if($('#bidPrice').val()==""){
+					alert("입찰금액을 입력하여 주시기 바랍니다.");
+					return;
+				}else{
+				$('#form').submit();
+				}
+			} else {
+				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsertAgain");
+				if($('#bidPrice').val()==""){
+					alert("입찰금액을 입력하여 주시기 바랍니다.");
+					return;
+				}else{
+				$('#form').submit();
+				}
+			}
+		});
+		var date = new Date(); 
+		var year = date.getFullYear(); 
+		var month = new String(date.getMonth()+1); 
+		var day = new String(date.getDate()); 
+		var hour = new String(date.getHours());
+		var min = new String(date.getMinutes());
+		var sec = new String(date.getSeconds());
+		// 한자리수일 경우 0을 채워준다. 
+		if(month.length == 1){ 
+			month = "0" + month; 
+		} 
+		if(day.length == 1){ 
+			day = "0" + day; 
+		} 
+		if(hour.length == 1){ 
+			hour = "0" + hour; 
+		} 
+		if(min.length == 1){ 
+			min = "0" + min; 
+		} 
+		if(sec.length == 1){ 
+			sec = "0" + sec; 
+		} 
+		var today = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+		var today = today.split("-");
 
+		console.log(today);
+	});
 </script>
 </head>
 <body>
@@ -19,7 +66,7 @@
 					<tbody>
 						<tr>
 							<th class="active">상태</th>
-							<td><input type="text"
+							<td><input type="text"  id="state"
 								value="${datailList.auctionStateNo}" name="auctionGoodsTitle" class="form-control" /></td>
 						</tr>
 						<tr>
@@ -77,27 +124,30 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'" /> 
 				<%-- <a class="btn btn-primary btn-lg" id="bidButton"href="${pageContext.request.contextPath}/bid">입찰하기</a> --%>
 				<br>
 				<br>
 				
-				<form action="${pageContext.request.contextPath}/bidInsert" method="POST">
+				<form id="form" method="POST">
 					<table class="table table-bordered">
 						<tr>
+						
 							<td>현재 입찰가</td>
-							<td><p class="form-control-static">${bidList.bidPrice}</td>
+							<td><p class="form-control-static">${bidList.bidPrice} </td>
 							<td>입찰 마감날짜</td>
-							<td><input type="text" value="${bidList.bidPrice}" name="bidPrice" class="form-control" /></td>
+							<td><input type="text" id="BidEndDate" value="${datailList.auctionGoodsBidEndDate}" class="form-control" /></td>
 						</tr>
 						<tr>
 							<td>입찰하기</td>
-							<td><input type="text" name="bidPrice" class="form-control" /></td>
+							<td><input type="text" id="bidPrice" name="bidPrice" class="form-control" /></td>
 						</tr>
 					</table>
+					<input type="hidden" value="${datailList.auctionGoodsNo}" name="auctionGoodsNo">
+					<input type="button" id="btn" value="입찰하기">
 				</form>
 				
-				<input type="submit" value="입찰하기">
+				
+				
 				<br>
 				<br>
 		</div>

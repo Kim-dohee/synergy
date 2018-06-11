@@ -32,5 +32,10 @@ public class AuctionGoodsService {
 	
 	public int auctionGoodsHit(String auctionGoodsNo) { 
 		return auctionGoodsDao.auctionGoodsHit(auctionGoodsNo); 
+	}
+
+	public int auctionGoodsUpdate(String auctionGoodsNo) {
+		return auctionGoodsDao.auctionGoodsUpdate(auctionGoodsNo);
+		
 	} 
 }

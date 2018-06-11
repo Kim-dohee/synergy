@@ -121,14 +121,27 @@
 			bid.auction_goods_no =  auction_goods.auction_goods_no
 		WHERE
 			auction_goods.auction_goods_no = #{auctionGoodsNo}
+		ORDER BY bid_price DESC
+		LIMIT 0,1;
 	</select>	
 	
 	<update id="auctionGoodsHit" parameterType="String">
 		UPDATE 
-	         auction_goods 
-	       SET 
-	         auction_goods_hits = auction_goods_hits + 1 
+			auction_goods 
+		SET 
+			auction_goods_hits = auction_goods_hits + 1 
 	     WHERE 
-	       auction_goods_no = #{auctionGoodsNo}
+			auction_goods_no = #{auctionGoodsNo}
+	</update>
+	
+	<update id="auctionGoodsUpdate" parameterType="String">
+		UPDATE 
+			auction_goods 
+		SET 
+			auction_state_no = '입찰중'
+			,auction_goods_bid_start_date = now()	
+			,auction_goods_bid_end_date = date_add(now(),interval+3 day) 
+		WHERE 
+			auction_goods_no =  #{auctionGoodsNo};
 	</update>
 </mapper>

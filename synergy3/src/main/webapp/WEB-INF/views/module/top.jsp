@@ -46,10 +46,10 @@
 					<c:if test="${empty sessionScope.id}"> 
 						<form action="${pageContext.request.contextPath}/login" method="post" class="form-inline">
 							<div class="form-group">
-								<input type="text" class="form-control input-sm" name="id" placeholder="아이디">
+								<input type="text" class="form-control input-sm" name="id" value="1" placeholder="아이디">
 							</div>&nbsp; &nbsp;
 							<div class="form-group">
-								<input type="password" class="form-control input-sm" name="pw" placeholder="비밀번호">
+								<input type="password" class="form-control input-sm" name="pw" value="1" placeholder="비밀번호">
 							</div>&nbsp; &nbsp;
 							<input type="submit" class="btn btn-default" value="로그인">
 						</form>

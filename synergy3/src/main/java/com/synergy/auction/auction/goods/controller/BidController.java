@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
 import com.synergy.auction.auction.goods.service.AuctionGoodsService;
+import com.synergy.auction.auction.goods.service.BidDto;
+import com.synergy.auction.auction.goods.service.BidService;
 
 @Controller
 public class BidController {
+	@Autowired
+	private BidService bidService;
 	@Autowired
 	private AuctionGoodsService auctionGoodsService;
 
@@ -25,8 +29,23 @@ public class BidController {
 
 	
 	//입찰 등록
-	@RequestMapping(value = "/bidInsert", method = RequestMethod.GET)
-	public String bid(AuctionGoodsDto auctionGoodsDto) {
+	@RequestMapping(value = "/bidInsert", method = RequestMethod.POST)
+	public String bidInsert(Model model, @RequestParam(value="auctionGoodsNo") String auctionGoodsNo,BidDto bidDto) {
+		auctionGoodsService.auctionGoodsUpdate(auctionGoodsNo);
+		bidService.bidInsert(bidDto);
+		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
+		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
+		return "auctionGoods/auction_goods_detail";
+	}
+	
+	//입찰  재등록
+	@RequestMapping(value = "/bidInsertAgain", method = RequestMethod.POST)
+	public String bidInsertAgain(Model model, @RequestParam(value="auctionGoodsNo") String auctionGoodsNo,BidDto bidDto) {
+		bidService.bidInsert(bidDto);
+		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
+		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
 		return "auctionGoods/auction_goods_detail";
 	}
 	
