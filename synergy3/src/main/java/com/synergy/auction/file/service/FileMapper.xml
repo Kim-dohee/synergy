@@ -43,12 +43,11 @@
 		AND file_ext IN('jpg','png','jpeg')	
 	</select>
 	<select id="ImageFileSelect"
-			parameterType="Integer"
 			resultType="com.synergy.auction.file.service.FileDto">
 		SELECT 
 			file_name AS fileName
 			,file_ext AS fileExt
-		FROM file 
-		WHERE file_no=#{fileNo};
+		FROM file
+		WHERE file_ext IN('jpg','png','jpeg');
 	</select>		
 </mapper>			  

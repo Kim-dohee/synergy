@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div style="text-align: center; font-size: 16px" class="container">
-		<br><br><a href="${pageContext.request.contextPath}/home"><h1>SYNERGY</h1></a><br><br>
+		<br><br><div class="synergy"><a href="${pageContext.request.contextPath}/home"><h1>SYNERGY</h1></a></div><br><br>
 		돈이없어도 경매를 통해 모두가 기부에 참여할수있어<br>
 		나눔과 보람을 느낄수 있는 새로운 기부문화를 만들기 위한 <span style="font-weight:bold;">경매 기부</span>사이트<br><br><br>
 		<div class="col-lg-4 mb-4">
@@ -18,8 +18,10 @@
 					<a href="#">팀원 - 김도희</a>
 				</h4>
 				<p class="card-text">
-					역할 : 기부<br>
-					<a href="https://blog.naver.com/doheejj"><span style="color: black">블로그</span></a>				
+					<span style="font-weight:bold;"><h3>담당업무 </h3></span><br>
+					요구사항 분석, DB설계, ERD작성, 기부 <br><br>
+					<a href="https://github.com/Kim-dohee/synergy.git"><span style="color:black"><h5>git hub</h5></span></a>
+					<a href="https://blog.naver.com/doheejj"><span style="color:black"><h5>블로그 주소 </h5></span></a><br>		
 				</p>
 			</div>	
 		</div>

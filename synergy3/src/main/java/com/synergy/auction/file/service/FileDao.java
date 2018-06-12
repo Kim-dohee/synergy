@@ -32,7 +32,7 @@ public class FileDao {
 	}
 	
 	//기부금 이미지 파일(이름,확장자)검색
-	public List<FileDto> ImageFileSelect(FileDto fileDto) { 
-		return sqlSession.selectList(NS+"ImageFileSelect", fileDto); 
+	public List<FileDto> ImageFileSelect() { 
+		return sqlSession.selectList(NS+"ImageFileSelect"); 
 	}
 }

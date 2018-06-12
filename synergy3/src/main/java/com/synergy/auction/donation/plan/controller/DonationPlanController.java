@@ -1,6 +1,7 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donator.controller.DonatorController;
+import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 
 @Controller
@@ -57,7 +60,8 @@ public class DonationPlanController {
 									,@RequestParam(value="donationPlanUseTerm") String donationPlanUseTerm
 									,@RequestParam(value="fileName") MultipartFile fileName
 									,@RequestParam(value="fileImage") MultipartFile fileImage
-									,DonationPlanDto donationPlanDto) {	
+									,DonationPlanDto donationPlanDto
+									,Model model) {	
 		String donatorId = (String) session.getAttribute("id");
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanTitle>>"+donationPlanTitle);
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanContent>>"+donationPlanContent);
@@ -101,6 +105,14 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanImageNo>>"+donationPlanImageNo);
 		donationPlanService.donationPlanImageNoUpdate(donationPlanDto);
 		//기부금 이미지 파일(이름,확장자)검색
-		return "donationPlan/donation_plan_commit";
+		List<FileDto> image = fileService.ImageFileSelect();
+		for(FileDto file : image) {
+			file.getFileName();
+			file.getFileExt();
+			logger.debug("DonationPlanController.donationPlanInsert fileName>>"+file.getFileName());
+			logger.debug("DonationPlanController.donationPlanInsert fileExt>>"+file.getFileExt());
+		}
+		model.addAttribute("list", image);
+		return "donation/donation_all";
 	}
 }

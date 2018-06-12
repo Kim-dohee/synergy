@@ -74,7 +74,7 @@ public class FileService {
 	}
 	
 	//기부금 이미지 파일(이름,확장자)검색
-	public List<FileDto> ImageFileSelect(FileDto fileDto) { 
-		return fileDao.ImageFileSelect(fileDto); 
+	public List<FileDto> ImageFileSelect() { 
+		return fileDao.ImageFileSelect(); 
 	}
 }
