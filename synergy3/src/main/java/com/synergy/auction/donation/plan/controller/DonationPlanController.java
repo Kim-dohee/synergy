@@ -1,6 +1,7 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,7 @@ import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 
 @Controller
+@Transactional
 public class DonationPlanController {
 
 	@Autowired
@@ -104,15 +107,20 @@ public class DonationPlanController {
 		donationPlanDto.setDonationPlanImageNo(donationPlanImageNo);
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanImageNo>>"+donationPlanImageNo);
 		donationPlanService.donationPlanImageNoUpdate(donationPlanDto);
-		//기부금 이미지 파일(이름,확장자)검색
+		return "donationPlan/donation_plan_commit";
+	}
+	
+	//전체기부 검색
+	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
+	public String donationAllMain(Model model) {
+
+		//기부(계획서) 제목 검색
+		List<DonationPlanDto> title = donationPlanService.donationPlanSelect();
+	
+		//기부(계획서) 파일이름,확장자 검색
 		List<FileDto> image = fileService.ImageFileSelect();
-		for(FileDto file : image) {
-			file.getFileName();
-			file.getFileExt();
-			logger.debug("DonationPlanController.donationPlanInsert fileName>>"+file.getFileName());
-			logger.debug("DonationPlanController.donationPlanInsert fileExt>>"+file.getFileExt());
-		}
-		model.addAttribute("list", image);
+		model.addAttribute("title", title);
+		model.addAttribute("image", image);
 		return "donation/donation_all";
 	}
 }

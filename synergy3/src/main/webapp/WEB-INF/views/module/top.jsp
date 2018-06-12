@@ -133,10 +133,10 @@
 										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/auctionGoodsSearch">기부하기</a>
 											<ul class="two border">
 												<li><a class="dropdown-item" href="${pageContext.request.contextPath}/donationAll">전체기부</a></li>								
-												<li><a class="dropdown-item" href="#">아동기부</a></li>								
+												<!-- <li><a class="dropdown-item" href="#">아동기부</a></li>								
 												<li><a class="dropdown-item" href="#">국내기부</a></li>								
 												<li><a class="dropdown-item" href="#">북한기부</a></li>										
-												<li><a class="dropdown-item" href="#">해외기부</a></li>										
+												<li><a class="dropdown-item" href="#">해외기부</a></li> -->										
 											</ul>
 										</li>
 									</ul>

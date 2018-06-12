@@ -1,6 +1,8 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,5 +35,10 @@ public class DonationPlanDao {
 	public int donationPlanImageNoUpdate(DonationPlanDto donationPlanDto) { 
 		int row =  sqlSession.update(NS+"donationPlanImageNoUpdate", donationPlanDto); 
 		return row;
+	}
+	
+	//기부금계획서 검색
+	public List<DonationPlanDto> donationPlanSelect() { 
+		return sqlSession.selectList(NS+"donationPlanSelect"); 
 	}
 }

@@ -1,6 +1,8 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +30,13 @@ public class DonationPlanService {
 	}
 	
 	//기부금계획서이미지넘버 수정
-		public int donationPlanImageNoUpdate(DonationPlanDto donationPlanDto) { 
-			int row =  donationPlanDao.donationPlanImageNoUpdate(donationPlanDto);
-			return row;
-		}
+	public int donationPlanImageNoUpdate(DonationPlanDto donationPlanDto) { 
+		int row =  donationPlanDao.donationPlanImageNoUpdate(donationPlanDto);
+		return row;
+	}
+	
+	//기부금계획서 검색
+	public List<DonationPlanDto> donationPlanSelect() { 
+		return donationPlanDao.donationPlanSelect(); 
+	}
 }

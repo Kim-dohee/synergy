@@ -44,6 +44,20 @@
 		UPDATE donation_plan
 		SET donation_plan_image_no=#{donationPlanImageNo}
 		WHERE donation_plan_no=#{donationPlanNo}
-	</update>		 		
+	</update>
+	<select id="donationPlanSelect"  
+			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		SELECT 
+			donation_plan_file_no AS donationPlanFileNo,
+			donation_plan_image_no AS donationPlanImageNo,
+			donation_plan_title AS donationPlanTitle,
+			donation_plan_content AS donationPlanContent,
+			donation_plan_purpose AS donationPlanPurpose,
+			donation_plan_use_term AS donationPlanUseTerm,
+			donation_plan_goal_price AS donationPlanGoalPrice,
+			donation_plan_date AS donationPlanDate
+		FROM donation_plan
+		ORDER BY donation_plan_date DESC;
+	</select>		 		
  </mapper>  
   

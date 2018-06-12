@@ -48,6 +48,7 @@
 			file_name AS fileName
 			,file_ext AS fileExt
 		FROM file
-		WHERE file_ext IN('jpg','png','jpeg');
+		WHERE file_ext IN('jpg','png','jpeg')
+		ORDER BY file_date DESC
 	</select>		
 </mapper>			  
