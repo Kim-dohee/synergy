@@ -2,7 +2,11 @@ package com.synergy.auction.auction.goods.controller;
 
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -50,6 +54,11 @@ public class AuctionGoodsController {
 	@RequestMapping(value = "/auctionGoodsDetail", method = RequestMethod.GET)
 	public String auctionGoodsSelectOne(Model model
 										,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo) {
+		
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		model.addAttribute("nowTime", dateFormat.format(date));
+		
 		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
 		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
 		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));

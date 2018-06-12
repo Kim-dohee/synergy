@@ -11,7 +11,7 @@
 		<br><br><div class="synergy"><a href="${pageContext.request.contextPath}/home"><h1>SYNERGY</h1></a></div><br><br>
 		돈이없어도 경매를 통해 모두가 기부에 참여할수있어<br>
 		나눔과 보람을 느낄수 있는 새로운 기부문화를 만들기 위한 <span style="font-weight:bold;">경매 기부</span>사이트<br><br><br>
-		<div class="col-lg-4 mb-4">
+		<div class="col-lg-6 mb-4">
 			<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/image/dohee.jpg" width="70%" height="40%"></a>
 			<div class="card-body">
 				<h4 class="card-title">
@@ -25,15 +25,17 @@
 				</p>
 			</div>	
 		</div>
-		<div class="col-lg-4 mb-4">
-			<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		<div class="col-lg-6 mb-4">
+			<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/image/sanguk.jpg" width="70%" height="40%"></a>
 				<div class="card-body">
 					<h4 class="card-title">
 						<a href="#">팀원 - 최상욱</a>
 					</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
+					<p class="card-text">
+					<span style="font-weight:bold;"><h3>담당업무 </h3></span><br>
+					요구사항 분석, DB설계, ERD작성, 경매 <br><br>
+					<a href="https://github.com/Kim-dohee/synergy.git"><span style="color:black"><h5>git hub</h5></span></a>
+					</p>
 				</div>
 		</div>
 	</div>
