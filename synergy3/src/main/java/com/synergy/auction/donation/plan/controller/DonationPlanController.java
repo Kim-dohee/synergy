@@ -114,13 +114,9 @@ public class DonationPlanController {
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {
 
-		//기부(계획서) 제목 검색
-		List<DonationPlanDto> title = donationPlanService.donationPlanSelect();
-	
-		//기부(계획서) 파일이름,확장자 검색
-		List<FileDto> image = fileService.ImageFileSelect();
-		model.addAttribute("title", title);
-		model.addAttribute("image", image);
+		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
+		List<DonationPlanDto> list = donationPlanService.selectDonationPlanDetail();
+		model.addAttribute("list", list);
 		return "donation/donation_all";
 	}
 }

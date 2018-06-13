@@ -1,6 +1,8 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.service;
 
+import com.synergy.auction.file.service.FileDto;
+
 //기부금 계획서
 public class DonationPlanDto {
 
@@ -14,6 +16,7 @@ public class DonationPlanDto {
 	private String donationPlanUseTerm; //기부금 사용기간
 	private int donationPlanGoalPrice; //모집목표액
 	private String donationPlanDate; //계획서등록날짜
+	private FileDto file;
 	
 	public int getDonationPlanNo() {
 		return donationPlanNo;
@@ -75,6 +78,12 @@ public class DonationPlanDto {
 	public void setDonationPlanDate(String donationPlanDate) {
 		this.donationPlanDate = donationPlanDate;
 	}
+	public FileDto getFile() {
+		return file;
+	}
+	public void setFile(FileDto file) {
+		this.file = file;
+	}
 	
 	@Override
 	public String toString() {
@@ -82,7 +91,8 @@ public class DonationPlanDto {
 				+ ", donationPlanFileNo=" + donationPlanFileNo + ", donationPlanImageNo=" + donationPlanImageNo
 				+ ", donationPlanTitle=" + donationPlanTitle + ", donationPlanContent=" + donationPlanContent
 				+ ", donationPlanPurpose=" + donationPlanPurpose + ", donationPlanUseTerm=" + donationPlanUseTerm
-				+ ", donationPlanGoalPrice=" + donationPlanGoalPrice + ", donationPlanDate=" + donationPlanDate + "]";
+				+ ", donationPlanGoalPrice=" + donationPlanGoalPrice + ", donationPlanDate=" + donationPlanDate
+				+ ", file=" + file + "]";
 	}
 	
 }

@@ -14,20 +14,15 @@
 	<div style="text-align: center; font-size: 16px" class="container">
 		<h1>전체 기부</h1><br><br><br>
 		<div class="row">
-			<c:forEach var="image" items="${image}">
+			<c:forEach var="donation" items="${list}">
 				<div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">	
-						<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${image.fileName}.${image.fileExt}" width="20%" height="35%"></a>		
-							<div class="card-body">
-								<c:forEach var="title" items="${title}">
-								<h4 class="card-title">
-								<a href="#">${title.donationPlanTitle}</a></c:forEach>
-								</h4>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur eum quasi sapiente
-									nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
-									dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-							</div>
+						<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" width="20%" height="35%"></a>		
+						<div class="card-body">
+							<h4 class="card-title">
+							<a href="#">${donation.donationPlanTitle}</a>
+							</h4>
+						</div>
 					</div>
 				</div>
 			</c:forEach>	

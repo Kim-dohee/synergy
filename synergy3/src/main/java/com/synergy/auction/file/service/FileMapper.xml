@@ -41,14 +41,5 @@
 		WHERE file_table_no=#{donationPlanNo}
 		AND file_table_name='donation_plan' 
 		AND file_ext IN('jpg','png','jpeg')	
-	</select>
-	<select id="ImageFileSelect"
-			resultType="com.synergy.auction.file.service.FileDto">
-		SELECT 
-			file_name AS fileName
-			,file_ext AS fileExt
-		FROM file
-		WHERE file_ext IN('jpg','png','jpeg')
-		ORDER BY file_date DESC
-	</select>		
+	</select>	
 </mapper>			  

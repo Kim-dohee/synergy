@@ -4,6 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.synergy.auction.donation.plan.service.DonationPlanMapper">
+ 	<resultMap type="com.synergy.auction.donation.plan.service.DonationPlanDto"  
+ 				id="resultDonationPlanDetail"> 
+ 		<result column="donation_plan_title"  
+ 				property="donationPlanTitle"/>		 	 
+ 		<collection property="file"  
+ 					ofType="com.synergy.auction.file.service.FileDto">	 
+ 			<result column="file_name"  
+ 					property="fileName"/> 
+ 			<result column="file_ext"  
+ 					property="fileExt"/> 
+ 		</collection>			 
+ 	</resultMap>	 
  	<insert id="donationPlanInsert"
 			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto">
 		INSERT INTO donation_plan (
@@ -45,19 +57,16 @@
 		SET donation_plan_image_no=#{donationPlanImageNo}
 		WHERE donation_plan_no=#{donationPlanNo}
 	</update>
-	<select id="donationPlanSelect"  
-			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
-		SELECT 
-			donation_plan_file_no AS donationPlanFileNo,
-			donation_plan_image_no AS donationPlanImageNo,
-			donation_plan_title AS donationPlanTitle,
-			donation_plan_content AS donationPlanContent,
-			donation_plan_purpose AS donationPlanPurpose,
-			donation_plan_use_term AS donationPlanUseTerm,
-			donation_plan_goal_price AS donationPlanGoalPrice,
-			donation_plan_date AS donationPlanDate
-		FROM donation_plan
-		ORDER BY donation_plan_date DESC;
-	</select>		 		
+	<select id="selectDonationPlanDetail"  
+ 			resultMap="resultDonationPlanDetail"> 
+ 		SELECT 
+ 			dp.donation_plan_title
+ 			,f.file_name
+ 			,f.file_ext
+		FROM donation_plan AS dp
+		JOIN file AS f ON dp.donation_plan_no = f.file_table_no
+		WHERE f.file_ext IN('jpg','png','jpeg')
+		ORDER BY f.file_date DESC 
+ 	</select> 
  </mapper>  
   
