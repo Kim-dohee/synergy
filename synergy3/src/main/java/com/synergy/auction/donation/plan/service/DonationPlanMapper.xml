@@ -5,7 +5,9 @@
   
  <mapper namespace="com.synergy.auction.donation.plan.service.DonationPlanMapper">
  	<resultMap type="com.synergy.auction.donation.plan.service.DonationPlanDto"  
- 				id="resultDonationPlanDetail"> 
+ 				id="resultDonationPlan"> 
+ 		<result column="donation_plan_no"  
+ 				property="donationPlanNo"/>
  		<result column="donation_plan_title"  
  				property="donationPlanTitle"/>		 	 
  		<collection property="file"  
@@ -57,16 +59,26 @@
 		SET donation_plan_image_no=#{donationPlanImageNo}
 		WHERE donation_plan_no=#{donationPlanNo}
 	</update>
-	<select id="selectDonationPlanDetail"  
- 			resultMap="resultDonationPlanDetail"> 
+	<select id="selectDonationPlan"  
+ 			resultMap="resultDonationPlan"> 
  		SELECT 
- 			dp.donation_plan_title
+ 			dp.donation_plan_no
+ 			,dp.donation_plan_title
  			,f.file_name
  			,f.file_ext
 		FROM donation_plan AS dp
 		JOIN file AS f ON dp.donation_plan_no = f.file_table_no
 		WHERE f.file_ext IN('jpg','png','jpeg')
 		ORDER BY f.file_date DESC 
- 	</select> 
+ 	</select>
+ 	<select id="donationPlanSelect" 
+			parameterType="String" 
+			resultType="Integer">
+		SELECT donation_plan_no 
+		FROM donation_plan 
+		WHERE donator_id=#{donatorId} 
+		ORDER BY donation_plan_date DESC
+		LIMIT 1	
+	</select>
  </mapper>  
   

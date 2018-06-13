@@ -110,13 +110,21 @@ public class DonationPlanController {
 		return "donationPlan/donation_plan_commit";
 	}
 	
-	//전체기부 검색
+	//기부하기 검색
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {
 
 		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
-		List<DonationPlanDto> list = donationPlanService.selectDonationPlanDetail();
+		List<DonationPlanDto> list = donationPlanService.selectDonationPlan();
 		model.addAttribute("list", list);
-		return "donation/donation_all";
+		return "donation/donation_select";
+	}
+	
+	//기부하기 상세 화면
+	@RequestMapping(value = "/donationSelectDetail", method = RequestMethod.GET)
+	public String donationSelectDetailView(@RequestParam(value="donationPlanNo") int donationPlanNo) {
+
+		logger.debug("DonationPlanController.donationSelectDetailView donationPlanNo>>"+donationPlanNo);
+		return "donation/donation_select_detail";
 	}
 }

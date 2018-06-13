@@ -43,7 +43,7 @@ public class DonationPlanDao {
 	}
 	
 	//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
-	public List<DonationPlanDto> selectDonationPlanDetail() { 
-		return sqlSession.selectList(NS+"selectDonationPlanDetail"); 
+	public List<DonationPlanDto> selectDonationPlan() { 
+		return sqlSession.selectList(NS+"selectDonationPlan"); 
 	}
 }

@@ -10,17 +10,17 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기 > 전체기부 </h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기 </h4>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<h1>전체 기부</h1><br><br><br>
 		<div class="row">
 			<c:forEach var="donation" items="${list}">
 				<div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">	
-						<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" width="20%" height="35%"></a>		
+						<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" width="20%" height="35%"></a>		
 						<div class="card-body">
 							<h4 class="card-title">
-							<a href="#">${donation.donationPlanTitle}</a>
+							<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}">${donation.donationPlanTitle}</a>
 							</h4>
 						</div>
 					</div>
