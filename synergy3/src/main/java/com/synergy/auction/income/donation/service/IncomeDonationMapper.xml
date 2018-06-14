@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.synergy.auction.income.donation.service.IncomeDonationMapper">
+	<insert id="incomeDonationInsert"
+			parameterType="com.synergy.auction.income.donation.service.IncomeDonationDto">
+		INSERT INTO income_donation(
+			donation_plan_no
+			,user_id
+			,income_donation_price
+			,income_donation_date
+		) VALUES (
+			#{donationPlanNo}
+			,#{userId}
+			,#{incomeDonationPrice}
+			, now()
+		)
+	</insert>
+</mapper>  

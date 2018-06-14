@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div style="text-align: center; font-size: 16px" class="container">
-		<div class="col-lg-4 mb-4">
+		<div class="col-lg-6 mb-4">
 			<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/image/dohee.jpg" width="70%" height="40%"></a>
 				<div class="card-body">
 					<h4 class="card-title">
@@ -22,7 +22,7 @@
 					</p>
 				</div>	
 		</div>
-		<div class="col-lg-4 mb-4">
+		<div class="col-lg-6 mb-4">
 			<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/image/sanguk.jpg" width="70%" height="40%"></a>
 				<div class="card-body">
 					<h4 class="card-title">
