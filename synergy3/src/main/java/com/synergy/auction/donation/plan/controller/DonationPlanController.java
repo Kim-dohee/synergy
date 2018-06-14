@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donator.controller.DonatorController;
@@ -32,6 +33,8 @@ public class DonationPlanController {
 	private FileService fileService;
 	@Autowired
 	private DonationPlanService donationPlanService;
+	@Autowired
+	private CashRecordService cashRecordService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -122,9 +125,21 @@ public class DonationPlanController {
 	
 	//기부하기 상세 화면
 	@RequestMapping(value = "/donationSelectDetail", method = RequestMethod.GET)
-	public String donationSelectDetailView(@RequestParam(value="donationPlanNo") int donationPlanNo) {
-
-		logger.debug("DonationPlanController.donationSelectDetailView donationPlanNo>>"+donationPlanNo);
+	public String donationSelectDetail(HttpSession session
+										,Model model
+										,@RequestParam(value="donationPlanNo") int donationPlanNo) {
+		
+		logger.debug("DonationPlanController.donationSelectDetail donationPlanNo>>"+donationPlanNo);
+		//해당 계획서 넘버를 매개변수로 받아 기부금계획서 상세(제목,내용,이미지파일명 및 확장자)검색
+		List<DonationPlanDto> list = donationPlanService.selectDonationPlanDetail(donationPlanNo);
+		String userId = (String) session.getAttribute("id");
+		//최종캐쉬금액 검색
+		if(userId != null) {
+			int totalCash = cashRecordService.totalCashRecordSelectOne(userId);
+			model.addAttribute("totalCash", totalCash);
+		}
+		model.addAttribute("list", list);
 		return "donation/donation_select_detail";
 	}
+
 }

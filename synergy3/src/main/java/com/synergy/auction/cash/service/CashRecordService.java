@@ -66,4 +66,9 @@ public class CashRecordService {
 		map.put("lastPage",lastPage);
 		return map;
 	}
+	
+	//최종캐쉬금액 검색
+	public int totalCashRecordSelectOne(String userId) { 
+		return cashRecordDao.totalCashRecordSelectOne(userId); 
+	}
 }

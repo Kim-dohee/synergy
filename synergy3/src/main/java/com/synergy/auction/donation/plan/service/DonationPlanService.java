@@ -44,4 +44,9 @@ public class DonationPlanService {
 	public List<DonationPlanDto> selectDonationPlan() { 
 		return donationPlanDao.selectDonationPlan(); 
 	}
+	
+	//해당 계획서 넘버를 매개변수로 받아 기부금계획서 상세(제목,내용,이미지파일명 및 확장자)검색
+	public List<DonationPlanDto> selectDonationPlanDetail(int donationPlanNo) { 
+		return donationPlanDao.selectDonationPlanDetail(donationPlanNo); 
+	}
 }

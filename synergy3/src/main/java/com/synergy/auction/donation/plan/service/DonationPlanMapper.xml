@@ -17,6 +17,22 @@
  			<result column="file_ext"  
  					property="fileExt"/> 
  		</collection>			 
+ 	</resultMap>
+ 	<resultMap type="com.synergy.auction.donation.plan.service.DonationPlanDto"  
+ 				id="resultDonationPlanDetail"> 
+ 		<result column="donation_plan_no"  
+ 				property="donationPlanNo"/>
+ 		<result column="donation_plan_title"  
+ 				property="donationPlanTitle"/>		 	 
+ 		<result column="donation_plan_content"  
+ 				property="donationPlanContent"/>		 	 
+ 		<collection property="file"  
+ 					ofType="com.synergy.auction.file.service.FileDto">	 
+ 			<result column="file_name"  
+ 					property="fileName"/> 
+ 			<result column="file_ext"  
+ 					property="fileExt"/> 
+ 		</collection>			 
  	</resultMap>	 
  	<insert id="donationPlanInsert"
 			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto">
@@ -70,6 +86,20 @@
 		JOIN file AS f ON dp.donation_plan_no = f.file_table_no
 		WHERE f.file_ext IN('jpg','png','jpeg')
 		ORDER BY f.file_date DESC 
+ 	</select>
+ 	<select id="selectDonationPlanDetail"  
+ 			parameterType="Integer"
+ 			resultMap="resultDonationPlanDetail"> 
+ 		SELECT 
+ 			dp.donation_plan_no
+ 			,dp.donation_plan_title
+ 			,dp.donation_plan_content
+ 			,f.file_name
+ 			,f.file_ext
+		FROM donation_plan AS dp
+		JOIN file AS f ON dp.donation_plan_no = f.file_table_no
+		WHERE f.file_ext IN('jpg','png','jpeg')
+		AND dp.donation_plan_no=#{donationPlanNo}
  	</select>
  	<select id="donationPlanSelect" 
 			parameterType="String" 

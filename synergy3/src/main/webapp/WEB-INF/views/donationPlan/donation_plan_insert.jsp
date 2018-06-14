@@ -62,7 +62,7 @@
 		            </tr>
 		            <tr>  	            
 	                <th class="active">내용 </th>
-	                <td><textarea cols="10" placeholder="500자 이내에 입력하세요 " rows="30" name="donationPlanContent" id="donationPlanContent" class="form-control" maxlength="1000"></textarea></td>	            
+	                <td><textarea cols="10" placeholder="500자 이내에 입력하세요 " rows="30" name="donationPlanContent" id="donationPlanContent" class="form-control" maxlength="3000"></textarea></td>	            
 		            </tr>
 		            <tr>	            
 		                <th class="active">목적 </th>
