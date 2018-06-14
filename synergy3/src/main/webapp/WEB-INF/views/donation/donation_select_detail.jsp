@@ -13,10 +13,10 @@
 			$('#image').one('click', function () {
 				//기부하기 click시 기부금액 입력가능
 				$("p").append('<span style="font-weight:bold"><h1>기부자님의 소중한 마음으로 놀라운 변화가 일어납니다.</h1></span><br>투명한 기부 후기로 그 변화를 소개하고 보답하겠습니다!');
-				$("#div1").append('총 기부금액&nbsp;&nbsp;&nbsp;<input type="text" name="donationUsePrice" placeholder="금액(숫자)만 입력 가능합니다" maxlength="30" id="donationUsePrice" onKeyPress="return numkeyCheck(event)" data-rule-required="true">&nbsp;&nbsp;&nbsp;<input type="button" value="기부하기" class="btn btn-warning btn-lg" id="donationuse">');
+				$("#div1").append('총 기부금액&nbsp;&nbsp;&nbsp;<input type="text" name="incomeDonationPrice" placeholder="금액(숫자)만 입력 가능합니다" maxlength="30" id="incomeDonationPrice" onKeyPress="return numkeyCheck(event)" data-rule-required="true">&nbsp;&nbsp;&nbsp;<input type="button" value="기부하기" class="btn btn-warning btn-lg" id="donationuse">');
 			});
 			//기부금액 입력이 숫자만 허용
-			$(document).on("keyup","#donationUsePrice",function(event){
+			$(document).on("keyup","#incomeDonationPrice",function(event){
 				$(this).val($(this).val().replace(/[^0-9]/g,""));
          	 });
 			//기부하기 버튼클릭시 button type을 submit으로 변경
@@ -53,7 +53,7 @@
 			</c:if>
 			<br><br><br><br>
 			<p></p>
-			<form action="${pageContext.request.contextPath}/donationUse?donationPlanNo=${donation.donationPlanNo}" method="post">
+			<form action="${pageContext.request.contextPath}/incomeDonation?donationPlanNo=${donation.donationPlanNo}" method="post">
 				<br><br><div id="div1"></div><br><br>
 			</form>
 		</c:forEach>		

@@ -133,8 +133,9 @@ public class DonationPlanController {
 		//해당 계획서 넘버를 매개변수로 받아 기부금계획서 상세(제목,내용,이미지파일명 및 확장자)검색
 		List<DonationPlanDto> list = donationPlanService.selectDonationPlanDetail(donationPlanNo);
 		String userId = (String) session.getAttribute("id");
+		String level = (String) session.getAttribute("level");
 		//최종캐쉬금액 검색
-		if(userId != null) {
+		if(level.equals("일반회원")) {
 			int totalCash = cashRecordService.totalCashRecordSelectOne(userId);
 			model.addAttribute("totalCash", totalCash);
 		}
