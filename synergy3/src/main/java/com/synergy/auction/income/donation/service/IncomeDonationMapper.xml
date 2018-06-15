@@ -18,4 +18,28 @@
 			, now()
 		)
 	</insert>
+	<select id="incomeDonationPriceSelectOne"
+			resultType="Integer">
+		SELECT SUM(income_donation_price) 
+		FROM income_donation
+	</select>
+	<select id="incomeDonationPlanPriceSelectOne"
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT SUM(income_donation_price) 
+		FROM income_donation 
+		WHERE donation_plan_no = #{donationPlanNo}
+	</select>
+	<insert id="incomeDonationPriceInsert"
+			parameterType="Integer">
+		INSERT INTO income_donation (
+			donation_plan_no
+			,income_donation_price
+			,income_donation_date
+		) VALUES (
+			#{donationPlanNo}
+			,0
+			,now()
+		)	
+	</insert>				
 </mapper>  

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.synergy.auction.cash.controller.CashController;
+import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.income.donation.service.IncomeDonationDto;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
 
@@ -39,4 +40,5 @@ public class IncomeDonationController {
 		//기부금 (아이디,기부액,기부금계획서넘버)등록
 		return "home";
 	}
+	
 }

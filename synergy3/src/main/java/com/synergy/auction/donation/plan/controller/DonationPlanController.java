@@ -24,6 +24,7 @@ import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donator.controller.DonatorController;
 import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
+import com.synergy.auction.income.donation.service.IncomeDonationService;
 
 @Controller
 @Transactional
@@ -35,6 +36,8 @@ public class DonationPlanController {
 	private DonationPlanService donationPlanService;
 	@Autowired
 	private CashRecordService cashRecordService;
+	@Autowired
+	private IncomeDonationService incomeDonationService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -89,6 +92,8 @@ public class DonationPlanController {
 		donationPlanService.donationPlanInsert(donationPlanDto);
 		//기부금 계획서 넘버 검색
 		int donationPlanNo = donationPlanService.donationPlanNoSelectOne(donatorId);
+		//기부계획서 등록시 기부금액은 0으로 등록
+		incomeDonationService.incomeDonationPriceInsert(donationPlanNo);
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanNo>>"+donationPlanNo);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
@@ -113,13 +118,25 @@ public class DonationPlanController {
 		return "donationPlan/donation_plan_commit";
 	}
 	
+	//기부금 계획서 검색
+	@RequestMapping(value = "/donationPlanSelect", method = RequestMethod.GET)
+	public String donationPlanSelect(Model model) {
+		
+		List<DonationPlanDto> list = donationPlanService.donationPlanSelect();
+		model.addAttribute("list", list);
+		return "donationPlan/donation_plan_select";
+	}
+	
 	//기부하기 검색
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {
 
 		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
 		List<DonationPlanDto> list = donationPlanService.selectDonationPlan();
+		//총 수입기부금 검색
+		int incomeDonationPrice = incomeDonationService.incomeDonationPriceSelectOne();
 		model.addAttribute("list", list);
+		model.addAttribute("incomeDonationPrice", incomeDonationPrice);
 		return "donation/donation_select";
 	}
 	
@@ -139,8 +156,15 @@ public class DonationPlanController {
 			int totalCash = cashRecordService.totalCashRecordSelectOne(userId);
 			model.addAttribute("totalCash", totalCash);
 		}
+		//해당 기부계획서의 총 수입기부금 검색
+		int donationPlanPrice = incomeDonationService.incomeDonationPlanPriceSelectOne(donationPlanNo);
+		if(donationPlanPrice != 0) {
+			
+		}
 		model.addAttribute("list", list);
+		model.addAttribute("donationPlanPrice", donationPlanPrice);
 		return "donation/donation_select_detail";
 	}
+	
 
 }

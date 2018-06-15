@@ -34,20 +34,18 @@
 	 		<span style="font-weight:bold"><h1>"${donation.donationPlanTitle}"</h1></span><br><br><br>
 			<img class="img-thumbnail" style="width:70%; height:20%;" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" data-holder-rendered="true">
 			<br><br><br><br><br><br>
+			<div class="alert alert-info" role="alert"><h3>총 ${donationPlanPrice} 원이 기부되었습니다.</h3></div><br><br><br><br>
 			<pre>${donation.donationPlanContent}</pre><br><br><br>
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title" id="panel-title">내 캐쉬금액<span class="anchorjs-icon"></span></a></h3>
+			<c:if test="${sessionScope.level eq '일반회원'}">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title" id="panel-title">내 캐쉬금액<span class="anchorjs-icon"></span></a></h3>
+					</div>
+					<div class="panel-body">				      
+				        ${totalCash} 원			    
+					</div>
 				</div>
-				<div class="panel-body">
-			        <c:if test="${sessionScope.level ne '일반회원'}">
-			        <a href="${donation.donationPlanContent}/home">로그인</a> 후 캐쉬금액 확인 및 기부가 가능합니다
-			        </c:if>
-			        <c:if test="${sessionScope.level eq '일반회원'}">
-			        	${totalCash} 원
-			        </c:if>  
-				</div>
-			</div>
+			</c:if>
 			<c:if test="${sessionScope.level eq '일반회원'}">
 				<br><br><br><img style="width:20%; height:20%;" src="${pageContext.request.contextPath}/resources/image/donationbutton.png" id="image">
 			</c:if>

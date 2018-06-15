@@ -18,4 +18,19 @@ public class IncomeDonationDao {
 		int row = sqlSession.insert(NS+"incomeDonationInsert", incomeDonationDto); 
 		return row; 
 	}
+	
+	//총 수입기부금 검색
+	public int incomeDonationPriceSelectOne() { 
+		return sqlSession.selectOne(NS+"incomeDonationPriceSelectOne"); 
+	}
+	
+	//해당 기부계획서의 총 수입기부금 검색
+	public int incomeDonationPlanPriceSelectOne(int donationPlanNo) { 
+		return sqlSession.selectOne(NS+"incomeDonationPlanPriceSelectOne", donationPlanNo); 
+	}
+	
+	//기부계획서 등록시 기부금액은 0으로 등록
+	public int incomeDonationPriceInsert(int donationPlanNo) { 
+		return sqlSession.insert(NS+"incomeDonationPriceInsert", donationPlanNo); 
+	}
 }
