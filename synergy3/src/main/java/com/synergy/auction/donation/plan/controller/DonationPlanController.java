@@ -22,6 +22,7 @@ import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donator.controller.DonatorController;
+import com.synergy.auction.donator.service.DonatorService;
 import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
@@ -38,6 +39,8 @@ public class DonationPlanController {
 	private CashRecordService cashRecordService;
 	@Autowired
 	private IncomeDonationService incomeDonationService;
+	@Autowired
+	private DonatorService donatorService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -122,17 +125,26 @@ public class DonationPlanController {
 	@RequestMapping(value = "/donationPlanSelect", method = RequestMethod.GET)
 	public String donationPlanSelect(Model model) {
 		
+		String donatorId = null;
 		List<DonationPlanDto> list = donationPlanService.donationPlanSelect();
+		for(DonationPlanDto donationPlan : list) {
+			logger.debug("DonationPlanController.donationPlanSelect donationPlanTitle >>"+donationPlan.getDonationPlanTitle());
+			logger.debug("DonationPlanController.donationPlanSelect donatorId >>"+donationPlan.getDonatorId());
+			donatorId = donationPlan.getDonatorId();
+		}
+		//donatorId를 매개변수로 받아 기부단체donationPlan.getDonatorId()
+		String donatorName = donatorService.donatorNameSelectOne(donatorId);
+		logger.debug("DonationPlanController.donationPlanSelect donatorName >>"+donatorName);
 		model.addAttribute("list", list);
+		model.addAttribute("donatorName", donatorName);
 		return "donationPlan/donation_plan_select";
-	}
-	
+	}	
 	//기부하기 검색
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {
 
 		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
-		List<DonationPlanDto> list = donationPlanService.selectDonationPlan();
+		List<DonationPlanDto> list = donationPlanService.donationSelect();
 		//총 수입기부금 검색
 		int incomeDonationPrice = incomeDonationService.incomeDonationPriceSelectOne();
 		model.addAttribute("list", list);

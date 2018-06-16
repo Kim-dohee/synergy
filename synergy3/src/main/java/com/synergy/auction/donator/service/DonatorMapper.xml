@@ -24,7 +24,9 @@
 			,now()
 		)
 	</insert>
-	<select id="donatorSelectOne" parameterType="String" resultType="com.synergy.auction.donator.service.DonatorDto"> 
+	<select id="donatorSelectOne" 
+			parameterType="String" 
+			resultType="com.synergy.auction.donator.service.DonatorDto"> 
 		SELECT
 			donator_id AS donatorId
 			,donator_pw AS donatorPw
@@ -36,7 +38,8 @@
 		FROM donator 
 		WHERE donator_id=#{donatorId} 
 	</select> 
-	<update id="donatorUpdate" parameterType="com.synergy.auction.donator.service.DonatorDto"> 
+	<update id="donatorUpdate" 
+			parameterType="com.synergy.auction.donator.service.DonatorDto"> 
 		UPDATE donator SET 
 			donator_pw = #{donatorPw} 
 			,donator_business_no = #{donatorBusinessNo} 
@@ -44,4 +47,11 @@
 			,donator_telephone = #{donatorTelephone} 
 		WHERE donator_id = #{donatorId} 
 	</update> 
+	<select id="donatorNameSelectOne" 
+			parameterType="String" 
+			resultType="String">
+		SELECT donator_name 
+		FROM donator 
+		WHERE donator_id=#{donatorId}
+	</select>		 
 </mapper>

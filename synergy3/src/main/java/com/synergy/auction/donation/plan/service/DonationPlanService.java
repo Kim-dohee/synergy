@@ -41,8 +41,8 @@ public class DonationPlanService {
 	}
 	
 	//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
-	public List<DonationPlanDto> selectDonationPlan() { 
-		return donationPlanDao.donationPlanSelect(); 
+	public List<DonationPlanDto> donationSelect() { 
+		return donationPlanDao.donationSelect(); 
 	}
 	
 	//해당 계획서 넘버를 매개변수로 받아 기부금계획서 상세(제목,내용,이미지파일명 및 확장자)검색

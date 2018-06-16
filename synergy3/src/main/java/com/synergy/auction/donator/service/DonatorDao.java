@@ -30,4 +30,9 @@ public class DonatorDao {
 		int row = sqlSession.update(NS + "donatorUpdate", donator); 
 		return row;
 	} 
+	
+	//donatorId를 매개변수로 받아 기부단체명 검색
+	public String donatorNameSelectOne(String donatorId) {
+		return sqlSession.selectOne(NS + "donatorNameSelectOne", donatorId); 
+	}
 }

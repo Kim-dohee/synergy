@@ -26,5 +26,10 @@ public class DonatorService {
 	public int donatorUpdate(DonatorDto donator) {
 		int row = donatorDao.donatorUpdate(donator);
 		return row;
-	} 
+	}
+	
+	//donatorId를 매개변수로 받아 기부단체명 검색
+	public String donatorNameSelectOne(String donatorId) {
+		return donatorDao.donatorNameSelectOne(donatorId); 
+	}
 }
