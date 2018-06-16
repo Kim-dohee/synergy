@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.login.service.LoginDao;
 import com.synergy.auction.login.service.LoginService;
 import com.synergy.auction.user.service.UserDto;
@@ -39,6 +40,7 @@ public class LoginController {
 		String level = loginService.login(id,pw);
 		//id,pw일치하면 id,level세션설정
 		if(level!=null) {
+			;
 			session.setAttribute("id", id);
 			session.setAttribute("level", level);
 			modelMap.addAttribute("message", "로그인 성공!");
@@ -81,6 +83,8 @@ public class LoginController {
 		return "login/id_search";
 	}
 	
+	
+	//아이디 찾기
 	@RequestMapping(value = "/idSearch", method = RequestMethod.POST)
 	public String idSearch(Model model,
 							@RequestParam(value="userName") String userName
@@ -99,6 +103,7 @@ public class LoginController {
 		return "login/pw_search";
 	}	
 	
+	//비밀번호 찾기
 	@RequestMapping(value = "/pwSearch", method = RequestMethod.POST)
 	public String idSearch(Model model,
 							@RequestParam(value="userId") String userId

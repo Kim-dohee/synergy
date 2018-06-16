@@ -30,10 +30,10 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	//약관동의 화면
-		@RequestMapping(value = "/userAgreement", method = RequestMethod.GET)
-		public String userAgreement() {
-			return "user/user_agreement";
-		}
+	@RequestMapping(value = "/userAgreement", method = RequestMethod.GET)
+	public String userAgreement() {
+		return "user/user_agreement";
+	}
 	
 	//회원가입 화면
 	@RequestMapping(value = "/userInsertView", method = RequestMethod.POST)
@@ -76,6 +76,7 @@ public class UserController {
 		return "user/user_update_confirm";
 	}
 	
+	//회원수정 전 비밀번호 확인
 	@RequestMapping(value = "/userUpdateConfirm", method = RequestMethod.POST)
 	public String userUpdateConfirm(HttpSession session, Model model, ModelMap modelMap
 									,@RequestParam(value="userPw") String userPw) {

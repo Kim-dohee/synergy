@@ -54,7 +54,7 @@
 			,cash_record_total AS cashRecordTotal 
 		FROM cash_record 
 		WHERE user_id = #{userId}
-		ORDER BY cash_record_change_date ASC
+		ORDER BY cash_record_change_date DESC
 		LIMIT #{beginRow},10;
 	</select>
 	<select id="totalCashRecord"  

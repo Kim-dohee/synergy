@@ -16,12 +16,12 @@ public class AuctionGoodsDao {
 	final String NS = "com.synergy.auction.auction.goods.service.AuctionGoodsMapper.";
 	
 	public int auctionGoodsInsert(AuctionGoodsDto auctionGoodsDto) { 
-		int row = sqlSession.insert(NS+"auctionGoodsInsert", auctionGoodsDto); 
-		return row; 
+		sqlSession.insert(NS+"auctionGoodsInsert", auctionGoodsDto); 
+		return auctionGoodsDto.getAuctionGoodsNo(); 
 	} 
 
-	public List<AuctionGoodsDto> auctionGoodsSearch(AuctionGoodsDto auctionGoodsDto) { 
-		return sqlSession.selectList(NS+"auctionGoodsSearch", auctionGoodsDto); 		
+	public List<AuctionGoodsDto> auctionGoodsSearch() { 
+		return sqlSession.selectList(NS+"auctionGoodsSearch"); 		
 	}
 	
 	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 
@@ -39,4 +39,11 @@ public class AuctionGoodsDao {
 	public int auctionGoodsUpdate(String auctionGoodsNo) {
 		return sqlSession.update(NS + "auctionGoodsUpdate", auctionGoodsNo); 
 	} 
+	
+	public int auctionGoodsFileNoUpdate(AuctionGoodsDto auctionGoodsDto) {
+		System.out.println("Asdfsdafsdfsadfsaf"+auctionGoodsDto.toString());
+		return sqlSession.update(NS + "auctionGoodsFileNoUpdate", auctionGoodsDto); 
+	} 
+	
+	
 }

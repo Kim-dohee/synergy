@@ -5,18 +5,50 @@
  
 <mapper namespace="com.synergy.auction.auction.goods.service.AuctionGoodsMapper">
 	
-	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
+<!-- 	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
 		<result column="auction_goods_no" property="auctionGoodsNo"/> 
-	</resultMap> 
+	</resultMap>  -->
+	
 	<resultMap id="bidSelectOne" type="com.synergy.auction.auction.goods.service.BidDto"> 
 				<result column="user_id" property="userId"/> 
 				<result column="auction_goods_no" property="auctionGoodsNo"/> 
 				<result column="bid_price" property="bidPrice"/> 
 				<result column="bid_date" property="bidDate"/> 
 	</resultMap> 
+		
+	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
+		<result column="auction_goods_no" property="auctionGoodsNo"/>
+		<result column="auction_goods_file_no" property="auctionGoodsFileNo"/>		 	 
+		<result column="donation_paln_no" property="donationPalnNo"/>		 	 
+		<result column="auction_state_no" property="auctionStateNo"/>		 	 
+		<result column="user_id" property="userId"/>		 	 
+		<result column="small_category_no" property="smallCategoryNo"/>		 	 
+		<result column="auction_goods_min_price" property="auctionGoodsMinPrice"/>		 	 
+		<result column="auction_goods_title" property="auctionGoodsTitle"/>		 	 
+		<result column="auction_goods_content" property="auctionGoodsContent"/>		 	 
+		<result column="auction_goods_instance_buy_price" property="auctionGoodsInstanceBuyPrice"/>		 	 
+		<result column="auction_goods_name" property="auctionGoodsName"/>		 	 
+		<result column="auction_goods_bid_unit" property="auctionGoodsBidUnit"/>		 	 
+		<result column="auction_goods_date" property="auctionGoodsDate"/>		 	 
+		<result column="auction_goods_pay_term" property="auctionGoodsPayTerm"/>		 	 
+		<result column="auction_goods_bid_term" property="auctionGoodsBidTerm"/>		 	 
+		<result column="auction_goods_bid_start_date" property="auctionGoodsBidStartDate"/>		 	 
+		<result column="auction_goods_bid_end_date" property="auctionGoodsBidEndDate"/>		 	 
+		<result column="auction_goods_hits" property="auctionGoodsHits"/>		 	 
+		<collection property="file" ofType="com.synergy.auction.file.service.FileDto">	 
+			<result column="file_name" property="fileName"/> 
+			<result column="file_ext" property="fileExt"/> 
+		</collection>			 
+	</resultMap>
 
 	<insert id="auctionGoodsInsert"
 			parameterType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
+			<selectKey resultType="Integer" 
+						keyProperty="auctionGoodsNo"  
+						order="AFTER"> 
+			SELECT LAST_INSERT_ID() 
+			</selectKey> 
+			
 		INSERT INTO auction_goods(
 			auction_goods_file_no
 			,donation_paln_no
@@ -36,10 +68,10 @@
 			,auction_goods_bid_end_date
 			,auction_goods_hits
 		) VALUES (
-			1
-			,1
+			null
+			,null
 			,'입찰전'
-			,1123
+			,#{userId}
 			,#{smallCategoryNo}
 			,#{auctionGoodsMinPrice}
 			,#{auctionGoodsTitle}
@@ -56,28 +88,36 @@
 		)
 	</insert>
 
-	<select id="auctionGoodsSearch" parameterType="java.util.List" resultType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
+	<select id="auctionGoodsSearch" resultMap="resultAuctionGoods">
 		SELECT 
-			auction_goods_no AS auctionGoodsNo
-			,auction_goods_file_no AS auctionGoodsFileNo
-			,donation_paln_no AS donationPalnNo
-			,auction_state_no AS auctionStateNo
-			,user_id AS userId
-			,small_category_no AS smallCategoryNo
-			,auction_goods_min_price AS auctionGoodsMinPrice
-			,auction_goods_title AS auctionGoodsTitle
-			,auction_goods_content AS auctionGoodsContent
-			,auction_goods_instance_buy_price AS auctionGoodsInstanceBuyPrice
-			,auction_goods_name AS auctionGoodsNname
-			,auction_goods_bid_unit AS auctionGoodsBidUnit
-			,auction_goods_date AS auctionGoodsDate
-			,auction_goods_pay_term AS auctionGoodsPayTerm
-			,auction_goods_bid_term AS auctionGoodsBidTerm
-			,auction_goods_bid_start_date AS auctionGoodsBidStartDate
-			,auction_goods_bid_end_date AS auctionGoodsBidEndDate
-			,auction_goods_hits AS auctionGoodsHits
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_paln_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
 		FROM
 			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no
+		WHERE 
+			file.file_ext IN('jpg','png','jpeg')
 	</select>	
 	
 	<select id="auctionGoodsSelectOne" parameterType="String" resultType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">
@@ -143,5 +183,15 @@
 			,auction_goods_bid_end_date = date_add(now(),interval+3 day) 
 		WHERE 
 			auction_goods_no =  #{auctionGoodsNo};
+	</update>
+	
+	<update id="auctionGoodsFileNoUpdate"
+			parameterType="com.synergy.auction.auction.goods.service.AuctionGoodsDto" >
+		UPDATE 
+			auction_goods
+		SET 
+			auction_goods_file_no=#{auctionGoodsFileNo}
+		WHERE 
+			auction_goods_no=#{auctionGoodsNo}
 	</update>
 </mapper>

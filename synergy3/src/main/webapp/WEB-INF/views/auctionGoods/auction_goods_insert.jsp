@@ -10,7 +10,8 @@
 <div style="text-align:center;font-size:16px;">
 		<br><br><br>
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/auctionGoodsInsert" method="post" encType="multiplart/form-data">
+		<form action="${pageContext.request.contextPath}/auctionGoodsInsert" method="post" enctype="multipart/form-data">
+		<input type="hidden" value="${sessionScope.id}" name="userId">
 			<table class="table table-bordered">
 				<tbody>	
 					<tr>	            
@@ -46,7 +47,7 @@
 					</tr>
 					<tr>	           
 						<th colspan="2" class="active">사진파일 </th>
-						<td colspan="4"><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control"/></td>	            
+						<td colspan="4"><input type="file" name="fileImage" id="fileImage" class="form-control"></td>	            
 					</tr>
 					
 					<tr>
@@ -81,8 +82,6 @@
 							<select name="bidUnit">
 								<option value="100">100</option>
 								<option value="1000">1000</option>
-								<option value="5000">5000</option>
-								<option value="10000">10000</option>
 							</select>
 						</td>
 					</tr>

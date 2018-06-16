@@ -24,6 +24,26 @@
 			,now()
 		)
 	</insert>
+	<insert id="auctionFileInsert"
+			parameterType="com.synergy.auction.file.service.FileDto">
+		INSERT INTO file (
+			file_table_no
+			,file_table_name
+			,file_name
+			,file_type
+			,file_ext
+			,file_size
+			,file_date
+		)VALUES (
+			#{fileTableNo}
+			,'auction_goods'
+			,#{fileName}
+			,#{fileType}
+			,#{fileExt}
+			,#{fileSize}
+			,now()
+		)
+	</insert>
 	<select id="fileNoSelect"
 			parameterType="Integer"
 			resultType="Integer">
@@ -40,6 +60,15 @@
 		FROM file 
 		WHERE file_table_no=#{donationPlanNo}
 		AND file_table_name='donation_plan' 
+		AND file_ext IN('jpg','png','jpeg')	
+	</select>	
+		<select id="auctionFileNoSelect"
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT file_no 
+		FROM file 
+		WHERE file_table_no=#{auctionGoodsNo}
+		AND file_table_name='auction_goods' 
 		AND file_ext IN('jpg','png','jpeg')	
 	</select>	
 </mapper>			  

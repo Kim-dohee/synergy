@@ -63,9 +63,53 @@ public class FileService {
 		}
 	}
 	
+	//경매품  파일 등록
+	public void auctionFileInsert(MultipartFile fileName,int auctionGoodsNo) {
+		
+		UUID uuid = UUID.randomUUID();
+		//파일 이름
+		String donationFileName = uuid.toString().replace("-","");
+		int dotIndex = fileName.getOriginalFilename().lastIndexOf(".");
+		//파일 확장자
+		String fileExt = fileName.getOriginalFilename().substring(dotIndex+1);
+		//파일 타입
+		String fileType = fileName.getContentType();
+		//파일 사이즈
+		long fileSize = fileName.getSize();
+		int newfileSize= (int)fileSize;
+		
+		//파일이름,타입,확장자,사이즈를 FileDto타입으로 세팅
+		FileDto fileDto = new FileDto();
+		fileDto.setFileName(donationFileName);
+		fileDto.setFileType(fileType);
+		fileDto.setFileExt(fileExt);
+		fileDto.setFileSize(newfileSize);
+		fileDto.setFileTableNo(auctionGoodsNo);
+		
+		//파일이 존재할경우 해당경로에 저장
+		if(!fileName.isEmpty()) {
+			logger.debug("FileService.fileInsert >> 파일존재");
+			File fileCourse = new File(SystemPath.UPLOAD_PATH+donationFileName+"."+fileExt);
+			try {
+				fileName.transferTo(fileCourse);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			//파일 등록
+			fileDao.auctionFileInsert(fileDto);
+		}
+	}
+	
 	//파일넘버 검색
 	public int fileNoSelect(int donationPlanNo) {
 		return fileDao.fileNoSelect(donationPlanNo);
+	}
+
+	//경매품파일넘버 검색
+	public int auctionFileNoSelect(int auctionGoodsNo) {
+		return fileDao.auctionFileNoSelect(auctionGoodsNo);
 	}
 	
 	//이미지파일넘버 검색

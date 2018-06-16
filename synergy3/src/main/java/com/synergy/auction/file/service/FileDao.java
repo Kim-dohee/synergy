@@ -21,9 +21,20 @@ public class FileDao {
 		return row; 
 	}
 	
+	//경매품 계획서 파일 등록
+	public int auctionFileInsert(FileDto fileDto) { 
+		int row = sqlSession.insert(NS+"auctionFileInsert", fileDto); 
+		return row; 
+	}
+	
 	//파일넘버 검색
 	public int fileNoSelect(int donationPlanNo) { 
 		return sqlSession.selectOne(NS+"fileNoSelect", donationPlanNo); 
+	}
+
+	//경매품 파일넘버 검색
+	public int auctionFileNoSelect(int auctionGoodsNo) { 
+		return sqlSession.selectOne(NS+"auctionFileNoSelect", auctionGoodsNo); 
 	}
 	
 	//이미지파일넘버 검색

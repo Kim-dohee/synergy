@@ -13,7 +13,7 @@
 			,bid_price
 			,bid_date)
 		VALUES 
-		 	(1
+		 	(#{userId}
 		 	,#{auctionGoodsNo}
 		 	,#{bidPrice}
 		 	,now())
@@ -27,7 +27,7 @@
 			,bid_price
 			,bid_date)
 		VALUES 
-		 	(1
+		 	(#{userId}
 		 	,#{auctionGoodsNo}
 		 	,#{bidPrice}
 		 	,now())

@@ -21,7 +21,8 @@
 				<c:forEach var="goods" items="${list}">
 					<tr>
 						<td>${goods.userId}</td>
-						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}">${goods.auctionGoodsTitle}</a></td>
+						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}">${goods.auctionGoodsTitle}</a>
+						<img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="10%" height="20%"></td>
 						<td>${goods.auctionGoodsInstanceBuyPrice}</td>
 						<td>${goods.auctionGoodsDate}</td>
 						<td>${goods.auctionGoodsHits}</td>
@@ -30,7 +31,9 @@
 					</tr>
 				</c:forEach>
 			</tbody>
+			
 		</table>
+		<a href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
 	</div>
-<a href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
+
 </body>

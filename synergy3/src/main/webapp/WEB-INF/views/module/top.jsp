@@ -32,6 +32,26 @@
 		.one ul{display:none;}
 		.one li:hover > ul {display:block;}
 		</style>
+		<script>
+			$(function() {
+				var id =  ${sessionScope.id};
+				console.log(id);
+					$.ajax({
+						type : 'GET',
+						data : id,
+						url : "${pageContext.request.contextPath}/cashRecordTotal?id="+id,
+						dataType : "json",
+						contentType: "application/json; charset=UTF-8",
+						success : function(totalCash){
+							$('#totalCash').text("캐시 : "+totalCash+" 원");
+							$('#totalCash').val(totalCash);
+							/* alert("error : " + totalCash); */
+						},
+						error : function(error) {
+						}
+					});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -59,6 +79,9 @@
 					<c:if test="${!empty sessionScope.id}">
 						<font style="color:white;">${sessionScope.id}님 (${sessionScope.level})</font>
 						<a class="nav-link" href="${pageContext.request.contextPath}/logout"><font style="color:gray;">로그아웃</font></a>
+						
+						
+					<p style="color:white" id="totalCash"></p> 
 					</c:if>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
@@ -121,16 +144,15 @@
 									</ul>
 								</div>
 						</li>
-						<li class="nav-item dropdown">	
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">기부</a>	
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
-								<c:if test="${sessionScope.level eq '기부단체'}">
-								<ul class="one">
-									<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationPlanMain">계획서</a></li>
-								</ul>
-								</c:if>	
-								<c:if test="${sessionScope.level eq '기부단체' || sessionScope.level eq '일반회원'|| sessionScope.level eq '관리자'}">	
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">기부</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
+									<c:if test="${sessionScope.level eq '기부단체'}">
 									<ul class="one">
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationPlanMain">계획서</a></li>
+									</ul>
+									</c:if>	
+										<ul class="one">
 										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationAll">기부하기</a>
 											<ul class="two border">								
 												<!-- <li><a class="dropdown-item" href="#">아동기부</a></li>								
@@ -140,8 +162,7 @@
 											</ul>
 										</li>
 									</ul>
-								</c:if>	
-							</div>	
+								</div>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="about.html">1:1 문의</a>

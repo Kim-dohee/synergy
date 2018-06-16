@@ -1,10 +1,12 @@
 /*최상욱*/
 package com.synergy.auction.auction.goods.service;
 
+import com.synergy.auction.file.service.FileDto;
+
 public class AuctionGoodsDto {
 	private int auctionGoodsNo;
-	private String auctionGoodsFileNo;
-	private String donationPalnNo;
+	private int auctionGoodsFileNo;
+	private int donationPalnNo;
 	private String auctionStateNo;
 	private String userId;
 	private String smallCategoryNo;
@@ -15,28 +17,28 @@ public class AuctionGoodsDto {
 	private String auctionGoodsName;
 	private int auctionGoodsBidUnit;
 	private String auctionGoodsDate;
-	private String auctionGoodsBayTerm;
+	private String auctionGoodsPayTerm;
 	private String auctionGoodsBidTerm;
 	private String auctionGoodsBidStartDate;
 	private String auctionGoodsBidEndDate;
 	private int auctionGoodsHits;
-
+	private FileDto file;
 	public int getAuctionGoodsNo() {
 		return auctionGoodsNo;
 	}
 	public void setAuctionGoodsNo(int auctionGoodsNo) {
 		this.auctionGoodsNo = auctionGoodsNo;
 	}
-	public String getAuctionGoodsFileNo() {
+	public int getAuctionGoodsFileNo() {
 		return auctionGoodsFileNo;
 	}
-	public void setAuctionGoodsFileNo(String auctionGoodsFileNo) {
+	public void setAuctionGoodsFileNo(int auctionGoodsFileNo) {
 		this.auctionGoodsFileNo = auctionGoodsFileNo;
 	}
-	public String getDonationPalnNo() {
+	public int getDonationPalnNo() {
 		return donationPalnNo;
 	}
-	public void setDonationPalnNo(String donationPalnNo) {
+	public void setDonationPalnNo(int donationPalnNo) {
 		this.donationPalnNo = donationPalnNo;
 	}
 	public String getAuctionStateNo() {
@@ -99,11 +101,11 @@ public class AuctionGoodsDto {
 	public void setAuctionGoodsDate(String auctionGoodsDate) {
 		this.auctionGoodsDate = auctionGoodsDate;
 	}
-	public String getAuctionGoodsBayTerm() {
-		return auctionGoodsBayTerm;
+	public String getAuctionGoodsPayTerm() {
+		return auctionGoodsPayTerm;
 	}
-	public void setAuctionGoodsBayTerm(String auctionGoodsBayTerm) {
-		this.auctionGoodsBayTerm = auctionGoodsBayTerm;
+	public void setAuctionGoodsPayTerm(String auctionGoodsPayTerm) {
+		this.auctionGoodsPayTerm = auctionGoodsPayTerm;
 	}
 	public String getAuctionGoodsBidTerm() {
 		return auctionGoodsBidTerm;
@@ -129,7 +131,12 @@ public class AuctionGoodsDto {
 	public void setAuctionGoodsHits(int auctionGoodsHits) {
 		this.auctionGoodsHits = auctionGoodsHits;
 	}
-	
+	public FileDto getFile() {
+		return file;
+	}
+	public void setFile(FileDto file) {
+		this.file = file;
+	}
 	@Override
 	public String toString() {
 		return "AuctionGoodsDto [auctionGoodsNo=" + auctionGoodsNo + ", auctionGoodsFileNo=" + auctionGoodsFileNo
@@ -138,9 +145,10 @@ public class AuctionGoodsDto {
 				+ ", auctionGoodsTitle=" + auctionGoodsTitle + ", auctionGoodsContent=" + auctionGoodsContent
 				+ ", auctionGoodsInstanceBuyPrice=" + auctionGoodsInstanceBuyPrice + ", auctionGoodsName="
 				+ auctionGoodsName + ", auctionGoodsBidUnit=" + auctionGoodsBidUnit + ", auctionGoodsDate="
-				+ auctionGoodsDate + ", auctionGoodsBayTerm=" + auctionGoodsBayTerm + ", auctionGoodsBidTerm="
+				+ auctionGoodsDate + ", auctionGoodsPayTerm=" + auctionGoodsPayTerm + ", auctionGoodsBidTerm="
 				+ auctionGoodsBidTerm + ", auctionGoodsBidStartDate=" + auctionGoodsBidStartDate
-				+ ", auctionGoodsBidEndDate=" + auctionGoodsBidEndDate + ", auctionGoodsHits=" + auctionGoodsHits + "]";
+				+ ", auctionGoodsBidEndDate=" + auctionGoodsBidEndDate + ", auctionGoodsHits=" + auctionGoodsHits
+				+ ", file=" + file + "]";
 	}
 	
 	

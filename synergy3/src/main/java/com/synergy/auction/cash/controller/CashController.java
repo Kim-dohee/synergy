@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.synergy.auction.cash.service.AccountDto;
 import com.synergy.auction.cash.service.CashRecordDto;
@@ -36,6 +38,14 @@ public class CashController {
 	@RequestMapping(value = "/cashRecordInsert", method = RequestMethod.GET)
 	public String cashRecordInsertView() {
 		return "cash/cash_record_insert";
+	}
+	
+	//캐쉬 총액
+	@RequestMapping(value = "/cashRecordTotal", method = RequestMethod.GET)
+	@ResponseBody
+	public int cashRecordTotal(Model model,@RequestParam(value="id") String id) {
+		int totalCash = cashRecordService.totalCashRecordSelectOne(id);
+		return totalCash;
 	}
 	
 	//캐쉬 충전 
