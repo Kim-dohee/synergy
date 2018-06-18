@@ -1,6 +1,8 @@
 /*[김도희]*/
 package com.synergy.auction.donator.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,12 +29,12 @@ public class DonatorDao {
 
 	//기부단체 회원정보 수정
 	public int donatorUpdate(DonatorDto donator) {
-		int row = sqlSession.update(NS + "donatorUpdate", donator); 
+		int row = sqlSession.update(NS +"donatorUpdate", donator); 
 		return row;
 	} 
 	
-	//donatorId를 매개변수로 받아 기부단체명 검색
-	public String donatorNameSelectOne(String donatorId) {
-		return sqlSession.selectOne(NS + "donatorNameSelectOne", donatorId); 
+	//기부단체명,기부금계획서(제목,날짜) 검색
+	public List<DonatorDto> donationPlanSelect() {
+		return sqlSession.selectList(NS+"donationPlanSelect"); 
 	}
 }

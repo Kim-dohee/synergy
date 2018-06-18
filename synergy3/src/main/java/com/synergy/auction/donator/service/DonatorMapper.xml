@@ -4,6 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.synergy.auction.donator.service.DonatorMapper">
+	<resultMap type="com.synergy.auction.donator.service.DonatorDto"  
+ 				id="resultDonationPlan"> 
+ 		<result column="donator_name"  
+ 				property="donatorName"/>		 	 
+ 		<collection property="donationPlanDto"  
+ 					ofType="com.synergy.auction.donation.plan.service.DonationPlanDto">	 
+ 			<result column="donation_plan_title"  
+ 					property="donationPlanTitle"/> 
+ 			<result column="donation_plan_date"  
+ 					property="donationPlanDate"/> 
+ 		</collection>			 
+ 	</resultMap>
 	<insert id="donatorInsert"
 			parameterType="com.synergy.auction.donator.service.DonatorDto">
 		INSERT INTO donator(
@@ -47,11 +59,14 @@
 			,donator_telephone = #{donatorTelephone} 
 		WHERE donator_id = #{donatorId} 
 	</update> 
-	<select id="donatorNameSelectOne" 
-			parameterType="String" 
-			resultType="String">
-		SELECT donator_name 
-		FROM donator 
-		WHERE donator_id=#{donatorId}
+	<select id="donationPlanSelect"  
+			resultMap="resultDonationPlan">
+		SELECT 
+			d.donator_name
+			,dp.donation_plan_title
+			,dp.donation_plan_date 
+		FROM donator AS d
+		JOIN donation_plan AS dp 
+		ON d.donator_id=dp.donator_id
 	</select>		 
 </mapper>

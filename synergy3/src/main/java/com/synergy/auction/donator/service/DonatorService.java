@@ -1,5 +1,7 @@
 package com.synergy.auction.donator.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +30,8 @@ public class DonatorService {
 		return row;
 	}
 	
-	//donatorId를 매개변수로 받아 기부단체명 검색
-	public String donatorNameSelectOne(String donatorId) {
-		return donatorDao.donatorNameSelectOne(donatorId); 
+	//기부단체명,기부금계획서(제목,날짜) 검색
+	public List<DonatorDto> donationPlanSelect() {
+		return donatorDao.donationPlanSelect(); 
 	}
 }

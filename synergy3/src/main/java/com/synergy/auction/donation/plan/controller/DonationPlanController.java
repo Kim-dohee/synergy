@@ -22,6 +22,7 @@ import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donator.controller.DonatorController;
+import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.donator.service.DonatorService;
 import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
@@ -44,9 +45,14 @@ public class DonationPlanController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
-	//기부계획서 메인 화면
+	//기부금 계획서 검색
 	@RequestMapping(value = "/donationPlanMain", method = RequestMethod.GET)
-	public String donationPlanMain() {
+	public String donationPlanMain(Model model) {
+		
+		//기부단체명,기부금계획서(제목,날짜) 검색
+		List<DonatorDto> list = donatorService.donationPlanSelect();	
+		logger.debug("DonationPlanController.donationPlanMain toString>>"+list.toString());
+		model.addAttribute("list", list);
 		return "donationPlan/donation_plan_main";
 	}
 	
@@ -57,7 +63,7 @@ public class DonationPlanController {
 	}
 	
 	//기부계획서 등록화면
-	@RequestMapping(value = "/donationPlanInsertView", method = RequestMethod.POST)
+	@RequestMapping(value = "/donationPlanInsertView", method = RequestMethod.GET)
 	public String donationPlanInsertView() {
 		return "donationPlan/donation_plan_insert";
 	}
@@ -120,25 +126,7 @@ public class DonationPlanController {
 		donationPlanService.donationPlanImageNoUpdate(donationPlanDto);
 		return "donationPlan/donation_plan_commit";
 	}
-	
-	//기부금 계획서 검색
-	@RequestMapping(value = "/donationPlanSelect", method = RequestMethod.GET)
-	public String donationPlanSelect(Model model) {
 		
-		String donatorId = null;
-		List<DonationPlanDto> list = donationPlanService.donationPlanSelect();
-		for(DonationPlanDto donationPlan : list) {
-			logger.debug("DonationPlanController.donationPlanSelect donationPlanTitle >>"+donationPlan.getDonationPlanTitle());
-			logger.debug("DonationPlanController.donationPlanSelect donatorId >>"+donationPlan.getDonatorId());
-			donatorId = donationPlan.getDonatorId();
-		}
-		//donatorId를 매개변수로 받아 기부단체donationPlan.getDonatorId()
-		String donatorName = donatorService.donatorNameSelectOne(donatorId);
-		logger.debug("DonationPlanController.donationPlanSelect donatorName >>"+donatorName);
-		model.addAttribute("list", list);
-		model.addAttribute("donatorName", donatorName);
-		return "donationPlan/donation_plan_select";
-	}	
 	//기부하기 검색
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {

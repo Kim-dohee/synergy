@@ -1,39 +1,40 @@
-<!-- [ÍπÄÎèÑÌù¨] -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- [±Ëµµ»Ò] -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Insert title here</title>
 </head>
 <body>
-	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Ìôà > Í∏∞Î∂Ä > Í≥ÑÌöçÏÑú </h4>
-	<div style="font-size: 16px; text-align: center">
-		<br><br><br>
-		<h1 class="my-4 text-center">Í≥ÑÌöçÏÑú</h1><br><br>
-		<!-- Marketing Icons Section -->
-		<div class="row justify-content-center">
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">Í≥ÑÌöçÏÑú Îì±Î°ù</h4>
-					<div class="card-body">
-						<a href="${pageContext.request.contextPath}/donationPlanAgreement">donationPlanAgreement</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">Í≥ÑÌöçÏÑú Ï°∞Ìöå</h4>
-					<div class="card-body">
-						<a href="${pageContext.request.contextPath}/donationPlanSelect">donationPlanSelect</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><br><br><br>
+	<br><br><br></b><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>»® > ±‚∫Œ > ∞Ë»πº≠ </h4>
+	<br><br><br><br><br>
+	<div class="container bs-example" data-example-id="simple-table">
+		<table class="table table-hover">
+			<thead>
+				<tr class="active">
+					<th>±‚∫Œ¥‹√º</th>
+					<th>¡¶∏Ò</th>
+					<th>≥Ø¬•</th>
+				</tr>
+			</thead>
+			<c:forEach var="donationPlan" items="${list}">
+			<tbody>
+					<tr>
+						<th scope="row">${donationPlan.donatorName}</th>		
+						<td>${donationPlan.donationPlanDto.donationPlanTitle}</td>
+						<td>${donationPlan.donationPlanDto.donationPlanDate}</td>
+					</tr>	
+			</tbody>
+			</c:forEach>
+		</table><br><br>
+		<div class="col-lg-6"></div>
+		<div class="col-lg-6">		
+			<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanInsertView'">µÓ∑œ</button>
+		</div><br><br><br>
+	</div>
 </body>
 </html>
 <jsp:include page="../module/footer.jsp"></jsp:include>
