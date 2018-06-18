@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
 	$(function() {
+
 		$("#btn").click(function(){
 			if($("#state").val()===("입찰전")){
 				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsert");
@@ -25,7 +26,18 @@
 				$('#form').submit();
 				}
 			} else if($("#state").val()===("입찰 종료")) {
-				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidSearch?auctionGoodsDetail="+${datailList.auctionGoodsNo});
+				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?auctionGoodsDetail=${datailList.auctionGoodsNo}");
+				$('#form').submit();
+			}
+		});
+		$("#btn2").click(function(){
+			var cashTotal = ${cashTotal};
+			var buyPrice = ${datailList.auctionGoodsInstanceBuyPrice};
+			if(cashTotal<buyPrice){
+				alert('캐시를 충전해주세요');
+				return;
+			} else {
+				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?auctionGoodsDetail=${datailList.auctionGoodsNo}&auctionGoodsInstanceBuyPrice=${datailList.auctionGoodsInstanceBuyPrice}");
 				$('#form').submit();
 			}
 		});
@@ -34,14 +46,10 @@
 		var nowTime = new Date();
 		var BidEndDate = $('#BidEndDate').val();
 		var BidEndDate = new Date(BidEndDate);
-		console.log(nowTime);
-		console.log(BidEndDate);
-		
 		if(nowTime>BidEndDate){
 			$("#state").val("입찰 종료");
 			$("#btn").val("낙찰확인");
 		}
-	
 		/* 입찰단위에 맞게 , 입찰가보다 높게, 즉시구매가보다 적게 적기 */
 		$('input#bidPrice').change(function(){
 			var bidPrice = $(this).val();
@@ -49,6 +57,7 @@
 			var nowBid = $('#nowBid').val();
 			var buyPrice = ${datailList.auctionGoodsInstanceBuyPrice};
 			var minPrice = ${datailList.auctionGoodsMinPrice};
+			var cashTotal = ${cashTotal};
 			if((bidPrice%bidUnit) != 0){
 				$(this).val('');
 				$(this).focus();
@@ -65,6 +74,10 @@
 				$(this).val('');
 				$(this).focus();
 				alert('최소가격보다 크게 적어주세요');
+			}  else if(cashTotal<bidPrice) {
+				$(this).val('');
+				$(this).focus();
+				alert('캐시를 충전해 주세요');
 			}
 		});
 		
@@ -84,39 +97,34 @@
 							
 							<th class="active">상태</th>
 							<td><input type="text"  id="state"
-								value="${datailList.auctionStateNo}" class="form-control" /></td>
+								value="${datailList.auctionStateNo}" class="form-control" readonly/></td>
 						</tr>
 						<tr>
 							<th class="active">조회수</th>
-							<td><input type="text"
-								value="${datailList.auctionGoodsHits}" class="form-control" /></td>
+							<td><p class="form-control-static">${datailList.auctionGoodsHits}</td>
 						</tr>
 						<tr>
 							<th colspan="2" class="active">제목</th>
-							<td colspan="4"><input type="text"
-								value="${datailList.auctionGoodsTitle}" class="form-control" /></td>
+							<td colspan="4"><p class="form-control-static">${datailList.auctionGoodsTitle}</td>
 						</tr>
 
 						<tr>
 							<th colspan="2" class="active">상품명</th>
-							<td><input type="text" value="${datailList.auctionGoodsName}" name="auctionGoodsName" class="form-control" /></td>
+							<td><p class="form-control-static">${datailList.auctionGoodsName}</td>
 						</tr>
 						<tr>
 							<th colspan="2" class="active">내용</th>
-							<td colspan="4"><textarea rows="15" name="auctionGoodsContent" class="form-control">${datailList.auctionGoodsContent}</textarea></td>
+							<td colspan="4"><img src="${pageContext.request.contextPath}/resources/file/${datailList.file.fileName}.${datailList.file.fileExt}" width="100%" height="100%">
+							<textarea rows="15" name="auctionGoodsContent" class="form-control" readonly>${datailList.auctionGoodsContent}</textarea></td>
+							
 						</tr>
-						<tr>
-							<th colspan="2" class="active">사진파일</th>
-							<td colspan="4"><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control" /></td>
-						</tr>
-
 						<tr>
 							<th class="active">최소가</th>
-							<td><input type="text" value="${datailList.auctionGoodsMinPrice}" name="auctionGoodsMinPrice" class="form-control" /></td>
+							<td><p class="form-control-static">${datailList.auctionGoodsMinPrice}</td>
 							<th class="active">즉시구매가</th>
-							<td><input type="text" value="${datailList.auctionGoodsInstanceBuyPrice}" name="auctionGoodsInstanceBuyPrice" class="form-control" /></td>
+							<td><p class="form-control-static">${datailList.auctionGoodsInstanceBuyPrice}</td>
 							<th class="active">입찰단위 (원)</th>
-							<td><input type="text" value="${datailList.auctionGoodsBidUnit}" name="auctionGoodsBidUnit" class="form-control" /></td>
+							<td><p class="form-control-static">${datailList.auctionGoodsBidUnit}</td>
 						</tr>
 
 						<tr>
@@ -136,7 +144,7 @@
 						</tr>
 						<tr>
 							<th class="active">현재 입찰가</th>
-							<td><input type="text" value="${bidList.bidPrice}" id="nowBid" name="auctionGoodsTitle" class="form-control" /></td>
+							<td><input type="text" value="${bidList.bidPrice}" id="nowBid" name="auctionGoodsTitle" class="form-control" readonly/></td>
 						</tr>
 					</tbody>
 				</table>
@@ -151,7 +159,7 @@
 							<td>현재 입찰가</td>
 							<td><p class="form-control-static">${bidList.bidPrice} </td>
 							<td>입찰자</td>
-							<td><input type="text" id="BiduserId" value="${datailList.userId}" class="form-control" /></td>
+							<td><input type="text" id="BiduserId" value="${datailList.userId}" class="form-control" readonly/></td>
 							<td>입찰 마감날짜</td>
 							<td><input type="text" id="BidEndDate" value="${datailList.auctionGoodsBidEndDate}" class="form-control" readonly /></td>
 						</tr>
@@ -163,14 +171,12 @@
 						</tr>
 						<tr>
 							<td>캐시</td>
-							<td><input type="text" id="totalCash" value="${cashTotal}" /></td>
+							<td><p id="cashTotal" class="form-control-static">${cashTotal}</p></td>
 						</tr>
 					</table>
 					<input type="hidden" value="${datailList.auctionGoodsNo}" name="auctionGoodsNo">
 					<input type="button" id="btn" value="입찰하기">
-					<div>
-					<a href="#">즉시 구매하기</a>
-					</div>
+					<input type="button" id="btn2" value="즉시구매">
 				</form>
 				
 				

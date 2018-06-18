@@ -1,7 +1,5 @@
 package com.synergy.auction.auction.goods.controller;
 
-
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,25 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
 import com.synergy.auction.auction.goods.service.AuctionGoodsService;
+import com.synergy.auction.auction.goods.service.SuccessfulBidService;
 import com.synergy.auction.auction.goods.service.BidDto;
 import com.synergy.auction.auction.goods.service.BidService;
 
 @Controller
 public class SuccessfulBidController {
 	@Autowired
-	private AuctionGoodsService auctionGoodsService;
+	private SuccessfulBidService successfulBidService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(SuccessfulBidController.class);
 
 	
 	//입찰 등록
-	@RequestMapping(value = "/successfulBidSearch", method = RequestMethod.POST)
+	@RequestMapping(value = "/successfulBidInsert", method = RequestMethod.POST)
 	public String successfulBidSearch(Model model
 										,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo) {
-		model.addAttribute("list",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
-		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
+		successfulBidService.successfulBidInsert(auctionGoodsNo);
+		/*model.addAttribute("list",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));*/
 		return "bid/successful_bid_check";
 	}
-
-	
-	
 }
