@@ -19,8 +19,8 @@ import com.synergy.auction.file.service.FileDto;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	@RequestMapping(value = {"home"}, method = RequestMethod.GET)
+	
+	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -34,25 +34,17 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "index";
+	//관리자별 로그인 및 기능 화면
+	@RequestMapping(value = "/loginRight", method = RequestMethod.GET)
+	public String loginRight() {
+		return "login_right";
 	}
 	
 	//팀원소개 화면
-		@RequestMapping(value = "/introduce", method = RequestMethod.GET)
-		public String introduce() {
-			return "introduce";
-		}
+	@RequestMapping(value = "/introduce", method = RequestMethod.GET)
+	public String introduce() {
+		return "introduce";
+	}
 	
 	//시스템 구조도 화면
 	@RequestMapping(value = "/process", method = RequestMethod.GET)

@@ -12,4 +12,3 @@
 	</div><br><br><br><br>
 </body>
 </html>
-<jsp:include page="../views/footer.jsp"></jsp:include>

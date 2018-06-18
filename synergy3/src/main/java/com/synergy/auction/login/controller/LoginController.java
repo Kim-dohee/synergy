@@ -53,6 +53,28 @@ public class LoginController {
 		}
 	}
 	
+	//로그인 처리
+		@RequestMapping(value = "/autoLogin", method = RequestMethod.GET)
+		public String autoLogin(ModelMap modelMap, HttpSession session,String id,String pw) {
+			
+			logger.debug("LoginController.login >>"+"id:"+id+"pw:"+pw);
+			//id,pw 검색
+			String level = loginService.login(id,pw);
+			//id,pw일치하면 id,level세션설정
+			if(level!=null) {
+				;
+				session.setAttribute("id", id);
+				session.setAttribute("level", level);
+				modelMap.addAttribute("message", "로그인 성공!");
+				modelMap.addAttribute("returnUrl", "home");
+				return "alertAndRedirect";
+			} else { 
+				modelMap.addAttribute("message", "로그인 실패!");
+				modelMap.addAttribute("returnUrl", "home");
+				return "alertAndRedirect";
+			}
+		}
+	
 	//로그아웃
 	@RequestMapping(value= "/logout", method=RequestMethod.GET)  
 	public String logout(ModelMap modelMap, HttpSession session) {  
