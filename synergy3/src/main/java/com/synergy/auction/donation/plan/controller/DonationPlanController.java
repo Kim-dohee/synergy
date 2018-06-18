@@ -1,9 +1,7 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,10 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
-import com.synergy.auction.donator.controller.DonatorController;
-import com.synergy.auction.donator.service.DonatorDto;
-import com.synergy.auction.donator.service.DonatorService;
-import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
 
@@ -40,8 +34,6 @@ public class DonationPlanController {
 	private CashRecordService cashRecordService;
 	@Autowired
 	private IncomeDonationService incomeDonationService;
-	@Autowired
-	private DonatorService donatorService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -50,10 +42,18 @@ public class DonationPlanController {
 	public String donationPlanMain(Model model) {
 		
 		//기부단체명,기부금계획서(제목,날짜) 검색
-		List<DonatorDto> list = donatorService.donationPlanSelect();	
+		List<DonationPlanDto> list = donationPlanService.donationPlanSelect();	
 		logger.debug("DonationPlanController.donationPlanMain toString>>"+list.toString());
 		model.addAttribute("list", list);
 		return "donationPlan/donation_plan_main";
+	}
+	
+	//기부 계획서 상세 검색
+	@RequestMapping(value = "/donationPlanSelect", method = RequestMethod.GET)
+	public String donationPlanSelect(@RequestParam(value="donationPlanNo") String donationPlanNo) {
+		
+		logger.debug("DonationPlanController.donationPlanSelect donationPlanNo>>"+donationPlanNo);
+		return "donationPlan/donation_plan_select";
 	}
 	
 	//기부계획서등록 동의 화면

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.donator.service.DonatorService;
-import com.synergy.auction.user.service.UserDto;
+
 @Controller
 public class DonatorController {
 

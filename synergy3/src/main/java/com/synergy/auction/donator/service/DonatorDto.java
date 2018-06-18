@@ -1,10 +1,6 @@
 /*[김도희]*/
 package com.synergy.auction.donator.service;
 
-import java.util.List;
-
-import com.synergy.auction.donation.plan.service.DonationPlanDto;
-
 /*기부단체*/
 public class DonatorDto {
 
@@ -15,7 +11,6 @@ public class DonatorDto {
 	private int donatorTelephone; //전화번호
 	private String donatorHomepage; //홈페이지
 	private String donatorJoinDate; //가입날짜
-	private DonationPlanDto donationPlanDto; //외래키(기부금 계획서)
 	
 	public String getDonatorId() {
 		return donatorId;
@@ -59,19 +54,12 @@ public class DonatorDto {
 	public void setDonatorJoinDate(String donatorJoinDate) {
 		this.donatorJoinDate = donatorJoinDate;
 	}
-	public DonationPlanDto getDonationPlanDto() {
-		return donationPlanDto;
-	}
-	public void setDonationPlanDto(DonationPlanDto donationPlanDto) {
-		this.donationPlanDto = donationPlanDto;
-	}
 	
 	@Override
 	public String toString() {
 		return "DonatorDto [donatorId=" + donatorId + ", donatorPw=" + donatorPw + ", donatorBusinessNo="
 				+ donatorBusinessNo + ", donatorName=" + donatorName + ", donatorTelephone=" + donatorTelephone
-				+ ", donatorHomepage=" + donatorHomepage + ", donatorJoinDate=" + donatorJoinDate + ", donationPlanDto="
-				+ donationPlanDto + "]";
+				+ ", donatorHomepage=" + donatorHomepage + ", donatorJoinDate=" + donatorJoinDate + "]";
 	}
 	
 }

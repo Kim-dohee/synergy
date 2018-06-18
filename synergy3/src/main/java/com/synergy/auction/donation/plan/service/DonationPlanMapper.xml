@@ -5,6 +5,20 @@
   
  <mapper namespace="com.synergy.auction.donation.plan.service.DonationPlanMapper">
  	<resultMap type="com.synergy.auction.donation.plan.service.DonationPlanDto"  
+ 				id="resultDonationPlan"> 
+ 		<result column="donation_plan_title"  
+ 				property="donationPlanTitle"/>		 	 
+ 		<result column="donation_plan_no"  
+ 				property="donationPlanNo"/>		 	 
+ 		<result column="donation_plan_date"  
+ 				property="donationPlanDate"/>		 	 
+ 		<collection property="donatorDto"  
+ 					ofType="com.synergy.auction.donator.service.DonatorDto">	 
+ 			<result column="donator_name"  
+ 					property="donatorName"/> 
+ 		</collection>			 
+ 	</resultMap>
+ 	<resultMap type="com.synergy.auction.donation.plan.service.DonationPlanDto"  
  				id="resultDonation"> 
  		<result column="donation_plan_no"  
  				property="donationPlanNo"/>
@@ -101,19 +115,16 @@
 		WHERE f.file_ext IN('jpg','png','jpeg')
 		AND dp.donation_plan_no=#{donationPlanNo}
  	</select>
- 	<select id="donationPlanSelect"  
-			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+	<select id="donationPlanSelect"  
+			resultMap="resultDonationPlan">
 		SELECT 
-			donation_plan_no AS donationPlanNo
-			,donator_id AS donatorId
-			,donation_plan_file_no AS donationPlanFileNo
-			,donation_plan_title AS donationPlanTitle
-			,donation_plan_content AS donationPlanContent
-			,donation_plan_purpose AS donationPlanPurpose
-			,donation_plan_use_term AS donationPlanUseTerm
-			,donation_plan_goal_price AS donationPlanGoalPrice
-			,donation_plan_date AS donationPlanDate
-		FROM donation_plan
+			d.donator_name
+			,dp.donation_plan_title
+			,dp.donation_plan_no
+			,dp.donation_plan_date 
+		FROM donator AS d
+		JOIN donation_plan AS dp 
+		ON d.donator_id=dp.donator_id
 	</select>	
  </mapper>  
   

@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.synergy.auction.donator.service.DonatorDto;
+
 @Repository
 public class DonationPlanDao {
 
@@ -37,11 +39,6 @@ public class DonationPlanDao {
 		return row;
 	}
 	
-	//기부금계획서 검색
-	public List<DonationPlanDto> donationPlanSelect() { 
-		return sqlSession.selectList(NS+"donationPlanSelect"); 
-	}
-	
 	//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
 	public List<DonationPlanDto> donationSelect() { 
 		return sqlSession.selectList(NS+"donationSelect"); 
@@ -50,5 +47,10 @@ public class DonationPlanDao {
 	//해당 계획서 넘버를 매개변수로 받아 기부금계획서 상세(제목,내용,이미지파일명 및 확장자)검색
 	public List<DonationPlanDto> selectDonationPlanDetail(int donationPlanNo) { 
 		return sqlSession.selectList(NS+"selectDonationPlanDetail", donationPlanNo); 
+	}
+	
+	//기부단체명,기부금계획서(제목,날짜) 검색
+	public List<DonationPlanDto> donationPlanSelect() {
+		return sqlSession.selectList(NS+"donationPlanSelect"); 
 	}
 }

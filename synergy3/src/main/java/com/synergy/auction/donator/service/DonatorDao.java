@@ -1,13 +1,9 @@
 /*[김도희]*/
 package com.synergy.auction.donator.service;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.synergy.auction.user.service.UserDto;
 
 @Repository
 public class DonatorDao {
@@ -33,8 +29,4 @@ public class DonatorDao {
 		return row;
 	} 
 	
-	//기부단체명,기부금계획서(제목,날짜) 검색
-	public List<DonatorDto> donationPlanSelect() {
-		return sqlSession.selectList(NS+"donationPlanSelect"); 
-	}
 }
