@@ -121,4 +121,9 @@ public class FileService {
 	public List<FileDto> ImageFileSelect() { 
 		return fileDao.ImageFileSelect(); 
 	}
+	
+	//기부금파일넘버를 매개변수로 받아 파일(이름,확장자)검색
+	public FileDto donationPlanFileSelect(int fileNo) { 
+		return fileDao.donationPlanFileSelect(fileNo); 
+	}
 }

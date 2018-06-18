@@ -121,10 +121,23 @@
 			d.donator_name
 			,dp.donation_plan_title
 			,dp.donation_plan_no
-			,dp.donation_plan_date 
+			,LEFT(dp.donation_plan_date,10) AS donation_plan_date
 		FROM donator AS d
 		JOIN donation_plan AS dp 
 		ON d.donator_id=dp.donator_id
+	</select>
+	<select id="donationPlanDetailSelect"  
+			parameterType="Integer"
+			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		SELECT 
+			donator_id AS donatorId
+			,donation_plan_file_no AS donationPlanFileNo
+			,donation_plan_purpose AS donationPlanPurpose
+			,donation_plan_use_term AS donationPlanUseTerm
+			,donation_plan_goal_price AS donationPlanGoalPrice
+			,donation_plan_date AS donationPlanDate
+		FROM donation_plan
+		WHERE donation_plan_no=#{donationPlanNo}
 	</select>	
  </mapper>  
   

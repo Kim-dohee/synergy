@@ -62,7 +62,7 @@
 		AND file_table_name='donation_plan' 
 		AND file_ext IN('jpg','png','jpeg')	
 	</select>	
-		<select id="auctionFileNoSelect"
+	<select id="auctionFileNoSelect"
 			parameterType="Integer"
 			resultType="Integer">
 		SELECT file_no 
@@ -70,5 +70,14 @@
 		WHERE file_table_no=#{auctionGoodsNo}
 		AND file_table_name='auction_goods' 
 		AND file_ext IN('jpg','png','jpeg')	
-	</select>	
+	</select>
+	<select id="donationPlanFileSelect"
+			parameterType="Integer"
+			resultType="com.synergy.auction.file.service.FileDto">
+		SELECT 
+			file_name AS fileName
+			,file_ext AS fileExt
+		FROM file 
+		WHERE file_no=#{fileNo}
+	</select>		
 </mapper>			  

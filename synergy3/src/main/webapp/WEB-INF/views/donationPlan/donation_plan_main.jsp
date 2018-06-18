@@ -23,17 +23,17 @@
 			<c:forEach var="donationPlan" items="${list}">
 				<tbody>
 					<tr>
-						<th scope="row"><a href="${pageContext.request.contextPath}/donationPlanSelect?donationPlanNo=${donationPlan.donationPlanNo}">${donationPlan.donationPlanTitle}</a></th>		
+						<th scope="row"><a href="${pageContext.request.contextPath}/donationPlanSelectDetail?donationPlanNo=${donationPlan.donationPlanNo}&donationPlanDate=${donationPlan.donationPlanDate}">${donationPlan.donationPlanTitle}</a></th>		
 						<td>${donationPlan.donatorDto.donatorName}</td>
 						<td>${donationPlan.donationPlanDate}</td>
 					</tr>	
 				</tbody>
 			</c:forEach>
 		</table><br><br>
-		<div class="col-lg-6"></div>
-		<div class="col-lg-6">		
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">		
 		<c:if test="${sessionScope.level eq '기부단체'}">	
-			<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanInsertView?'">등록</button>
+			<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanInsertView'">등록</button>
 		</c:if>	
 		</div><br><br><br>
 	</div>

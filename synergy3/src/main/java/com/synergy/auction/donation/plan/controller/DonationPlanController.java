@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
+import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
 
@@ -48,11 +49,32 @@ public class DonationPlanController {
 		return "donationPlan/donation_plan_main";
 	}
 	
-	//기부 계획서 상세 검색
-	@RequestMapping(value = "/donationPlanSelect", method = RequestMethod.GET)
-	public String donationPlanSelect(@RequestParam(value="donationPlanNo") String donationPlanNo) {
+	//기부금 계획서 상세검색
+	@RequestMapping(value = "/donationPlanSelectDetail", method = RequestMethod.GET)
+	public String donationPlanSelectDetail(Model model
+											,@RequestParam(value="donationPlanNo") int donationPlanNo
+											,@RequestParam(value="donationPlanDate") String donationPlanDate ) {
 		
-		logger.debug("DonationPlanController.donationPlanSelect donationPlanNo>>"+donationPlanNo);
+		logger.debug("DonationPlanController.donationPlanSelectDetail donationPlanNo>>"+donationPlanNo);
+		logger.debug("DonationPlanController.donationPlanSelectDetail donationPlanDate>>"+donationPlanDate);
+		//기부금계획서(아이디,목적,기부금 사용기간, 모집목표액, 파일, 계획서 등록날짜)상세 검색
+		DonationPlanDto donationPlanDto= donationPlanService.donationPlanDetailSelect(donationPlanNo);
+		String donationPlanPurpose = donationPlanDto.getDonationPlanPurpose();
+		int donationPlanGoalPrice = donationPlanDto.getDonationPlanGoalPrice();
+		String donationPlanUseTerm = donationPlanDto.getDonationPlanUseTerm();
+		int donationPlanFileNo = donationPlanDto.getDonationPlanFileNo();
+		model.addAttribute("donationPlanPurpose", donationPlanPurpose);
+		model.addAttribute("donationPlanGoalPrice", donationPlanGoalPrice);
+		model.addAttribute("donationPlanUseTerm", donationPlanUseTerm);
+		model.addAttribute("donationPlanFileNo", donationPlanFileNo);
+		//계획서 등록날짜
+		model.addAttribute("donationPlanDate", donationPlanDate);
+		//기부금파일넘버를 매개변수로 받아 파일(이름,확장자)검색
+		FileDto fileDto = fileService.donationPlanFileSelect(donationPlanFileNo);
+		String fileName = fileDto.getFileName();
+		String fileExt = fileDto.getFileExt();
+		model.addAttribute("fileName", fileName);
+		model.addAttribute("fileExt", fileExt);
 		return "donationPlan/donation_plan_select";
 	}
 	

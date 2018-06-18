@@ -53,4 +53,9 @@ public class DonationPlanDao {
 	public List<DonationPlanDto> donationPlanSelect() {
 		return sqlSession.selectList(NS+"donationPlanSelect"); 
 	}
+	
+	//기부금계획서(아이디,목적,기부금 사용기간, 모집목표액, 파일, 계획서 등록날짜)상세 검색
+	public DonationPlanDto donationPlanDetailSelect(int donationPlanNo) {
+		return sqlSession.selectOne(NS+"donationPlanDetailSelect", donationPlanNo); 
+	}
 }
