@@ -26,21 +26,26 @@
 				$('#form').submit();
 				}
 			} else if($("#state").val()===("입찰 종료")) {
-				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?auctionGoodsDetail=${datailList.auctionGoodsNo}");
+				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}");
 				$('#form').submit();
 			}
 		});
-		$("#btn2").click(function(){
-			var cashTotal = ${cashTotal};
-			var buyPrice = ${datailList.auctionGoodsInstanceBuyPrice};
-			if(cashTotal<buyPrice){
-				alert('캐시를 충전해주세요');
-				return;
-			} else {
-				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?auctionGoodsDetail=${datailList.auctionGoodsNo}&auctionGoodsInstanceBuyPrice=${datailList.auctionGoodsInstanceBuyPrice}");
-				$('#form').submit();
-			}
-		});
+	 	$("#btn2").click(function(){
+	 		if($("#btn").val()=="낙찰확인"){
+	 			alert('이미 끝난 경매입니다.');
+	 			return
+	 		} else {
+	 			var cashTotal = ${cashTotal};
+				var buyPrice = ${datailList.auctionGoodsInstanceBuyPrice};
+				if(cashTotal<buyPrice){
+					alert('캐시를 충전해주세요');
+					return;
+				} else {
+					$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidNowInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${datailList.auctionGoodsInstanceBuyPrice}");
+					$('#form').submit();
+				}
+	 		}
+		}); 
 		
 		/* 현재시간과 낙찰시간을 비교해서 경매상태를 변경 */
 		var nowTime = new Date();
@@ -152,12 +157,12 @@
 				<br>
 				<br>
 				
-				<form id="form" method="POST">
+				<form id="form" method="GET">
 				<input type="hidden" value="${sessionScope.id}" name="userId">
 					<table class="table table-bordered">
 						<tr>
 							<td>현재 입찰가</td>
-							<td><p class="form-control-static">${bidList.bidPrice} </td>
+							<td><p class="form-control-static">${bidList.bidPrice}</td>
 							<td>입찰자</td>
 							<td><input type="text" id="BiduserId" value="${datailList.userId}" class="form-control" readonly/></td>
 							<td>입찰 마감날짜</td>
@@ -174,6 +179,9 @@
 							<td><p id="cashTotal" class="form-control-static">${cashTotal}</p></td>
 						</tr>
 					</table>
+					<input type="hidden" value="${datailList.auctionGoodsInstanceBuyPrice}" name="auctionGoodsInstanceBuyPrice">
+					<input type="hidden" value="${bidList.bidPrice}" name="successfulBidPrice">
+					<input type="hidden" value="${bidList.bidNo}" name="bidNo">
 					<input type="hidden" value="${datailList.auctionGoodsNo}" name="auctionGoodsNo">
 					<input type="button" id="btn" value="입찰하기">
 					<input type="button" id="btn2" value="즉시구매">

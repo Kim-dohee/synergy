@@ -66,7 +66,7 @@ public class LoginController {
 				session.setAttribute("id", id);
 				session.setAttribute("level", level);
 				modelMap.addAttribute("message", "로그인 성공!");
-				modelMap.addAttribute("returnUrl", "home");
+				modelMap.addAttribute("returnUrl", "loginRight");
 				return "alertAndRedirect";
 			} else { 
 				modelMap.addAttribute("message", "로그인 실패!");

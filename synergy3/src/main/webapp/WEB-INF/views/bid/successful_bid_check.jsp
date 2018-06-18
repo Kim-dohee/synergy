@@ -13,7 +13,7 @@ $(function() {
 			$("#acutionGoodsNo").css("color","black");
 		});
 		$("#acutionGoodsNo").click(function(){
-			location.href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo="+${list.auctionGoodsNo};
+			/* location.href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo="+${list.auctionGoodsNo}; */
 		});
 
 });

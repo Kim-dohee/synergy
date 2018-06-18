@@ -2,56 +2,56 @@
 package com.synergy.auction.auction.goods.service;
 
 public class SuccessfulBidDto {
-	private int successful_bid_no;
-	private int bid_no;
-	private String successful_bid_price;
-	private String successful_bid_date;
-	private String successful_bid_pay_end_date;
-	private String successful_bid_cancel;
-	
-	public int getSuccessful_bid_no() {
-		return successful_bid_no;
+	private int successfulBidNo;
+	private int bidNo;
+	private String successfulBidPrice;
+	private String successfulBidDate;
+	private String successfulBidPayEndDate;
+	private String successfulBidCancel;
+	public int getSuccessfulBidNo() {
+		return successfulBidNo;
 	}
-	public void setSuccessful_bid_no(int successful_bid_no) {
-		this.successful_bid_no = successful_bid_no;
+	public void setSuccessfulBidNo(int successfulBidNo) {
+		this.successfulBidNo = successfulBidNo;
 	}
-	public int getBid_no() {
-		return bid_no;
+	public int getBidNo() {
+		return bidNo;
 	}
-	public void setBid_no(int bid_no) {
-		this.bid_no = bid_no;
+	public void setBidNo(int bidNo) {
+		this.bidNo = bidNo;
 	}
-	public String getSuccessful_bid_price() {
-		return successful_bid_price;
+	public String getSuccessfulBidPrice() {
+		return successfulBidPrice;
 	}
-	public void setSuccessful_bid_price(String successful_bid_price) {
-		this.successful_bid_price = successful_bid_price;
+	public void setSuccessfulBidPrice(String successfulBidPrice) {
+		this.successfulBidPrice = successfulBidPrice;
 	}
-	public String getSuccessful_bid_date() {
-		return successful_bid_date;
+	public String getSuccessfulBidDate() {
+		return successfulBidDate;
 	}
-	public void setSuccessful_bid_date(String successful_bid_date) {
-		this.successful_bid_date = successful_bid_date;
+	public void setSuccessfulBidDate(String successfulBidDate) {
+		this.successfulBidDate = successfulBidDate;
 	}
-	public String getSuccessful_bid_pay_end_date() {
-		return successful_bid_pay_end_date;
+	public String getSuccessfulBidPayEndDate() {
+		return successfulBidPayEndDate;
 	}
-	public void setSuccessful_bid_pay_end_date(String successful_bid_pay_end_date) {
-		this.successful_bid_pay_end_date = successful_bid_pay_end_date;
+	public void setSuccessfulBidPayEndDate(String successfulBidPayEndDate) {
+		this.successfulBidPayEndDate = successfulBidPayEndDate;
 	}
-	public String getSuccessful_bid_cancel() {
-		return successful_bid_cancel;
+	public String getSuccessfulBidCancel() {
+		return successfulBidCancel;
 	}
-	public void setSuccessful_bid_cancel(String successful_bid_cancel) {
-		this.successful_bid_cancel = successful_bid_cancel;
+	public void setSuccessfulBidCancel(String successfulBidCancel) {
+		this.successfulBidCancel = successfulBidCancel;
 	}
-	
 	@Override
 	public String toString() {
-		return "SuccessfulBidDto [successful_bid_no=" + successful_bid_no + ", bid_no=" + bid_no
-				+ ", successful_bid_price=" + successful_bid_price + ", successful_bid_date=" + successful_bid_date
-				+ ", successful_bid_pay_end_date=" + successful_bid_pay_end_date + ", successful_bid_cancel="
-				+ successful_bid_cancel + "]";
+		return "SuccessfulBidDto [successfulBidNo=" + successfulBidNo + ", bidNo=" + bidNo + ", successfulBidPrice="
+				+ successfulBidPrice + ", successfulBidDate=" + successfulBidDate + ", successfulBidPayEndDate="
+				+ successfulBidPayEndDate + ", successfulBidCancel=" + successfulBidCancel + "]";
 	}
+	
+	
+	
 	
 }

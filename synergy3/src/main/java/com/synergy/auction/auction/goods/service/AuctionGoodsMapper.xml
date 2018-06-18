@@ -14,6 +14,7 @@
 				<result column="auction_goods_no" property="auctionGoodsNo"/> 
 				<result column="bid_price" property="bidPrice"/> 
 				<result column="bid_date" property="bidDate"/> 
+				<result column="bid_no" property="bidNo"/> 
 	</resultMap> 
 		
 	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
@@ -155,6 +156,7 @@
 	<select id="bidSelectOne" parameterType="String" resultMap="bidSelectOne">
 		SELECT 
 			auction_goods.auction_goods_no
+			,bid.bid_no
 			,bid.user_id
 			,bid.auction_goods_no
 			,bid.bid_price
