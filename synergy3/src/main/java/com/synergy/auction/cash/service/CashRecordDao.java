@@ -60,4 +60,10 @@ public class CashRecordDao {
 		return sqlSession.selectOne(NS+"totalCashRecordSelectOne", userId); 
 	}
 	
+	//최종캐쉬금액 검색
+	public Map<Object, Object> cashRecordInsertBuy(Map<Object, Object> map) { 
+		 sqlSession.update(NS+"cashRecordInsertBuy", map); 
+		 return map;
+	}
+	
 }

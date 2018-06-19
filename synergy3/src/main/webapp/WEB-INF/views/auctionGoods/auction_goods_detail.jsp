@@ -11,6 +11,7 @@
 		$("#btn").click(function(){
 			if($("#state").val()===("입찰전")){
 				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsert");
+				$("#form").attr("method", "POST");
 				if($('#bidPrice').val()==""){
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
@@ -19,6 +20,7 @@
 				}
 			} else if($("#state").val()===("입찰중")) {
 				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsertAgain");
+				$("#form").attr("method", "POST");
 				if($('#bidPrice').val()==""){
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
@@ -57,12 +59,14 @@
 		}
 		/* 입찰단위에 맞게 , 입찰가보다 높게, 즉시구매가보다 적게 적기 */
 		$('input#bidPrice').change(function(){
-			var bidPrice = $(this).val();
-			var bidUnit = ${datailList.auctionGoodsBidUnit};
-			var nowBid = $('#nowBid').val();
-			var buyPrice = ${datailList.auctionGoodsInstanceBuyPrice};
-			var minPrice = ${datailList.auctionGoodsMinPrice};
-			var cashTotal = ${cashTotal};
+			var bidPrice = parseInt($(this).val());
+			var bidUnit = parseInt(${datailList.auctionGoodsBidUnit});
+			var nowBid = parseInt($('#nowBid').val());
+			var buyPrice = parseInt(${datailList.auctionGoodsInstanceBuyPrice});
+			var minPrice = parseInt(${datailList.auctionGoodsMinPrice});
+			var cashTotal = parseInt(${cashTotal});
+			console.log(nowBid);
+			console.log(bidPrice);
 			if((bidPrice%bidUnit) != 0){
 				$(this).val('');
 				$(this).focus();
@@ -157,7 +161,7 @@
 				<br>
 				<br>
 				
-				<form id="form" method="GET">
+				<form id="form" >
 				<input type="hidden" value="${sessionScope.id}" name="userId">
 					<table class="table table-bordered">
 						<tr>
@@ -182,6 +186,7 @@
 					<input type="hidden" value="${datailList.auctionGoodsInstanceBuyPrice}" name="auctionGoodsInstanceBuyPrice">
 					<input type="hidden" value="${bidList.bidPrice}" name="successfulBidPrice">
 					<input type="hidden" value="${bidList.bidNo}" name="bidNo">
+					<input type="hidden" value="${bidList.userId}" name="buyUserId">
 					<input type="hidden" value="${datailList.auctionGoodsNo}" name="auctionGoodsNo">
 					<input type="button" id="btn" value="입찰하기">
 					<input type="button" id="btn2" value="즉시구매">

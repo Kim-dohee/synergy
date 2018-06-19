@@ -4,6 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.synergy.auction.auction.goods.service.SuccessfulBidMapper">
+	
+
+ 	
+	<resultMap id="successfulBidSelectOne" type="com.synergy.auction.auction.goods.service.SuccessfulBidDto"> 
+				<result column="successful_bid_no" property="successfulBidNo"/> 
+				<result column="bid_no" property="bidNo"/> 
+				<result column="successful_bid_price" property="successfulBidPrice"/> 
+				<result column="successful_bid_date" property="successfulBidDate"/> 
+				<result column="successful_bid_pay_end_date" property="successfulBidPayEndDate"/> 
+				<result column="successful_bid_cancel" property="successfulBidCancel"/> 
+	</resultMap> 
  	
 	<insert id="successfulBidInsert"
 			parameterType="java.util.Map">
@@ -14,13 +25,16 @@
 			,successful_bid_date
 			,successful_bid_pay_end_date
 			,successful_bid_cancel
+			,auction_goods_no
+			,user_id
 		) VALUES (
 			#{bidNo}
 			,#{successfulBidPrice}
 			,now()
 			,date_add(now(),interval+3 day) 
 			,null			
-
+			,#{auctionGoodsNo}
+			,#{userId}
 		)
 	</insert>
  	
@@ -33,14 +47,33 @@
 			,successful_bid_date
 			,successful_bid_pay_end_date
 			,successful_bid_cancel
+			,auction_goods_no
 		) VALUES (
 			#{bidNo}
 			,#{auctionGoodsInstanceBuyPrice}
 			,now()
 			,date_add(now(),interval+3 day) 
 			,null			
+			,#{auctionGoodsNo}
 
 		)
 	</insert>
+	
+	<select id="successfulBidSelectOne" parameterType="String" resultType="com.synergy.auction.auction.goods.service.SuccessfulBidDto">
+		SELECT 
+			successful_bid_no AS successfulBidNo
+			,auction_goods_no AS auctionGoodsNo
+			,bid_no AS bidNo
+			,successful_bid_price AS successfulBidPrice
+			,successful_bid_date AS successfulBidDate
+			,successful_bid_pay_end_date AS successfulBidPayEndDate
+			,successful_bid_cancel AS successfulBidCancel
+			,user_id AS userId
+		FROM 
+			successful_bid 
+		WHERE
+			auction_goods_no = #{auctionGoodsNo}
+		LIMIT 0,1;
+	</select>	
 
 </mapper>

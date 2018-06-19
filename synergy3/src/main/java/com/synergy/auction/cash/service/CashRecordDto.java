@@ -4,23 +4,22 @@ package com.synergy.auction.cash.service;
 public class CashRecordDto {
 
 	private int cashRecordNo; //캐시이력넘버
-	private int cashCategoryNo; //캐시카테고리넘버
+	private String cashCategory; //캐시카테고리
 	private String userId; //일반회원아이디
 	private int cashRecordChange; //캐시변동
 	private String cashRecordChangeDate; //캐시변동날짜
 	private int cashRecordTotal; //총액
-	
 	public int getCashRecordNo() {
 		return cashRecordNo;
 	}
 	public void setCashRecordNo(int cashRecordNo) {
 		this.cashRecordNo = cashRecordNo;
 	}
-	public int getCashCategoryNo() {
-		return cashCategoryNo;
+	public String getCashCategory() {
+		return cashCategory;
 	}
-	public void setCashCategoryNo(int cashCategoryNo) {
-		this.cashCategoryNo = cashCategoryNo;
+	public void setCashCategory(String cashCategory) {
+		this.cashCategory = cashCategory;
 	}
 	public String getUserId() {
 		return userId;
@@ -49,9 +48,11 @@ public class CashRecordDto {
 	
 	@Override
 	public String toString() {
-		return "CashRecordDto [cashRecordNo=" + cashRecordNo + ", cashCategoryNo=" + cashCategoryNo + ", userId="
-				+ userId + ", cashRecordChange=" + cashRecordChange + ", cashRecordChangeDate=" + cashRecordChangeDate
+		return "CashRecordDto [cashRecordNo=" + cashRecordNo + ", cashCategory=" + cashCategory + ", userId=" + userId
+				+ ", cashRecordChange=" + cashRecordChange + ", cashRecordChangeDate=" + cashRecordChangeDate
 				+ ", cashRecordTotal=" + cashRecordTotal + "]";
 	}
+	
+	
 	
 }

@@ -5,9 +5,11 @@ public class SuccessfulBidDto {
 	private int successfulBidNo;
 	private int bidNo;
 	private String successfulBidPrice;
+	private String auctionGoodsNo;
 	private String successfulBidDate;
 	private String successfulBidPayEndDate;
 	private String successfulBidCancel;
+	private String userId;
 	public int getSuccessfulBidNo() {
 		return successfulBidNo;
 	}
@@ -25,6 +27,12 @@ public class SuccessfulBidDto {
 	}
 	public void setSuccessfulBidPrice(String successfulBidPrice) {
 		this.successfulBidPrice = successfulBidPrice;
+	}
+	public String getAuctionGoodsNo() {
+		return auctionGoodsNo;
+	}
+	public void setAuctionGoodsNo(String auctionGoodsNo) {
+		this.auctionGoodsNo = auctionGoodsNo;
 	}
 	public String getSuccessfulBidDate() {
 		return successfulBidDate;
@@ -44,14 +52,21 @@ public class SuccessfulBidDto {
 	public void setSuccessfulBidCancel(String successfulBidCancel) {
 		this.successfulBidCancel = successfulBidCancel;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	@Override
 	public String toString() {
 		return "SuccessfulBidDto [successfulBidNo=" + successfulBidNo + ", bidNo=" + bidNo + ", successfulBidPrice="
-				+ successfulBidPrice + ", successfulBidDate=" + successfulBidDate + ", successfulBidPayEndDate="
-				+ successfulBidPayEndDate + ", successfulBidCancel=" + successfulBidCancel + "]";
+				+ successfulBidPrice + ", auctionGoodsNo=" + auctionGoodsNo + ", successfulBidDate=" + successfulBidDate
+				+ ", successfulBidPayEndDate=" + successfulBidPayEndDate + ", successfulBidCancel="
+				+ successfulBidCancel + ", userId=" + userId + "]";
 	}
-	
-	
+
+
 	
 	
 }

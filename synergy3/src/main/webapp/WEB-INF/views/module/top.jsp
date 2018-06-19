@@ -107,6 +107,7 @@
 								</c:if>	
 								<c:if test="${sessionScope.level eq '일반회원'}">
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/cashMain">캐쉬</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/userDetailAuction">경매정보</a>
 								</c:if>
 								</div>
 							</li>

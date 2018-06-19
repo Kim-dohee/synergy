@@ -6,7 +6,7 @@
 <mapper namespace="com.synergy.auction.auction.goods.service.BidMapper">
 	
 	<insert id="bidInsert"
-			parameterType="com.synergy.auction.auction.goods.service.BidDto">
+			parameterType="java.util.Map">
 		INSERT INTO bid
 			(user_id
 			,auction_goods_no

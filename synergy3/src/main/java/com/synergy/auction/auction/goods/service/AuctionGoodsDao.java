@@ -6,8 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.synergy.auction.cash.service.CashRecordDto;
-import com.synergy.auction.user.service.UserDto;
 
 @Repository
 public class AuctionGoodsDao {
@@ -41,7 +39,6 @@ public class AuctionGoodsDao {
 	} 
 	
 	public int auctionGoodsFileNoUpdate(AuctionGoodsDto auctionGoodsDto) {
-		System.out.println("Asdfsdafsdfsadfsaf"+auctionGoodsDto.toString());
 		return sqlSession.update(NS + "auctionGoodsFileNoUpdate", auctionGoodsDto); 
 	} 
 	

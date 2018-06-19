@@ -20,14 +20,35 @@
 			parameterType="com.synergy.auction.cash.service.CashRecordDto">
 		INSERT INTO cash_record(
 			user_id
-			,cash_category_no
+			,cash_category
 			,cash_record_change
 			,cash_record_change_date
 		)VALUES (
 			#{userId}
-			,1
+			,'충전'
 			,#{cashRecordChange}
 			,now()
+		)
+	</insert>
+	<insert id="cashRecordInsertBuy"
+			parameterType="java.util.Map">
+			<selectKey resultType="Integer" 
+						keyProperty="cashRecordNo"  
+						order="AFTER"> 
+			SELECT LAST_INSERT_ID() 
+			</selectKey> 
+		INSERT INTO cash_record(
+			user_id
+			,cash_category
+			,cash_record_change
+			,cash_record_change_date
+			,cash_record_total
+		)VALUES (
+			#{userId}
+			,'구매'
+			,#{successfulBid}
+			,now()
+			,#{cashRecordChange}
 		)
 	</insert>
 	<select id="cashRecordTotalSelect" 
@@ -52,6 +73,7 @@
 			cash_record_change AS cashRecordChange
 			,cash_record_change_date AS cashRecordChangeDate
 			,cash_record_total AS cashRecordTotal 
+			,cash_category AS cashCategory
 		FROM cash_record 
 		WHERE user_id = #{userId}
 		ORDER BY cash_record_change_date DESC

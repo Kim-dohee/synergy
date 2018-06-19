@@ -15,7 +15,8 @@
 				<table class="table table-hover">
 					<thead>
 						<tr class="active">
-							<th>충전 금액</th>
+							<th>사용 내역</th>
+							<th>사용 금액</th>
 							<th>현 총잔액</th>
 							<th>충전 날짜</th>
 						</tr>
@@ -23,7 +24,8 @@
 					<tbody>
 						<c:forEach var="cash" items="${list}">
 							<tr>
-								<th scope="row">${cash.cashRecordChange}</th>
+								<th scope="row">${cash.cashCategory}</th>
+								<td>${cash.cashRecordChange}</td>
 								<td>${cash.cashRecordTotal}</td>
 								<td>${cash.cashRecordChangeDate}</td>    
 							</tr>

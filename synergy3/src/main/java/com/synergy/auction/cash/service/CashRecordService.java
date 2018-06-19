@@ -71,4 +71,9 @@ public class CashRecordService {
 	public int totalCashRecordSelectOne(String userId) { 
 		return cashRecordDao.totalCashRecordSelectOne(userId); 
 	}
+	
+	//구매후 캐시변동
+	public Map<Object, Object> cashRecordInsertBuy(Map<Object, Object> map) { 
+		return cashRecordDao.cashRecordInsertBuy(map); 
+	}
 }

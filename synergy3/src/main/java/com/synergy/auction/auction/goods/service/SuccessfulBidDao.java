@@ -24,4 +24,14 @@ public class SuccessfulBidDao {
 		return sqlSession.insert(NS+"successfulBidNowInsert", map); 
 	} 
 	
+	
+	public SuccessfulBidDto successfulBidSelectOne(String auctionGoodsNo) { 
+		if((sqlSession.selectOne(NS+"successfulBidSelectOne", auctionGoodsNo))==null) {
+			return null;
+		} else {
+			return sqlSession.selectOne(NS+"successfulBidSelectOne", auctionGoodsNo); 
+		}
+		
+	} 
+	
 }
