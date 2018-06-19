@@ -126,4 +126,14 @@ public class FileService {
 	public FileDto donationPlanFileSelect(int fileNo) { 
 		return fileDao.donationPlanFileSelect(fileNo); 
 	}
+	
+	//파일테이블명(donation_spend_report)로 수정
+	public int fileNameUpdate(int donationSpendReportNo) { 
+		return fileDao.fileNameUpdate(donationSpendReportNo);		
+	}
+	
+	//기부금 지출 보고서 파일넘버 검색  
+	public int donationSpendReportFileNoSelect(int donationSpendReportNo) { 
+		return fileDao.donationSpendReportFileNoSelect(donationSpendReportNo);
+	}
 }

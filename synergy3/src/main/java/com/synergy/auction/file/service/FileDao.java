@@ -51,4 +51,15 @@ public class FileDao {
 	public FileDto donationPlanFileSelect(int fileNo) { 
 		return sqlSession.selectOne(NS+"donationPlanFileSelect", fileNo); 
 	}
+	
+	//파일테이블명(donation_spend_report)로 수정
+	public int fileNameUpdate(int donationSpendReportNo) { 
+		int row = sqlSession.update(NS+"fileNameUpdate", donationSpendReportNo);
+		return row;
+	}
+	
+	//기부금 지출 보고서 파일넘버 검색  
+	public int donationSpendReportFileNoSelect(int donationSpendReportNo) { 
+		return sqlSession.selectOne(NS+"donationSpendReportFileNoSelect",donationSpendReportNo);
+	}
 }

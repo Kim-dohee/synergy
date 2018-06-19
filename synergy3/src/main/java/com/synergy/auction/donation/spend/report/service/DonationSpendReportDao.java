@@ -21,6 +21,17 @@ public class DonationSpendReportDao {
 		return sqlSession.selectList(NS+"donationSpendReportSelect"); 
 	}
 	
+	//기부금 지출보고서(아이디,제목,내용,기부금 사용날짜,기부 내역) 등록
+	public int donationSpendReportInsert(DonationSpendReportDto donationSpendReportDto) { 
+		int row = sqlSession.insert(NS+"donationSpendReportInsert", donationSpendReportDto);
+		return row;
+	}
+	
+	//기부단체아이디를 매개변수로 받아 기부 지출 보고서 넘버 검색
+	public int donationSpendReportNoSelectOne(String donatorId) { 
+		return sqlSession.selectOne(NS+"donationSpendReportNoSelectOne", donatorId);
+	}
+	
 	//기부금 지출보고서 검색
 	
 }

@@ -44,4 +44,31 @@
 			,LEFT(donation_spend_report_date,10) AS donationSpendReportDate
 		FROM donation_spend_report
 	</select>
+	<insert id="donationSpendReportInsert"
+			parameterType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
+		INSERT INTO donation_spend_report (
+			donator_id
+			,donation_spend_report_title
+			,donation_spend_report_content
+			,donation_spend_price_date
+			,donation_spend_report_record
+			,donation_spend_report_date
+		) VALUES (
+			#{donatorId}
+			,#{donationSpendReportTitle}
+			,#{donationSpendReportContent}
+			,#{donationSpendPriceDate}
+			,#{donationSpendReportRecord}
+			,now()
+		)		
+	</insert>
+	<select id="donationSpendReportNoSelectOne" 
+			parameterType="String" 
+			resultType="Integer">
+		SELECT donation_spend_report_no 
+		FROM donation_spend_report
+		WHERE donator_id=#{donatorId} 
+		ORDER BY donation_spend_report_date DESC
+		LIMIT 1
+	</select>	
 </mapper>  

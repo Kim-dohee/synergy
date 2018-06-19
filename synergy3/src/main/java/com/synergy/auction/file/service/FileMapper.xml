@@ -79,5 +79,20 @@
 			,file_ext AS fileExt
 		FROM file 
 		WHERE file_no=#{fileNo}
+	</select>
+	<update id="fileNameUpdate"
+			parameterType="Integer">
+		UPDATE file
+		SET file_table_name='donation_spend_report'
+		WHERE file_table_no=#{fileTableNo}		
+	</update>
+	<select id="donationSpendReportFileNoSelect"
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT file_no 
+		FROM file 
+		WHERE file_table_no=#{donationSpendReportNo} 
+		ORDER BY file_date DESC 
+		LIMIT 1
 	</select>		
 </mapper>			  

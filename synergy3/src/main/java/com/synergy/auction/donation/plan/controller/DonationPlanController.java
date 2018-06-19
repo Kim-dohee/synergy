@@ -85,7 +85,7 @@ public class DonationPlanController {
 	}
 	
 	//기부계획서 등록화면
-	@RequestMapping(value = "/donationPlanInsertView", method = RequestMethod.GET)
+	@RequestMapping(value = "/donationPlanInsertView", method = RequestMethod.POST)
 	public String donationPlanInsertView() {
 		return "donationPlan/donation_plan_insert";
 	}

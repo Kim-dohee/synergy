@@ -33,7 +33,7 @@
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">		
 		<c:if test="${sessionScope.level eq '기부단체'}">	
-			<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanInsertView'">등록</button>
+			<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanAgreement'">등록</button>
 		</c:if>	
 		</div><br><br><br>
 	</div>

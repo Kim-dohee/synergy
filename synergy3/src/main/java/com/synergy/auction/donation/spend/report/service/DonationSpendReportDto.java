@@ -13,7 +13,7 @@ public class DonationSpendReportDto {
 	private int incomeDonationNo; //수입기부금넘버
 	private String donationSpendReportTitle; //제목
 	private String donationSpendReportContent; //내용
-	private String donationSpendPriceDate; //기부액 사용날짜
+	private String donationSpendPriceDate; //기부금 사용날짜
 	private String donationSpendReportRecord; //기부내역
 	private String donationSpendReportDate; //보고서등록날짜
 	private DonatorDto donatorDto; //외래키(기부자)
