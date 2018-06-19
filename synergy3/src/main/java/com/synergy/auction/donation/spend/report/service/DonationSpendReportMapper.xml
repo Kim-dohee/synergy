@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.synergy.auction.donation.spend.report.service.DonationSpendReportMapper">
+	<resultMap type="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto"  
+ 				id="resultDonationSpendReport"> 
+ 		<result column="donation_spend_report_title"  
+ 				property="donationSpendReportTitle"/>		 	 
+ 		<result column="dsr.donation_spend_report_no"  
+ 				property="donationSpendReportNo"/>		 	 
+ 		<result column="donation_spend_report_date"  
+ 				property="donationSpendReportDate"/>		 	 
+ 		<collection property="donatorDto"  
+ 					ofType="com.synergy.auction.donator.service.DonatorDto">	 
+ 			<result column="donator_name"  
+ 					property="donatorName"/> 
+ 		</collection>			 
+ 	</resultMap>
+	<select id="donationSpendReportSelect"  
+			resultMap="resultDonationSpendReport">
+		SELECT 
+			d.donator_name
+			,dsr.donation_spend_report_title
+			,dsr.donation_spend_report_no
+			,LEFT(dsr.donation_spend_report_date,10) AS donation_spend_report_date
+		FROM donator AS d
+		JOIN donation_spend_report AS dsr 
+		ON d.donator_id=dsr.donator_id
+	</select>
+	<select id="donationSpendReportDetailSelect" 
+			resultType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
+		SELECT 
+			donation_spend_report_no AS donationSpendReportNo
+			,donator_id AS donatorId
+			,donation_plan_no AS donationPlanNo
+			,donation_report_file_no AS donationReportFileNo
+			,income_donation_no AS incomeDonationNo
+			,donation_spend_report_title AS donationSpendReportTitle
+			,donation_spend_report_content AS donationSpendReportContent
+			,donation_spend_price_date AS donationSpendPriceDate
+			,donation_spend_report_record AS donationSpendReportRecord
+			,LEFT(donation_spend_report_date,10) AS donationSpendReportDate
+		FROM donation_spend_report
+	</select>
+</mapper>  

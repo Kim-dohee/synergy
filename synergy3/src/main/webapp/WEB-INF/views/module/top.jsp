@@ -148,7 +148,7 @@
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
 									<ul class="one">
 										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationPlanMain">계획서</a></li>			
-										
+										<c:if test="${sessionScope.level eq '일반회원'}">
 											<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationAll">기부하기</a></li>
 												 <!-- <ul class="two border">								
 													<li><a class="dropdown-item" href="#">아동기부</a></li>								
@@ -156,7 +156,8 @@
 													<li><a class="dropdown-item" href="#">북한기부</a></li>										
 													<li><a class="dropdown-item" href="#">해외기부</a></li>								
 												</ul>  -->
-										
+										</c:if>
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/donationSpendReport">보고서</a></li>
 									</ul>
 								</div>
 						</li>
