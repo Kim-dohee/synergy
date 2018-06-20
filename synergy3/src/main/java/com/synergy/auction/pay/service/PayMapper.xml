@@ -3,6 +3,75 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.synergy.auction.admin.service.PayMapper">
-
+<mapper namespace="com.synergy.auction.pay.service.PayMapper">
+	<resultMap type="com.synergy.auction.pay.service.PayDto" id="resultPay"> 
+ 		<result column="pay_no" property="payNo"/>		 	 
+ 		<result column="user_id" property="userId"/>		 	 
+ 		<result column="user_id2" property="userId2"/>		 	 
+ 		<result column="cash_record_no" property="cashRecordNo"/>		 	 
+ 		<result column="pay_state" property="payState"/>		 	 
+ 		<result column="pay_buyer_complete_date" property="payBuyerCompleteDate"/>		 	 
+ 		<result column="pay_seller_delivery_date" property="paySellerDeliveryDate"/>		 	 
+ 		<result column="pay_buyer_receipt_confirm_date" property="payBuyerReceiptConfirmDate"/>		 	 
+	 		<collection property="auctionGoodsDto" ofType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">	 
+	 			<result column="auction_goods_no" property="auctionGoodsNo"/> 
+	 			<result column="auction_goods_file_no" property="auctionGoodsFileNo"/> 
+	 			<result column="auction_state_no" property="auctionStateNo"/> 
+	 			<result column="small_category_no" property="smallCategoryNo"/> 
+	 			<result column="auction_goods_title" property="auctionGoodsTitle"/> 
+	 			<collection property="file" ofType="com.synergy.auction.file.service.FileDto">	 
+					<result column="file_name" property="fileName"/> 
+					<result column="file_ext" property="fileExt"/> 
+				</collection>			
+	 		</collection>			 
+ 	</resultMap>
+	<insert id="payInsert"
+				parameterType="com.synergy.auction.pay.service.PayDto">
+		INSERT INTO pay(
+			user_id
+			,user_id2
+			,cash_record_no
+			,successful_bid_no
+			,pay_state
+			,pay_buyer_complete_date
+		)VALUES (
+			#{userId}
+			,#{userId2}
+			,#{cashRecordNo}
+			,#{successfulBidNo}
+			,'결재완료'
+			,now()
+		)
+	</insert>
+		
+	<select id="paySelect" parameterType="java.util.List" resultMap="resultPay">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.auction_state_no
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_title
+			,pay.pay_no
+			,pay.user_id
+			,pay.user_id2 
+			,pay.cash_record_no 
+			,pay.pay_state 
+			,pay.pay_buyer_complete_date
+			,pay.pay_seller_delivery_date 
+			,pay.pay_buyer_receipt_confirm_date 
+			,file.file_name
+ 			,file.file_ext
+		FROM 
+			auction_goods 
+		JOIN
+			pay  
+		ON 
+			auction_goods.user_id =  pay.user_id
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no And 'auction_goods' = file.file_table_name
+		WHERE
+			pay.user_id2  = #{userId}
+	</select>	
 </mapper>

@@ -54,7 +54,7 @@ public class CashRecordService {
 		cashMap.put("userId", userId);
 		List<CashRecordDto> list = cashRecordDao.cashRecordSelect(cashMap);
 		//총 row수 구하기
-		int total = cashRecordDao.totalCashRecord();
+		int total = cashRecordDao.totalCashRecord(userId);
 		int lastPage = 0;
 		if(total%10==0) {
 			lastPage = total/10;
@@ -73,7 +73,12 @@ public class CashRecordService {
 	}
 	
 	//구매후 캐시변동
-	public Map<Object, Object> cashRecordInsertBuy(Map<Object, Object> map) { 
+	public int cashRecordInsertBuy(Map<Object, Object> map) { 
 		return cashRecordDao.cashRecordInsertBuy(map); 
+	}
+	
+	//관리자 캐시변동
+	public int cashRecordInsertPay(int successfulBid) { 
+		return cashRecordDao.cashRecordInsertPay(successfulBid); 
 	}
 }

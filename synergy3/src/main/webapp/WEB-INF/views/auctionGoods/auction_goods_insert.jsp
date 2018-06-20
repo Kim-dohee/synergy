@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
@@ -81,9 +82,10 @@
 					<tr>
 						<th class="active">기부금계획서</th>
 						<td>
-							<select name="bidUnit">
-								<option value="100">100</option>
-								<option value="1000">1000</option>
+							<select name="donationPlanNo">
+								<c:forEach var="list" items="${list}">
+									<option value="${list.donationPlanNo}">${list.donationPlanTitle}</option>
+								</c:forEach>
 							</select>
 						</td>
 					</tr>

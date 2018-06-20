@@ -95,7 +95,8 @@
 								마이페이지
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-								<c:if test="${sessionScope.level eq '관리자'}">	
+								<c:if test="${sessionScope.level eq '관리자'}">
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/cashMainAdmin">캐쉬</a>	
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/adminUpdate">회원수정</a>
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/userSelect">회원리스트</a>
 								</c:if>
@@ -116,7 +117,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">경매</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio" style="font-size:16px">
 									<ul class="one">
-										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/auctionGoodsSearch">의류</a>
+										<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/auctionGoodsSelect">의류</a>
 											<ul class="two border">
 												<li><a class="dropdown-item" href="#">여성의류</a></li>								
 												<li><a class="dropdown-item" href="#">남성의류</a></li>										

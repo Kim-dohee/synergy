@@ -20,7 +20,7 @@
 	<resultMap type="com.synergy.auction.auction.goods.service.AuctionGoodsDto" id="resultAuctionGoods"> 
 		<result column="auction_goods_no" property="auctionGoodsNo"/>
 		<result column="auction_goods_file_no" property="auctionGoodsFileNo"/>		 	 
-		<result column="donation_paln_no" property="donationPalnNo"/>		 	 
+		<result column="donation_plan_no" property="donationPlanNo"/>		 	 
 		<result column="auction_state_no" property="auctionStateNo"/>		 	 
 		<result column="user_id" property="userId"/>		 	 
 		<result column="small_category_no" property="smallCategoryNo"/>		 	 
@@ -52,7 +52,7 @@
 			
 		INSERT INTO auction_goods(
 			auction_goods_file_no
-			,donation_paln_no
+			,donation_plan_no
 			,auction_state_no
 			,user_id
 			,small_category_no
@@ -70,7 +70,7 @@
 			,auction_goods_hits
 		) VALUES (
 			null
-			,null
+			,#{donationPlanNo}
 			,'입찰전'
 			,#{userId}
 			,#{smallCategoryNo}
@@ -89,11 +89,43 @@
 		)
 	</insert>
 
-	<select id="auctionGoodsSearch" resultMap="resultAuctionGoods">
+	<select id="auctionGoodsSelect" resultMap="resultAuctionGoods">
 		SELECT 
 			auction_goods.auction_goods_no
 			,auction_goods.auction_goods_file_no
-			,auction_goods.donation_paln_no
+			,auction_goods.donation_plan_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
+		FROM
+			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no AND 'auction_goods' = file.file_table_name
+		WHERE 
+			file.file_ext IN('jpg','png','jpeg')
+	</select>	
+	
+	<select id="auctionGoodsSelectUser" resultMap="resultAuctionGoods">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_plan_no
 			,auction_goods.auction_state_no
 			,auction_goods.user_id
 			,auction_goods.small_category_no
@@ -118,14 +150,14 @@
 		ON
 			auction_goods.auction_goods_no = file.file_table_no
 		WHERE 
-			file.file_ext IN('jpg','png','jpeg')
+			user_id = #{userId}
 	</select>	
 	
 	<select id="auctionGoodsSelectOne" parameterType="String" resultMap="resultAuctionGoods">
 			SELECT 
 			auction_goods.auction_goods_no
 			,auction_goods.auction_goods_file_no
-			,auction_goods.donation_paln_no
+			,auction_goods.donation_plan_no
 			,auction_goods.auction_state_no
 			,auction_goods.user_id
 			,auction_goods.small_category_no
@@ -189,6 +221,25 @@
 			auction_state_no = '입찰중'
 			,auction_goods_bid_start_date = now()	
 			,auction_goods_bid_end_date = date_add(now(),interval+3 day) 
+		WHERE 
+			auction_goods_no =  #{auctionGoodsNo};
+	</update>
+	
+	<update id="auctionGoodsUpdatePay" parameterType="Integer">
+		UPDATE 
+			auction_goods 
+		SET 
+			auction_state_no = '경매 종료'
+			,auction_goods_bid_end_date = null
+		WHERE 
+			auction_goods_no =  #{auctionGoodsNo};
+	</update>
+	
+	<update id="auctionGoodsUpdateState" parameterType="String">
+		UPDATE 
+			auction_goods 
+		SET 
+			auction_state_no = '입찰 종료'
 		WHERE 
 			auction_goods_no =  #{auctionGoodsNo};
 	</update>

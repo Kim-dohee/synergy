@@ -5,15 +5,15 @@
 	<br><h1 class="text-center">상품 리스트</h1><br>
 	<div class="container bs-example" data-example-id="simple-table" >
 		<table class="table table-striped" >
-			<caption>Optional table caption.</caption>
 			<thead>
 				<tr>
-					<th style="width: 20%">제목</th>
+					<th style="width: 15%">제목</th>
 					<th style="width: 20%"></th>
 					<th style="width: 10%">즉시구매가</th>
-					<th style="width: 10%">판매자</th>
+					<th style="width: 8%">판매자</th>
 					<th style="width: 10%">등록날짜</th>
-					<th style="width: 10%">조회수</th>
+					<th style="width: 5%">조회수</th>
+					<th style="width: 7%">경매 상태</th>
 					<th style="width: 10%">입찰시작날짜</th>
 					<th style="width: 10%">입찰마감날짜</th>
 				</tr>
@@ -21,12 +21,13 @@
 			<tbody>
 				<c:forEach var="goods" items="${list}">
 					<tr>
-						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}"><img src="${pageContext.request.contextPath}/resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="150" height="150"></a></td>
+						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}"><img src="${pageContext.request.contextPath}/resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="90" height="90"></a></td>
 						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}">${goods.auctionGoodsTitle}</a>
 						<td>${goods.auctionGoodsInstanceBuyPrice}</td>
 						<td>${goods.userId}</td>
 						<td>${goods.auctionGoodsDate}</td>
 						<td>${goods.auctionGoodsHits}</td>
+						<td>${goods.auctionStateNo}</td>
 						<td>${goods.auctionGoodsBidStartDate}</td>
 						<td>${goods.auctionGoodsBidEndDate}</td>
 					</tr>

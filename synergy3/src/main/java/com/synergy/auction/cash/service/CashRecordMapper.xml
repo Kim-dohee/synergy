@@ -45,7 +45,7 @@
 			,cash_record_total
 		)VALUES (
 			#{userId}
-			,'구매'
+			,#{cashCategory}
 			,#{successfulBid}
 			,now()
 			,#{cashRecordChange}
@@ -81,7 +81,7 @@
 	</select>
 	<select id="totalCashRecord"  
 			resultType="Integer">
-		SELECT COUNT(*) FROM cash_record
+		SELECT COUNT(*) FROM cash_record WHERE user_id = #{userId}
 	</select>
 	<insert id="accountInsert"
 			parameterType="com.synergy.auction.cash.service.AccountDto">
@@ -105,5 +105,7 @@
 		WHERE user_id=#{userId}
 		ORDER BY cash_record_change_date DESC 
 		LIMIT 1
-	</select>						 
+	</select>	
+	
+		 
 </mapper>  

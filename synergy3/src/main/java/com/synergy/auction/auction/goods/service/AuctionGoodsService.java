@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.synergy.auction.cash.service.CashRecordDto;
 import com.synergy.auction.user.service.UserDto;
 
+@Transactional
 @Service
 public class AuctionGoodsService {
 	@Autowired
@@ -20,8 +22,13 @@ public class AuctionGoodsService {
 	} 
 
 	//상품 리스트
-	public List<AuctionGoodsDto> auctionGoodsSearch() { 
-		return auctionGoodsDao.auctionGoodsSearch(); 		
+	public List<AuctionGoodsDto> auctionGoodsSelect() { 
+		return auctionGoodsDao.auctionGoodsSelect(); 		
+	}
+	
+	//개인 리스트
+	public List<AuctionGoodsDto> auctionGoodsSelectUser(String UserId) { 
+		return auctionGoodsDao.auctionGoodsSelectUser(UserId); 		
 	}
 
 	//상품 상세 보기를위한 검색
@@ -42,6 +49,17 @@ public class AuctionGoodsService {
 	//입찰이 시작되면 시작날짜, 종료날짜, 상태 변경
 	public int auctionGoodsUpdate(String auctionGoodsNo) {
 		return auctionGoodsDao.auctionGoodsUpdate(auctionGoodsNo);
+		
+	} 
+	
+	//결제를 하면 상태 변경
+	public int auctionGoodsUpdatePay(int auctionGoodsNo) {
+		return auctionGoodsDao.auctionGoodsUpdatePay(auctionGoodsNo);
+		
+	} 
+	//기간이 지나면 상태 변경
+	public int auctionGoodsUpdateState(String auctionGoodsNo) {
+		return auctionGoodsDao.auctionGoodsUpdateState(auctionGoodsNo);
 		
 	} 
 	

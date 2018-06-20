@@ -18,8 +18,13 @@ public class AuctionGoodsDao {
 		return auctionGoodsDto.getAuctionGoodsNo(); 
 	} 
 
-	public List<AuctionGoodsDto> auctionGoodsSearch() { 
-		return sqlSession.selectList(NS+"auctionGoodsSearch"); 		
+	public List<AuctionGoodsDto> auctionGoodsSelect() { 
+		return sqlSession.selectList(NS+"auctionGoodsSelect"); 		
+	}
+	
+	
+	public List<AuctionGoodsDto> auctionGoodsSelectUser(String userId) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelectUser", userId); 		
 	}
 	
 	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 
@@ -36,6 +41,14 @@ public class AuctionGoodsDao {
 
 	public int auctionGoodsUpdate(String auctionGoodsNo) {
 		return sqlSession.update(NS + "auctionGoodsUpdate", auctionGoodsNo); 
+	} 
+	
+	public int auctionGoodsUpdatePay(int auctionGoodsNo) {
+		return sqlSession.update(NS + "auctionGoodsUpdatePay", auctionGoodsNo); 
+	} 
+	
+	public int auctionGoodsUpdateState(String auctionGoodsNo) {
+		return sqlSession.update(NS + "auctionGoodsUpdateState", auctionGoodsNo); 
 	} 
 	
 	public int auctionGoodsFileNoUpdate(AuctionGoodsDto auctionGoodsDto) {

@@ -6,7 +6,7 @@ import com.synergy.auction.file.service.FileDto;
 public class AuctionGoodsDto {
 	private int auctionGoodsNo;
 	private int auctionGoodsFileNo;
-	private int donationPalnNo;
+	private int donationPlanNo;
 	private String auctionStateNo;
 	private String userId;
 	private String smallCategoryNo;
@@ -35,11 +35,11 @@ public class AuctionGoodsDto {
 	public void setAuctionGoodsFileNo(int auctionGoodsFileNo) {
 		this.auctionGoodsFileNo = auctionGoodsFileNo;
 	}
-	public int getDonationPalnNo() {
-		return donationPalnNo;
+	public int getDonationPlanNo() {
+		return donationPlanNo;
 	}
-	public void setDonationPalnNo(int donationPalnNo) {
-		this.donationPalnNo = donationPalnNo;
+	public void setDonationPlanNo(int donationPlanNo) {
+		this.donationPlanNo = donationPlanNo;
 	}
 	public String getAuctionStateNo() {
 		return auctionStateNo;
@@ -140,7 +140,7 @@ public class AuctionGoodsDto {
 	@Override
 	public String toString() {
 		return "AuctionGoodsDto [auctionGoodsNo=" + auctionGoodsNo + ", auctionGoodsFileNo=" + auctionGoodsFileNo
-				+ ", donationPalnNo=" + donationPalnNo + ", auctionStateNo=" + auctionStateNo + ", userId=" + userId
+				+ ", donationPlanNo=" + donationPlanNo + ", auctionStateNo=" + auctionStateNo + ", userId=" + userId
 				+ ", smallCategoryNo=" + smallCategoryNo + ", auctionGoodsMinPrice=" + auctionGoodsMinPrice
 				+ ", auctionGoodsTitle=" + auctionGoodsTitle + ", auctionGoodsContent=" + auctionGoodsContent
 				+ ", auctionGoodsInstanceBuyPrice=" + auctionGoodsInstanceBuyPrice + ", auctionGoodsName="

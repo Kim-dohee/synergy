@@ -45,14 +45,20 @@ public class CashRecordDao {
 		return row;
 	}
 	
+	//관리자 캐시 입금
+	public int cashRecordInsertPay(int successfulBid) { 
+		int row = sqlSession.update(NS+"cashRecordInsertPay", successfulBid); 		
+		return row;
+	}
+	
 	//캐쉬사용내역 검색
 	public List<CashRecordDto> cashRecordSelect(Map<String, Object> map) { 
 		return sqlSession.selectList(NS+"cashRecordSelect", map); 		
 	}
 	
 	//캐쉬사용내역 페이징을 위한 row수 구하기
-	public int totalCashRecord() { 
-		return sqlSession.selectOne(NS+"totalCashRecord"); 
+	public int totalCashRecord(String userId) { 
+		return sqlSession.selectOne(NS+"totalCashRecord", userId); 
 	}
 	
 	//최종캐쉬금액 검색
@@ -61,9 +67,10 @@ public class CashRecordDao {
 	}
 	
 	//최종캐쉬금액 검색
-	public Map<Object, Object> cashRecordInsertBuy(Map<Object, Object> map) { 
-		 sqlSession.update(NS+"cashRecordInsertBuy", map); 
-		 return map;
+	public int cashRecordInsertBuy(Map<Object, Object> map) { 
+		sqlSession.update(NS+"cashRecordInsertBuy", map); 
+		int cashRecordNo = (int) map.get("cashRecordNo");
+		return cashRecordNo;
 	}
 	
 }

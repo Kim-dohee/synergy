@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.synergy.auction.admin.service.AdminDto;
-import com.synergy.auction.admin.service.AdminService;
+import com.synergy.auction.auction.goods.service.AuctionGoodsService;
 import com.synergy.auction.cash.service.CashRecordDto;
 import com.synergy.auction.cash.service.CashRecordService;
+import com.synergy.auction.pay.service.PayDto;
 import com.synergy.auction.pay.service.PayService;
 
 
@@ -25,11 +25,14 @@ public class PayController {
 	private CashRecordService cashRecordService;
 	@Autowired 
 	private PayService payService;
+	@Autowired 
+	private AuctionGoodsService auctionGoodsService;
 	
 	@RequestMapping(value = "/payInsert", method = RequestMethod.POST)
-	public String adminInsert(@RequestParam(value="successfulBid") int successfulBid,HttpSession session,CashRecordDto cashRecordDto
-								,@RequestParam(value="sellerId") String sellerId
-								,@RequestParam(value="successfulBidNo")int successfulBidNo) {
+	public String payInsert(@RequestParam(value="successfulBid") int successfulBid,HttpSession session
+							,@RequestParam(value="sellerId") String sellerId
+							,@RequestParam(value="successfulBidNo")int successfulBidNo
+							,CashRecordDto cashRecordDto,PayDto payDto,int auctionGoodsNo) {
 		String userId = (String)session.getAttribute("id");
 		int cashRecordTotal = cashRecordService.cashRecordTotalSelect(userId);
 		int cashRecordChange = cashRecordTotal-successfulBid;
@@ -37,14 +40,30 @@ public class PayController {
 		map.put("userId", userId);
 		map.put("successfulBid", successfulBid);
 		map.put("cashRecordChange", cashRecordChange);
-		Map<Object, Object> cashRecordNo = cashRecordService.cashRecordInsertBuy(map);
+		map.put("cashCategory", "구매");
+		int cashRecordNo = cashRecordService.cashRecordInsertBuy(map);
+
+		String adminId = "2";
 		
-		System.out.println(cashRecordNo.get(cashRecordNo)+"캐시이력넘버");
+		int cashRecordTotalAdmin = cashRecordService.cashRecordTotalSelect(adminId);
+		int cashRecordChangeAdmin = cashRecordTotalAdmin+successfulBid;
+		Map<Object, Object> mapAdmin = new HashMap<Object, Object>();
+		mapAdmin.put("userId", adminId);
+		mapAdmin.put("successfulBid", successfulBid);
+		mapAdmin.put("cashRecordChange", cashRecordChangeAdmin);
+		mapAdmin.put("cashCategory", "입금");
+		cashRecordService.cashRecordInsertBuy(mapAdmin);
+		
+		System.out.println(cashRecordNo+"캐시이력넘버");
 		System.out.println(successfulBidNo+"낙찰넘버");
 		System.out.println(sellerId+"판매자 아이디");
 		System.out.println(userId+"구매자 아이디");
-		/*payService.payInsert();*/
-		
+		payDto.setUserId(sellerId);
+		payDto.setUserId2(userId);
+		payDto.setCashRecordNo(cashRecordNo);
+		payDto.setSuccessfulBidNo(successfulBidNo);
+		payService.payInsert(payDto);
+		auctionGoodsService.auctionGoodsUpdatePay(auctionGoodsNo);
 		return "home";
 	}
 }

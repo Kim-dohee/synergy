@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
+import com.synergy.auction.auction.goods.service.AuctionGoodsService;
 import com.synergy.auction.cash.service.CashRecordService;
+import com.synergy.auction.pay.service.PayDto;
+import com.synergy.auction.pay.service.PayService;
 import com.synergy.auction.user.service.UserDto;
 import com.synergy.auction.user.service.UserService;
 
@@ -26,6 +30,10 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private CashRecordService cashRecordService;
+	@Autowired
+	private AuctionGoodsService auctionGoodsService;
+	@Autowired
+	private PayService payService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -127,5 +135,16 @@ public class UserController {
 		List<UserDto> list = userService.userSelect(userDto);
 		model.addAttribute("list",list);
 		return "user/user_select";
+	}
+	
+	//경매 정보
+	@RequestMapping(value = "/userDetailAuction", method = RequestMethod.GET)
+	public String userDetailAuction(HttpSession session,Model model) {
+		String userId = (String)session.getAttribute("id");
+		List<AuctionGoodsDto> list = auctionGoodsService.auctionGoodsSelectUser(userId);
+		List<PayDto> payList = payService.paySelect(userId);
+		model.addAttribute("list",list);
+		model.addAttribute("payList",payList);
+		return "user/user_detail_auction";
 	}
 }

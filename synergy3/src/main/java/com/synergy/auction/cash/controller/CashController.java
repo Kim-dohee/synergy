@@ -33,6 +33,12 @@ public class CashController {
 	public String cashMain() {
 		return "cash/cash_main";
 	}
+
+	//관리자용캐쉬메인 화면
+	@RequestMapping(value = "/cashMainAdmin", method = RequestMethod.GET)
+	public String cashMainAdmin() {
+		return "cash/cash_main_admin";
+	}
 	
 	//캐쉬 충전 화면
 	@RequestMapping(value = "/cashRecordInsert", method = RequestMethod.GET)
@@ -93,5 +99,17 @@ public class CashController {
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("lastPage",map.get("lastPage"));
 		return "cash/cash_record_select";
+	}
+	
+	//캐쉬 사용내역 검색(페이징)
+	@RequestMapping(value = "/cashRecordSelectAdmin", method = RequestMethod.GET)
+	public String cashRecordSelectAdmin(Model model
+			,@RequestParam(value="userId") String userId
+			,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
+		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
+		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("lastPage",map.get("lastPage"));
+		return "cash/cash_record_select_admin";
 	}
 }

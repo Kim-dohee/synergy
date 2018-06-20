@@ -39,6 +39,7 @@ $(function() {
 					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" value="${list.auctionGoodsName}">
 					<input type="hidden" value="${list.userId}" name="sellerId">
 					<input type="hidden" value="${successfulBid.successfulBidNo}" name="successfulBidNo">
+					<input type="hidden" value="${list.auctionGoodsNo}" name="auctionGoodsNo">
 				</div>
 				<div class="col-lg-4"></div>
 		</div>

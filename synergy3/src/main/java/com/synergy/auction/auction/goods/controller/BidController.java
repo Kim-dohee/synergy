@@ -53,7 +53,7 @@ public class BidController {
 		
 		auctionGoodsService.auctionGoodsUpdate(auctionGoodsNo);
 		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
-		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("detailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
 		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
 		return "auctionGoods/auction_goods_detail";
 	}
@@ -74,7 +74,7 @@ public class BidController {
 	
 		bidService.bidInsert(map);
 		auctionGoodsService.auctionGoodsHit(auctionGoodsNo);
-		model.addAttribute("datailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
+		model.addAttribute("detailList",auctionGoodsService.auctionGoodsSelectOne(auctionGoodsNo));
 		model.addAttribute("bidList",auctionGoodsService.bidSelectOne(auctionGoodsNo));
 		return "auctionGoods/auction_goods_detail";
 	}
