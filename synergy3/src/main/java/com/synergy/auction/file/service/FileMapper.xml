@@ -94,5 +94,10 @@
 		WHERE file_table_no=#{donationSpendReportNo} 
 		ORDER BY file_date DESC 
 		LIMIT 1
-	</select>		
+	</select>
+	<delete id="fileDelete"
+			parameterType="Integer">
+		DELETE FROM file 
+		WHERE file_table_no=#{fileTableNo}		
+	</delete>		
 </mapper>			  

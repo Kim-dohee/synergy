@@ -131,6 +131,7 @@
 			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
 		SELECT 
 			donator_id AS donatorId
+			,donation_plan_image_no AS donationPlanImageNo
 			,donation_plan_file_no AS donationPlanFileNo
 			,donation_plan_purpose AS donationPlanPurpose
 			,donation_plan_use_term AS donationPlanUseTerm
@@ -146,5 +147,10 @@
 		FROM donation_plan 
 		WHERE donator_id=#{donatorId}		
  	</select>
+ 	<delete id="donationPlanDelete"
+ 			parameterType="Integer">
+ 		DELETE FROM donation_plan
+		WHERE donation_plan_no=#{donationPlanNo}
+ 	</delete>
  </mapper>  
   

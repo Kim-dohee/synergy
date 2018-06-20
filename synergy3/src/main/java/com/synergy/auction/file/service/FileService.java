@@ -136,4 +136,17 @@ public class FileService {
 	public int donationSpendReportFileNoSelect(int donationSpendReportNo) { 
 		return fileDao.donationSpendReportFileNoSelect(donationSpendReportNo);
 	}
+	
+	//파일넘버를 매개변수로 받아 파일 삭제
+	public int fileDelete(int fileTableNo,String fileName,String fileExt) { 
+		
+		//DB 파일 삭제
+		int row = fileDao.fileDelete(fileTableNo);
+		//파일 삭제
+		File newFile = new File(SystemPath.UPLOAD_PATH+fileName+"."+fileExt);
+		if(newFile.exists()) {
+			newFile.delete();
+		}			
+		return row;
+	}
 }

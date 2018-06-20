@@ -1,5 +1,6 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE>
 <html>
@@ -37,7 +38,12 @@
 			</tr>
 		</tbody>
 		</table>
-		<button type="button" class="btn btn-info btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanMain'">리스트로</button><br><br>
+		<div class="col-lg-offset-6 col-lg-2">
+			<c:if test="${sessionScope.level eq '기부단체'}">
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanDelete?donationPlanNo=${donationPlanNo}&fileName=${fileName}&fileExt=${fileExt}&imageFileName=${imageFileName}&imageFileExt=${imageFileExt}'">삭제</button>
+			</c:if>
+			<button type="button" class="btn btn-info btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationPlanMain'">리스트로</button><br><br>
+		</div>
 	</div>	
 </body>
 </html>

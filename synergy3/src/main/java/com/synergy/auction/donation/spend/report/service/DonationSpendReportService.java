@@ -38,4 +38,15 @@ public class DonationSpendReportService {
 		int row = donationSpendReportDao.incomeDonationNoInsert(donationSpendReportDto); 
 		return row;
 	}
+	
+	//기부금 지출보고서(계획서 넘버,보고서 파일넘버,제목,내용,기부액 사용 날짜,기부내역,보고서 등록날짜) 상세 검색
+	public DonationSpendReportDto donationSpendReportDetailSelect(int donationSpendReportNo) { 
+		return donationSpendReportDao.donationSpendReportDetailSelect(donationSpendReportNo); 
+	}
+	
+	//기부금 지출보고서 삭제
+	public int donationSpendReportDelete(int donationPlanNo) { 
+		int row = donationSpendReportDao.donationSpendReportDelete(donationPlanNo); 
+		return row;
+	}
 }

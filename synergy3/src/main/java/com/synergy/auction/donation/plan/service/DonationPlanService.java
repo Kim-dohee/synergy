@@ -61,4 +61,10 @@ public class DonationPlanService {
 	public List<DonationPlanDto> donationPlanNoSelect(String donatorId) {
 		return donationPlanDao.donationPlanNoSelect(donatorId); 
 	}
+	
+	//기부금 계획서 삭제
+	public int donationPlanDelete(int donationPlanNo) { 
+		int row =  donationPlanDao.donationPlanDelete(donationPlanNo);
+		return row;
+	}
 }

@@ -47,7 +47,7 @@ public class FileDao {
 		return sqlSession.selectList(NS+"ImageFileSelect"); 
 	}
 	
-	//기부금파일넘버를 매개변수로 받아 파일(이름,확장자)검색
+	//파일넘버를 매개변수로 받아 파일(이름,확장자)검색
 	public FileDto donationPlanFileSelect(int fileNo) { 
 		return sqlSession.selectOne(NS+"donationPlanFileSelect", fileNo); 
 	}
@@ -61,5 +61,11 @@ public class FileDao {
 	//기부금 지출 보고서 파일넘버 검색  
 	public int donationSpendReportFileNoSelect(int donationSpendReportNo) { 
 		return sqlSession.selectOne(NS+"donationSpendReportFileNoSelect",donationSpendReportNo);
+	}
+	
+	//파일넘버를 매개변수로 받아 파일 삭제
+	public int fileDelete(int fileTableNo) { 
+		int row = sqlSession.delete(NS+"fileDelete", fileTableNo);
+		return row;
 	}
 }

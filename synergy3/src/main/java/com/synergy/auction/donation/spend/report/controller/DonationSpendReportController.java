@@ -20,6 +20,7 @@ import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donation.spend.report.service.DonationSpendReportDto;
 import com.synergy.auction.donation.spend.report.service.DonationSpendReportService;
+import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 import com.synergy.auction.income.donation.service.IncomeDonationDto;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
@@ -47,14 +48,19 @@ public class DonationSpendReportController {
 		return "donationSpendReport/donation_spend_report_main";
 	}
 	
-	//기부금 지출보고서() 상세 검색
+	//기부금 지출보고서 상세 검색
 	@RequestMapping(value = "/donationSpendReportSelect", method = RequestMethod.GET)
 	public String donationSpendReportSelect(Model model
-											,@RequestParam(value="donationSpendReportNo") int donationSpendReportNo
-											,@RequestParam(value="donationSpendReportDate") String donationSpendReportDate) {
+											,@RequestParam(value="donationSpendReportNo") int donationSpendReportNo) {
+		
 		logger.debug("DonationSpendReportController.donationSpendReportSelect donationSpendReportNo>>"+donationSpendReportNo);
-		logger.debug("DonationSpendReportController.donationSpendReportSelect donationSpendReportDate>>"+donationSpendReportDate);
-		return "donationSpendReport/donationSpendReport_main";
+		//기부금 지출보고서(계획서 넘버,보고서 파일넘버,제목,내용,기부액 사용 날짜,기부내역,보고서 등록날짜) 상세 검색
+		DonationSpendReportDto donationSpendReportdto= donationSpendReportService.donationSpendReportDetailSelect(donationSpendReportNo);
+		model.addAttribute("donationSpendReportdto", donationSpendReportdto);
+		int fileNo = donationSpendReportdto.getDonationReportFileNo();
+		FileDto file = fileService.donationPlanFileSelect(fileNo);
+		model.addAttribute("file", file);
+		return "donationSpendReport/donation_spend_report_select";
 	}
 	
 	//기부금 지출보고서 동의
@@ -119,5 +125,23 @@ public class DonationSpendReportController {
 			donationSpendReportService.incomeDonationNoInsert(donationSpendReportDto);
 		}
 		return "donationSpendReport/donation_spend_report_commit";
+	}
+	
+	//기부금 지출보고서 삭제
+	@RequestMapping(value = "/donationSpendReportDelete", method = RequestMethod.GET)
+	public String donationSpendReportDelete(@RequestParam(value="donationPlanNo") int donationPlanNo
+											,@RequestParam(value="donationSpendReportNo") int donationSpendReportNo
+											,@RequestParam(value="fileName") String fileName
+											,@RequestParam(value="fileExt") String fileExt) {
+		
+		logger.debug("DonationSpendReportController.donationSpendReportDelete donationPlanNo>>"+donationPlanNo);
+		logger.debug("DonationSpendReportController.donationSpendReportDelete donationSpendReportNo>>"+donationSpendReportNo);
+		logger.debug("DonationSpendReportController.donationSpendReportDelete fileName>>"+fileName);
+		logger.debug("DonationSpendReportController.donationSpendReportDelete fileExt>>"+fileExt);
+		//기부금 지출보고서 삭제
+		donationSpendReportService.donationSpendReportDelete(donationPlanNo);
+		//파일넘버를 매개변수로 받아 파일 삭제
+		fileService.fileDelete(donationSpendReportNo,fileName,fileExt);
+		return "donationSpendReport/donation_spend_report_main";
 	}
 }

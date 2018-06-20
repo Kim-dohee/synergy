@@ -25,7 +25,7 @@
 				<tbody>
 					<tr>
 						<th scope="row">${donationSpendReport.donationSpendReportNo}</th>				
-						<td><a href="${pageContext.request.contextPath}/donationSpendReportSelect?donationSpendReportNo=${donationSpendReport.donationSpendReportNo}&donationSpendReportDate=${donationSpendReportDate}">${donationSpendReport.donationSpendReportTitle}</a></td>
+						<td><a href="${pageContext.request.contextPath}/donationSpendReportSelect?donationSpendReportNo=${donationSpendReport.donationSpendReportNo}">${donationSpendReport.donationSpendReportTitle}</a></td>
 						<td>${donationSpendReport.donatorDto.donatorName}</td>
 						<td>${donationSpendReport.donationSpendReportDate}</td>
 					</tr>	

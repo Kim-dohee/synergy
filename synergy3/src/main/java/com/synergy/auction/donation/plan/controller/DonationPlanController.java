@@ -63,6 +63,7 @@ public class DonationPlanController {
 		int donationPlanGoalPrice = donationPlanDto.getDonationPlanGoalPrice();
 		String donationPlanUseTerm = donationPlanDto.getDonationPlanUseTerm();
 		int donationPlanFileNo = donationPlanDto.getDonationPlanFileNo();
+		int donationPlanImageFileNo = donationPlanDto.getDonationPlanImageNo();
 		model.addAttribute("donationPlanPurpose", donationPlanPurpose);
 		model.addAttribute("donationPlanGoalPrice", donationPlanGoalPrice);
 		model.addAttribute("donationPlanUseTerm", donationPlanUseTerm);
@@ -74,8 +75,14 @@ public class DonationPlanController {
 		FileDto fileDto = fileService.donationPlanFileSelect(donationPlanFileNo);
 		String fileName = fileDto.getFileName();
 		String fileExt = fileDto.getFileExt();
+		//기부금이미지파일넘버를 매개변수로 받아 파일(이름,확장자)검색
+		FileDto imageFileDto = fileService.donationPlanFileSelect(donationPlanImageFileNo);
+		String imageFileName = imageFileDto.getFileName();
+		String imageFileExt = imageFileDto.getFileExt();
 		model.addAttribute("fileName", fileName);
 		model.addAttribute("fileExt", fileExt);
+		model.addAttribute("imageFileName", imageFileName);
+		model.addAttribute("imageFileExt", imageFileExt);
 		return "donationPlan/donation_plan_select";
 	}
 	
@@ -189,5 +196,24 @@ public class DonationPlanController {
 		return "donation/donation_select_detail";
 	}
 	
-
+	//기부금 계획서 삭제
+	@RequestMapping(value = "/donationPlanDelete", method = RequestMethod.GET)
+	public String donationPlanDelete(@RequestParam(value="donationPlanNo") int donationPlanNo
+									,@RequestParam(value="fileName") String fileName
+									,@RequestParam(value="fileExt") String fileExt
+									,@RequestParam(value="imageFileName") String imageFileName
+									,@RequestParam(value="imageFileExt") String imageFileExt) {
+		logger.debug("DonationPlanController.donationPlanDelete donationPlanNo>>"+donationPlanNo);
+		logger.debug("DonationPlanController.donationPlanDelete fileName>>"+fileName);
+		logger.debug("DonationPlanController.donationPlanDelete fileExt>>"+fileExt);
+		logger.debug("DonationPlanController.donationPlanDelete imageFileName>>"+imageFileName);
+		logger.debug("DonationPlanController.donationPlanDelete imageFileExt>>"+imageFileExt);
+		//기부금 계획서 삭제
+		donationPlanService.donationPlanDelete(donationPlanNo);
+		//기부금 계획서 파일 삭제
+		fileService.fileDelete(donationPlanNo, fileName, fileExt);
+		//기부금 계획서 이미지 삭제
+		fileService.fileDelete(donationPlanNo, imageFileName, imageFileExt);
+		return "redirect:donationPlanMain";
+	}
 }

@@ -31,6 +31,7 @@
 		WHERE income_donation_no IS NULL
 	</select>
 	<select id="donationSpendReportDetailSelect" 
+			parameterType="Integer"
 			resultType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
 		SELECT 
 			donation_spend_report_no AS donationSpendReportNo
@@ -44,6 +45,7 @@
 			,donation_spend_report_record AS donationSpendReportRecord
 			,LEFT(donation_spend_report_date,10) AS donationSpendReportDate
 		FROM donation_spend_report
+		WHERE donation_spend_report_no=#{donationSpendReportNo}
 	</select>
 	<insert id="donationSpendReportInsert"
 			parameterType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
@@ -93,5 +95,10 @@
 			,#{incomeDonationNo}
 			, now()
 		)
-	</insert>			
+	</insert>
+	<delete id="donationSpendReportDelete"
+			parameterType="Integer">
+		DELETE FROM donation_spend_report 
+		WHERE donation_plan_no=#{donationPlanNo}
+	</delete>			
 </mapper>  

@@ -68,7 +68,7 @@
 		            </tr>
 		            <tr>	            
 		                <th class="active">기부금 사용날짜</th>
-		                <td><input name="donationSpendPriceDate" id="donationSpendPriceDate" type="date">이내</td>	            
+		                <td><input name="donationSpendPriceDate" id="donationSpendPriceDate" type="date"></td>	            
 		            </tr>
 		            <tr>  	            
 	                <th class="active">기부 내역 </th>
