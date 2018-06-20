@@ -15,6 +15,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr class="active">
+					<th>보고서 번호</th>
 					<th>제목</th>
 					<th>기부단체</th>
 					<th>날짜</th>
@@ -23,7 +24,8 @@
 			<c:forEach var="donationSpendReport" items="${list}">
 				<tbody>
 					<tr>
-						<th scope="row"><a href="${pageContext.request.contextPath}/donationSpendReportSelect?donationSpendReportNo=${donationSpendReport.donationSpendReportNo}&donationSpendReportDate=${donationSpendReportDate}">${donationSpendReport.donationSpendReportTitle}</a></th>		
+						<th scope="row">${donationSpendReport.donationSpendReportNo}</th>				
+						<td><a href="${pageContext.request.contextPath}/donationSpendReportSelect?donationSpendReportNo=${donationSpendReport.donationSpendReportNo}&donationSpendReportDate=${donationSpendReportDate}">${donationSpendReport.donationSpendReportTitle}</a></td>
 						<td>${donationSpendReport.donatorDto.donatorName}</td>
 						<td>${donationSpendReport.donationSpendReportDate}</td>
 					</tr>	

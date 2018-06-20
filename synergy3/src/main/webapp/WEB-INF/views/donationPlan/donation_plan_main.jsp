@@ -14,7 +14,8 @@
 	<div class="container bs-example" data-example-id="simple-table" style="text-align: center; font-size: 12px">
 		<table class="table table-hover">
 			<thead>
-				<tr class="active">
+				<tr class="active">					
+					<th>계획서 번호</th>
 					<th>제목</th>
 					<th>기부단체</th>
 					<th>날짜</th>
@@ -23,7 +24,8 @@
 			<c:forEach var="donationPlan" items="${list}">
 				<tbody>
 					<tr>
-						<th scope="row"><a href="${pageContext.request.contextPath}/donationPlanSelectDetail?donationPlanNo=${donationPlan.donationPlanNo}&donationPlanDate=${donationPlan.donationPlanDate}">${donationPlan.donationPlanTitle}</a></th>		
+						<th scope="row">${donationPlan.donationPlanNo}</th>
+						<td><a href="${pageContext.request.contextPath}/donationPlanSelectDetail?donationPlanNo=${donationPlan.donationPlanNo}&donationPlanDate=${donationPlan.donationPlanDate}">${donationPlan.donationPlanTitle}</a></td>		
 						<td>${donationPlan.donatorDto.donatorName}</td>
 						<td>${donationPlan.donationPlanDate}</td>
 					</tr>	

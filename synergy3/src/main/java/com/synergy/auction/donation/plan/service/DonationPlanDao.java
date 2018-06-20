@@ -58,4 +58,9 @@ public class DonationPlanDao {
 	public DonationPlanDto donationPlanDetailSelect(int donationPlanNo) {
 		return sqlSession.selectOne(NS+"donationPlanDetailSelect", donationPlanNo); 
 	}
+	
+	//보고서 작성시 해당 계획서 넘버 검색
+	public List<DonationPlanDto> donationPlanNoSelect(String donatorId) {
+		return sqlSession.selectList(NS+"donationPlanNoSelect", donatorId); 
+	}
 }

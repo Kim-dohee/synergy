@@ -26,4 +26,16 @@ public class DonationSpendReportService {
 	public int donationSpendReportNoSelectOne(String donatorId) { 
 		return donationSpendReportDao.donationSpendReportNoSelectOne(donatorId);
 	}
+	
+	//기부금 지출보고서 파일넘버,계획서번호 수정
+	public int donationSpendReportUpdate(DonationSpendReportDto donationSpendReportDto) { 
+		int row = donationSpendReportDao.donationSpendReportUpdate(donationSpendReportDto); 
+		return row;
+	}
+	
+	//수입기부금 넘버 및 (아이디,계획서넘버)등록
+	public int incomeDonationNoInsert(DonationSpendReportDto donationSpendReportDto) { 
+		int row = donationSpendReportDao.incomeDonationNoInsert(donationSpendReportDto); 
+		return row;
+	}
 }

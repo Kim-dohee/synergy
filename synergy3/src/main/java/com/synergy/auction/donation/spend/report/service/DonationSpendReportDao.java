@@ -32,6 +32,18 @@ public class DonationSpendReportDao {
 		return sqlSession.selectOne(NS+"donationSpendReportNoSelectOne", donatorId);
 	}
 	
+	//기부금 지출보고서 파일넘버,계획서번호 수정
+	public int donationSpendReportUpdate(DonationSpendReportDto donationSpendReportDto) { 
+		int row = sqlSession.update(NS+"donationSpendReportUpdate", donationSpendReportDto); 
+		return row;
+	}
+	
+	//수입기부금 넘버 및 (아이디,계획서넘버)등록
+	public int incomeDonationNoInsert(DonationSpendReportDto donationSpendReportDto) { 
+		int row = sqlSession.insert(NS+"incomeDonationNoInsert", donationSpendReportDto); 
+		return row;
+	}
+	
 	//기부금 지출보고서 검색
 	
 }

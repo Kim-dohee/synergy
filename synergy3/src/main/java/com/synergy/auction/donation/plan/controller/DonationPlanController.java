@@ -67,6 +67,7 @@ public class DonationPlanController {
 		model.addAttribute("donationPlanGoalPrice", donationPlanGoalPrice);
 		model.addAttribute("donationPlanUseTerm", donationPlanUseTerm);
 		model.addAttribute("donationPlanFileNo", donationPlanFileNo);
+		model.addAttribute("donationPlanNo", donationPlanNo);
 		//계획서 등록날짜
 		model.addAttribute("donationPlanDate", donationPlanDate);
 		//기부금파일넘버를 매개변수로 받아 파일(이름,확장자)검색

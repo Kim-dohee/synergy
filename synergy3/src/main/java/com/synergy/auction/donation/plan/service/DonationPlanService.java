@@ -56,4 +56,9 @@ public class DonationPlanService {
 	public DonationPlanDto donationPlanDetailSelect(int donationPlanNo) {
 		return donationPlanDao.donationPlanDetailSelect(donationPlanNo); 
 	}
+	
+	//보고서 작성시 해당 계획서 넘버 검색
+	public List<DonationPlanDto> donationPlanNoSelect(String donatorId) {
+		return donationPlanDao.donationPlanNoSelect(donatorId); 
+	}
 }

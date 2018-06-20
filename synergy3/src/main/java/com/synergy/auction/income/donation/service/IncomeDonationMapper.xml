@@ -41,5 +41,12 @@
 			,0
 			,now()
 		)	
-	</insert>				
+	</insert>
+	<select id="incomeDonationPlanNoSelect"
+			parameterType="Integer"
+			resultType="com.synergy.auction.income.donation.service.IncomeDonationDto">
+		SELECT income_donation_no AS incomeDonationNo
+		FROM income_donation 
+		WHERE donation_plan_no=#{donationPlanNo}
+	</select>				
 </mapper>  

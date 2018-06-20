@@ -1,5 +1,6 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE>
 <html>
@@ -11,8 +12,9 @@
 			
 			//(제목,내용,기부금 사용날짜,기부내역,파일 ) null값 허용하지 않음	
 			$('#submit').click(function(event){
-					
-				if($('#donationSpendReportTitle').val()==""){
+				if($("#donationPlanNo option:selected").val()==""){
+					alert("계획서 등록 후  보고서를 작성할수 있습니다");
+				}else if($('#donationSpendReportTitle').val()==""){
 					alert("제목을 입력하세요");
 				}else if($('#donationSpendReportContent').val()==""){
 					alert("내용을 입력하세요");
@@ -45,6 +47,17 @@
 		<form action="${pageContext.request.contextPath}/donationSpendReportInsert" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tbody>		            	           
+		            <tr>	            
+		                <th class="active">해당 계획서 번호</th>
+		                <td>
+		                	<select name="donationPlanNo" id="donationPlanNo">
+    							<option value="">계획서 번호 선택</option>
+    							<c:forEach var="donationPlan" items="${list}">
+    								<option value="${donationPlan.donationPlanNo}">${donationPlan.donationPlanNo}</option>		
+    							</c:forEach>	
+    						</select>
+    					</td>	                
+		            </tr>
 		            <tr>	            
 		                <th class="active">제목 </th>
 		                <td><input type="text" placeholder="제목을 입력하세요. " name="donationSpendReportTitle" id="donationSpendReportTitle" class="form-control"/></td>	                

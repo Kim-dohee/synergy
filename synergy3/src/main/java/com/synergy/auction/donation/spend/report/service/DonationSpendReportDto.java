@@ -2,6 +2,7 @@
 package com.synergy.auction.donation.spend.report.service;
 
 import com.synergy.auction.donator.service.DonatorDto;
+import com.synergy.auction.income.donation.service.IncomeDonationDto;
 
 //기부금 지출 보고서
 public class DonationSpendReportDto {

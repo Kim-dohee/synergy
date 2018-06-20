@@ -8,7 +8,7 @@
  				id="resultDonationSpendReport"> 
  		<result column="donation_spend_report_title"  
  				property="donationSpendReportTitle"/>		 	 
- 		<result column="dsr.donation_spend_report_no"  
+ 		<result column="donation_spend_report_no"  
  				property="donationSpendReportNo"/>		 	 
  		<result column="donation_spend_report_date"  
  				property="donationSpendReportDate"/>		 	 
@@ -28,6 +28,7 @@
 		FROM donator AS d
 		JOIN donation_spend_report AS dsr 
 		ON d.donator_id=dsr.donator_id
+		WHERE income_donation_no IS NULL
 	</select>
 	<select id="donationSpendReportDetailSelect" 
 			resultType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
@@ -70,5 +71,27 @@
 		WHERE donator_id=#{donatorId} 
 		ORDER BY donation_spend_report_date DESC
 		LIMIT 1
-	</select>	
+	</select>
+	<update id="donationSpendReportUpdate"
+			parameterType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
+		UPDATE donation_spend_report
+		SET
+			donation_plan_no=#{donationPlanNo}
+			,donation_report_file_no=#{donationReportFileNo}
+		WHERE donation_spend_report_no=#{donationSpendReportNo}
+	</update>
+	<insert id="incomeDonationNoInsert"
+			parameterType="com.synergy.auction.donation.spend.report.service.DonationSpendReportDto">
+		INSERT INTO donation_spend_report (
+			donator_id
+			,donation_plan_no
+			,income_donation_no
+			,donation_spend_report_date
+		) VALUES (
+			#{donatorId}
+			,#{donationPlanNo}
+			,#{incomeDonationNo}
+			, now()
+		)
+	</insert>			
 </mapper>  

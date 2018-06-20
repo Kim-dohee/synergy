@@ -14,6 +14,10 @@
 		<table class="table table-hover" style="font-size: 13px;">
 		<tbody>
 			<tr>
+				<th colspan="2" class="active">계획서 번호</th>
+				<td colspan="4"><p class="form-control-static">${donationPlanNo}</td>
+			</tr>
+			<tr>
 				<th colspan="2" class="active">목적</th>
 				<td colspan="4"><p class="form-control-static">${donationPlanPurpose}</td>
 			</tr>

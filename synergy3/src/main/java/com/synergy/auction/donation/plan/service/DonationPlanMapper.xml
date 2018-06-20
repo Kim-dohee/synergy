@@ -138,6 +138,13 @@
 			,donation_plan_date AS donationPlanDate
 		FROM donation_plan
 		WHERE donation_plan_no=#{donationPlanNo}
-	</select>	
+	</select>
+	<select id="donationPlanNoSelect"  
+			parameterType="String"
+			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		SELECT donation_plan_no AS donationPlanNo
+		FROM donation_plan 
+		WHERE donator_id=#{donatorId}		
+ 	</select>
  </mapper>  
   
