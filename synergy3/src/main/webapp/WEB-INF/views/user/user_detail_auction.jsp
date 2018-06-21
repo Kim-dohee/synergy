@@ -4,7 +4,7 @@
 <jsp:include page="../module/top.jsp"></jsp:include>
 <script>
 	$(function() {
-		$('#payState2').hide();
+/* 		$('#payState2').hide();
 		$('#payState3').hide();
 		if($('#payState').text()=="결재완료"){
 			$('#payState2').show();
@@ -14,7 +14,7 @@
 		
 		if($('#confirm').text()=="배송시작"){
 			$('#confirm2').text("수취확인");
-		}
+		} */
 	});
 </script>
 <br> <br> <br> <br>
@@ -40,7 +40,10 @@
 					<td><a href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}"><img src="${pageContext.request.contextPath}/resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="60" height="60"></a></td>
 					<td><a href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}">${goods.auctionGoodsTitle}</a>
 					<td>${goods.auctionStateNo}</td>
-					<td> <p id="payState">${goods.pay.payState}<p><a id="payState2" href="${pageContext.request.contextPath}/payUpdateDeliver?payNo=${goods.pay.payNo}">배송시작</a><a id="payState3">배송중</a></td>
+					<td> <p id="payState">${goods.pay.payState}<p>
+						<a id="payState2"></a>
+						<a id="payState3"></a>
+					</td>
 					<td>${goods.auctionGoodsInstanceBuyPrice}</td>
 					<td>${goods.auctionGoodsDate}</td>
 					<td>${goods.auctionGoodsHits}</td>

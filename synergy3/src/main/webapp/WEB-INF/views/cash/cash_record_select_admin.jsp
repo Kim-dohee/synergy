@@ -8,7 +8,7 @@
 	<title>Insert title here</title>
 	<script>
 	$(function() {
-		console.log($("#payState").text());
+/* 		console.log($("#payState").text());
 		
 		if($("#cashCate").val()=="기부"){
 			$("#payState2").text("기부완료")
@@ -24,7 +24,7 @@
 			if($("#payState").text()=="결재완료"){
 			$("#payState").text("구매요청")
 			}
-		}
+		} */
 	});
 </script>
 </head>
@@ -48,13 +48,14 @@
 					<tbody>
 						<c:forEach var="cashGoods" items="${cashGoods}">
 							<tr>
-								<td>${cashGoods.payDto.auctionGoodsDto.auctionGoodsNo}</td>
-								<td><a href ="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${cashGoods.payDto.auctionGoodsDto.auctionGoodsNo}">${cashGoods.payDto.auctionGoodsDto.auctionGoodsTitle}</a></td>
+								<td>${cashGoods.payDto.successfulBid.auctionGoods.auctionGoodsNo}</td>
+								<td><a href ="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${cashGoods.payDto.successfulBid.auctionGoods.auctionGoodsNo}">${cashGoods.payDto.successfulBid.auctionGoods.auctionGoodsTitle}</a></td>
 								<td>${cashGoods.cashRecordChange}</td>
 								<td>${cashGoods.payDto.userId2}</td>
 								<td>${cashGoods.cashRecordChangeDate}</td>    
 								<td><a id="payState">${cashGoods.payDto.payState}</a></td>
-								<td><a id="payState2" href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.auctionGoodsDto.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">-</a></td>
+<%-- 								<td><a id="payState2" href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.successfulBid.auctionGoods.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">-</a></td> --%>
+								<td><a id="payState2">-</a></td>
 							</tr>
 							<input type="hidden" value="${cashGoods.cashCategory}" id="cashCate">
 						</c:forEach>

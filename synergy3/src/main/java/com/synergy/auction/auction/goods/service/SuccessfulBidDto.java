@@ -10,6 +10,14 @@ public class SuccessfulBidDto {
 	private String successfulBidPayEndDate;
 	private String successfulBidCancel;
 	private String userId;
+	private AuctionGoodsDto auctionGoods;
+	
+	public AuctionGoodsDto getAuctionGoods() {
+		return auctionGoods;
+	}
+	public void setAuctionGoods(AuctionGoodsDto auctionGoods) {
+		this.auctionGoods = auctionGoods;
+	}
 	public int getSuccessfulBidNo() {
 		return successfulBidNo;
 	}

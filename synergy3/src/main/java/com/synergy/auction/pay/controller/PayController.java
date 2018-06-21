@@ -31,14 +31,14 @@ public class PayController {
 	private PayService payService;
 	@Autowired 
 	private AuctionGoodsService auctionGoodsService;
-	
+	private PayDto payDto;
 	
 	//결제 추가
 	@RequestMapping(value = "/payInsert", method = RequestMethod.POST)
 	public String payInsert(@RequestParam(value="successfulBid") int successfulBid,HttpSession session
 							,@RequestParam(value="sellerId") String sellerId
 							,@RequestParam(value="successfulBidNo")int successfulBidNo
-							,CashRecordDto cashRecordDto,PayDto payDto,int auctionGoodsNo) {
+							,CashRecordDto cashRecordDto,int auctionGoodsNo) {
 		String userId = (String)session.getAttribute("id");
 		int cashRecordTotal = cashRecordService.cashRecordTotalSelect(userId);
 		int cashRecordChange = cashRecordTotal-successfulBid;
@@ -47,6 +47,7 @@ public class PayController {
 		map.put("successfulBid", successfulBid);
 		map.put("cashRecordChange", cashRecordChange);
 		map.put("cashCategory", "구매");
+		map.put("auctionGoodsNo", auctionGoodsNo);
 		int cashRecordNo = cashRecordService.cashRecordInsertBuy(map);
 
 		String adminId = "2";
@@ -59,7 +60,6 @@ public class PayController {
 		mapAdmin.put("cashRecordChange", cashRecordChangeAdmin);
 		mapAdmin.put("cashCategory", "입금");
 		cashRecordService.cashRecordInsertBuy(mapAdmin);
-		
 		System.out.println(cashRecordNo+"캐시이력넘버");
 		System.out.println(successfulBidNo+"낙찰넘버");
 		System.out.println(sellerId+"판매자 아이디");
@@ -68,6 +68,7 @@ public class PayController {
 		payDto.setUserId2(userId);
 		payDto.setCashRecordNo(cashRecordNo);
 		payDto.setSuccessfulBidNo(successfulBidNo);
+		payDto.setSuccessfulBidNo(auctionGoodsNo);
 		payService.payInsert(payDto);
 		auctionGoodsService.auctionGoodsUpdatePay(auctionGoodsNo);
 		return "home";
@@ -77,6 +78,7 @@ public class PayController {
 	@RequestMapping(value = "/payUpdateDeliver", method = RequestMethod.GET)
 	public String payUpdateDeliver(ModelMap modelMap,@RequestParam(value="payNo") int payNo,Model model,HttpSession session) {
 		payService.payUpdateDeliver(payNo);
+		System.out.println(payNo+"111111111111111111111111111111111111111111111111111111111111111");
 		modelMap.addAttribute("message", "배송하였습니다.!");
 		modelMap.addAttribute("returnUrl", "userDetailAuction");
 		return "alertAndRedirect";

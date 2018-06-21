@@ -9,30 +9,27 @@
 	$(function() {
 
 		$("#btn").click(function(){
+			console.log($("#state").val());
 			if($("#state").val()===("입찰전")){
-				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsert");
-				$("#form").attr("method", "POST");
 				if($('#bidPrice').val()==""){
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
 				}else{
-				$('#form').submit();
+					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsert");
 				}
 			} else if($("#state").val()===("입찰중")) {
-				$("#form").attr("action", "${pageContext.request.contextPath}/bidInsertAgain");
-				$("#form").attr("method", "POST");
+				
 				if($('#bidPrice').val()==""){
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
 				}else{
-				$('#form').submit();
+					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsertAgain");
 				}
 			} else if($("#state").val()===("입찰 종료")) {
-				$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}");
-				$('#form').submit();
+				$("#btn").attr("href", "${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}&bidNo${bidList.bidNo}");
 			}
 		});
-	 	$("#btn2").click(function(){
+	 	/* $("#btn2").click(function(){
 	 		if($("#btn").val()=="낙찰확인"){
 	 			alert('이미 끝난 경매입니다.');
 	 			return
@@ -47,14 +44,15 @@
 					$('#form').submit();
 				}
 	 		}
-		}); 
+		});  */
 	 	
 		/* 현재시간과 낙찰시간을 비교해서 경매상태를 변경 */
 		var nowTime = new Date();
 		var BidEndDate = $('#BidEndDate').val();
 		var BidEndDate = new Date(BidEndDate);
 		if(nowTime>BidEndDate){
-			$("#btn").val("낙찰확인");
+			$("#btn").text("낙찰확인");
+			$("#state").val("입찰종료");
 		}
 		/* 입찰단위에 맞게 , 입찰가보다 높게, 즉시구매가보다 적게 적기 */
 		$('input#bidPrice').change(function(){
@@ -183,7 +181,7 @@
 				<input type="hidden" value="${bidList.bidNo}" name="bidNo">
 				<input type="hidden" value="${bidList.userId}" name="buyUserId">
 				<input type="hidden" value="${detailList.auctionGoodsNo}" name="auctionGoodsNo">
-				<input type="button" id="btn" value="입찰하기">
+				<a class="btn btn-primary btn-lg" id="btn" href="${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}&bidNo${bidList.bidNo}">입찰하기</a>
 					<c:if test="${detailList.auctionStateNo ne '입찰 종료'}">
 					<input type="button" id="btn2" value="즉시구매">
 					</c:if>

@@ -16,12 +16,15 @@
 	 			<result column="user_id" property="userId"/> 
 	 			<result column="user_id2" property="userId2"/> 
 	 			<result column="pay_state" property="payState"/> 
-	 			<result column="cash_record_no" property="cashRecordNo"/> 
-	 			<collection property="auctionGoodsDto" ofType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">	 
-					<result column="auction_goods_no" property="auctionGoodsNo"/> 
-					<result column="auction_goods_title" property="auctionGoodsTitle"/> 
-					<result column="donation_plan_no" property="donationPlanNo"/> 
-				</collection>			
+	 			<result column="cash_record_no" property="cashRecordNo"/>
+		 		<collection property="successfulBid" ofType="com.synergy.auction.auction.goods.service.SuccessfulBidDto">	 
+		 			<result column="successful_bid_no" property="successfulBidNo"/> 
+		 			<collection property="auctionGoods" ofType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">	 
+						<result column="auction_goods_no" property="auctionGoodsNo"/> 
+						<result column="auction_goods_title" property="auctionGoodsTitle"/> 
+						<result column="donation_plan_no" property="donationPlanNo"/> 
+					</collection>			
+		 		</collection>			 
 	 		</collection>			 
  	</resultMap>
 	
@@ -164,9 +167,14 @@
 			pay
 		ON 
 			cash_record.cash_record_no = pay.cash_record_no
+		JOIN
+			successful_bid
+		ON
+			pay.successful_bid_no = successful_bid.successful_bid_no
 		JOIN 
 			auction_goods
 		ON 
-			auction_goods.user_id = pay.user_id
+			successful_bid.auction_goods_no = auction_goods.auction_goods_no
+		
 	</select>
 </mapper>  

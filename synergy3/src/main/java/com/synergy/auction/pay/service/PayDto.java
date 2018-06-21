@@ -2,6 +2,7 @@
 package com.synergy.auction.pay.service;
 
 import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
+import com.synergy.auction.auction.goods.service.SuccessfulBidDto;
 
 public class PayDto {
 	private int payNo;
@@ -13,18 +14,20 @@ public class PayDto {
 	private String payBuyerCompleteDate;
 	private String paySellerDeliveryDate;
 	private String payBuyerReceiptConfirmDate;
+	private int auctionGoodsNo;
 	private AuctionGoodsDto auctionGoodsDto;
-	public AuctionGoodsDto getAuctionGoodsDto() {
-		return auctionGoodsDto;
-	}
-	public void setAuctionGoodsDto(AuctionGoodsDto auctionGoodsDto) {
-		this.auctionGoodsDto = auctionGoodsDto;
-	}
+	private SuccessfulBidDto successfulBid;
 	public int getPayNo() {
 		return payNo;
 	}
 	public void setPayNo(int payNo) {
 		this.payNo = payNo;
+	}
+	public int getAuctionGoodsNo() {
+		return auctionGoodsNo;
+	}
+	public void setAuctionGoodsNo(int auctionGoodsNo) {
+		this.auctionGoodsNo = auctionGoodsNo;
 	}
 	public String getUserId() {
 		return userId;
@@ -74,12 +77,18 @@ public class PayDto {
 	public void setPayBuyerReceiptConfirmDate(String payBuyerReceiptConfirmDate) {
 		this.payBuyerReceiptConfirmDate = payBuyerReceiptConfirmDate;
 	}
-	@Override
-	public String toString() {
-		return "PayDto [payNo=" + payNo + ", userId=" + userId + ", userId2=" + userId2 + ", cashRecordNo="
-				+ cashRecordNo + ", successfulBidNo=" + successfulBidNo + ", payState=" + payState
-				+ ", payBuyerCompleteDate=" + payBuyerCompleteDate + ", paySellerDeliveryDate=" + paySellerDeliveryDate
-				+ ", payBuyerReceiptConfirmDate=" + payBuyerReceiptConfirmDate + "]";
+	public AuctionGoodsDto getAuctionGoodsDto() {
+		return auctionGoodsDto;
 	}
+	public void setAuctionGoodsDto(AuctionGoodsDto auctionGoodsDto) {
+		this.auctionGoodsDto = auctionGoodsDto;
+	}
+	public SuccessfulBidDto getSuccessfulBid() {
+		return successfulBid;
+	}
+	public void setSuccessfulBid(SuccessfulBidDto successfulBid) {
+		this.successfulBid = successfulBid;
+	}
+	
 	
 }

@@ -115,15 +115,12 @@
 			,auction_goods.auction_goods_hits
 			,file.file_name
  			,file.file_ext
- 			,pay.pay_state
 		FROM
 			auction_goods
 		JOIN
 			file
 		ON
 			auction_goods.auction_goods_no = file.file_table_no AND 'auction_goods' = file.file_table_name
-		JOIN
-			pay
 	</select>	
 	
 	<select id="auctionGoodsSelectUser" resultMap="resultAuctionGoods">
@@ -148,16 +145,12 @@
 			,auction_goods.auction_goods_hits
 			,file.file_name
  			,file.file_ext
- 			,pay.pay_state
- 			,pay.pay_no
 		FROM
 			auction_goods
 		JOIN
 			file
 		ON
 			auction_goods.auction_goods_no = file.file_table_no
-		JOIN
-			pay
 		WHERE 
 			auction_goods.user_id = #{userId}
 	</select>	
