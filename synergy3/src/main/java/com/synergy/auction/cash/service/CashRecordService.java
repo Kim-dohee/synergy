@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.synergy.auction.donator.service.DonatorDto;
+import com.synergy.auction.pay.service.PayDto;
 
 @Service
 @Transactional
@@ -16,6 +17,7 @@ public class CashRecordService {
 
 	@Autowired
 	private CashRecordDao cashRecordDao;
+	private CashRecordDto cashRecordDto;
 	
 	//회원가입시 캐쉬금액 0으로 초기화
 	public int cashRecordTotalInsert(String userId) { 
@@ -62,6 +64,7 @@ public class CashRecordService {
 			lastPage = total/10+1;
 		}
 		Map<String, Object> map = new HashMap<String,Object>();
+		
 		map.put("list", list);
 		map.put("lastPage",lastPage);
 		return map;
@@ -80,5 +83,15 @@ public class CashRecordService {
 	//관리자 캐시변동
 	public int cashRecordInsertPay(int successfulBid) { 
 		return cashRecordDao.cashRecordInsertPay(successfulBid); 
+	}
+	
+	//기부 후 캐시 상태 업데이트
+	public int cashRecordUpdate(int cashRecordNo) { 
+		return cashRecordDao.cashRecordUpdate(cashRecordNo); 
+	}
+	
+	//경매품과 캐시검색.
+	public List<CashRecordDto> cashSelectGoods() { 
+		return cashRecordDao.cashSelectGoods(); 
 	}
 }

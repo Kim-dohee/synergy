@@ -42,9 +42,14 @@
 						dataType : "json",
 						contentType: "application/json; charset=UTF-8",
 						success : function(totalCash){
+							var cash = totalCash;
+							console.log(cash);
+							if(cash==0){
+							
+							} else {
 							$('#totalCash').text("캐시 : "+totalCash+" 원");
 							$('#totalCash').val(totalCash);
-							/* alert("error : " + totalCash); */
+							}
 						},
 						error : function(error) {
 						}

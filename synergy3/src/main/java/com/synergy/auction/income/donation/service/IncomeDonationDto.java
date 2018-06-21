@@ -5,11 +5,10 @@ public class IncomeDonationDto {
 
 	private int incomeDonationNo; //수입 기부금 넘버
 	private int donationPlanNo; //기부금 계획서 넘버
-	private String payNo; //결제넘버
+	private int payNo; //결제넘버
 	private String userId; //일반회원아이디
 	private int incomeDonationPrice; //기부액
 	private String incomeDonationDate; //기부 날짜
-	
 	public int getIncomeDonationNo() {
 		return incomeDonationNo;
 	}
@@ -22,10 +21,10 @@ public class IncomeDonationDto {
 	public void setDonationPlanNo(int donationPlanNo) {
 		this.donationPlanNo = donationPlanNo;
 	}
-	public String getPayNo() {
+	public int getPayNo() {
 		return payNo;
 	}
-	public void setPayNo(String payNo) {
+	public void setPayNo(int payNo) {
 		this.payNo = payNo;
 	}
 	public String getUserId() {

@@ -11,11 +11,13 @@
 			,user_id
 			,income_donation_price
 			,income_donation_date
+			,pay_no
 		) VALUES (
 			#{donationPlanNo}
 			,#{userId}
 			,#{incomeDonationPrice}
 			, now()
+			,#{payNo}
 		)
 	</insert>
 	<select id="incomeDonationPriceSelectOne"

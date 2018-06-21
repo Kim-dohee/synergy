@@ -74,4 +74,20 @@
 		WHERE
 			pay.user_id2  = #{userId}
 	</select>	
+	
+	<update id="payUpdateDeliver"
+			parameterType="Integer">
+		UPDATE pay SET
+			pay_state = '배송시작'
+			,pay_seller_delivery_date = now()
+		WHERE pay_no = #{payNo}
+	</update>
+	
+	<update id="payUpdateConfilrm"
+			parameterType="Integer">
+		UPDATE pay SET
+			pay_state = '수취확인'
+			,pay_buyer_receipt_confirm_date = now()
+		WHERE pay_no = #{payNo}
+	</update>
 </mapper>

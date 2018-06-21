@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.synergy.auction.donator.service.DonatorDto;
+import com.synergy.auction.pay.service.PayDto;
 
 @Repository
 public class CashRecordDao {
@@ -46,6 +47,12 @@ public class CashRecordDao {
 	}
 	
 	//관리자 캐시 입금
+	public int cashRecordUpdate(int cashRecordNo) { 
+		int row = sqlSession.update(NS+"cashRecordUpdate", cashRecordNo); 		
+		return row;
+	}
+	
+	//기부후 캐시 상태 업데이트 
 	public int cashRecordInsertPay(int successfulBid) { 
 		int row = sqlSession.update(NS+"cashRecordInsertPay", successfulBid); 		
 		return row;
@@ -71,6 +78,11 @@ public class CashRecordDao {
 		sqlSession.update(NS+"cashRecordInsertBuy", map); 
 		int cashRecordNo = (int) map.get("cashRecordNo");
 		return cashRecordNo;
+	}
+	
+	//경매품과 캐시 검색
+	public List<CashRecordDto> cashSelectGoods() { 
+		return sqlSession.selectList(NS+"cashSelectGoods"); 
 	}
 	
 }

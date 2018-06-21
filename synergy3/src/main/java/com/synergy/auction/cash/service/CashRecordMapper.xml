@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.synergy.auction.cash.service.CashRecordMapper">
+	
+	<resultMap type="com.synergy.auction.cash.service.CashRecordDto" id="resultCashRecord"> 
+ 		<result column="cash_record_no" property="cashRecordNo"/>		 	 
+ 		<result column="cash_category" property="cashCategory"/>		 	 
+ 		<result column="cash_record_change" property="cashRecordChange"/>		 	 
+ 		<result column="cash_record_change_date" property="cashRecordChangeDate"/>		 	 
+ 		<result column="cash_record_total" property="cashRecordTotal"/>		 	 
+	 		<collection property="payDto" ofType="com.synergy.auction.pay.service.PayDto">	 
+	 			<result column="pay_no" property="payNo"/> 
+	 			<result column="user_id" property="userId"/> 
+	 			<result column="user_id2" property="userId2"/> 
+	 			<result column="pay_state" property="payState"/> 
+	 			<result column="cash_record_no" property="cashRecordNo"/> 
+	 			<collection property="auctionGoodsDto" ofType="com.synergy.auction.auction.goods.service.AuctionGoodsDto">	 
+					<result column="auction_goods_no" property="auctionGoodsNo"/> 
+					<result column="auction_goods_title" property="auctionGoodsTitle"/> 
+					<result column="donation_plan_no" property="donationPlanNo"/> 
+				</collection>			
+	 		</collection>			 
+ 	</resultMap>
+	
 	<insert id="cashRecordTotalInsert"
 			parameterType="String">
 		INSERT INTO cash_record(
@@ -30,6 +51,7 @@
 			,now()
 		)
 	</insert>
+	
 	<insert id="cashRecordInsertBuy"
 			parameterType="java.util.Map">
 			<selectKey resultType="Integer" 
@@ -51,6 +73,7 @@
 			,#{cashRecordChange}
 		)
 	</insert>
+	
 	<select id="cashRecordTotalSelect" 
 			parameterType="String" 
 			resultType="Integer">
@@ -60,17 +83,27 @@
 		ORDER BY cash_record_change_date DESC 
 		LIMIT 1
 	</select>
+	
 	<update id="cashRecordTotalUpdate"
 			parameterType="com.synergy.auction.cash.service.CashRecordDto">
 		UPDATE cash_record SET
 			cash_record_total = #{cashRecordChange}+#{cashRecordTotal}
 		WHERE user_id = #{userId} AND cash_record_total IS NULL;
 	</update>
+	
+	<update id="cashRecordUpdate"
+			parameterType="com.synergy.auction.cash.service.CashRecordDto">
+		UPDATE cash_record SET
+			cash_category = '기부'
+		WHERE cash_record_no = #{cashRecordNo}
+	</update>
+	
 	<select id="cashRecordSelect" 
 			parameterType="java.util.Map" 
 			resultType="com.synergy.auction.cash.service.CashRecordDto">	
-		SELECT 
-			cash_record_change AS cashRecordChange
+		SELECT
+			cash_record_no AS cashRecordNo 
+			,cash_record_change AS cashRecordChange
 			,cash_record_change_date AS cashRecordChangeDate
 			,cash_record_total AS cashRecordTotal 
 			,cash_category AS cashCategory
@@ -79,10 +112,12 @@
 		ORDER BY cash_record_change_date DESC
 		LIMIT #{beginRow},10;
 	</select>
+	
 	<select id="totalCashRecord"  
 			resultType="Integer">
 		SELECT COUNT(*) FROM cash_record WHERE user_id = #{userId}
 	</select>
+	
 	<insert id="accountInsert"
 			parameterType="com.synergy.auction.cash.service.AccountDto">
 		INSERT INTO account (
@@ -97,6 +132,7 @@
 			,#{accountDepositName}
 		)
 	</insert>
+	
 	<select id="totalCashRecordSelectOne"  
 			parameterType="String"
 			resultType="Integer">
@@ -107,5 +143,30 @@
 		LIMIT 1
 	</select>	
 	
-		 
+	<select id="cashSelectGoods"  
+			resultMap="resultCashRecord">
+ 		SELECT 
+ 			cash_record.cash_category
+ 			,cash_record.cash_record_no
+ 			,auction_goods.auction_goods_no
+ 			,auction_goods.auction_goods_title
+ 			,auction_goods.donation_plan_no
+ 			,cash_record.cash_record_change
+ 			,cash_record.cash_record_total
+ 			,cash_record.cash_record_change_date
+ 			,pay.cash_record_no
+ 			,pay.user_id2
+ 			,pay.pay_state
+ 			,pay.pay_no
+		FROM 
+			cash_record
+		JOIN 
+			pay
+		ON 
+			cash_record.cash_record_no = pay.cash_record_no
+		JOIN 
+			auction_goods
+		ON 
+			auction_goods.user_id = pay.user_id
+	</select>
 </mapper>  

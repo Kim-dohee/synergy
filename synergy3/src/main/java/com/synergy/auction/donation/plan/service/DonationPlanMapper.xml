@@ -77,6 +77,14 @@
 		ORDER BY donation_plan_date DESC
 		LIMIT 1	
 	</select>
+	<select id="donationPlanSelectOne" 
+			parameterType="Integer" 
+			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		SELECT donation_plan_no AS donationPlanNo
+		,donation_plan_title AS donationPlanTitle
+		FROM donation_plan 
+		WHERE donation_plan_no=#{donationPlanNo} 
+	</select>
 	<update id="donationPlanFileNoUpdate"
 			parameterType="com.synergy.auction.donation.plan.service.DonationPlanDto" >
 		UPDATE donation_plan

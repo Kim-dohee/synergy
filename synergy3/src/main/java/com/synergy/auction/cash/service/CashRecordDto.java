@@ -1,5 +1,7 @@
 package com.synergy.auction.cash.service;
 
+import com.synergy.auction.pay.service.PayDto;
+
 //캐시이력
 public class CashRecordDto {
 
@@ -9,6 +11,7 @@ public class CashRecordDto {
 	private int cashRecordChange; //캐시변동
 	private String cashRecordChangeDate; //캐시변동날짜
 	private int cashRecordTotal; //총액
+	private PayDto payDto;
 	public int getCashRecordNo() {
 		return cashRecordNo;
 	}
@@ -45,13 +48,20 @@ public class CashRecordDto {
 	public void setCashRecordTotal(int cashRecordTotal) {
 		this.cashRecordTotal = cashRecordTotal;
 	}
-	
+	public PayDto getPayDto() {
+		return payDto;
+	}
+	public void setPayDto(PayDto payDto) {
+		this.payDto = payDto;
+	}
 	@Override
 	public String toString() {
 		return "CashRecordDto [cashRecordNo=" + cashRecordNo + ", cashCategory=" + cashCategory + ", userId=" + userId
 				+ ", cashRecordChange=" + cashRecordChange + ", cashRecordChangeDate=" + cashRecordChangeDate
-				+ ", cashRecordTotal=" + cashRecordTotal + "]";
+				+ ", cashRecordTotal=" + cashRecordTotal + ", payDto=" + payDto + "]";
 	}
+	
+
 	
 	
 	

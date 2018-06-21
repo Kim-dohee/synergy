@@ -22,5 +22,13 @@ public class PayDao {
 	public List<PayDto> paySelect(String userId) { 
 		return sqlSession.selectList(NS+"paySelect", userId); 
 	} 
+	
+	public int payUpdateDeliver(int payNo) { 
+		return sqlSession.update(NS+"payUpdateDeliver", payNo); 
+	} 
+	
+	public int payUpdateConfilrm(int payNo) { 
+		return sqlSession.update(NS+"payUpdateConfilrm", payNo); 
+	} 
 
 }

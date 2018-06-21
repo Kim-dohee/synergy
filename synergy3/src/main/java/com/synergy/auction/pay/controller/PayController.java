@@ -1,16 +1,20 @@
 package com.synergy.auction.pay.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.synergy.auction.auction.goods.service.AuctionGoodsDto;
 import com.synergy.auction.auction.goods.service.AuctionGoodsService;
 import com.synergy.auction.cash.service.CashRecordDto;
 import com.synergy.auction.cash.service.CashRecordService;
@@ -28,6 +32,8 @@ public class PayController {
 	@Autowired 
 	private AuctionGoodsService auctionGoodsService;
 	
+	
+	//결제 추가
 	@RequestMapping(value = "/payInsert", method = RequestMethod.POST)
 	public String payInsert(@RequestParam(value="successfulBid") int successfulBid,HttpSession session
 							,@RequestParam(value="sellerId") String sellerId
@@ -66,4 +72,23 @@ public class PayController {
 		auctionGoodsService.auctionGoodsUpdatePay(auctionGoodsNo);
 		return "home";
 	}
+
+	//결제 상태 변경
+	@RequestMapping(value = "/payUpdateDeliver", method = RequestMethod.GET)
+	public String payUpdateDeliver(ModelMap modelMap,@RequestParam(value="payNo") int payNo,Model model,HttpSession session) {
+		payService.payUpdateDeliver(payNo);
+		modelMap.addAttribute("message", "배송하였습니다.!");
+		modelMap.addAttribute("returnUrl", "userDetailAuction");
+		return "alertAndRedirect";
+	}
+	
+	//결제 상태 변경
+	@RequestMapping(value = "/payUpdateConfilrm", method = RequestMethod.GET)
+	public String payUpdateConfilrm(ModelMap modelMap,@RequestParam(value="payNo") int payNo,Model model,HttpSession session) {
+		payService.payUpdateConfilrm(payNo);
+		modelMap.addAttribute("message", "구매가 확정되었습니다.!");
+		modelMap.addAttribute("returnUrl", "userDetailAuction");
+		return "alertAndRedirect";
+	}
+	
 }

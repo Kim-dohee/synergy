@@ -49,9 +49,13 @@ public class CashController {
 	//캐쉬 총액
 	@RequestMapping(value = "/cashRecordTotal", method = RequestMethod.GET)
 	@ResponseBody
-	public int cashRecordTotal(Model model,@RequestParam(value="id") String id) {
+	public int cashRecordTotal(Model model,@RequestParam(value="id") String id,HttpSession session) {
+		String level = (String) session.getAttribute("level");
+		if(level.equals("일반회원")) {
 		int totalCash = cashRecordService.totalCashRecordSelectOne(id);
 		return totalCash;
+		}
+		return 0;
 	}
 	
 	//캐쉬 충전 
@@ -101,7 +105,7 @@ public class CashController {
 		return "cash/cash_record_select";
 	}
 	
-	//캐쉬 사용내역 검색(페이징)
+	//캐쉬 사용내역 검색 관리 관리자 (페이징)
 	@RequestMapping(value = "/cashRecordSelectAdmin", method = RequestMethod.GET)
 	public String cashRecordSelectAdmin(Model model
 			,@RequestParam(value="userId") String userId
@@ -110,6 +114,8 @@ public class CashController {
 		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("lastPage",map.get("lastPage"));
+		//캐시 사용내역 검색과 구매된 상품 같이보기.
+		model.addAttribute("cashGoods",cashRecordService.cashSelectGoods());
 		return "cash/cash_record_select_admin";
 	}
 }

@@ -2,6 +2,7 @@
 package com.synergy.auction.auction.goods.service;
 
 import com.synergy.auction.file.service.FileDto;
+import com.synergy.auction.pay.service.PayDto;
 
 public class AuctionGoodsDto {
 	private int auctionGoodsNo;
@@ -23,6 +24,13 @@ public class AuctionGoodsDto {
 	private String auctionGoodsBidEndDate;
 	private int auctionGoodsHits;
 	private FileDto file;
+	private PayDto pay;
+	public PayDto getPay() {
+		return pay;
+	}
+	public void setPay(PayDto pay) {
+		this.pay = pay;
+	}
 	public int getAuctionGoodsNo() {
 		return auctionGoodsNo;
 	}

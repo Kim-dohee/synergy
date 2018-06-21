@@ -25,6 +25,11 @@ public class DonationPlanService {
 		return donationPlanDao.donationPlanNoSelectOne(donatorId);  
 	}
 	
+	//기부금 계획서 넘버로 검색
+	public DonationPlanDto donationPlanSelectOne(int donationPlanNo) { 
+		return donationPlanDao.donationPlanSelectOne(donationPlanNo);  
+	}
+	
 	//기부금계획서파일넘버 수정
 	public int donationPlanFileNoUpdate(DonationPlanDto donationPlanDto) { 
 		int row = donationPlanDao.donationPlanFileNoUpdate(donationPlanDto);  

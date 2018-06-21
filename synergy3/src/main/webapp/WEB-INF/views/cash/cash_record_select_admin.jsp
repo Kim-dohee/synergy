@@ -6,6 +6,27 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	<script>
+	$(function() {
+		console.log($("#payState").text());
+		
+		if($("#cashCate").val()=="기부"){
+			$("#payState2").text("기부완료")
+			$("#payState2").removeAttr("href");
+			
+		} else {
+			if($("#payState").text()=="결재완료"){
+			$("#payState").text("구매요청")
+			}
+			if($("#payState").text()=="수취확인"){
+			$("#payState2").text("기부하기")
+			}
+			if($("#payState").text()=="결재완료"){
+			$("#payState").text("구매요청")
+			}
+		}
+	});
+</script>
 </head>
 <body>
 	<div class="text-center">
@@ -15,30 +36,33 @@
 				<table class="table table-hover">
 					<thead>
 						<tr class="active">
+							<th>경매품번호</th>
 							<th>경매품</th>
 							<th>입금 금액</th>
 							<th>입금자</th>
-							<th>현 총잔액</th>
 							<th>입금 날짜</th>
-							<th>배송요청</th>
+							<th>결재상태</th>
+							<th>기부하기</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="cash" items="${list}">
+						<c:forEach var="cashGoods" items="${cashGoods}">
 							<tr>
-								<td>1</td>
-								<td>${cash.cashRecordChange}</td>
-								<td>6</td>
-								<td>${cash.cashRecordTotal}</td>
-								<td>${cash.cashRecordChangeDate}</td>    
-								<td><a href="#">배송요청하기</a></td>    
+								<td>${cashGoods.payDto.auctionGoodsDto.auctionGoodsNo}</td>
+								<td><a href ="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${cashGoods.payDto.auctionGoodsDto.auctionGoodsNo}">${cashGoods.payDto.auctionGoodsDto.auctionGoodsTitle}</a></td>
+								<td>${cashGoods.cashRecordChange}</td>
+								<td>${cashGoods.payDto.userId2}</td>
+								<td>${cashGoods.cashRecordChangeDate}</td>    
+								<td><a id="payState">${cashGoods.payDto.payState}</a></td>
+								<td><a id="payState2" href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.auctionGoodsDto.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">-</a></td>
 							</tr>
+							<input type="hidden" value="${cashGoods.cashCategory}" id="cashCate">
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>	 
 			<c:forEach var="start" begin="1" end="${lastPage}">
-				<a href="${pageContext.request.contextPath}/cashRecordSelect?currentPage=${start}&userId=${sessionScope.id}">[${start}]</a>
+				<a href="${pageContext.request.contextPath}/cashRecordSelectAdmin?currentPage=${start}&userId=${sessionScope.id}">[${start}]</a>
 			</c:forEach><br>     
 		</form>
 	</div>

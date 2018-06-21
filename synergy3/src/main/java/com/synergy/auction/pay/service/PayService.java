@@ -21,4 +21,12 @@ public class PayService {
 	public List<PayDto> paySelect(String userId) {
 		return payDao.paySelect(userId);
 	}
+	
+	public int payUpdateDeliver(int payNo) {
+		return payDao.payUpdateDeliver(payNo);
+	}
+	
+	public int payUpdateConfilrm(int payNo) {
+		return payDao.payUpdateConfilrm(payNo);
+	}
 }

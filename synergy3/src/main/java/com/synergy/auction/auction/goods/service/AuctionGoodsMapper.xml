@@ -39,6 +39,10 @@
 		<collection property="file" ofType="com.synergy.auction.file.service.FileDto">	 
 			<result column="file_name" property="fileName"/> 
 			<result column="file_ext" property="fileExt"/> 
+		</collection>	
+		<collection property="pay" ofType="com.synergy.auction.pay.service.PayDto">	 
+			<result column="pay_state" property="payState"/> 
+			<result column="pay_no" property="payNo"/> 
 		</collection>			 
 	</resultMap>
 
@@ -111,14 +115,15 @@
 			,auction_goods.auction_goods_hits
 			,file.file_name
  			,file.file_ext
+ 			,pay.pay_state
 		FROM
 			auction_goods
 		JOIN
 			file
 		ON
 			auction_goods.auction_goods_no = file.file_table_no AND 'auction_goods' = file.file_table_name
-		WHERE 
-			file.file_ext IN('jpg','png','jpeg')
+		JOIN
+			pay
 	</select>	
 	
 	<select id="auctionGoodsSelectUser" resultMap="resultAuctionGoods">
@@ -143,14 +148,18 @@
 			,auction_goods.auction_goods_hits
 			,file.file_name
  			,file.file_ext
+ 			,pay.pay_state
+ 			,pay.pay_no
 		FROM
 			auction_goods
 		JOIN
 			file
 		ON
 			auction_goods.auction_goods_no = file.file_table_no
+		JOIN
+			pay
 		WHERE 
-			user_id = #{userId}
+			auction_goods.user_id = #{userId}
 	</select>	
 	
 	<select id="auctionGoodsSelectOne" parameterType="String" resultMap="resultAuctionGoods">

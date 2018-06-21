@@ -100,6 +100,7 @@ public class AuctionGoodsController {
 				auctionGoodsService.auctionGoodsUpdateState(auctionGoodsNo);
 			}
 		}
+		System.out.println(donationPlanService.donationPlanSelectOne(donationPlanNo)+"aaaaaaaaaaaaaaaaaaaaaaaa");
 		//기부금 계획서
 		model.addAttribute("donation",donationPlanService.donationPlanSelectOne(donationPlanNo));
 		//경매품 상세
