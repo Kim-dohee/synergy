@@ -1,6 +1,7 @@
 package com.synergy.auction.auction.goods.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,22 @@ public class AuctionGoodsDao {
 		return auctionGoodsDto.getAuctionGoodsNo(); 
 	} 
 
-	public List<AuctionGoodsDto> auctionGoodsSelect() { 
-		return sqlSession.selectList(NS+"auctionGoodsSelect"); 		
+	public List<AuctionGoodsDto> auctionGoodsSelect(Map<String, Object> map) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelect", map); 		
+	}
+	//캐쉬사용내역 페이징을 위한 row수 구하기
+	public int totalAuctionGoods() { 
+		return sqlSession.selectOne(NS+"totalAuctionGoods"); 
 	}
 	
 	public List<AuctionGoodsDto> auctionGoodsSelectUser(String userId) { 
 		return sqlSession.selectList(NS+"auctionGoodsSelectUser", userId); 		
 	}
+	
 	public List<AuctionGoodsDto> auctionGoodsSelectUserBid(String userId) { 
 		return sqlSession.selectList(NS+"auctionGoodsSelectUserBid", userId); 		
 	}
+	
 	public List<AuctionGoodsDto> auctionGoodsSelectsuccessfulBid(String userId) { 
 		return sqlSession.selectList(NS+"auctionGoodsSelectsuccessfulBid", userId); 		
 	}

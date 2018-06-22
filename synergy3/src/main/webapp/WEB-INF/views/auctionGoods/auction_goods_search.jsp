@@ -35,7 +35,10 @@
 			</tbody>
 			
 		</table>
-		<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
+		<c:forEach var="start" begin="1" end="${lastPage}">
+				<a style="font-size:14px" class="text-center" href="${pageContext.request.contextPath}/auctionGoodsSelect?currentPage=${start}">[${start}]</a>
+		</c:forEach><br> 
+		<a class="btn btn-primary btn-sm" href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
 	</div>
 
 </body>

@@ -16,7 +16,12 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping(value = "/noticeSelect", method = RequestMethod.GET)
-	public String adminInsert() {
+	public String noticeSelect() {
 		return "notice/notice_select";
+	}
+	
+	@RequestMapping(value = "/noticeInsert", method = RequestMethod.GET)
+	public String noticeInsert() {
+		return "notice/notice_insert";
 	}
 }

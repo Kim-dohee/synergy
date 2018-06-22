@@ -103,7 +103,7 @@
 		)
 	</insert>
 
-	<select id="auctionGoodsSelect" resultMap="resultAuctionGoods">
+	<select id="auctionGoodsSelect" parameterType="java.util.Map" resultMap="resultAuctionGoods">
 		SELECT 
 			auction_goods.auction_goods_no
 			,auction_goods.auction_goods_file_no
@@ -131,7 +131,14 @@
 			file
 		ON
 			auction_goods.auction_goods_no = file.file_table_no AND 'auction_goods' = file.file_table_name
+		ORDER BY auction_goods.auction_goods_no DESC
+		LIMIT #{beginRow},10;
 	</select>	
+	
+	<select id="totalAuctionGoods"  
+			resultType="Integer">
+		SELECT COUNT(*) FROM auction_goods
+	</select>
 	
 	<select id="auctionGoodsSelectUser" resultMap="resultAuctionGoods">
 		SELECT 

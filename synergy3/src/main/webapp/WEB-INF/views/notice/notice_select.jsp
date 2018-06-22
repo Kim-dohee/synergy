@@ -31,9 +31,8 @@
 							</tr>
 					</tbody>
 				</table>
-				<a class="btn btn-primary btn-sm pull-right" href="#" id="btn" >공지사항 등록</a>
+				<a class="btn btn-primary btn-sm pull-right" href="${pageContext.request.contextPath}/noticeInsert">공지사항 등록</a>
 			</div>	 
-			
 	</div>
 </body>
 </html>

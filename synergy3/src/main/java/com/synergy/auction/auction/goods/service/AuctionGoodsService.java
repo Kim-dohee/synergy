@@ -1,13 +1,13 @@
 package com.synergy.auction.auction.goods.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.synergy.auction.cash.service.CashRecordDto;
-import com.synergy.auction.user.service.UserDto;
 
 @Transactional
 @Service
@@ -22,8 +22,24 @@ public class AuctionGoodsService {
 	} 
 
 	//상품 리스트
-	public List<AuctionGoodsDto> auctionGoodsSelect() { 
-		return auctionGoodsDao.auctionGoodsSelect(); 		
+	public Map<String, Object> auctionGoodsSelect(int currentPage) { 
+		Map<String, Object> cashMap = new HashMap<String,Object>();
+		int beginRow = (currentPage-1)*10;
+		cashMap.put("beginRow", beginRow);	
+		List<AuctionGoodsDto> list = auctionGoodsDao.auctionGoodsSelect(cashMap);
+		//총 row수 구하기
+		int total = auctionGoodsDao.totalAuctionGoods();
+		int lastPage = 0;
+		if(total%10==0) {
+			lastPage = total/10;
+		} else {
+			lastPage = total/10+1;
+		}
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		map.put("list", list);
+		map.put("lastPage",lastPage);
+		return map;
 	}
 	
 	//개인 리스트

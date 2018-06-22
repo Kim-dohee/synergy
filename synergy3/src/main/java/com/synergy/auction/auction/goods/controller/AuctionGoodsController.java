@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -67,9 +68,12 @@ public class AuctionGoodsController {
 
 	//경매품 리스트
 	@RequestMapping(value = "/auctionGoodsSelect", method = RequestMethod.GET)
-	public String auctionGoodsSelect(Model model) {
-		List<AuctionGoodsDto> list = auctionGoodsService.auctionGoodsSelect();
-		model.addAttribute("list",list);
+	public String auctionGoodsSelect(Model model
+									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
+		
+		Map<String, Object> map = auctionGoodsService.auctionGoodsSelect(currentPage);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("lastPage",map.get("lastPage"));
 		return "auctionGoods/auction_goods_search";
 	}
 	
