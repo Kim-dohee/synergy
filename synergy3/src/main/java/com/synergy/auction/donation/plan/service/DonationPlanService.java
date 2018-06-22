@@ -72,4 +72,9 @@ public class DonationPlanService {
 		int row =  donationPlanDao.donationPlanDelete(donationPlanNo);
 		return row;
 	}
+	
+	//(기부단체별 총 기부금을 알기위해)기부단체별 기부금계획서 넘버 검색
+	public List<DonationPlanDto> donationPlanNoForDonationNameSelect(String donatorName) {
+		return donationPlanDao.donationPlanNoForDonationNameSelect(donatorName); 
+	}
 }

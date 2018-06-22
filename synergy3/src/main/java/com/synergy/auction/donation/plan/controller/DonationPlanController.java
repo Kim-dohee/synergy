@@ -42,6 +42,55 @@ public class DonationPlanController {
 	@RequestMapping(value = "/donationPlanMain", method = RequestMethod.GET)
 	public String donationPlanMain(Model model) {
 		
+		//(기부단체별 총 기부금을 알기위해)기부단체별 기부금계획서 넘버 검색
+		//------드림풀 총 수익금
+		List<DonationPlanDto> donationPlanNo1 = donationPlanService.donationPlanNoForDonationNameSelect("드림풀");
+		logger.debug("DonationPlanController.donationPlanMain donationPlanNo1>>"+donationPlanNo1.toString());
+		int incomeDonationPriceTotal1 = 0;
+		//(기부단체별 총 기부금을 알기위해)기부단체 넘버를 매개변수로 받아 총 수익금 검색
+		for(DonationPlanDto list : donationPlanNo1) {
+			logger.debug("DonationPlanController.donationPlanMain planNo>>"+list.getDonationPlanNo());
+			int incomeDonationPrice = incomeDonationService.incomeDonationPriceTotalSelect(list.getDonationPlanNo());
+			incomeDonationPriceTotal1 += incomeDonationPrice;
+		}
+		model.addAttribute("incomeDonationPriceTotal1", incomeDonationPriceTotal1);
+		logger.debug("DonationPlanController.donationPlanMain incomeDonationPriceTotal1>>"+incomeDonationPriceTotal1);
+		//------기아대책 총 수익금
+		List<DonationPlanDto> donationPlanNo2 = donationPlanService.donationPlanNoForDonationNameSelect("기아대책");
+		int incomeDonationPriceTotal2 = 0;
+		for(DonationPlanDto list : donationPlanNo2) {
+			logger.debug("DonationPlanController.donationPlanMain planNo>>"+list.getDonationPlanNo());
+			int incomeDonationPrice = incomeDonationService.incomeDonationPriceTotalSelect(list.getDonationPlanNo());
+			incomeDonationPriceTotal2 += incomeDonationPrice;
+		}
+		model.addAttribute("incomeDonationPriceTotal2", incomeDonationPriceTotal2);
+		//------사랑밭 총 수익금
+		List<DonationPlanDto> donationPlanNo3 = donationPlanService.donationPlanNoForDonationNameSelect("사랑밭");
+		int incomeDonationPriceTotal3 = 0;
+		for(DonationPlanDto list : donationPlanNo3) {
+			logger.debug("DonationPlanController.donationPlanMain planNo>>"+list.getDonationPlanNo());
+			int incomeDonationPrice = incomeDonationService.incomeDonationPriceTotalSelect(list.getDonationPlanNo());
+			incomeDonationPriceTotal3 += incomeDonationPrice;
+		}
+		model.addAttribute("incomeDonationPriceTotal3", incomeDonationPriceTotal3);
+		//------세이브더칠드런 총 수익금
+		List<DonationPlanDto> donationPlanNo4 = donationPlanService.donationPlanNoForDonationNameSelect("세이브더칠드런");
+		int incomeDonationPriceTotal4 = 0;
+		for(DonationPlanDto list : donationPlanNo4) {
+			logger.debug("DonationPlanController.donationPlanMain planNo>>"+list.getDonationPlanNo());
+			int incomeDonationPrice = incomeDonationService.incomeDonationPriceTotalSelect(list.getDonationPlanNo());
+			incomeDonationPriceTotal4 += incomeDonationPrice;
+		}
+		model.addAttribute("incomeDonationPriceTotal4", incomeDonationPriceTotal4);
+		//------WECA 총 수익금
+		List<DonationPlanDto> donationPlanNo5 = donationPlanService.donationPlanNoForDonationNameSelect("WECA");
+		int incomeDonationPriceTotal5 = 0;
+		for(DonationPlanDto list : donationPlanNo5) {
+			logger.debug("DonationPlanController.donationPlanMain planNo>>"+list.getDonationPlanNo());
+			int incomeDonationPrice = incomeDonationService.incomeDonationPriceTotalSelect(list.getDonationPlanNo());
+			incomeDonationPriceTotal5 += incomeDonationPrice;
+		}
+		model.addAttribute("incomeDonationPriceTotal5", incomeDonationPriceTotal5);
 		//기부단체명,기부금계획서(제목,날짜) 검색
 		List<DonationPlanDto> list = donationPlanService.donationPlanSelect();	
 		logger.debug("DonationPlanController.donationPlanMain toString>>"+list.toString());

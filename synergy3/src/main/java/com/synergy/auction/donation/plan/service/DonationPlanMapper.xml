@@ -160,5 +160,14 @@
  		DELETE FROM donation_plan
 		WHERE donation_plan_no=#{donationPlanNo}
  	</delete>
+ 	<select id="donationPlanNoForDonationNameSelect"  
+			parameterType="String"
+			resultType="com.synergy.auction.donation.plan.service.DonationPlanDto">
+		SELECT dp.donation_plan_no AS donationPlanNo 
+		FROM donation_plan AS dp 
+		JOIN donator AS d 
+		ON d.donator_id=dp.donator_id 
+		WHERE d.donator_name=#{donatorName}
+ 	</select>
  </mapper>  
   

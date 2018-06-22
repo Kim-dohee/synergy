@@ -13,6 +13,7 @@
 	
 	// 로딩 완료시 함수 실행하여 차트 생성
 	google.charts.setOnLoadCallback(drawChart);
+	
 
 	// 차트 옵션을 전역으로 설정
 	var chart_options = {
@@ -30,11 +31,11 @@
 	function drawChart(){
 		var data = google.visualization.arrayToDataTable([
 			['Element', '기부금'],
-			['WECA', 5],
-			['세이브더칠드런', 6],
-			['사랑밭', 8],
-			['기아대책', 10],
-			['드림풀', 2]
+			['드림풀', parseInt($("#donator1").val())], //드림풀 총 기부금
+			['기아대책', parseInt($("#donator2").val())], //기아대책 총 기부금
+			['사랑밭', parseInt($("#donator3").val())], //사랑밭 총 기부금
+			['세이브더칠드런', parseInt($("#donator4").val())], //세이브더칠드런 총 기부금
+			['WECA',parseInt($("#donator5").val())] //WECA 총 기부금
 		]);
 
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -47,6 +48,11 @@
 	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 계획서 </h4>
 	<div style="text-align: center; font-size: 12px;" class="container">
 		<h2>[기부단체별 기부현황]</h2>
+		<input type="hidden" id="donator1" value="${incomeDonationPriceTotal1}"/>
+		<input type="hidden" id="donator2" value="${incomeDonationPriceTotal2}"/>
+		<input type="hidden" id="donator3" value="${incomeDonationPriceTotal3}"/>
+		<input type="hidden" id="donator4" value="${incomeDonationPriceTotal4}"/>
+		<input type="hidden" id="donator5" value="${incomeDonationPriceTotal5}"/>
 		<div style="text-align:center; margin:0 0 100px 0; background:#555; line-height:40px;"></div>
 		<div id="chart_div"></div>
 		<div style="text-align:center;">
