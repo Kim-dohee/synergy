@@ -112,7 +112,7 @@
 						</tr>
 						<tr>
 							<th colspan="2" class="active">내용</th>
-							<td colspan="4"><img src="${pageContext.request.contextPath}/resources/file/${detailList.file.fileName}.${detailList.file.fileExt}" width="100%" height="100%">
+							<td colspan="4"><img src="resources/file/${detailList.file.fileName}.${detailList.file.fileExt}" width="100%" height="100%">
 							<textarea rows="15" name="auctionGoodsContent" class="form-control" readonly>${detailList.auctionGoodsContent}</textarea></td>
 							
 						</tr>

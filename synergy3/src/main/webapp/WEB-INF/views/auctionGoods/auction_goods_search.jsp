@@ -21,7 +21,7 @@
 			<tbody>
 				<c:forEach var="goods" items="${list}">
 					<tr>
-						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}"><img src="${pageContext.request.contextPath}/resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="90" height="90"></a></td>
+						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}"><img src="resources/file/${goods.file.fileName}.${goods.file.fileExt}" width="90" height="90"></a></td>
 						<td><a class="insert" href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo=${goods.auctionGoodsNo}">${goods.auctionGoodsTitle}</a>
 						<td>${goods.auctionGoodsInstanceBuyPrice}</td>
 						<td>${goods.userId}</td>

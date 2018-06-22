@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,9 @@ public class FileService {
 	private static final Logger logger = LoggerFactory.getLogger(FileService.class);
 	
 	//기부금 계획서 파일 등록
-	public void fileInsert(MultipartFile fileName,int donationPlanNo) {
-		
+	public void fileInsert(MultipartFile fileName,int donationPlanNo,HttpServletRequest request) {
+		String root_path = request.getSession().getServletContext().getRealPath("/");  
+		String attach_path = "resources/file/";
 		UUID uuid = UUID.randomUUID();
 		//파일 이름
 		String donationFileName = uuid.toString().replace("-","");
@@ -50,7 +53,7 @@ public class FileService {
 		//파일이 존재할경우 해당경로에 저장
 		if(!fileName.isEmpty()) {
 			logger.debug("FileService.fileInsert >> 파일존재");
-			File fileCourse = new File(SystemPath.UPLOAD_PATH+donationFileName+"."+fileExt);
+			File fileCourse = new File(root_path+attach_path+donationFileName+"."+fileExt);
 			try {
 				fileName.transferTo(fileCourse);
 			} catch (IllegalStateException e) {
@@ -64,8 +67,9 @@ public class FileService {
 	}
 	
 	//경매품  파일 등록
-	public void auctionFileInsert(MultipartFile fileName,int auctionGoodsNo) {
-		
+	public void auctionFileInsert(MultipartFile fileName,int auctionGoodsNo,HttpServletRequest request) {
+		String root_path = request.getSession().getServletContext().getRealPath("/");  
+		String attach_path = "resources/file/";
 		UUID uuid = UUID.randomUUID();
 		//파일 이름
 		String donationFileName = uuid.toString().replace("-","");
@@ -89,7 +93,7 @@ public class FileService {
 		//파일이 존재할경우 해당경로에 저장
 		if(!fileName.isEmpty()) {
 			logger.debug("FileService.fileInsert >> 파일존재");
-			File fileCourse = new File(SystemPath.UPLOAD_PATH+donationFileName+"."+fileExt);
+			File fileCourse = new File(root_path+attach_path+donationFileName+"."+fileExt);
 			try {
 				fileName.transferTo(fileCourse);
 			} catch (IllegalStateException e) {

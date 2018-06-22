@@ -3,6 +3,7 @@ package com.synergy.auction.donation.plan.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -150,6 +151,7 @@ public class DonationPlanController {
 	//기부계획서 등록처리
 	@RequestMapping(value = "/donationPlanInsert", method = RequestMethod.POST)
 	public String donationPlanInsert(HttpSession session
+									,HttpServletRequest request
 									,@RequestParam(value="donationPlanTitle") String donationPlanTitle
 									,@RequestParam(value="donationPlanContent") String donationPlanContent
 									,@RequestParam(value="donationPlanPurpose") String donationPlanPurpose
@@ -185,7 +187,7 @@ public class DonationPlanController {
 		logger.debug("DonationPlanController.donationPlanInsert donationPlanNo>>"+donationPlanNo);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
-			fileService.fileInsert(fileName,donationPlanNo);
+			fileService.fileInsert(fileName,donationPlanNo,request);
 			
 		}
 		//파일넘버 검색 후 기부금계획서파일넘버에 등록
@@ -196,7 +198,7 @@ public class DonationPlanController {
 		donationPlanService.donationPlanFileNoUpdate(donationPlanDto);
 		//파일이 존재할 경우,기부금 이미지 등록
 		if(fileName != null) {
-			fileService.fileInsert(fileImage,donationPlanNo);	
+			fileService.fileInsert(fileImage,donationPlanNo,request);	
 		}
 		//이미지넘버 검색 후 기부금계획서이미지넘버에 등록
 		int donationPlanImageNo = fileService.ImageFileNoSelect(donationPlanNo);

@@ -2,6 +2,7 @@ package com.synergy.auction.donation.spend.report.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.ListModel;
 
@@ -135,6 +136,7 @@ public class DonationSpendReportController {
 	//기부금 지출보고서 등록 처리
 	@RequestMapping(value = "/donationSpendReportInsert", method = RequestMethod.POST)
 	public String donationSpendReportInsert(HttpSession session
+											,HttpServletRequest request
 											,DonationSpendReportDto donationSpendReportDto
 											,@RequestParam(value="fileName") MultipartFile fileName
 											,@RequestParam(value="donationPlanNo") int donationPlanNo) {
@@ -150,7 +152,7 @@ public class DonationSpendReportController {
 		int donationSpendReportNo = donationSpendReportService.donationSpendReportNoSelectOne(donatorId);
 		//파일이 존재할 경우,기부금 계획서 파일 등록
 		if(fileName != null) {
-			fileService.fileInsert(fileName,donationSpendReportNo);
+			fileService.fileInsert(fileName,donationSpendReportNo,request);
 		}
 		//파일 테이블명 수정
 		fileService.fileNameUpdate(donationSpendReportNo);

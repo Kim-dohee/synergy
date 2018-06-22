@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -51,15 +52,15 @@ public class AuctionGoodsController {
 	//경매품 추가
 	@RequestMapping(value = "/auctionGoodsInsert", method = RequestMethod.POST)
 	public String auctionGoodsInsert(AuctionGoodsDto auctionGoodsDto
-									,@RequestParam(value="fileImage") MultipartFile fileImage) {
+									,@RequestParam(value="fileImage") MultipartFile fileImage
+									,HttpServletRequest request) {
 		int auctionGoodsNo= auctionGoodsService.auctionGoodsInsert(auctionGoodsDto);
 		//사진파일이 등록되었을때 메서드 실행.
 		if(fileImage.isEmpty()==false) {
-			fileService.auctionFileInsert(fileImage,auctionGoodsNo);
+			fileService.auctionFileInsert(fileImage,auctionGoodsNo,request);
 			int auctionGoodsFileNo = fileService.auctionFileNoSelect(auctionGoodsNo);
 			auctionGoodsDto.setAuctionGoodsFileNo(auctionGoodsFileNo);
 			auctionGoodsService.auctionGoodsFileNoUpdate(auctionGoodsDto);
-			
 		}
 		return "home";
 	}
