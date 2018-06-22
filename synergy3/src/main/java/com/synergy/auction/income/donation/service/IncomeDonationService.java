@@ -43,4 +43,9 @@ public class IncomeDonationService {
 	public int incomeDonationPriceTotalSelect(int donationPlanNo) { 
 		return incomeDonationDao.incomeDonationPriceTotalSelect(donationPlanNo); 
 	}
+	
+	//(연도별 기부현황을 알기위해)연도별 총 기부금액 검색
+	public int incomeDonationPriceYearTotalSelect(int incomeDonationDate) { 
+		return incomeDonationDao.incomeDonationPriceYearTotalSelect(incomeDonationDate); 
+	}
 }

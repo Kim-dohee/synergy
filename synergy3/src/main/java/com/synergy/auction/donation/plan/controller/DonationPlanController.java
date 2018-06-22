@@ -212,6 +212,17 @@ public class DonationPlanController {
 	@RequestMapping(value = "/donationAll", method = RequestMethod.GET)
 	public String donationAllMain(Model model) {
 
+		//(연도별 기부현황을 알기위해)연도별 총 기부금액 검색
+		int incomeDonation2013Total = incomeDonationService.incomeDonationPriceYearTotalSelect(2013);
+		int incomeDonation2014Total = incomeDonationService.incomeDonationPriceYearTotalSelect(2014);
+		int incomeDonation2015Total = incomeDonationService.incomeDonationPriceYearTotalSelect(2015);
+		int incomeDonation2016Total = incomeDonationService.incomeDonationPriceYearTotalSelect(2016);
+		int incomeDonation2017Total = incomeDonationService.incomeDonationPriceYearTotalSelect(2017);
+		model.addAttribute("incomeDonation2013Total", incomeDonation2013Total);
+		model.addAttribute("incomeDonation2014Total", incomeDonation2014Total);
+		model.addAttribute("incomeDonation2015Total", incomeDonation2015Total);
+		model.addAttribute("incomeDonation2016Total", incomeDonation2016Total);
+		model.addAttribute("incomeDonation2017Total", incomeDonation2017Total);
 		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
 		List<DonationPlanDto> list = donationPlanService.donationSelect();
 		//총 수입기부금 검색

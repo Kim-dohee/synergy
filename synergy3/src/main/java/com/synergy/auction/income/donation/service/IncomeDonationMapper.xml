@@ -58,4 +58,11 @@
 		FROM income_donation 
 		WHERE donation_plan_no=#{donationPlanNo}
  	</select>				
+	<select id="incomeDonationPriceYearTotalSelect"  
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT SUM(income_donation_price) 
+		FROM income_donation
+		WHERE LEFT(income_donation_date,4) = #{incomeDonationDate}
+ 	</select>				
 </mapper>  

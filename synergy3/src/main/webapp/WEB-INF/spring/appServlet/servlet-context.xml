@@ -68,6 +68,7 @@
 				<value>classpath:com/synergy/auction/donation/spend/report/service/DonationSpendReportMapper.xml</value>
 				<value>classpath:com/synergy/auction/pay/service/PayMapper.xml</value>
 				<value>classpath:com/synergy/auction/notice/service/NoticeMapper.xml</value>
+				<value>classpath:com/synergy/auction/donation/use/service/DonationUseMapper.xml</value>
 			</list>
 		</property>
 	</bean>
