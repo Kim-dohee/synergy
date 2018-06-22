@@ -111,7 +111,7 @@ public class CashController {
 			,@RequestParam(value="userId") String userId
 			,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
 		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
-		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
+		Map<String, Object> map = cashRecordService.totalCashRecordAdmin(userId,currentPage);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("lastPage",map.get("lastPage"));
 		//캐시 사용내역 검색과 구매된 상품 같이보기.

@@ -35,7 +35,7 @@
 			</tbody>
 			
 		</table>
-		<a href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
+		<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/auctionGoodsInsert">상품추가</a>
 	</div>
 
 </body>

@@ -48,6 +48,7 @@
 			,successful_bid_pay_end_date
 			,successful_bid_cancel
 			,auction_goods_no
+			,user_id
 		) VALUES (
 			#{bidNo}
 			,#{auctionGoodsInstanceBuyPrice}
@@ -55,7 +56,7 @@
 			,date_add(now(),interval+3 day) 
 			,null			
 			,#{auctionGoodsNo}
-
+			,#{userId}
 		)
 	</insert>
 	

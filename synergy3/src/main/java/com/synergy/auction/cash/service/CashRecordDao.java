@@ -67,6 +67,9 @@ public class CashRecordDao {
 	public int totalCashRecord(String userId) { 
 		return sqlSession.selectOne(NS+"totalCashRecord", userId); 
 	}
+	public int totalCashRecordAdmin(String userId) { 
+		return sqlSession.selectOne(NS+"totalCashRecordAdmin", userId); 
+	}
 	
 	//최종캐쉬금액 검색
 	public int totalCashRecordSelectOne(String userId) { 

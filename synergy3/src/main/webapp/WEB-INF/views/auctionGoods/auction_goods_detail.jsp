@@ -174,7 +174,7 @@
 				<input type="hidden" value="${bidList.userId}" name="buyUserId">
 				<input type="hidden" value="${detailList.auctionGoodsNo}" name="auctionGoodsNo">
 				<a class="btn btn-primary btn-lg" href="#" id="btn">입찰하기</a>
-				<a class="btn btn-primary btn-lg" href="#" id="btn2">즉시구매</a>
+				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/successfulBidNowInsert?auctionGoodsInstanceBuyPrice=${detailList.auctionGoodsInstanceBuyPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}" id="btn2">즉시구매</a>
 				</form>
 				</c:if>
 				

@@ -6,27 +6,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<script>
-	$(function() {
-/* 		console.log($("#payState").text());
-		
-		if($("#cashCate").val()=="기부"){
-			$("#payState2").text("기부완료")
-			$("#payState2").removeAttr("href");
-			
-		} else {
-			if($("#payState").text()=="결재완료"){
-			$("#payState").text("구매요청")
-			}
-			if($("#payState").text()=="수취확인"){
-			$("#payState2").text("기부하기")
-			}
-			if($("#payState").text()=="결재완료"){
-			$("#payState").text("구매요청")
-			}
-		} */
-	});
-</script>
 </head>
 <body>
 	<div class="text-center">
@@ -54,7 +33,7 @@
 								<td>${cashGoods.payDto.userId2}</td>
 								<td>${cashGoods.cashRecordChangeDate}</td>    
 								<td><a id="payState">${cashGoods.payDto.payState}</a></td>
-								<td><c:if test="${cashGoods.payDto.payState eq '수취확인'}"><a href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.successfulBid.auctionGoods.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">기부하기</a></c:if>
+								<td><c:if test="${cashGoods.payDto.payState eq '수취확인'}"><a href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.successfulBid.auctionGoods.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}&userId=${cashGoods.payDto.userId2}">기부하기</a></c:if>
 								<c:if test="${cashGoods.payDto.payState eq '결재완료'}"><a>구매요청</a></c:if>
 								<c:if test="${cashGoods.cashCategory eq '기부'}"><a>기부완료</a></c:if>
 								</td>

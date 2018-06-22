@@ -15,29 +15,30 @@ $(function() {
 	$("#acutionGoodsNo").click(function(){
 		location.href="${pageContext.request.contextPath}/auctionGoodsDetail?auctionGoodsNo="+${list.auctionGoodsNo};
 	});
-
 	$("#btn").click(function(){
-		$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidNowInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${datailList.auctionGoodsInstanceBuyPrice}");
+		$("#form").attr("action", "${pageContext.request.contextPath}/payInsert");
+		$("#form").attr("method", "post");
 		$('#form').submit();
-		
+		return;
 	}); 
 	$("#btn_cancel").click(function(){
-		$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidNowInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${datailList.auctionGoodsInstanceBuyPrice}");
+		$("#form").attr("action", "${pageContext.request.contextPath}/home");
 		$('#form').submit();
 		return;
 	}); 
 });
-	
 </script>
 <div style="font-size:16px">
 	<br> <br> <br> <br>
-	<form class="form-horizontal" role="form" method="POST">
-	<input type="hidden" value="${bidList.bidNo}">
+	<form class="form-horizontal" role="form" id="form">
 		<h1 class="text-center">즉시 구매 정보</h1><br>
 		<div class="form-group">	
 				<label for="inputId" class="col-lg-4 control-label">물품명</label>
 				<div class="col-lg-4">
-					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" id="acutionGoodsNo" data-rule-required="true" value="${list.auctionGoodsName}">
+					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" id="acutionGoodsNo" value="${list.auctionGoodsName}">
+					<input type="hidden" value="${list.userId}" name="sellerId">
+					<input type="hidden" value="${successfulBid.successfulBidNo}" name="successfulBidNo">
+					<input type="hidden" value="${list.auctionGoodsNo}" name="auctionGoodsNo">
 				</div>
 				<div class="col-lg-4"></div>
 		</div>
@@ -45,23 +46,25 @@ $(function() {
 		<div class="form-group">	
 				<label for="inputId" class="col-lg-4 control-label">낙찰자</label>
 				<div class="col-lg-4">
-					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" name="userId" data-rule-required="true" value="${list.userId}">
+					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" value="${list.userId}">
 				</div>
 				<div class="col-lg-4"></div>
 		</div>
 		
 		
 		<div class="form-group">	
-				<label for="inputId" class="col-lg-4 control-label">낙찰가격</label>
+				<label for="inputId" class="col-lg-4 control-label">구매가격</label>
 				<div class="col-lg-4">
-					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" name="userId" data-rule-required="true" value="${successfulBid.successfulBidPrice}">
+					<input style="border:none;" readonly type="text" class="form-control onlyAlphabetAndNumber" name="successfulBid" value="${successfulBid.successfulBidPrice}">
 				</div>
 				<div class="col-lg-4"></div>
 		</div>
 		
 			<div class="form-group">
 				<div class="col-lg-offset-4 col-lg-4">
+					<c:if test="${sessionScope.id eq successfulBid.userId}">
 					<button type="submit" class="btn btn-primary" id="btn">즉시구매하기</button>
+					</c:if>
 					<button type="submit" class="btn btn-primary pull-right" id="btn_cancel">취소하기</button>
 				</div>
 			</div>

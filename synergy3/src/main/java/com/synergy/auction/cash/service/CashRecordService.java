@@ -70,6 +70,28 @@ public class CashRecordService {
 		return map;
 	}
 	
+	//캐쉬사용내역 검색(관리자용)
+	public Map<String, Object> totalCashRecordAdmin(String userId,int currentPage){
+		Map<String, Object> cashMap = new HashMap<String,Object>();
+		int beginRow = (currentPage-1)*10;
+		cashMap.put("beginRow", beginRow);	
+		cashMap.put("userId", userId);
+		List<CashRecordDto> list = cashRecordDao.cashRecordSelect(cashMap);
+		//총 row수 구하기
+		int total = cashRecordDao.totalCashRecordAdmin(userId);
+		int lastPage = 0;
+		if(total%10==0) {
+			lastPage = total/10;
+		} else {
+			lastPage = total/10+1;
+		}
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		map.put("list", list);
+		map.put("lastPage",lastPage);
+		return map;
+	}
+	
 	//최종캐쉬금액 검색
 	public int totalCashRecordSelectOne(String userId) { 
 		return cashRecordDao.totalCashRecordSelectOne(userId); 

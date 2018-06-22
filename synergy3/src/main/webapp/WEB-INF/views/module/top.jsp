@@ -172,7 +172,7 @@
 							<a class="nav-link" href="about.html">1:1 문의</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="about.html">공지사항</a>
+							<a class="nav-link" href="${pageContext.request.contextPath}/noticeSelect">공지사항</a>
 			            </li>
 					</ul>
 				</div>

@@ -58,10 +58,10 @@ public class IncomeDonationController {
 								,@RequestParam(value="incomeDonationPrice") int incomeDonationPrice
 								,@RequestParam(value="donationPlanNo") int donationPlanNo
 								,@RequestParam(value="payNo") int payNo
+								,@RequestParam(value="userId") String userId
 								,@RequestParam(value="cashRecordNo") int cashRecordNo
 								,IncomeDonationDto incomeDonationDto) {
 		//기부금 (아이디,기부액,기부금계획서넘버)등록
-		String userId = (String) session.getAttribute("id");
 		logger.debug("IncomeDonationController.donationUse userId>>"+userId);
 		logger.debug("IncomeDonationController.donationUse incomeDonationPrice>>"+incomeDonationPrice);
 		logger.debug("IncomeDonationController.donationUse donationPlanNo>>"+donationPlanNo);

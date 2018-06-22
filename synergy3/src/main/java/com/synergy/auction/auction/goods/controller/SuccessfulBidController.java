@@ -58,13 +58,13 @@ public class SuccessfulBidController {
 	//즉시구매시 낙찰 등록
 	@RequestMapping(value = "/successfulBidNowInsert", method = RequestMethod.GET)
 	public String successfulBidNowSearch(Model model
-			,@RequestParam(value="bidNo") String bidNo
 			,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo
+			,@RequestParam(value="buyUserId") String buyUserId
 			,@RequestParam(value="auctionGoodsInstanceBuyPrice") String auctionGoodsInstanceBuyPrice) {
 		if((successfulBidService.successfulBidSelectOne(auctionGoodsNo))==null) {
 			Map<Object, Object> map = new HashMap<Object, Object>();
 			
-			map.put("bidNo", bidNo);
+			map.put("userId", buyUserId);
 			map.put("auctionGoodsInstanceBuyPrice", auctionGoodsInstanceBuyPrice);
 			map.put("auctionGoodsNo", auctionGoodsNo);
 			successfulBidService.successfulBidNowInsert(map);
