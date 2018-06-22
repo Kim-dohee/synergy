@@ -29,4 +29,8 @@ public class PayService {
 	public int payUpdateConfilrm(int payNo) {
 		return payDao.payUpdateConfilrm(payNo);
 	}
+	
+	public int payUpdateSuccess(int payNo) {
+		return payDao.payUpdateSuccess(payNo);
+	}
 }

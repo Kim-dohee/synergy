@@ -30,6 +30,12 @@ public class AuctionGoodsService {
 	public List<AuctionGoodsDto> auctionGoodsSelectUser(String UserId) { 
 		return auctionGoodsDao.auctionGoodsSelectUser(UserId); 		
 	}
+	public List<AuctionGoodsDto> auctionGoodsSelectUserBid(String UserId) { 
+		return auctionGoodsDao.auctionGoodsSelectUserBid(UserId); 		
+	}
+	public List<AuctionGoodsDto> auctionGoodsSelectsuccessfulBid(String UserId) { 
+		return auctionGoodsDao.auctionGoodsSelectsuccessfulBid(UserId); 		
+	}
 
 	//상품 상세 보기를위한 검색
 	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 

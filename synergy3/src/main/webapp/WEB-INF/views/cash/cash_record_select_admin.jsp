@@ -54,8 +54,10 @@
 								<td>${cashGoods.payDto.userId2}</td>
 								<td>${cashGoods.cashRecordChangeDate}</td>    
 								<td><a id="payState">${cashGoods.payDto.payState}</a></td>
-<%-- 								<td><a id="payState2" href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.successfulBid.auctionGoods.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">-</a></td> --%>
-								<td><a id="payState2">-</a></td>
+								<td><c:if test="${cashGoods.payDto.payState eq '수취확인'}"><a href="${pageContext.request.contextPath}/incomeDonationAuction?incomeDonationPrice=${cashGoods.cashRecordChange}&donationPlanNo=${cashGoods.payDto.successfulBid.auctionGoods.donationPlanNo}&payNo=${cashGoods.payDto.payNo}&cashRecordNo=${cashGoods.cashRecordNo}">기부하기</a></c:if>
+								<c:if test="${cashGoods.payDto.payState eq '결재완료'}"><a>구매요청</a></c:if>
+								<c:if test="${cashGoods.cashCategory eq '기부'}"><a>기부완료</a></c:if>
+								</td>
 							</tr>
 							<input type="hidden" value="${cashGoods.cashCategory}" id="cashCate">
 						</c:forEach>

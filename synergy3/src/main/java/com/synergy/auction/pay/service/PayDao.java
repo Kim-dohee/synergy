@@ -30,5 +30,9 @@ public class PayDao {
 	public int payUpdateConfilrm(int payNo) { 
 		return sqlSession.update(NS+"payUpdateConfilrm", payNo); 
 	} 
+	
+	public int payUpdateSuccess(int payNo) { 
+		return sqlSession.update(NS+"payUpdateSuccess", payNo); 
+	} 
 
 }

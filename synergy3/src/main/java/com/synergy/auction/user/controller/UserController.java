@@ -143,6 +143,12 @@ public class UserController {
 		String userId = (String)session.getAttribute("id");
 		List<AuctionGoodsDto> list = auctionGoodsService.auctionGoodsSelectUser(userId);
 		List<PayDto> payList = payService.paySelect(userId);
+		List<AuctionGoodsDto> bidList = auctionGoodsService.auctionGoodsSelectUserBid(userId);
+		List<AuctionGoodsDto> successfulBid = auctionGoodsService.auctionGoodsSelectsuccessfulBid(userId);
+		
+		
+		model.addAttribute("bidList",bidList);
+		model.addAttribute("successfulBid",successfulBid);
 		model.addAttribute("list",list);
 		model.addAttribute("payList",payList);
 		return "user/user_detail_auction";

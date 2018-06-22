@@ -22,9 +22,14 @@ public class AuctionGoodsDao {
 		return sqlSession.selectList(NS+"auctionGoodsSelect"); 		
 	}
 	
-	
 	public List<AuctionGoodsDto> auctionGoodsSelectUser(String userId) { 
 		return sqlSession.selectList(NS+"auctionGoodsSelectUser", userId); 		
+	}
+	public List<AuctionGoodsDto> auctionGoodsSelectUserBid(String userId) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelectUserBid", userId); 		
+	}
+	public List<AuctionGoodsDto> auctionGoodsSelectsuccessfulBid(String userId) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelectsuccessfulBid", userId); 		
 	}
 	
 	public AuctionGoodsDto auctionGoodsSelectOne(String auctionGoodsNo) { 

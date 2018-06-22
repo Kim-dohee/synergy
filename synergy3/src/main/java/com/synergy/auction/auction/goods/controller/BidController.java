@@ -35,7 +35,7 @@ public class BidController {
 
 	
 	//입찰 등록
-	@RequestMapping(value = "/bidInsert", method = RequestMethod.POST)
+	@RequestMapping(value = "/bidInsert", method = RequestMethod.GET)
 	public String bidInsert(Model model
 							,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo
 							,@RequestParam(value="bidPrice") String bidPrice
@@ -59,7 +59,7 @@ public class BidController {
 	}
 	
 	//입찰  재등록
-	@RequestMapping(value = "/bidInsertAgain", method = RequestMethod.POST)
+	@RequestMapping(value = "/bidInsertAgain", method = RequestMethod.GET)
 	public String bidInsertAgain(Model model
 			,@RequestParam(value="auctionGoodsNo") String auctionGoodsNo
 			,@RequestParam(value="bidPrice") String bidPrice

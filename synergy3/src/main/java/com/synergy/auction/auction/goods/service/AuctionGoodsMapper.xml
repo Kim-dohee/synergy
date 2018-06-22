@@ -44,6 +44,16 @@
 			<result column="pay_state" property="payState"/> 
 			<result column="pay_no" property="payNo"/> 
 		</collection>			 
+		<collection property="bid" ofType="com.synergy.auction.auction.goods.service.BidDto">	 
+			<result column="bid_price" property="bidPrice"/> 
+			<result column="bid_date" property="bidDate"/> 
+		</collection>			 
+		<collection property="successfulBidDto" ofType="com.synergy.auction.auction.goods.service.SuccessfulBidDto">	 
+			<result column="auction_goods_no" property="auctionGoodsNo"/> 
+			<result column="successful_bid_price" property="successfulBidPrice"/> 
+			<result column="bid_no" property="bidNo"/> 
+			<result column="user_id" property="userId"/> 
+		</collection>			 
 	</resultMap>
 
 	<insert id="auctionGoodsInsert"
@@ -145,16 +155,100 @@
 			,auction_goods.auction_goods_hits
 			,file.file_name
  			,file.file_ext
+ 			,pay.pay_state
+ 			,pay.pay_no
 		FROM
 			auction_goods
 		JOIN
 			file
 		ON
-			auction_goods.auction_goods_no = file.file_table_no
+			auction_goods.auction_goods_no = file.file_table_no AND file.file_table_name = 'auction_goods'
+		LEFT JOIN 
+			pay
+		ON
+			auction_goods.auction_goods_no = pay.auction_goods_no
 		WHERE 
 			auction_goods.user_id = #{userId}
+		ORDER BY auction_state_no DESC
 	</select>	
 	
+	<select id="auctionGoodsSelectUserBid" resultMap="resultAuctionGoods">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_plan_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
+ 			,bid.bid_price
+			,bid.bid_date
+		FROM
+			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no AND file.file_table_name = 'auction_goods'
+		LEFT JOIN 
+			bid
+		ON
+			auction_goods.auction_goods_no = bid.auction_goods_no
+		WHERE 
+			bid.user_id = #{userId} AND auction_goods.auction_state_no = '입찰중'
+	</select>	
+	
+	<select id="auctionGoodsSelectsuccessfulBid" parameterType="String" resultMap="resultAuctionGoods">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_plan_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
+			,successful_bid.successful_bid_price
+			,successful_bid.bid_no
+			,successful_bid.user_id
+		FROM
+			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no AND file.file_table_name = 'auction_goods'
+		JOIN 
+			successful_bid
+		
+		ON
+			auction_goods.auction_goods_no = successful_bid.auction_goods_no
+		WHERE 
+			successful_bid.user_id = #{userId} AND auction_goods.auction_state_no = '입찰 종료'
+	</select>	
 	<select id="auctionGoodsSelectOne" parameterType="String" resultMap="resultAuctionGoods">
 			SELECT 
 			auction_goods.auction_goods_no
@@ -182,7 +276,7 @@
 		JOIN
 			file
 		ON
-			auction_goods.auction_goods_no = file.file_table_no
+			auction_goods.auction_goods_no = file.file_table_no AND file.file_table_name = 'auction_goods'
 		WHERE 
 			auction_goods_no=#{auctionGoodsNo} 
 	</select>	

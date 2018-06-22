@@ -69,7 +69,6 @@ $(function() {
 					<button type="button" class="btn btn-primary pull-right" id="btn_cancel">취소하기</button>
 				</div>
 			</div>
-		
 	</form>
 	<br> <br> <br>
 </div>

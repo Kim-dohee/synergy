@@ -15,7 +15,8 @@
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
 				}else{
-					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsert");
+					var bidPrice = $('#bidPrice').val();
+					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsert?auctionGoodsNo=${detailList.auctionGoodsNo}&bidPrice="+bidPrice);
 				}
 			} else if($("#state").val()===("입찰중")) {
 				
@@ -23,28 +24,13 @@
 					alert("입찰금액을 입력하여 주시기 바랍니다.");
 					return;
 				}else{
-					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsertAgain");
+					var bidPrice = $('#bidPrice').val();
+					$("#btn").attr("href", "${pageContext.request.contextPath}/bidInsertAgain?auctionGoodsNo=${detailList.auctionGoodsNo}&bidPrice="+bidPrice);
 				}
 			} else if($("#state").val()===("입찰 종료")) {
-				$("#btn").attr("href", "${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}&bidNo${bidList.bidNo}");
+				$("#btn").attr("href", "${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}");
 			}
 		});
-	 	/* $("#btn2").click(function(){
-	 		if($("#btn").val()=="낙찰확인"){
-	 			alert('이미 끝난 경매입니다.');
-	 			return
-	 		} else {
-	 			var cashTotal = ${cashTotal};
-				var buyPrice = ${detailList.auctionGoodsInstanceBuyPrice};
-				if(cashTotal<buyPrice){
-					alert('캐시를 충전해주세요');
-					return;
-				} else {
-					$("#form").attr("action", "${pageContext.request.contextPath}/successfulBidNowInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${detailList.auctionGoodsInstanceBuyPrice}");
-					$('#form').submit();
-				}
-	 		}
-		});  */
 	 	
 		/* 현재시간과 낙찰시간을 비교해서 경매상태를 변경 */
 		var nowTime = new Date();
@@ -52,41 +38,47 @@
 		var BidEndDate = new Date(BidEndDate);
 		if(nowTime>BidEndDate){
 			$("#btn").text("낙찰확인");
-			$("#state").val("입찰종료");
-		}
+			$("#state").val("입찰 종료");
+			$("#btn2").hide();
+			$("#bidPrice").change(function() { 
+				alert("종료된 경매입니다."); 
+				$(this).val('');
+				return;
+			});
+		} else {
 		/* 입찰단위에 맞게 , 입찰가보다 높게, 즉시구매가보다 적게 적기 */
-		$('input#bidPrice').change(function(){
-			var bidPrice = parseInt($(this).val());
-			var bidUnit = parseInt(${detailList.auctionGoodsBidUnit});
-			var nowBid = parseInt($('#nowBid').val());
-			var buyPrice = parseInt(${detailList.auctionGoodsInstanceBuyPrice});
-			var minPrice = parseInt(${detailList.auctionGoodsMinPrice});
-			var cashTotal = parseInt(${cashTotal});
-			console.log(nowBid);
-			console.log(bidPrice);
-			if((bidPrice%bidUnit) != 0){
-				$(this).val('');
-				$(this).focus();
-				alert('입찰단위에 맞게 입력하세요');
-			} else if(nowBid>=bidPrice) {
-				$(this).val('');
-				$(this).focus();
-				alert('현재 입찰가보다 높게 적어주세요');
-			} else if(buyPrice<=bidPrice) {
-				$(this).val('');
-				$(this).focus();
-				alert('즉시구매가보다 적게 적어주세요');
-			}  else if(minPrice>bidPrice) {
-				$(this).val('');
-				$(this).focus();
-				alert('최소가격보다 크게 적어주세요');
-			}  else if(cashTotal<bidPrice) {
-				$(this).val('');
-				$(this).focus();
-				alert('캐시를 충전해 주세요');
-			}
-		});
-		
+			$('input#bidPrice').change(function(){
+				var bidPrice = parseInt($(this).val());
+				var bidUnit = parseInt(${detailList.auctionGoodsBidUnit});
+				var nowBid = parseInt($('#nowBid').val());
+				var buyPrice = parseInt(${detailList.auctionGoodsInstanceBuyPrice});
+				var minPrice = parseInt(${detailList.auctionGoodsMinPrice});
+				var cashTotal = parseInt(${cashTotal});
+				console.log(nowBid);
+				console.log(bidPrice);
+				if((bidPrice%bidUnit) != 0){
+					$(this).val('');
+					$(this).focus();
+					alert('입찰단위에 맞게 입력하세요');
+				} else if(nowBid>=bidPrice) {
+					$(this).val('');
+					$(this).focus();
+					alert('현재 입찰가보다 높게 적어주세요');
+				} else if(buyPrice<=bidPrice) {
+					$(this).val('');
+					$(this).focus();
+					alert('즉시구매가보다 적게 적어주세요');
+				}  else if(minPrice>bidPrice) {
+					$(this).val('');
+					$(this).focus();
+					alert('최소가격보다 크게 적어주세요');
+				}  else if(cashTotal<bidPrice) {
+					$(this).val('');
+					$(this).focus();
+					alert('캐시를 충전해 주세요');
+				}
+			});
+		}
 	});
 </script>
 </head>
@@ -181,10 +173,8 @@
 				<input type="hidden" value="${bidList.bidNo}" name="bidNo">
 				<input type="hidden" value="${bidList.userId}" name="buyUserId">
 				<input type="hidden" value="${detailList.auctionGoodsNo}" name="auctionGoodsNo">
-				<a class="btn btn-primary btn-lg" id="btn" href="${pageContext.request.contextPath}/successfulBidInsert?bidNo=${bidList.bidNo}&successfulBidPrice=${bidList.bidPrice}&auctionGoodsNo=${detailList.auctionGoodsNo}&buyUserId=${bidList.userId}&bidNo${bidList.bidNo}">입찰하기</a>
-					<c:if test="${detailList.auctionStateNo ne '입찰 종료'}">
-					<input type="button" id="btn2" value="즉시구매">
-					</c:if>
+				<a class="btn btn-primary btn-lg" href="#" id="btn">입찰하기</a>
+				<a class="btn btn-primary btn-lg" href="#" id="btn2">즉시구매</a>
 				</form>
 				</c:if>
 				

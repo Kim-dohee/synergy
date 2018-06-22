@@ -25,6 +25,20 @@ public class AuctionGoodsDto {
 	private int auctionGoodsHits;
 	private FileDto file;
 	private PayDto pay;
+	private BidDto bid;
+	private SuccessfulBidDto successfulBidDto;
+	public BidDto getBid() {
+		return bid;
+	}
+	public SuccessfulBidDto getSuccessfulBidDto() {
+		return successfulBidDto;
+	}
+	public void setSuccessfulBidDto(SuccessfulBidDto successfulBidDto) {
+		this.successfulBidDto = successfulBidDto;
+	}
+	public void setBid(BidDto bid) {
+		this.bid = bid;
+	}
 	public PayDto getPay() {
 		return pay;
 	}

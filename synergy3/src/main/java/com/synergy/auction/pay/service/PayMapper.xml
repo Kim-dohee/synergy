@@ -34,6 +34,7 @@
 			,successful_bid_no
 			,pay_state
 			,pay_buyer_complete_date
+			,auction_goods_no
 		)VALUES (
 			#{userId}
 			,#{userId2}
@@ -41,6 +42,7 @@
 			,#{successfulBidNo}
 			,'결재완료'
 			,now()
+			,#{auctionGoodsNo}
 		)
 	</insert>
 		
@@ -66,7 +68,7 @@
 		JOIN
 			pay  
 		ON 
-			auction_goods.user_id =  pay.user_id
+			auction_goods.auction_goods_no =  pay.auction_goods_no
 		JOIN
 			file
 		ON
@@ -88,6 +90,13 @@
 		UPDATE pay SET
 			pay_state = '수취확인'
 			,pay_buyer_receipt_confirm_date = now()
+		WHERE pay_no = #{payNo}
+	</update>
+	
+	<update id="payUpdateSuccess"
+			parameterType="Integer">
+		UPDATE pay SET
+			pay_state = '경매종료'
 		WHERE pay_no = #{payNo}
 	</update>
 </mapper>

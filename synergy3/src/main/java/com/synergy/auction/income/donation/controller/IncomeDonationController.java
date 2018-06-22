@@ -20,6 +20,7 @@ import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donator.service.DonatorDto;
 import com.synergy.auction.income.donation.service.IncomeDonationDto;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
+import com.synergy.auction.pay.service.PayService;
 
 @Controller
 public class IncomeDonationController {
@@ -28,6 +29,8 @@ public class IncomeDonationController {
 	private CashRecordService cashRecordService;
 	@Autowired
 	private IncomeDonationService incomeDonationService;
+	@Autowired
+	private PayService payService;
 	private static final Logger logger = LoggerFactory.getLogger(IncomeDonationController.class);
 	
 	//기부금 기부하기
@@ -70,7 +73,8 @@ public class IncomeDonationController {
 		
 		//기부하기 버튼 클릭시 캐시카테고리 변경.
 		cashRecordService.cashRecordUpdate(cashRecordNo);
-		
+		//기부하기 버튼 클릭시 결제 변경.
+		payService.payUpdateSuccess(payNo);
 		
 		//리스트 보이기
 		logger.debug("CashController.cashRecordSelect >> userId :"+userId);

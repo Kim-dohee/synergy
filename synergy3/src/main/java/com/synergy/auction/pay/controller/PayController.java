@@ -38,7 +38,7 @@ public class PayController {
 	public String payInsert(@RequestParam(value="successfulBid") int successfulBid,HttpSession session
 							,@RequestParam(value="sellerId") String sellerId
 							,@RequestParam(value="successfulBidNo")int successfulBidNo
-							,CashRecordDto cashRecordDto,int auctionGoodsNo) {
+							,int auctionGoodsNo) {
 		String userId = (String)session.getAttribute("id");
 		int cashRecordTotal = cashRecordService.cashRecordTotalSelect(userId);
 		int cashRecordChange = cashRecordTotal-successfulBid;
@@ -64,11 +64,12 @@ public class PayController {
 		System.out.println(successfulBidNo+"낙찰넘버");
 		System.out.println(sellerId+"판매자 아이디");
 		System.out.println(userId+"구매자 아이디");
+		PayDto payDto = new PayDto();
 		payDto.setUserId(sellerId);
 		payDto.setUserId2(userId);
 		payDto.setCashRecordNo(cashRecordNo);
 		payDto.setSuccessfulBidNo(successfulBidNo);
-		payDto.setSuccessfulBidNo(auctionGoodsNo);
+		payDto.setAuctionGoodsNo(auctionGoodsNo);
 		payService.payInsert(payDto);
 		auctionGoodsService.auctionGoodsUpdatePay(auctionGoodsNo);
 		return "home";
