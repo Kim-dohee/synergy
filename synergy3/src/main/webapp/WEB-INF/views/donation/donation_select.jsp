@@ -30,12 +30,12 @@
 
 			// 차트 데이터
 			var data = new google.visualization.arrayToDataTable([
-				['년대', '아동', '장애인', '노인', '평균'], // 제목 그리고 항목들
-				['2013', 10, 20, 30, parseInt($("#mean2013").val())], // 제목과 항목수를 맞춰주어야 합니다.
-				['2014', 15, 30, 35, parseInt($("#mean2014").val())], // 마지막 값들은 라인그래프를 만들때 사용합니다.
-				['2015', 20, 25, 40, parseInt($("#mean2015").val())],
-				['2016', 10, 30, 20, parseInt($("#mean2016").val())],
-				['2017', 5, 10, 25, parseInt($("#mean2017").val())]
+				['년대', '아동', '노인', '장애인', '평균'], // 제목 그리고 항목들
+				['2013', parseInt($("#child2013").val()), parseInt($("#old2013").val()), parseInt($("#disabled2013").val()), parseInt($("#mean2013").val())], // 제목과 항목수를 맞춰주어야 합니다.
+				['2014', parseInt($("#child2014").val()), parseInt($("#old2014").val()), parseInt($("#disabled2014").val()), parseInt($("#mean2014").val())], // 마지막 값들은 라인그래프를 만들때 사용합니다.
+				['2015', parseInt($("#child2015").val()), parseInt($("#old2015").val()), parseInt($("#disabled2015").val()), parseInt($("#mean2015").val())],
+				['2016', parseInt($("#child2016").val()), parseInt($("#old2016").val()), parseInt($("#disabled2016").val()), parseInt($("#mean2016").val())],
+				['2017', parseInt($("#child2017").val()), parseInt($("#old2017").val()), parseInt($("#disabled2017").val()), parseInt($("#mean2017").val())]
 			]);
 
 			var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
@@ -50,11 +50,33 @@
 	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기 </h4>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<h2>[연도별 기부현황]</h2>
+		${donationUsePriceChildTotal2017}
+		${donationUsePriceOldTotal2017}
+		${donationUsePriceDisabledTotal2017}
+		<!-- 평균 기부금 -->
 		<input type="hidden" id="mean2013" value="${incomeDonation2013Total}"/>
 		<input type="hidden" id="mean2014" value="${incomeDonation2014Total}"/>
 		<input type="hidden" id="mean2015" value="${incomeDonation2015Total}"/>
 		<input type="hidden" id="mean2016" value="${incomeDonation2016Total}"/>
 		<input type="hidden" id="mean2017" value="${incomeDonation2017Total}"/>
+		<!-- 아동 기부금 -->
+		<input type="hidden" id="child2017" value="${donationUsePriceChildTotal2017}"/>
+		<input type="hidden" id="child2016" value="${donationUsePriceChildTotal2016}"/>
+		<input type="hidden" id="child2015" value="${donationUsePriceChildTotal2015}"/>
+		<input type="hidden" id="child2014" value="${donationUsePriceChildTotal2014}"/>
+		<input type="hidden" id="child2013" value="${donationUsePriceChildTotal2013}"/>
+		<!-- 노인 기부금 -->
+		<input type="hidden" id="old2013" value="${donationUsePriceOldTotal2013}"/>
+		<input type="hidden" id="old2014" value="${donationUsePriceOldTotal2014}"/>
+		<input type="hidden" id="old2015" value="${donationUsePriceOldTotal2015}"/>
+		<input type="hidden" id="old2016" value="${donationUsePriceOldTotal2016}"/>
+		<input type="hidden" id="old2017" value="${donationUsePriceOldTotal2017}"/>
+		<!-- 장애인 기부금 -->
+		<input type="hidden" id="disabled2013" value="${donationUsePriceDisabledTotal2013}"/>
+		<input type="hidden" id="disabled2014" value="${donationUsePriceDisabledTotal2014}"/>
+		<input type="hidden" id="disabled2015" value="${donationUsePriceDisabledTotal2015}"/>
+		<input type="hidden" id="disabled2016" value="${donationUsePriceDisabledTotal2016}"/>
+		<input type="hidden" id="disabled2017" value="${donationUsePriceDisabledTotal2017}"/>
 		<div style="text-align:center;">
 		<div id="chart_div"></div>
 			<button type="button" onclick="chart_options.isStacked=false; drawChart()">나누어서 보기(click)</button>

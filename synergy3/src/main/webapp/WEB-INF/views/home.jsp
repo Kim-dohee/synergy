@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="./module/top.jsp"></jsp:include>
 <header>
-	<div id="carouselExampleIndicators" class="carousel slide"
+	<!-- <div id="carouselExampleIndicators" class="carousel slide"
 		data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0"
@@ -10,7 +10,7 @@
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<!-- Slide One - Set the background image for this slide in the line below -->
+			Slide One - Set the background image for this slide in the line below
 			<div class="carousel-item active"
 				style="background-image: url('./resources/image/image1.jpg')">
 				<div class="carousel-caption d-none d-md-block">
@@ -18,7 +18,7 @@
 					<p>This is a description for the first slide.</p>
 				</div>
 			</div>
-			<!-- Slide Two - Set the background image for this slide in the line below -->
+			Slide Two - Set the background image for this slide in the line below
 			<div class="carousel-item"
 				style="background-image: url('./resources/image/image2.jpg')">
 				<div class="carousel-caption d-none d-md-block">
@@ -26,7 +26,7 @@
 					<p>This is a description for the second slide.</p>
 				</div>
 			</div>
-			<!-- Slide Three - Set the background image for this slide in the line below -->
+			Slide Three - Set the background image for this slide in the line below
 			<div class="carousel-item"
 				style="background-image: url('./resources/image/image3.jpg')">
 				<div class="carousel-caption d-none d-md-block">
@@ -44,7 +44,7 @@
 			class="carousel-control-next-icon" aria-hidden="true"></span> <span
 			class="sr-only">Next</span>
 		</a>
-	</div>
+	</div> -->
 </header>
 
 <!-- Page Content -->
@@ -52,7 +52,13 @@
 
 	
 	<div class="text-center container" style="font-size: 15px;">
-	<h1 class="my-4">권한별 로그인 및 기능</h1><br>
+	<br><br><h1 class="my-4">[권한별 로그인 및 기능]</h1><br><br>
+	<h3>(자동로그인) click하신후 Synergy의 보다나은 서비스를 이용하실수 있습니다.</h3>
+	<div>
+		<a href="${pageContext.request.contextPath}/autoLogin?id=1&pw=1" class="btn btn-primary">일반회원 로그인</a>
+		<a href="${pageContext.request.contextPath}/autoLogin?id=3&pw=3" class="btn btn-primary">기부단체 로그인</a>
+		<a href="${pageContext.request.contextPath}/autoLogin?id=2&pw=2" class="btn btn-primary">관리자 로그인</a>
+	</div><br><br><br>
 	<!-- Marketing Icons Section -->	
 		<div class="row">
 			<div class="col-sm-3" style="padding:15px;">

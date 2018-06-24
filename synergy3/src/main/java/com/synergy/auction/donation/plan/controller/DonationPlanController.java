@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.synergy.auction.cash.service.CashRecordService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
+import com.synergy.auction.donation.use.service.DonationUseService;
 import com.synergy.auction.file.service.FileDto;
 import com.synergy.auction.file.service.FileService;
 import com.synergy.auction.income.donation.service.IncomeDonationService;
@@ -36,6 +37,8 @@ public class DonationPlanController {
 	private CashRecordService cashRecordService;
 	@Autowired
 	private IncomeDonationService incomeDonationService;
+	@Autowired
+	private DonationUseService donationUseService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -223,6 +226,40 @@ public class DonationPlanController {
 		model.addAttribute("incomeDonation2015Total", incomeDonation2015Total);
 		model.addAttribute("incomeDonation2016Total", incomeDonation2016Total);
 		model.addAttribute("incomeDonation2017Total", incomeDonation2017Total);
+		//(연도별 대상에 따른)총 기부금액 검색
+		//연도별 아동 검색
+		int donationUsePriceChildTotal2017 = donationUseService.donationUsePriceChildTotalSelect(2017);
+		int donationUsePriceChildTotal2016 = donationUseService.donationUsePriceChildTotalSelect(2016);
+		int donationUsePriceChildTotal2015 = donationUseService.donationUsePriceChildTotalSelect(2015);
+		int donationUsePriceChildTotal2014 = donationUseService.donationUsePriceChildTotalSelect(2014);
+		int donationUsePriceChildTotal2013 = donationUseService.donationUsePriceChildTotalSelect(2013);
+		model.addAttribute("donationUsePriceChildTotal2017", donationUsePriceChildTotal2017);
+		model.addAttribute("donationUsePriceChildTotal2016", donationUsePriceChildTotal2016);
+		model.addAttribute("donationUsePriceChildTotal2015", donationUsePriceChildTotal2015);
+		model.addAttribute("donationUsePriceChildTotal2014", donationUsePriceChildTotal2014);
+		model.addAttribute("donationUsePriceChildTotal2013", donationUsePriceChildTotal2013);
+		//연도별 노인 검색
+		int donationUsePriceOldTotal2017 = donationUseService.donationUsePriceOldTotalSelect(2017);
+		int donationUsePriceOldTotal2016 = donationUseService.donationUsePriceOldTotalSelect(2016);
+		int donationUsePriceOldTotal2015 = donationUseService.donationUsePriceOldTotalSelect(2015);
+		int donationUsePriceOldTotal2014 = donationUseService.donationUsePriceOldTotalSelect(2014);
+		int donationUsePriceOldTotal2013 = donationUseService.donationUsePriceOldTotalSelect(2013);
+		model.addAttribute("donationUsePriceOldTotal2017", donationUsePriceOldTotal2017);
+		model.addAttribute("donationUsePriceOldTotal2016", donationUsePriceOldTotal2016);
+		model.addAttribute("donationUsePriceOldTotal2015", donationUsePriceOldTotal2015);
+		model.addAttribute("donationUsePriceOldTotal2014", donationUsePriceOldTotal2014);
+		model.addAttribute("donationUsePriceOldTotal2013", donationUsePriceOldTotal2013);
+		//연도별 장애인 검색
+		int donationUsePriceDisabledTotal2017 = donationUseService.donationUsePriceDisabledTotalSelect(2017);
+		int donationUsePriceDisabledTotal2016 = donationUseService.donationUsePriceDisabledTotalSelect(2016);
+		int donationUsePriceDisabledTotal2015 = donationUseService.donationUsePriceDisabledTotalSelect(2015);
+		int donationUsePriceDisabledTotal2014 = donationUseService.donationUsePriceDisabledTotalSelect(2014);
+		int donationUsePriceDisabledTotal2013 = donationUseService.donationUsePriceDisabledTotalSelect(2013);
+		model.addAttribute("donationUsePriceDisabledTotal2017", donationUsePriceDisabledTotal2017);
+		model.addAttribute("donationUsePriceDisabledTotal2016", donationUsePriceDisabledTotal2016);
+		model.addAttribute("donationUsePriceDisabledTotal2015", donationUsePriceDisabledTotal2015);
+		model.addAttribute("donationUsePriceDisabledTotal2014", donationUsePriceDisabledTotal2014);
+		model.addAttribute("donationUsePriceDisabledTotal2013", donationUsePriceDisabledTotal2013);
 		//기부금계획서 제목,기부금계획서이미지파일(이름,확장자) 검색
 		List<DonationPlanDto> list = donationPlanService.donationSelect();
 		//총 수입기부금 검색

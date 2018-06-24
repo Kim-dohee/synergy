@@ -4,55 +4,15 @@
 <html>
 <head>
 </head>
-<header>
-	<div id="carouselExampleIndicators" class="carousel slide"
-		data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0"
-				class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<!-- Slide One - Set the background image for this slide in the line below -->
-			<div class="carousel-item active"
-				style="background-image: url('./resources/image/image1.jpg')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>First Slide</h3>
-					<p>This is a description for the first slide.</p>
-				</div>
-			</div>
-			<!-- Slide Two - Set the background image for this slide in the line below -->
-			<div class="carousel-item"
-				style="background-image: url('./resources/image/image2.jpg')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Second Slide</h3>
-					<p>This is a description for the second slide.</p>
-				</div>
-			</div>
-			<!-- Slide Three - Set the background image for this slide in the line below -->
-			<div class="carousel-item"
-				style="background-image: url('./resources/image/image3.jpg')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Third Slide</h3>
-					<p>This is a description for the third slide.</p>
-				</div>
-			</div>
-		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators"
-			role="button" data-slide="prev"> <span
-			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-			class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
-			role="button" data-slide="next"> <span
-			class="carousel-control-next-icon" aria-hidden="true"></span> <span
-			class="sr-only">Next</span>
-		</a>
-	</div>
-</header>
 <body>	
 	<div class="text-center container" style="font-size: 15px;">
-	<br><br><h1 class="my-4">권한별 로그인 및 기능</h1><br><br>
+	<br><br><h1 class="my-4">[권한별 로그인 및 기능]</h1><br><br>
+	<h3>(자동로그인) click하신후 Synergy의 보다나은 서비스를 이용하실수 있습니다.</h3>
+		<div>
+			<a href="${pageContext.request.contextPath}/autoLogin?id=1&pw=1" class="btn btn-primary">일반회원 로그인</a>
+			<a href="${pageContext.request.contextPath}/autoLogin?id=3&pw=3" class="btn btn-primary">기부단체 로그인</a>
+			<a href="${pageContext.request.contextPath}/autoLogin?id=2&pw=2" class="btn btn-primary">관리자 로그인</a>
+		</div><br><br><br>
 	<!-- Marketing Icons Section -->	
 		<div class="row">
 			<div class="col-sm-3" style="padding:15px;">
@@ -117,9 +77,6 @@
 					- 게시판 문의 검색<br>
 					</p>
 				</div>
-				<div class="card-footer">
-					<a href="${pageContext.request.contextPath}/autoLogin?id=1&pw=1" class="btn btn-primary">일반회원 로그인</a>
-				</div>
 			</div>
 		</div>
 		<div class="col-lg-2.5 mb-4">
@@ -148,9 +105,6 @@
 					- 게시판 문의 등록<br>
 					- 게시판 문의 검색<br>
 					</p>
-				</div>
-				<div class="card-footer">
-					<a href="${pageContext.request.contextPath}/autoLogin?id=3&pw=3" class="btn btn-primary">기부단체 로그인</a>
 				</div>
 			</div>
 		</div>
@@ -182,9 +136,6 @@
 					- 공지사항 수정<br>
 					- 공지사항 삭제<br>
 					</p>
-				</div>
-				<div class="card-footer">
-					<a href="${pageContext.request.contextPath}/autoLogin?id=2&pw=2" class="btn btn-primary">관리자 로그인</a>
 				</div>
 			</div>
 		</div>

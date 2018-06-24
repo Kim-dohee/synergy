@@ -4,12 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.synergy.auction.donation.use.service.DonationUseMapper">
- 	<select id="donationUsePriceTotalSelect" 
+ 	<select id="donationUsePriceChildTotalSelect" 
 			parameterType="Integer" 
 			resultType="Integer">
 		SELECT SUM(donation_use_price) 
 		FROM donation_use
 		WHERE LEFT(donation_use_date,4) =#{donationUseDate} 
 		AND donation_use_target='아동'	
+	</select>
+ 	<select id="donationUsePriceDisabledTotalSelect" 
+			parameterType="Integer" 
+			resultType="Integer">
+		SELECT SUM(donation_use_price) 
+		FROM donation_use
+		WHERE LEFT(donation_use_date,4) =#{donationUseDate} 
+		AND donation_use_target='장애인'	
+	</select>
+ 	<select id="donationUsePriceOldTotalSelect" 
+			parameterType="Integer" 
+			resultType="Integer">
+		SELECT SUM(donation_use_price) 
+		FROM donation_use
+		WHERE LEFT(donation_use_date,4) =#{donationUseDate} 
+		AND donation_use_target='노인'	
 	</select>
  </mapper> 

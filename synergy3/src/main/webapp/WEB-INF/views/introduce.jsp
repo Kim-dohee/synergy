@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<jsp:include page="../views/top.jsp"></jsp:include>
+<jsp:include page="./module/top.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +8,10 @@
 </head>
 <body>
 	<div style="text-align: center; font-size: 16px" class="container">
+		<br><br><h1 class="my-4">[ÆÀ¿ø ¼Ò°³]</h1><br><br>
+		<div class="col-sm-3" style="padding:15px;">
+			<jsp:include page="./module/left.jsp"/>
+			</div>
 		<div class="col-lg-4 mb-4">
 			<a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/image/dohee.jpg" width="70%" height="40%"></a>
 				<div class="card-body">
@@ -37,3 +41,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="./module/footer.jsp"></jsp:include>	
