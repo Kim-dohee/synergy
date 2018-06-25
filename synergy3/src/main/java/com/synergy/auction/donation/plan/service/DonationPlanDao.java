@@ -79,4 +79,9 @@ public class DonationPlanDao {
 	public List<DonationPlanDto> donationPlanNoForDonationNameSelect(String donatorName) {
 		return sqlSession.selectList(NS+"donationPlanNoForDonationNameSelect", donatorName); 
 	}
+	
+	//(기부금현황 %를 알기위해)해당 기부금계획서 넘버를 매개변수로 받아 모집목표액 검색
+	public int donationPlanGoalPriceSelect(int donationPlanNo) { 
+		return sqlSession.selectOne(NS+"donationPlanGoalPriceSelect", donationPlanNo); 
+	}
 }

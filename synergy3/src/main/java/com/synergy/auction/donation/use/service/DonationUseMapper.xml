@@ -28,4 +28,11 @@
 		WHERE LEFT(donation_use_date,4) =#{donationUseDate} 
 		AND donation_use_target='노인'	
 	</select>
+	<select id="donationUsePriceSelect" 
+			parameterType="Integer" 
+			resultType="Integer">
+		SELECT SUM(donation_use_price) 
+		FROM donation_use 
+		WHERE donation_plan_no=#{donationPlanNo}	
+	</select>
  </mapper> 

@@ -3,9 +3,12 @@ package com.synergy.auction.donation.plan.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.synergy.auction.donation.plan.controller.DonationPlanController;
 import com.synergy.auction.donator.service.DonatorDto;
 
 @Service
@@ -13,6 +16,8 @@ public class DonationPlanService {
 
 	@Autowired
 	private DonationPlanDao donationPlanDao;
+	
+	private static final Logger logger = LoggerFactory.getLogger(DonationPlanService.class);
 	
 	//기부금 계획서 등록
 	public int donationPlanInsert(DonationPlanDto donationPlanDto) { 
@@ -76,5 +81,22 @@ public class DonationPlanService {
 	//(기부단체별 총 기부금을 알기위해)기부단체별 기부금계획서 넘버 검색
 	public List<DonationPlanDto> donationPlanNoForDonationNameSelect(String donatorName) {
 		return donationPlanDao.donationPlanNoForDonationNameSelect(donatorName); 
+	}
+	
+	//(기부금현황 %를 알기위해)해당 기부금계획서 넘버를 매개변수로 받아 모집목표액 검색
+	public int donationPlanGoalPriceSelect(int donationPlanNo) { 
+		return donationPlanDao.donationPlanGoalPriceSelect(donationPlanNo); 
+	}
+	
+	//해당기부금계획서의 모집목표액과 기부금사용금액을 매개변수로 받아 기부금현황 % 구하기
+	public int donationPercentSelect(int donationPlanGoalPrice, int donationUsePrice) { 
+		
+		int leftDonationPrice = donationPlanGoalPrice-donationUsePrice;
+		logger.debug("DonationPlanService.donationPlanPercentSelect leftDonationPrice>>"+leftDonationPrice);
+		int donationPlanPercent = Math.round(donationPlanGoalPrice/leftDonationPrice)*10;
+		logger.debug("DonationPlanService.donationPlanPercentSelect donationPlanPercent>>"+donationPlanPercent);
+		int donationPercent = 100-donationPlanPercent;
+		logger.debug("DonationPlanService.donationPlanPercentSelect donationPercent>>"+donationPercent);
+		return donationPercent; 
 	}
 }

@@ -50,9 +50,6 @@
 	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기 </h4>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<h2>[연도별 기부현황]</h2>
-		${donationUsePriceChildTotal2017}
-		${donationUsePriceOldTotal2017}
-		${donationUsePriceDisabledTotal2017}
 		<!-- 평균 기부금 -->
 		<input type="hidden" id="mean2013" value="${incomeDonation2013Total}"/>
 		<input type="hidden" id="mean2014" value="${incomeDonation2014Total}"/>
@@ -101,10 +98,16 @@
 			<c:forEach var="donation" items="${list}">
 				<div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">	
-						<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" width="20%" height="35%"></a>		
+						<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" width="200px" height="150px"></a>		
 						<div class="card-body">
 							<h4 class="card-title">
-							<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}">${donation.donationPlanTitle}</a>
+							<a href="${pageContext.request.contextPath}/donationSelectDetail?donationPlanNo=${donation.donationPlanNo}">${donation.donationPlanTitle}</a><br><br>
+							<div class="progress">
+								기부금 현황
+								<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+								60%
+								</div>
+							</div>
 							</h4>
 						</div>
 					</div>

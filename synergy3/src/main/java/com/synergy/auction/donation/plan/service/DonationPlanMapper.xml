@@ -169,5 +169,12 @@
 		ON d.donator_id=dp.donator_id 
 		WHERE d.donator_name=#{donatorName}
  	</select>
+ 	<select id="donationPlanGoalPriceSelect"  
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT donation_plan_goal_price 
+		FROM donation_plan 
+		WHERE donation_plan_no=#{donationPlanNo}
+ 	</select>
  </mapper>  
   

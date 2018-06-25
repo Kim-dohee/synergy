@@ -53,7 +53,7 @@
 	
 	<div class="text-center container" style="font-size: 15px;">
 	<br><br><h1 class="my-4">[권한별 로그인 및 기능]</h1><br><br>
-	<h3>(자동로그인) click하신후 Synergy의 보다나은 서비스를 이용하실수 있습니다.</h3>
+	<h3>(자동로그인) click하신후 Synergy의 보다나은 서비스를 이용하실수 있습니다.</h3><br><br>
 	<div>
 		<a href="${pageContext.request.contextPath}/autoLogin?id=1&pw=1" class="btn btn-primary">일반회원 로그인</a>
 		<a href="${pageContext.request.contextPath}/autoLogin?id=3&pw=3" class="btn btn-primary">기부단체 로그인</a>

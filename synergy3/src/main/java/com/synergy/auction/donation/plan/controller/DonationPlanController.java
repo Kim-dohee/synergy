@@ -1,6 +1,7 @@
 /*[김도희]*/
 package com.synergy.auction.donation.plan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -266,6 +267,22 @@ public class DonationPlanController {
 		int incomeDonationPrice = incomeDonationService.incomeDonationPriceSelectOne();
 		model.addAttribute("list", list);
 		model.addAttribute("incomeDonationPrice", incomeDonationPrice);
+		List<Integer> donationPercentList = new ArrayList<Integer>();
+		for(DonationPlanDto donationPlan : list) {
+			//기부금 계획서넘버 검색
+			int donationPlanNo = donationPlan.getDonationPlanNo();
+			logger.debug("DonationPlanController.donationAllMain donationPlanNo>>"+donationPlanNo);
+			//(기부금현황 %를 알기위해)해당 기부금계획서 넘버를 매개변수로 받아 모집목표액 검색
+			int donationPlanGoalPrice = donationPlanService.donationPlanGoalPriceSelect(donationPlanNo);
+			logger.debug("DonationPlanController.donationAllMain donationPlanGoalPrice>>"+donationPlanGoalPrice);
+			//(기부금현황 %를 알기위해)해당 기부금계획서 넘버를 매개변수로 받아 사용 금액 검색
+			int donationUsePrice = donationUseService.donationUsePriceSelect(donationPlanNo);
+			logger.debug("DonationPlanController.donationAllMain donationUsePrice>>"+donationUsePrice);
+			//해당기부금계획서의 모집목표액과 기부금사용금액을 매개변수로 받아 기부금현황 % 구하기
+			int donationPercent = donationPlanService.donationPercentSelect(donationPlanGoalPrice, donationUsePrice);
+			logger.debug("DonationPlanController.donationAllMain donationPercent>>"+donationPercent);
+			donationPercentList.add(donationPercent);
+		}
 		return "donation/donation_select";
 	}
 	

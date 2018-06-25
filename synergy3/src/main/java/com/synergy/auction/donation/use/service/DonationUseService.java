@@ -26,4 +26,9 @@ public class DonationUseService {
 	public int donationUsePriceOldTotalSelect(int donationUseDate) { 
 		return donationUseDao.donationUsePriceOldTotalSelect(donationUseDate); 
 	}
+	
+	//(기부금현황 %를 알기위해)해당 기부금계획서 넘버를 매개변수로 받아 사용 금액 검색
+	public int donationUsePriceSelect(int donationPlanNo) { 
+		return donationUseDao.donationUsePriceSelect(donationPlanNo); 
+	}
 }
