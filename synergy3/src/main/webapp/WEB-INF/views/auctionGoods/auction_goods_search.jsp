@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
+<!DOCTYPE html>
+
 <body>
+<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a> > <a href="${pageContext.request.contextPath}/auctionGoodsSelect">전체 제품</a>  </h4>
 	<br><h1 class="text-center">상품 리스트</h1><br>
 	<div class="container bs-example" data-example-id="simple-table" >
 		<table class="table table-striped" >

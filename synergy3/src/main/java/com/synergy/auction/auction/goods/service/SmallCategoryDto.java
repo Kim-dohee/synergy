@@ -5,7 +5,14 @@ public class SmallCategoryDto {
 	private int smallCategoryNo;
 	private int bigCategoryNo;
 	private String smallCategoryName;
+	private BigCategoryDto bigCategory;
 	
+	public BigCategoryDto getBigCategory() {
+		return bigCategory;
+	}
+	public void setBigCategory(BigCategoryDto bigCategory) {
+		this.bigCategory = bigCategory;
+	}
 	public int getSmallCategoryNo() {
 		return smallCategoryNo;
 	}

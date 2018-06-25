@@ -1,8 +1,9 @@
-<!-- [±èµµÈñ] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ë„í¬] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<!DOCTYPE>
+<!DOCTYPE html>
+
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -11,31 +12,31 @@
 	<script>
 		google.charts.load('current', {packages:['corechart']});
 		
-		// ·Îµù ¿Ï·á½Ã ÇÔ¼ö ½ÇÇàÇÏ¿© Â÷Æ® »ı¼º
+		// ë¡œë”© ì™„ë£Œì‹œ í•¨ìˆ˜ ì‹¤í–‰í•˜ì—¬ ì°¨íŠ¸ ìƒì„±
 		google.charts.setOnLoadCallback(drawChart);
 		
 	
-		// Â÷Æ® ¿É¼ÇÀ» Àü¿ªÀ¸·Î ¼³Á¤
+		// ì°¨íŠ¸ ì˜µì…˜ì„ ì „ì—­ìœ¼ë¡œ ì„¤ì •
 		var chart_options = {
-			title : '(¸·´ë±×·¡ÇÁ¸¦ click ÇÏ½Ã¸é ´õ ÀÚ¼¼È÷ ±İ¾×À» ¾Ë¼ö ÀÖ½À´Ï´Ù)',
+			title : '(ë§‰ëŒ€ê·¸ë˜í”„ë¥¼ click í•˜ì‹œë©´ ë” ìì„¸íˆ ê¸ˆì•¡ì„ ì•Œìˆ˜ ìˆìŠµë‹ˆë‹¤)',
 			width : 1000,
 			height : 400,
 			bar : {
-				groupWidth : '80%' // ¿¹Á¦¿¡¼­ ÀÌ °ªÀ» ¼öÁ¤
+				groupWidth : '80%' // ì˜ˆì œì—ì„œ ì´ ê°’ì„ ìˆ˜ì •
 			},
 			legend : {
-				position : 'none' // ÀÌ°É ÁÖ¼®Ã³¸® ÇØº¸¸é ..
+				position : 'none' // ì´ê±¸ ì£¼ì„ì²˜ë¦¬ í•´ë³´ë©´ ..
 			}
 		};
 	
 		function drawChart(){
 			var data = google.visualization.arrayToDataTable([
-				['Element', '±âºÎ±İ'],
-				['µå¸²Ç®', parseInt($("#donator1").val())], //µå¸²Ç® ÃÑ ±âºÎ±İ
-				['±â¾Æ´ëÃ¥', parseInt($("#donator2").val())], //±â¾Æ´ëÃ¥ ÃÑ ±âºÎ±İ
-				['»ç¶û¹ç', parseInt($("#donator3").val())], //»ç¶û¹ç ÃÑ ±âºÎ±İ
-				['¼¼ÀÌºê´õÄ¥µå·±', parseInt($("#donator4").val())], //¼¼ÀÌºê´õÄ¥µå·± ÃÑ ±âºÎ±İ
-				['WECA',parseInt($("#donator5").val())] //WECA ÃÑ ±âºÎ±İ
+				['Element', 'ê¸°ë¶€ê¸ˆ'],
+				['ë“œë¦¼í’€', parseInt($("#donator1").val())], //ë“œë¦¼í’€ ì´ ê¸°ë¶€ê¸ˆ
+				['ê¸°ì•„ëŒ€ì±…', parseInt($("#donator2").val())], //ê¸°ì•„ëŒ€ì±… ì´ ê¸°ë¶€ê¸ˆ
+				['ì‚¬ë‘ë°­', parseInt($("#donator3").val())], //ì‚¬ë‘ë°­ ì´ ê¸°ë¶€ê¸ˆ
+				['ì„¸ì´ë¸Œë”ì¹ ë“œëŸ°', parseInt($("#donator4").val())], //ì„¸ì´ë¸Œë”ì¹ ë“œëŸ° ì´ ê¸°ë¶€ê¸ˆ
+				['WECA',parseInt($("#donator5").val())] //WECA ì´ ê¸°ë¶€ê¸ˆ
 			]);
 	
 			var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -44,9 +45,9 @@
 	
 	</script>
 <body>
-	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>È¨ > ±âºÎ > º¸°í¼­ </h4>
+	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>í™ˆ > ê¸°ë¶€ > ë³´ê³ ì„œ </h4>
 	<div style="text-align: center; font-size: 12px;" class="container">
-		<h2>[±âºÎ´ÜÃ¼º° ±âºÎÇöÈ²]</h2>
+		<h2>[ê¸°ë¶€ë‹¨ì²´ë³„ ê¸°ë¶€í˜„í™©]</h2>
 		<input type="hidden" id="donator1" value="${incomeDonationPriceTotal1}"/>
 		<input type="hidden" id="donator2" value="${incomeDonationPriceTotal2}"/>
 		<input type="hidden" id="donator3" value="${incomeDonationPriceTotal3}"/>
@@ -55,16 +56,16 @@
 		<div style="text-align:center; margin:0 0 100px 0; background:#555; line-height:40px;"></div>
 		<div id="chart_div"></div>
 		<div style="text-align:center;">
-			<button type="button" onclick="chart_options.legend.position='right'; drawChart()">´ÜÀ§(1,000¸¸)</button>
+			<button type="button" onclick="chart_options.legend.position='right'; drawChart()">ë‹¨ìœ„(1,000ë§Œ)</button>
 		</div><br><br><br>
 		<div class="container bs-example" data-example-id="simple-table" style="text-align: center; font-size: 12px">
 			<table class="table table-hover">
 				<thead>
 					<tr class="active">
-						<th>º¸°í¼­ ¹øÈ£</th>
-						<th>Á¦¸ñ</th>
-						<th>±âºÎ´ÜÃ¼</th>
-						<th>³¯Â¥</th>
+						<th>ë³´ê³ ì„œ ë²ˆí˜¸</th>
+						<th>ì œëª©</th>
+						<th>ê¸°ë¶€ë‹¨ì²´</th>
+						<th>ë‚ ì§œ</th>
 					</tr>
 				</thead>
 				<c:forEach var="donationSpendReport" items="${list}">
@@ -80,8 +81,8 @@
 			</table><br><br>
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">		
-			<c:if test="${sessionScope.level eq '±âºÎ´ÜÃ¼'}">	
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReportAgreement'">µî·Ï</button>
+			<c:if test="${sessionScope.level eq 'ê¸°ë¶€ë‹¨ì²´'}">	
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReportAgreement'">ë“±ë¡</button>
 			</c:if>	
 			</div><br><br><br>
 		</div>

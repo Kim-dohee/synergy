@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<script>
+<!DOCTYPE html>
 
-</script>
 <br> <br> <br> <br>
+<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
 	<h1 class="text-center">내가 등록한 상품</h1><br>
 	<div class="container bs-example" data-example-id="simple-table" >
 		<table class="table table-striped" >
@@ -30,8 +30,8 @@
 					<td>${goods.auctionGoodsInstanceBuyPrice}</td>
 					<td>${goods.auctionGoodsDate}</td>
 					<td>${goods.auctionGoodsHits}</td>
-					<td><a href="#"></a>수정</td>
-					<td><a href="#"></a>삭제</td>
+					<td><a href="#">수정</a></td>
+					<td><a href="${pageContext.request.contextPath}/auctionGoodsRemove?auctionGoodsNo=${goods.auctionGoodsNo}">삭제</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

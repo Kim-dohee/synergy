@@ -1,25 +1,24 @@
-<!-- [±èµµÈñ] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<jsp:include page="../module/top.jsp"></jsp:include>
+<!-- [ê¹€ë„í¬] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE>
+<jsp:include page="../module/top.jsp"></jsp:include>
+<!DOCTYPE html>
+
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Insert title here</title>
 	<script>
 		$(document).ready(function(){
-			//Å¬¸¯ ÇÑ¹ø¸¸ Çã¿ë
+			//í´ë¦­ í•œë²ˆë§Œ í—ˆìš©
 			$('#image').one('click', function () {
-				//±âºÎÇÏ±â click½Ã ±âºÎ±İ¾× ÀÔ·Â°¡´É
-				$("#p").append('<span style="font-weight:bold"><h1>±âºÎÀÚ´ÔÀÇ ¼ÒÁßÇÑ ¸¶À½À¸·Î ³î¶ó¿î º¯È­°¡ ÀÏ¾î³³´Ï´Ù.</h1></span><br>Åõ¸íÇÑ ±âºÎ ÈÄ±â·Î ±× º¯È­¸¦ ¼Ò°³ÇÏ°í º¸´äÇÏ°Ú½À´Ï´Ù!');
-				$("#div1").append('ÃÑ ±âºÎ±İ¾×&nbsp;&nbsp;&nbsp;<input type="text" name="incomeDonationPrice" placeholder="±İ¾×(¼ıÀÚ)¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù" maxlength="30" id="incomeDonationPrice" onKeyPress="return numkeyCheck(event)" data-rule-required="true">&nbsp;&nbsp;&nbsp;<input type="button" value="±âºÎÇÏ±â" class="btn btn-warning btn-lg" id="donationuse">');
+				//ê¸°ë¶€í•˜ê¸° clickì‹œ ê¸°ë¶€ê¸ˆì•¡ ì…ë ¥ê°€ëŠ¥
+				$("#p").append('<span style="font-weight:bold"><h1>ê¸°ë¶€ìë‹˜ì˜ ì†Œì¤‘í•œ ë§ˆìŒìœ¼ë¡œ ë†€ë¼ìš´ ë³€í™”ê°€ ì¼ì–´ë‚©ë‹ˆë‹¤.</h1></span><br>íˆ¬ëª…í•œ ê¸°ë¶€ í›„ê¸°ë¡œ ê·¸ ë³€í™”ë¥¼ ì†Œê°œí•˜ê³  ë³´ë‹µí•˜ê² ìŠµë‹ˆë‹¤!');
+				$("#div1").append('ì´ ê¸°ë¶€ê¸ˆì•¡&nbsp;&nbsp;&nbsp;<input type="text" name="incomeDonationPrice" placeholder="ê¸ˆì•¡(ìˆ«ì)ë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤" maxlength="30" id="incomeDonationPrice" onKeyPress="return numkeyCheck(event)" data-rule-required="true">&nbsp;&nbsp;&nbsp;<input type="button" value="ê¸°ë¶€í•˜ê¸°" class="btn btn-warning btn-lg" id="donationuse">');
 			});
-			//±âºÎ±İ¾× ÀÔ·ÂÀÌ ¼ıÀÚ¸¸ Çã¿ë
+			//ê¸°ë¶€ê¸ˆì•¡ ì…ë ¥ì´ ìˆ«ìë§Œ í—ˆìš©
 			$(document).on("keyup","#incomeDonationPrice",function(event){
 				$(this).val($(this).val().replace(/[^0-9]/g,""));
          	 });
-			//±âºÎÇÏ±â ¹öÆ°Å¬¸¯½Ã button typeÀ» submitÀ¸·Î º¯°æ
+			//ê¸°ë¶€í•˜ê¸° ë²„íŠ¼í´ë¦­ì‹œ button typeì„ submitìœ¼ë¡œ ë³€ê²½
 			$(document).on("click","#donationuse",function(event){
 				$("#donationuse").attr("type","submit");
 			});
@@ -28,25 +27,25 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>È¨ > ±âºÎ > ±âºÎÇÏ±â  </h4><br><br><br>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>í™ˆ > ê¸°ë¶€ > ê¸°ë¶€í•˜ê¸°  </h4><br><br><br>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<c:forEach var="donation" items="${list}">
 	 		<span style="font-weight:bold"><h1>"${donation.donationPlanTitle}"</h1></span><br><br><br>
 			<img class="img-thumbnail" style="width:70%; height:20%;" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" data-holder-rendered="true">
 			<br><br><br><br><br><br>
-			<div class="alert alert-info" role="alert"><h3>ÃÑ ${donationPlanPrice} ¿øÀÌ ±âºÎµÇ¾ú½À´Ï´Ù.</h3></div><br><br><br><br>
+			<div class="alert alert-info" role="alert"><h3>ì´ ${donationPlanPrice} ì›ì´ ê¸°ë¶€ë˜ì—ˆìŠµë‹ˆë‹¤.</h3></div><br><br><br><br>
 			<pre>${donation.donationPlanContent}</pre><br><br><br>
-			<c:if test="${sessionScope.level eq 'ÀÏ¹İÈ¸¿ø'}">
+			<c:if test="${sessionScope.level eq 'ì¼ë°˜íšŒì›'}">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title" id="panel-title">³» Ä³½¬±İ¾×<span class="anchorjs-icon"></span></a></h3>
+						<h3 class="panel-title" id="panel-title">ë‚´ ìºì‰¬ê¸ˆì•¡<span class="anchorjs-icon"></span></a></h3>
 					</div>
 					<div class="panel-body">				      
-				        ${totalCash} ¿ø			    
+				        ${totalCash} ì›			    
 					</div>
 				</div>
 			</c:if>
-			<c:if test="${sessionScope.level eq 'ÀÏ¹İÈ¸¿ø'}">
+			<c:if test="${sessionScope.level eq 'ì¼ë°˜íšŒì›'}">
 				<br><br><br><img style="width:20%; height:20%;" src="${pageContext.request.contextPath}/resources/image/donationbutton.png" id="image">
 				<br><br><br><br>
 				<p id="p"></p>

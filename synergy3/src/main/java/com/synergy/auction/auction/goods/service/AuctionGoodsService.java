@@ -42,6 +42,50 @@ public class AuctionGoodsService {
 		return map;
 	}
 	
+	//상품 리스트
+	public Map<String, Object> auctionGoodsSelectCategory(int currentPage,int category) { 
+		Map<String, Object> cashMap = new HashMap<String,Object>();
+		int beginRow = (currentPage-1)*10;
+		cashMap.put("beginRow", beginRow);	
+		cashMap.put("category", category);	
+		List<AuctionGoodsDto> list = auctionGoodsDao.auctionGoodsSelectCategory(cashMap);
+		//총 row수 구하기
+		int total = auctionGoodsDao.totalAuctionGoodsCategory(category);
+		int lastPage = 0;
+		if(total%10==0) {
+			lastPage = total/10;
+		} else {
+			lastPage = total/10+1;
+		}
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		map.put("list", list);
+		map.put("lastPage",lastPage);
+		return map;
+	}
+	
+	//상품 리스트
+	public Map<String, Object> auctionGoodsSelectBigCategory(int currentPage,int category) { 
+		Map<String, Object> cashMap = new HashMap<String,Object>();
+		int beginRow = (currentPage-1)*10;
+		cashMap.put("beginRow", beginRow);	
+		cashMap.put("category", category);	
+		List<AuctionGoodsDto> list = auctionGoodsDao.auctionGoodsSelectBigCategory(cashMap);
+		//총 row수 구하기
+		int total = auctionGoodsDao.totalAuctionGoodsCategory(category);
+		int lastPage = 0;
+		if(total%10==0) {
+			lastPage = total/10;
+		} else {
+			lastPage = total/10+1;
+		}
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		map.put("list", list);
+		map.put("lastPage",lastPage);
+		return map;
+	}
+	
 	//개인 리스트
 	public List<AuctionGoodsDto> auctionGoodsSelectUser(String UserId) { 
 		return auctionGoodsDao.auctionGoodsSelectUser(UserId); 		
@@ -87,6 +131,11 @@ public class AuctionGoodsService {
 	
 	public int auctionGoodsFileNoUpdate(AuctionGoodsDto auctionGoodsDto) {
 		return auctionGoodsDao.auctionGoodsFileNoUpdate(auctionGoodsDto);
+		
+	}
+
+	public int auctionGoodsRemove(int auctionGoodsNo) {
+		return auctionGoodsDao.auctionGoodsRemove(auctionGoodsNo);
 		
 	} 
 }

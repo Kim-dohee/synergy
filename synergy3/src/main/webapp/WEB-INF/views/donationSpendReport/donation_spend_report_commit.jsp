@@ -1,18 +1,18 @@
-<!-- [±èµµÈñ] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ë„í¬] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<!DOCTYPE>
+<!DOCTYPE html>
+
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Insert title here</title>
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>È¨ > ±âºÎ > º¸°í¼­ > º¸°í¼­ µî·Ï ¿Ï·á</h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>í™ˆ > ê¸°ë¶€ > ë³´ê³ ì„œ > ë³´ê³ ì„œ ë“±ë¡ ì™„ë£Œ</h4>
 	<div style="text-align: center">
 		<br><br><br><img src="${pageContext.request.contextPath}/resources/image/reportCommit.png" width="50%" height="10%"><br><br><br>
-		<h1>º¸°í¼­ µî·ÏÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù</h1><br><br>
+		<h1>ë³´ê³ ì„œ ë“±ë¡ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤</h1><br><br>
 	</div>
 </body>
 </html>

@@ -1,60 +1,59 @@
-<!-- [±èµµÈñ] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ë„í¬] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<!DOCTYPE>
+<!DOCTYPE html>
+
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Insert title here</title>
 </head>
 <body>
-	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>È¨ > ±âºÎ > º¸°í¼­ </h4>
+	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>í™ˆ > ê¸°ë¶€ > ë³´ê³ ì„œ </h4>
 	<div style="text-align: center; font-size: 12px;" class="container">
 		<br><br><br>
 		<table class="table table-hover" style="font-size: 13px;">
 		<tbody>
 			
 			<tr>
-				<th colspan="2" class="active">º¸°í¼­ ¹øÈ£</th>
+				<th colspan="2" class="active">ë³´ê³ ì„œ ë²ˆí˜¸</th>
 				<td colspan="4">
 					<p class="form-control-static">${donationSpendReportdto.donationSpendReportNo}
 				</td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">Á¦¸ñ</th>
+				<th colspan="2" class="active">ì œëª©</th>
 				<td colspan="4"><p class="form-control-static">${donationSpendReportdto.donationSpendReportTitle}</td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">³»¿ë</th>
+				<th colspan="2" class="active">ë‚´ìš©</th>
 				<td colspan="4"><p class="form-control-static"><pre>${donationSpendReportdto.donationSpendReportContent}</pre></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">±âºÎ±İ »ç¿ë ³¯Â¥</th>
+				<th colspan="2" class="active">ê¸°ë¶€ê¸ˆ ì‚¬ìš© ë‚ ì§œ</th>
 				<td colspan="4"><p class="form-control-static">${donationSpendReportdto.donationSpendPriceDate}</td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">±âºÎ³»¿ª</th>
+				<th colspan="2" class="active">ê¸°ë¶€ë‚´ì—­</th>
 				<td colspan="4"><p class="form-control-static"><pre>${donationSpendReportdto.donationSpendReportRecord}</pre></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">º¸°í¼­ µî·Ï³¯Â¥</th>
+				<th colspan="2" class="active">ë³´ê³ ì„œ ë“±ë¡ë‚ ì§œ</th>
 				<td colspan="4"><p class="form-control-static">${donationSpendReportdto.donationSpendReportDate}</td>
 			</tr>
 			<tr>
-				<th colspan="2" class="active">º¸°í¼­(ÆÄÀÏ)</th>
+				<th colspan="2" class="active">ë³´ê³ ì„œ(íŒŒì¼)</th>
 				<td colspan="4"><p class="form-control-static"> 
-					<a href="${pageContext.request.contextPath}/resources/file/${file.fileName}.${file.fileExt}" download="${file.fileName}.${file.fileExt}">º¸°í¼­ ´Ù¿î·Îµå</a>
+					<a href="${pageContext.request.contextPath}/resources/file/${file.fileName}.${file.fileExt}" download="${file.fileName}.${file.fileExt}">ë³´ê³ ì„œ ë‹¤ìš´ë¡œë“œ</a>
 				</td>
 			</tr>
 		</tbody>
 		</table>
 		<br><br>
 		<div class="col-lg-offset-6 col-lg-2">
-			<c:if test="${sessionScope.level eq '±âºÎ´ÜÃ¼'}">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReportDelete?donationPlanNo=${donationSpendReportdto.donationPlanNo}&donationSpendReportNo=${donationSpendReportdto.donationSpendReportNo}&fileName=${file.fileName}&fileExt=${file.fileExt}'">»èÁ¦</button>
+			<c:if test="${sessionScope.level eq 'ê¸°ë¶€ë‹¨ì²´'}">
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReportDelete?donationPlanNo=${donationSpendReportdto.donationPlanNo}&donationSpendReportNo=${donationSpendReportdto.donationSpendReportNo}&fileName=${file.fileName}&fileExt=${file.fileExt}'">ì‚­ì œ</button>
 			</c:if>
-			<button type="button" class="btn btn-info btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReport'">¸®½ºÆ®</button><br><br>
+			<button type="button" class="btn btn-info btn-lg" onclick="location.href='${pageContext.request.contextPath}/donationSpendReport'">ë¦¬ìŠ¤íŠ¸</button><br><br>
 		</div>
 	</div>	
 </body>

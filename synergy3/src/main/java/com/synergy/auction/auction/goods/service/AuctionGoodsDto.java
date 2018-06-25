@@ -10,7 +10,7 @@ public class AuctionGoodsDto {
 	private int donationPlanNo;
 	private String auctionStateNo;
 	private String userId;
-	private String smallCategoryNo;
+	private int smallCategoryNo;
 	private String auctionGoodsMinPrice;
 	private String auctionGoodsTitle;
 	private String auctionGoodsContent;
@@ -27,6 +27,14 @@ public class AuctionGoodsDto {
 	private PayDto pay;
 	private BidDto bid;
 	private SuccessfulBidDto successfulBidDto;
+	private SmallCategoryDto smallCategory;
+	
+	public SmallCategoryDto getSmallCategory() {
+		return smallCategory;
+	}
+	public void setSmallCategory(SmallCategoryDto smallCategory) {
+		this.smallCategory = smallCategory;
+	}
 	public BidDto getBid() {
 		return bid;
 	}
@@ -75,10 +83,10 @@ public class AuctionGoodsDto {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getSmallCategoryNo() {
+	public int getSmallCategoryNo() {
 		return smallCategoryNo;
 	}
-	public void setSmallCategoryNo(String smallCategoryNo) {
+	public void setSmallCategoryNo(int smallCategoryNo) {
 		this.smallCategoryNo = smallCategoryNo;
 	}
 	public String getAuctionGoodsMinPrice() {

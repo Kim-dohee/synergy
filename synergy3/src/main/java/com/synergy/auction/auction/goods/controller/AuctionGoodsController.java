@@ -77,6 +77,41 @@ public class AuctionGoodsController {
 		return "auctionGoods/auction_goods_search";
 	}
 	
+	
+	//경매품 소분류 리스트
+	@RequestMapping(value = "/auctionGoodsSelectCategory", method = RequestMethod.GET)
+	public String auctionGoodsSelectCategory(Model model
+			,@RequestParam(value="currentPage",defaultValue="1") int currentPage
+			,@RequestParam(value="category",defaultValue="1") int category) {
+		
+		Map<String, Object> map = auctionGoodsService.auctionGoodsSelectCategory(currentPage,category);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("lastPage",map.get("lastPage"));
+		return "auctionGoods/auction_goods_search";
+	}
+	
+	//경매품 대분류 리스트
+	@RequestMapping(value = "/auctionGoodsSelectBigCategory", method = RequestMethod.GET)
+	public String auctionGoodsSelectBigCategory(Model model
+			,@RequestParam(value="currentPage",defaultValue="1") int currentPage
+			,@RequestParam(value="BigCategory",defaultValue="1") int BigCategory) {
+		
+		Map<String, Object> map = auctionGoodsService.auctionGoodsSelectBigCategory(currentPage,BigCategory);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("lastPage",map.get("lastPage"));
+		return "auctionGoods/auction_goods_search";
+	}
+	
+	
+	//경매품 삭제
+	@RequestMapping(value = "/auctionGoodsRemove", method = RequestMethod.GET)
+	public String auctionGoodsDelete(Model model
+									,@RequestParam(value="auctionGoodsNo") int auctionGoodsNo) {
+		
+		auctionGoodsService.auctionGoodsRemove(auctionGoodsNo);
+		return "redirect:/userDetailAuction";
+	}
+	
 	//경매품 상세정보
 	@RequestMapping(value = "/auctionGoodsDetail", method = RequestMethod.GET)
 	public String auctionGoodsSelectOne(Model model

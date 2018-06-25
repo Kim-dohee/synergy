@@ -54,6 +54,12 @@
 			<result column="bid_no" property="bidNo"/> 
 			<result column="user_id" property="userId"/> 
 		</collection>			 
+		<collection property="smallCategory" ofType="com.synergy.auction.auction.goods.service.SmallCategoryDto">	 
+			<result column="small_category_no" property="smallCategoryNo"/> 
+				<collection property="bigCategory" ofType="com.synergy.auction.auction.goods.service.BigCategoryDto">	 
+				<result column="big_category_no" property="bigCategoryNo"/> 
+			</collection>			 
+		</collection>			 
 	</resultMap>
 
 	<insert id="auctionGoodsInsert"
@@ -134,10 +140,91 @@
 		ORDER BY auction_goods.auction_goods_no DESC
 		LIMIT #{beginRow},10;
 	</select>	
+
+	<select id="auctionGoodsSelectCategory" parameterType="java.util.Map" resultMap="resultAuctionGoods">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_plan_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
+		FROM
+			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no AND 'auction_goods' = file.file_table_name
+		WHERE auction_goods.small_category_no = #{category}
+		ORDER BY auction_goods.auction_goods_no DESC
+		LIMIT #{beginRow},10;
+	</select>	
+	
+	<select id="auctionGoodsSelectBigCategory" parameterType="java.util.Map" resultMap="resultAuctionGoods">
+		SELECT 
+			auction_goods.auction_goods_no
+			,auction_goods.auction_goods_file_no
+			,auction_goods.donation_plan_no
+			,auction_goods.auction_state_no
+			,auction_goods.user_id
+			,auction_goods.small_category_no
+			,auction_goods.auction_goods_min_price
+			,auction_goods.auction_goods_title
+			,auction_goods.auction_goods_content
+			,auction_goods.auction_goods_instance_buy_price
+			,auction_goods.auction_goods_name
+			,auction_goods.auction_goods_bid_unit
+			,auction_goods.auction_goods_date
+			,auction_goods.auction_goods_pay_term
+			,auction_goods.auction_goods_bid_term
+			,auction_goods.auction_goods_bid_start_date
+			,auction_goods.auction_goods_bid_end_date
+			,auction_goods.auction_goods_hits
+			,file.file_name
+ 			,file.file_ext
+ 			,small_category.small_category_no
+ 			,big_category.big_category_no
+		FROM
+			auction_goods
+		JOIN
+			file
+		ON
+			auction_goods.auction_goods_no = file.file_table_no AND file.file_table_name = 'auction_goods'
+		JOIN
+			small_category
+		ON 
+			small_category.small_category_no = auction_goods.small_category_no
+		JOIN
+			big_category
+		ON
+			small_category.big_category_no = big_category.big_category_no
+		WHERE 
+			big_category.big_category_no =#{category}
+	</select>	
 	
 	<select id="totalAuctionGoods"  
 			resultType="Integer">
 		SELECT COUNT(*) FROM auction_goods
+	</select>
+	
+	
+	<select id="totalAuctionGoodsCategory"  
+			resultType="Integer">
+		SELECT COUNT(*) FROM auction_goods Where small_category_no = #{category}
 	</select>
 	
 	<select id="auctionGoodsSelectUser" resultMap="resultAuctionGoods">
@@ -356,4 +443,10 @@
 		WHERE 
 			auction_goods_no=#{auctionGoodsNo}
 	</update>
+	
+	<delete id="auctionGoodsRemove" parameterType="Integer">
+		DELETE FROM 
+			auction_goods 
+		WHERE auction_goods_no = #{auctionGoodsNo}
+	</delete>
 </mapper>

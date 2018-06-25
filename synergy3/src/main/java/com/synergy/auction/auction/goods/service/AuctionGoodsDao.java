@@ -22,9 +22,21 @@ public class AuctionGoodsDao {
 	public List<AuctionGoodsDto> auctionGoodsSelect(Map<String, Object> map) { 
 		return sqlSession.selectList(NS+"auctionGoodsSelect", map); 		
 	}
-	//캐쉬사용내역 페이징을 위한 row수 구하기
+	
+	public List<AuctionGoodsDto> auctionGoodsSelectCategory(Map<String, Object> map) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelectCategory", map); 		
+	}
+	
+	public List<AuctionGoodsDto> auctionGoodsSelectBigCategory(Map<String, Object> map) { 
+		return sqlSession.selectList(NS+"auctionGoodsSelectBigCategory", map); 		
+	}
+	//페이징을 위한 row수 구하기
 	public int totalAuctionGoods() { 
 		return sqlSession.selectOne(NS+"totalAuctionGoods"); 
+	}
+	//페이징을 위한 row수 구하기
+	public int totalAuctionGoodsCategory(int category) { 
+		return sqlSession.selectOne(NS+"totalAuctionGoodsCategory",category); 
 	}
 	
 	public List<AuctionGoodsDto> auctionGoodsSelectUser(String userId) { 
@@ -65,6 +77,10 @@ public class AuctionGoodsDao {
 	
 	public int auctionGoodsFileNoUpdate(AuctionGoodsDto auctionGoodsDto) {
 		return sqlSession.update(NS + "auctionGoodsFileNoUpdate", auctionGoodsDto); 
+	}
+
+	public int auctionGoodsRemove(int auctionGoodsNo) {
+		return sqlSession.update(NS + "auctionGoodsRemove", auctionGoodsNo); 
 	} 
 	
 	

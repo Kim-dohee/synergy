@@ -1,34 +1,33 @@
-<!-- [±èµµÈñ] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ë„í¬] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
-<!DOCTYPE>
+<!DOCTYPE html>
+
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Insert title here</title>
 	<script>
 		$(document).ready(function(){
 			
-			//(Á¦¸ñ,³»¿ë,±âºÎ±Ý »ç¿ë³¯Â¥,±âºÎ³»¿ª,ÆÄÀÏ ) null°ª Çã¿ëÇÏÁö ¾ÊÀ½	
+			//(ì œëª©,ë‚´ìš©,ê¸°ë¶€ê¸ˆ ì‚¬ìš©ë‚ ì§œ,ê¸°ë¶€ë‚´ì—­,íŒŒì¼ ) nullê°’ í—ˆìš©í•˜ì§€ ì•ŠìŒ	
 			$('#submit').click(function(event){
 				if($("#donationPlanNo option:selected").val()==""){
-					alert("°èÈ¹¼­ µî·Ï ÈÄ  º¸°í¼­¸¦ ÀÛ¼ºÇÒ¼ö ÀÖ½À´Ï´Ù");
+					alert("ê³„íšì„œ ë“±ë¡ í›„  ë³´ê³ ì„œë¥¼ ìž‘ì„±í• ìˆ˜ ìžˆìŠµë‹ˆë‹¤");
 				}else if($('#donationSpendReportTitle').val()==""){
-					alert("Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+					alert("ì œëª©ì„ ìž…ë ¥í•˜ì„¸ìš”");
 				}else if($('#donationSpendReportContent').val()==""){
-					alert("³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+					alert("ë‚´ìš©ì„ ìž…ë ¥í•˜ì„¸ìš”");
 				}else if($('#donationSpendPriceDate').val()==""){
-					alert("±âºÎ±Ý »ç¿ë³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+					alert("ê¸°ë¶€ê¸ˆ ì‚¬ìš©ë‚ ì§œë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
 				}else if($('#donationSpendReportRecord').val()==""){
-					alert("±âºÎ³»¿ªÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+					alert("ê¸°ë¶€ë‚´ì—­ì„ ìž…ë ¥í•˜ì„¸ìš”");
 				}else if($('#fileName').val().length <1) {
-					alert('º¸°í¼­ Ã·ºÎÆÄÀÏÀ» ¼±ÅÃÇÏ¼¼¿ä');
+					alert('ë³´ê³ ì„œ ì²¨ë¶€íŒŒì¼ì„ ì„ íƒí•˜ì„¸ìš”');
 				}else {
-					//ÆÄÀÏ È®ÀåÀÚ È®ÀÎ
+					//íŒŒì¼ í™•ìž¥ìž í™•ì¸
 					var	fileExt = $('#fileName').val().split('.').pop().toLowerCase();
 					if($.inArray(fileExt,['hwp','txt','rtf' ,'hwp' ,'asv' ,'pdf' ,'doc' ,'ppt' ,'mdb' ,'htm'])==-1){
-						alert('¹®¼­ÆÄÀÏ(hwp,txt,rtf,hwp,asv,pdf,doc,ppt,mdb,htm)¸¸ ¾÷·Îµå ÇÒ¼ö ÀÖ½À´Ï´Ù')
+						alert('ë¬¸ì„œíŒŒì¼(hwp,txt,rtf,hwp,asv,pdf,doc,ppt,mdb,htm)ë§Œ ì—…ë¡œë“œ í• ìˆ˜ ìžˆìŠµë‹ˆë‹¤')
 					 } else {
 							$("#submit").attr("type","submit");
 					 } 
@@ -39,7 +38,7 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>È¨ > ±âºÎ > º¸°í¼­ > º¸°í¼­ µî·Ï</h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>í™ˆ > ê¸°ë¶€ > ë³´ê³ ì„œ > ë³´ê³ ì„œ ë“±ë¡</h4>
 	<div style="text-align:center;font-size:16px;" class="container">
 		<br><br><br>
 		<img src="${pageContext.request.contextPath}/resources/image/reportInsert.png" width="75%" height="10%">
@@ -48,10 +47,10 @@
 			<table class="table table-bordered">
 				<tbody>		            	           
 		            <tr>	            
-		                <th class="active">ÇØ´ç °èÈ¹¼­ ¹øÈ£</th>
+		                <th class="active">í•´ë‹¹ ê³„íšì„œ ë²ˆí˜¸</th>
 		                <td>
 		                	<select name="donationPlanNo" id="donationPlanNo">
-    							<option value="">°èÈ¹¼­ ¹øÈ£ ¼±ÅÃ</option>
+    							<option value="">ê³„íšì„œ ë²ˆí˜¸ ì„ íƒ</option>
     							<c:forEach var="donationPlan" items="${list}">
     								<option value="${donationPlan.donationPlanNo}">${donationPlan.donationPlanNo}</option>		
     							</c:forEach>	
@@ -59,30 +58,30 @@
     					</td>	                
 		            </tr>
 		            <tr>	            
-		                <th class="active">Á¦¸ñ </th>
-		                <td><input type="text" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä. " name="donationSpendReportTitle" id="donationSpendReportTitle" class="form-control"/></td>	                
+		                <th class="active">ì œëª© </th>
+		                <td><input type="text" placeholder="ì œëª©ì„ ìž…ë ¥í•˜ì„¸ìš”. " name="donationSpendReportTitle" id="donationSpendReportTitle" class="form-control"/></td>	                
 		            </tr>
 		            <tr>  	            
-		                <th class="active">³»¿ë </th>
-		                <td><textarea cols="10" placeholder="3000ÀÚ ÀÌ³»¿¡ ÀÔ·ÂÇÏ¼¼¿ä " rows="30" name="donationSpendReportContent" id="donationSpendReportContent" class="form-control" maxlength="3000"></textarea></td>	            
+		                <th class="active">ë‚´ìš© </th>
+		                <td><textarea cols="10" placeholder="3000ìž ì´ë‚´ì— ìž…ë ¥í•˜ì„¸ìš” " rows="30" name="donationSpendReportContent" id="donationSpendReportContent" class="form-control" maxlength="3000"></textarea></td>	            
 		            </tr>
 		            <tr>	            
-		                <th class="active">±âºÎ±Ý »ç¿ë³¯Â¥</th>
+		                <th class="active">ê¸°ë¶€ê¸ˆ ì‚¬ìš©ë‚ ì§œ</th>
 		                <td><input name="donationSpendPriceDate" id="donationSpendPriceDate" type="date"></td>	            
 		            </tr>
 		            <tr>  	            
-	                <th class="active">±âºÎ ³»¿ª </th>
-	                <td><textarea cols="10" placeholder="3000ÀÚ ÀÌ³»¿¡ ÀÔ·ÂÇÏ¼¼¿ä " rows="30" name="donationSpendReportRecord" id="donationSpendReportRecord" class="form-control" maxlength="3000"></textarea></td>	            
+	                <th class="active">ê¸°ë¶€ ë‚´ì—­ </th>
+	                <td><textarea cols="10" placeholder="3000ìž ì´ë‚´ì— ìž…ë ¥í•˜ì„¸ìš” " rows="30" name="donationSpendReportRecord" id="donationSpendReportRecord" class="form-control" maxlength="3000"></textarea></td>	            
 		            </tr>
 		            <tr>	           
-		                <th class="active">º¸°í¼­ Ã·ºÎÆÄÀÏ </th>
+		                <th class="active">ë³´ê³ ì„œ ì²¨ë¶€íŒŒì¼ </th>
 		                <td><input type="file" name="fileName" id="fileName"></td>	            
 		            </tr>   
 		    	</tbody>
 			</table><br>		
 		 	<div class="form-group">
 			<div class="col-lg-offset-6 col-lg-2">
-				<input type="button" class="btn btn-primary btn-lg" id="submit" value="µî·Ï"><br><br><br>
+				<input type="button" class="btn btn-primary btn-lg" id="submit" value="ë“±ë¡"><br><br><br>
 			</div>	
 			</div>
 		 </form>
