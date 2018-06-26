@@ -283,6 +283,7 @@ public class DonationPlanController {
 			logger.debug("DonationPlanController.donationAllMain donationPercent>>"+donationPercent);
 			donationPercentList.add(donationPercent);
 		}
+		model.addAttribute("donationPercentList", donationPercentList);
 		return "donation/donation_select";
 	}
 	

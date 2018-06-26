@@ -95,7 +95,7 @@ public class DonationPlanService {
 		logger.debug("DonationPlanService.donationPlanPercentSelect leftDonationPrice>>"+leftDonationPrice);
 		int donationPlanPercent = Math.round(donationPlanGoalPrice/leftDonationPrice)*10;
 		logger.debug("DonationPlanService.donationPlanPercentSelect donationPlanPercent>>"+donationPlanPercent);
-		int donationPercent = 100-donationPlanPercent;
+		int donationPercent = 100-donationPlanPercent;	
 		logger.debug("DonationPlanService.donationPlanPercentSelect donationPercent>>"+donationPercent);
 		return donationPercent; 
 	}
