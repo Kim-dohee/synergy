@@ -70,6 +70,7 @@
 				<value>classpath:com/synergy/auction/notice/service/NoticeMapper.xml</value>
 				<value>classpath:com/synergy/auction/donation/use/service/DonationUseMapper.xml</value>
 				<value>classpath:com/synergy/auction/question/service/QuestionMapper.xml</value>
+				<value>classpath:com/synergy/auction/comment/service/CommentMapper.xml</value>
 			</list>
 		</property>
 	</bean>

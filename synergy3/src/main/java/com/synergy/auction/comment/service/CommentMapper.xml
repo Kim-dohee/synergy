@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.synergy.auction.comment.service.CommentMapper">
+	<insert id="commentInsert"
+			parameterType="com.synergy.auction.comment.service.CommentDto">
+		INSERT INTO comment (
+			donation_plan_no
+			,user_id
+			,comment_content
+			,comment_date
+		) VALUES (
+			#{donationPlanNo}
+			,#{userId}
+			,#{commentContent}
+			,now()
+		)
+	</insert>
+	<select id="commentSelect"
+			resultType="com.synergy.auction.comment.service.CommentDto">
+		SELECT 
+			comment_no AS commentNo
+			,donation_plan_no AS donationPlanNo
+			,user_id AS userId
+			,comment_content AS commentContent
+			,LEFT(comment_date,10) AS commentDate
+		FROM comment
+		ORDER BY comment_date DESC 
+	</select>
+</mapper>
+  

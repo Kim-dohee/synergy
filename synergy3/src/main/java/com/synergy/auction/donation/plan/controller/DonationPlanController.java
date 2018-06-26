@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.synergy.auction.cash.service.CashRecordService;
+import com.synergy.auction.comment.service.CommentDto;
+import com.synergy.auction.comment.service.CommentService;
 import com.synergy.auction.donation.plan.service.DonationPlanDto;
 import com.synergy.auction.donation.plan.service.DonationPlanService;
 import com.synergy.auction.donation.use.service.DonationUseService;
@@ -40,6 +42,8 @@ public class DonationPlanController {
 	private IncomeDonationService incomeDonationService;
 	@Autowired
 	private DonationUseService donationUseService;
+	@Autowired
+	private CommentService commentService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DonationPlanController.class);
 	
@@ -267,6 +271,7 @@ public class DonationPlanController {
 		int incomeDonationPrice = incomeDonationService.incomeDonationPriceSelectOne();
 		model.addAttribute("list", list);
 		model.addAttribute("incomeDonationPrice", incomeDonationPrice);
+		/*----- 기부금 % 구하기-------
 		List<Integer> donationPercentList = new ArrayList<Integer>();
 		for(DonationPlanDto donationPlan : list) {
 			//기부금 계획서넘버 검색
@@ -284,6 +289,10 @@ public class DonationPlanController {
 			donationPercentList.add(donationPercent);
 		}
 		model.addAttribute("donationPercentList", donationPercentList);
+		----------------------*/
+		//응원댓글(아이디,내용,날짜) 검색
+		List<CommentDto> commentList = commentService.commentSelect();
+		model.addAttribute("commentList", commentList);
 		return "donation/donation_select";
 	}
 	

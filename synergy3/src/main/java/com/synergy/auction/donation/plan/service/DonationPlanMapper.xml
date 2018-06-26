@@ -133,6 +133,7 @@
 		FROM donator AS d
 		JOIN donation_plan AS dp 
 		ON d.donator_id=dp.donator_id
+		ORDER BY dp.donation_plan_date DESC
 	</select>
 	<select id="donationPlanDetailSelect"  
 			parameterType="Integer"

@@ -29,11 +29,11 @@
 	<br><br><br>
 	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기  </h4><br><br><br>
 	<div style="text-align: center; font-size: 16px" class="container">
+		<img class="img-thumbnail" style="width:80%; height:20%;" src="${pageContext.request.contextPath}/resources/image/donationSelectDetailLogo.png" data-holder-rendered="true">
 		<c:forEach var="donation" items="${list}">
-	 		<span style="font-weight:bold"><h1>"${donation.donationPlanTitle}"</h1></span><br><br><br>
-			<img class="img-thumbnail" style="width:70%; height:20%;" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" data-holder-rendered="true">
-			<br><br><br><br><br><br>
-			<div class="alert alert-info" role="alert"><h3>총 ${donationPlanPrice} 원이 기부되었습니다.</h3></div><br><br><br><br>
+	 		<br><br><br>
+			<img class="img-thumbnail" style="width:80%; height:20%;" src="${pageContext.request.contextPath}/resources/file/${donation.file.fileName}.${donation.file.fileExt}" data-holder-rendered="true"><br><br><br>
+			<span style="font-weight:bold"><h1>[${donation.donationPlanTitle}]</h1></span><br><br>
 			<pre>${donation.donationPlanContent}</pre><br><br><br>
 			<c:if test="${sessionScope.level eq '일반회원'}">
 				<div class="panel panel-info">
@@ -45,15 +45,28 @@
 					</div>
 				</div>
 			</c:if>
+			<div class="alert alert-info" role="alert"><h3>총 ${donationPlanPrice} 원이 기부되고있습니다.</h3></div><br><br>
 			<c:if test="${sessionScope.level eq '일반회원'}">
 				<br><br><br><img style="width:20%; height:20%;" src="${pageContext.request.contextPath}/resources/image/donationbutton.png" id="image">
 				<br><br><br><br>
 				<p id="p"></p>
 				<form action="${pageContext.request.contextPath}/incomeDonation?donationPlanNo=${donation.donationPlanNo}" method="post">
-					<br><br><div id="div1"></div><br><br>
+					<br><br><div id="div1"></div>
 				</form>
 			</c:if>
-		</c:forEach>		
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a href="#">응원댓글</a></li>
+			</ul>
+			<div class="panel panel-default">
+				<div class="panel-heading">응원 메시지를 남겨주세요~</div>
+				<div class="panel-body">
+					<form action="${pageContext.request.contextPath}/commentInsert?donationPlanNo=${donation.donationPlanNo}" method="post">
+						<p><textarea cols="30"placeholder="저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제지를 받을 수 있습니다. " rows="3" name="commentContent" id="commentContent" class="form-control"></textarea></p><br>
+						<input type="submit" class="btn btn-warning btn-lg" value="등록">
+					</form>	
+				</div>
+			</div>
+		</c:forEach>
 	</div>
 </body>
 </html>
