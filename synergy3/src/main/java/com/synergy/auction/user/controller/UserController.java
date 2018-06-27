@@ -57,13 +57,11 @@ public class UserController {
 		return "redirect:/creditRecordInsert?userId="+userId;
 	}
 
-	//회원가입할때 만든 id로 no값을구해서 신용점수,캐쉬 초기화 
+	//회원가입할때 만든 id로 no값을구해서 캐쉬 초기화 
 	@RequestMapping(value = "/creditRecordInsert", method = RequestMethod.GET)
 	public String creditCashInsert(Model model, UserDto userDto
 							,@RequestParam(value="userId") String userId) {
 		logger.debug("UserController.creditCashInsert id>>"+userService.userSelectOne(userId));
-		//신용점수 80점으로 초기화
-		userService.creditRecordInsert(userId);
 		//캐쉬 0원으로 초기화
 		cashRecordService.cashRecordTotalInsert(userId);
 		return "user/user_insert_commit";
@@ -122,7 +120,6 @@ public class UserController {
 	//회원탈퇴
 	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
 	public String userDelete(HttpSession session, UserDto userDto) {
-		System.out.println("aaaaaaaaaaaaa"+userDto);
 		userService.userDelete(userDto);
 		String Id = (String)session.getAttribute("id");
 		session.invalidate(); 

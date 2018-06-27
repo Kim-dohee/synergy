@@ -1,21 +1,29 @@
 /*최상욱*/
 package com.synergy.auction.notice.service;
 
+import com.synergy.auction.file.service.FileDto;
+
 public class NoticeDto {
-
+	private int noticeNo;
 	private String adminId;
-	private String adminPw;
-	private String adminName;
-	private int adminPhone;
-	private String adminAddress;
-	private String adminJoinDate;
-	private String adminLevel;
-
-	public String getAdminLevel() {
-		return adminLevel;
+	private int noticeFileNo;
+	private String noticeTitle;
+	private String noticeContent;
+	private String noticeDate;
+	private int noticeHits;
+	private FileDto file;
+	
+	public FileDto getFile() {
+		return file;
 	}
-	public void setAdminLevel(String adminLevel) {
-		this.adminLevel = adminLevel;
+	public void setFile(FileDto file) {
+		this.file = file;
+	}
+	public int getNoticeNo() {
+		return noticeNo;
+	}
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
 	public String getAdminId() {
 		return adminId;
@@ -23,42 +31,43 @@ public class NoticeDto {
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
-	public String getAdminPw() {
-		return adminPw;
+
+	public int getNoticeFileNo() {
+		return noticeFileNo;
 	}
-	public void setAdminPw(String adminPw) {
-		this.adminPw = adminPw;
+	public void setNoticeFileNo(int noticeFileNo) {
+		this.noticeFileNo = noticeFileNo;
 	}
-	public String getAdminName() {
-		return adminName;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
-	public int getAdminPhone() {
-		return adminPhone;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
-	public void setAdminPhone(int adminPhone) {
-		this.adminPhone = adminPhone;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
-	public String getAdminAddress() {
-		return adminAddress;
+	public String getNoticeDate() {
+		return noticeDate;
 	}
-	public void setAdminAddress(String adminAddress) {
-		this.adminAddress = adminAddress;
+	public void setNoticeDate(String noticeDate) {
+		this.noticeDate = noticeDate;
 	}
-	public String getAdminJoinDate() {
-		return adminJoinDate;
+	public int getNoticeHits() {
+		return noticeHits;
 	}
-	public void setAdminJoinDate(String adminJoinDate) {
-		this.adminJoinDate = adminJoinDate;
+	public void setNoticeHits(int noticeHits) {
+		this.noticeHits = noticeHits;
 	}
 	
 	@Override
 	public String toString() {
-		return "AdminDto [adminId=" + adminId + ", adminPw=" + adminPw + ", adminName="
-				+ adminName + ", adminPhone=" + adminPhone + ", adminAddress=" + adminAddress + ", adminJoinDate="
-				+ adminJoinDate + ", adminLevel=" + adminLevel + "]";
+		return "NoticeDto [noticeNo=" + noticeNo + ", adminId=" + adminId + ", noticeFileNo=" + noticeFileNo
+				+ ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent + ", noticeDate=" + noticeDate
+				+ ", noticeHits=" + noticeHits + "]";
 	}
-
+	
 }

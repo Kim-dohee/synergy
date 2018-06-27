@@ -17,21 +17,16 @@
 				<tbody>		            	           
 		            <tr>	            
 		                <th class="active">제목 </th>
-		                <td><input type="text" placeholder="제목을 입력하세요. " name="noticeTitle" class="form-control"/></td>	                
+		                <td><input type="text" readonly value="${detail.noticeTitle}" name="noticeTitle" class="form-control"/></td>	                
 		            </tr>
 		            <tr>  	            
 		                <th class="active">내용 </th>
-		                <td><textarea cols="10" placeholder="500자 이내에 입력하세요 " rows="30" name="noticeContent" class="form-control" maxlength="3000"></textarea></td>	            
+		                <td><img src="resources/file/${detail.file.fileName}.${detail.file.fileExt}"  width="100%" height="100%">
+		                <textarea cols="10" readonly placeholder="500자 이내에 입력하세요 " rows="30" name="noticeContent" class="form-control" maxlength="3000">value="${detail.noticeContent}"</textarea></td>	            
 		            </tr>
-		            <tr>	           
-		                <th class="active">기부금 이미지 첨부파일 </th>
-		                <td><input type="file" name="fileImage"></td>	            
-		            </tr>    
 		    	</tbody>
-			</table><br>		
-			<div class="col-lg-offset-6 col-lg-2">
-				<input type="submit" class="btn btn-primary btn-lg" id="submit" value="등록"><br><br><br>
-			</div>	
+			</table>
+			<a class="btn btn-primary btn-lg" id="bidButton"href="${pageContext.request.contextPath}/noticeSelect">리스트로</a>	
 		 </form>
 	</div>
 </body>

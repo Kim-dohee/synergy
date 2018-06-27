@@ -27,6 +27,11 @@ public class FileDao {
 		return row; 
 	}
 	
+	public int noticeFileInsert(FileDto fileDto) { 
+		int row = sqlSession.insert(NS+"noticeFileInsert", fileDto); 
+		return row; 
+	}
+	
 	//파일넘버 검색
 	public int fileNoSelect(int donationPlanNo) { 
 		return sqlSession.selectOne(NS+"fileNoSelect", donationPlanNo); 
@@ -35,6 +40,11 @@ public class FileDao {
 	//경매품 파일넘버 검색
 	public int auctionFileNoSelect(int auctionGoodsNo) { 
 		return sqlSession.selectOne(NS+"auctionFileNoSelect", auctionGoodsNo); 
+	}
+	
+	//경매품 파일넘버 검색
+	public int noticeFileNoSelect(int noticeNo) { 
+		return sqlSession.selectOne(NS+"noticeFileNoSelect", noticeNo); 
 	}
 	
 	//이미지파일넘버 검색

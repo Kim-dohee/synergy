@@ -25,8 +25,7 @@
 	
 	<select id="userSelectOne" parameterType="String" resultType="com.synergy.auction.user.service.UserDto"> 
 		SELECT
-			credit_right_no AS creditRightNo
-			,user_id AS userId
+			user_id AS userId
 			,user_pw AS userPw
 			,user_name AS userName
 			,user_phone AS userPhone
@@ -36,17 +35,6 @@
 			user 
 		WHERE user_id=#{userId} 
 	</select> 
-	
-	<insert id="creditRecordInsert"  
-		parameterType="com.synergy.auction.user.service.CreditRecordDto">  
-		INSERT INTO credit_record(  
-			user_id
-			,credit_record_now_score
-		) VALUES (  
-			#{userId}  
-			,80  
-		)
-	</insert>  
 	
 	<update id="userUpdate" parameterType="com.synergy.auction.user.service.UserDto"> 
 		UPDATE user SET 

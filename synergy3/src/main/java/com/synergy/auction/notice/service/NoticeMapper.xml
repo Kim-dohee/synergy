@@ -4,23 +4,111 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.synergy.auction.notice.service.NoticeMapper">
-	<insert id="adminInsert"
-			parameterType="com.synergy.auction.admin.service.AdminDto">
-		INSERT INTO admin(
+	<resultMap type="com.synergy.auction.notice.service.NoticeDto" id="resultnotice"> 
+		<result column="notice_no" property="noticeNo"/>
+		<result column="admin_id" property="adminId"/>		 	 
+		<result column="notice_file_no" property="noticeFileNo"/>		 	 
+		<result column="notice_title" property="noticeTitle"/>		 	 
+		<result column="notice_content" property="noticeContent"/>		 	 
+		<result column="notice_date" property="noticeDate"/>		 	 
+		<result column="notice_hits" property="noticeHits"/>		 	 
+		<collection property="file" ofType="com.synergy.auction.file.service.FileDto">	 
+			<result column="file_name" property="fileName"/> 
+			<result column="file_ext" property="fileExt"/> 
+		</collection>	
+	</resultMap>
+	<insert id="noticeInsert"
+			parameterType="com.synergy.auction.notice.service.NoticeDto">
+			<selectKey resultType="Integer" 
+						keyProperty="noticeNo"  
+						order="AFTER"> 
+			SELECT LAST_INSERT_ID() 
+			</selectKey> 
+		INSERT INTO notice(
 			admin_id
-			,admin_pw
-			,admin_name
-			,admin_phone
-			,admin_address
-			,admin_join_date
+			,notice_file_no
+			,notice_title
+			,notice_content
+			,notice_date
+			,notice_hits
 		) VALUES (
 			#{adminId}
-			,#{adminPw}
-			,#{adminName}
-			,#{adminPhone}
-			,#{adminAddress}
+			,null
+			,#{noticeTitle}
+			,#{noticeContent}
 			,now()
+			,0
 		)
 	</insert>
+	
+	<update id="noticeFileNoUpdate"
+			parameterType="com.synergy.auction.notice.service.NoticeDto" >
+		UPDATE 
+			notice
+		SET 
+			notice_file_no=#{noticeFileNo}
+		WHERE 
+			notice_no=#{noticeNo}
+	</update>
 
+	<select id="noticeSelect" parameterType="java.util.Map" resultMap="resultnotice">
+		SELECT 
+			notice.notice_no
+			,notice.admin_id
+			,notice.notice_file_no
+			,notice.notice_title
+			,notice.notice_content
+			,notice.notice_date
+			,notice.notice_hits
+			,file.file_name
+ 			,file.file_ext
+		FROM
+			notice
+		JOIN
+			file
+		ON
+			notice.notice_no = file.file_table_no AND 'notice' = file.file_table_name
+		ORDER BY notice.notice_no ASC
+		LIMIT #{beginRow},10;
+	</select>	
+	
+	<select id="totalNotice"  
+			resultType="Integer">
+		SELECT COUNT(*) FROM notice
+	</select>
+		<select id="noticeSelectOne" parameterType="Integer" resultMap="resultnotice">
+					SELECT 
+			notice.notice_no
+			,notice.admin_id
+			,notice.notice_file_no
+			,notice.notice_title
+			,notice.notice_content
+			,notice.notice_date
+			,notice.notice_hits
+			,file.file_name
+ 			,file.file_ext
+		FROM
+			notice
+		JOIN
+			file
+		ON
+			notice.notice_no = file.file_table_no AND 'notice' = file.file_table_name
+		WHERE 
+			notice_no = #{noticeNo}
+	</select>
+	
+	<update id="noticeHit" parameterType="Integer">
+		UPDATE 
+			notice 
+		SET 
+			notice_hits = notice_hits + 1 
+	     WHERE 
+			notice_no = #{noticeNo}
+	</update>
+
+	<delete id="noticeDelete" parameterType="Integer">
+		DELETE FROM 
+			notice 
+		WHERE notice_no = #{noticeNo}
+	</delete>	
 </mapper>

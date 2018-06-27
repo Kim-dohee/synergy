@@ -207,7 +207,7 @@ $(function(){
 </script>
 </head>
 <body>
-<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
+<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a> > <a href="${pageContext.request.contextPath}/userAgreement">약관동의</a> > <a href="${pageContext.request.contextPath}/userInsertView">회원가입</a></h4>
 	<div style="font-size: 16px; text-align: center">
 		<form class="form-horizontal" role="form" id="frm" name="frm"
 		method="post" action="${pageContext.request.contextPath}/userInsert">

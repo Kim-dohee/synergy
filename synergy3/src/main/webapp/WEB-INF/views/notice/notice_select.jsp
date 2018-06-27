@@ -19,19 +19,29 @@
 							<th>등록자</th>
 							<th>공지사항 등록 날짜</th>
 							<th>조회수</th>
+							<c:if test="${sessionScope.level eq '관리자'}">
+							<th>삭제</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="notice" items="${list}">
 							<tr>
-								<td>1</td>
-								<td>긴급 공지입니다.</td>
-								<td>관리자</td>
-								<td>2018-06-22</td>
-								<td>18</td>    
+								<td>${notice.noticeNo}</td>
+								<td><a class="insert" href="${pageContext.request.contextPath}/noticeDetail?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a>
+								<td>${notice.adminId}</td>
+								<td>${notice.noticeDate}</td>
+								<td>${notice.noticeHits}</td>
+								<c:if test="${sessionScope.level eq '관리자'}">
+								<th><a class="insert" href="${pageContext.request.contextPath}/noticeDelete?noticeNo=${notice.noticeNo}">삭제</a></th>
+								</c:if>
 							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
+				<c:if test="${sessionScope.level eq '관리자'}">
 				<a class="btn btn-primary btn-sm pull-right" href="${pageContext.request.contextPath}/noticeInsert">공지사항 등록</a>
+				</c:if>
 			</div>	 
 	</div>
 </body>

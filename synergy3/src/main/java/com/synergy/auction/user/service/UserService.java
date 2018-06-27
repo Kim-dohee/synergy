@@ -16,10 +16,7 @@ public class UserService {
 		int row = userDao.userInsert(userDto); 
 		return row; 
 	} 
-	public int creditRecordInsert(String userId) { 
-		int row = userDao.creditRecordInsert(userId); 
-		return row; 
-	} 
+
 
 	public UserDto userSelectOne(String userId) { 
 		return userDao.userSelectOne(userId); 

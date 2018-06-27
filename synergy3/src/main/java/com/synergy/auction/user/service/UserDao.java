@@ -20,11 +20,6 @@ public class UserDao {
 		return row; 
 	} 
 	
-	public int creditRecordInsert(String userId) { 
-		int row = sqlSession.insert(NS+"creditRecordInsert", userId); 
-		return row; 
-	} 
-	
 	public UserDto userSelectOne(String userId) { 
 		return sqlSession.selectOne(NS + "userSelectOne", userId); 
 	} 

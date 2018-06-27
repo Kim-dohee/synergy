@@ -9,7 +9,6 @@
 		<br><h1 class="text-center">유저 리스트</h1><br>
 		<div class="container bs-example" data-example-id="simple-table" >
 		   <table class="table table-striped" >
-		     <caption>Optional table caption.</caption>
 		     <thead>
 		       <tr>
 		         <th>아이디</th>
@@ -22,11 +21,11 @@
 		     <tbody>
 		     <c:forEach var="user" items="${list}">
 		       <tr>
-		         <th scope="row">1${user.userId}</th>
+		         <td>${user.userId}</td>
 		         <td>${user.userName}</td>
 		         <td>${user.userPhone}</td>
 		         <td>${user.userEmail}</td>
-		         <td>${user.userJoindate}</td>
+		         <td>${user.userJoinDate}</td>
 		       </tr>
 		       </c:forEach>
 		     </tbody>
