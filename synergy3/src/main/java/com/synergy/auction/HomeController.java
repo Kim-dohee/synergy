@@ -34,6 +34,30 @@ public class HomeController {
 		return "home";
 	}
 	
+	//개발환경 화면
+	@RequestMapping(value = "/developmentEnvironment", method = RequestMethod.GET)
+	public String developmentEnvironment() {
+		return "development_environment";
+	}
+	
+	//전체기능 분석도 화면
+	@RequestMapping(value = "/process", method = RequestMethod.GET)
+	public String process() {
+		return "process";
+	}
+	
+	//ERD 화면
+	@RequestMapping(value = "/erd", method = RequestMethod.GET)
+	public String erd() {
+		return "erd";
+	}
+	
+	//주요기능 화면
+	@RequestMapping(value = "/function", method = RequestMethod.GET)
+	public String function() {
+		return "function";
+	}
+	
 	//관리자별 로그인 및 기능 화면
 	@RequestMapping(value = "/loginRight", method = RequestMethod.GET)
 	public String loginRight() {
@@ -46,9 +70,4 @@ public class HomeController {
 		return "introduce";
 	}
 	
-	//시스템 구조도 화면
-	@RequestMapping(value = "/process", method = RequestMethod.GET)
-	public String process() {
-		return "process";
-	}
 }

@@ -20,7 +20,7 @@
 					</h4>
 					<p class="card-text">
 						<span style="font-weight:bold;"><h3>담당업무 </h3></span><br>
-						개발환경,요구사항 분석, DB설계, ERD작성 추가 <br><br>
+						[기부]<br>개발환경,요구사항 분석, DB설계, ERD작성 추가<br><br>
 						<a href="https://github.com/Kim-dohee/synergy.git"><span style="color:black"><h5>git hub</h5></span></a>
 						<a href="https://blog.naver.com/doheejj"><span style="color:black"><h5>블로그 주소 </h5></span></a><br>		
 					</p>

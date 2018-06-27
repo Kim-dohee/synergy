@@ -169,9 +169,9 @@
 									</ul>
 								</div>
 						</li>
-						<li class="nav-item">
+						<%-- <li class="nav-item">
 							<a class="nav-link" href="${pageContext.request.contextPath}/questionSelect">1:1 문의</a>
-						</li>
+						</li> --%>
 						<li class="nav-item">
 							<a class="nav-link" href="${pageContext.request.contextPath}/noticeSelect">공지사항</a>
 			            </li>
