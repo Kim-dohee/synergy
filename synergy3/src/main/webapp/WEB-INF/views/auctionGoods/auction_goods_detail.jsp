@@ -9,7 +9,6 @@
 	$(function() {
 
 		$("#btn").click(function(){
-			console.log($("#state").val());
 			if($("#state").val()===("입찰전")){
 				if($('#bidPrice').val()==""){
 					alert("입찰금액을 입력하여 주시기 바랍니다.");

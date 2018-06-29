@@ -89,8 +89,15 @@ public class CashController {
 		accountDto.setAccountBankName(accountBankName);
 		accountDto.setAccountDepositName(accountDepositName);
 		cashRecordService.accountInsert(accountDto);
-		return "cash/cash_record_insert_commit";
+		return "redirect:/cashRecordInsertCommit";
 		
+	}
+	
+	//캐쉬 충전 화면
+	@RequestMapping(value = "/cashRecordInsertCommit", method = RequestMethod.GET)
+	public String cashRecordInsertCommit(Model model,@RequestParam(value="cashRecordChange") String cashRecordChange) {
+		model.addAttribute("cashRecordChange", cashRecordChange);
+		return "cash/cash_record_insert_commit";
 	}
 	
 	//캐쉬 사용내역 검색(페이징)

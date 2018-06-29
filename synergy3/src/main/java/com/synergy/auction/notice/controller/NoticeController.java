@@ -52,12 +52,13 @@ public class NoticeController {
 	}
 	
 
-	//경매품 리스트
+	//공지사항 리스트
 	@RequestMapping(value = "/noticeSelect", method = RequestMethod.GET)
 	public String noticeSelect(Model model
 									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
 		
 		Map<String, Object> map = noticeService.noticeSelect(currentPage);
+		System.out.println("1111111111111111111111111111111111111111111"+map);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("lastPage",map.get("lastPage"));
 		return "notice/notice_select";

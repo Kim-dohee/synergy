@@ -5,12 +5,59 @@
 
 <html>
 <head>
+<script>
+	$(function() {
+
+		$("#btn").click(function(){
+			var title = $('#title');
+			var name = $('#name');
+			var content = $('#content');
+			var fileImage = $('#fileImage').val();
+			var minPrice = $('#minPrice');
+			var buyPrice = $('#buyPrice');
+			if($('#fileImage').val()==""){
+				alert("사진을 첨부하여 주시기 바랍니다.");
+				return false;
+			}
+			if (fileImage != "") {
+			    var ext = fileImage.slice(fileImage.lastIndexOf(".") + 1).toLowerCase();
+			    if (!(ext == "jpeg" || ext == "jpg" || ext == "png")) {
+			        alert("이미지파일 (.jpg, .png, .jpeg ) 만 업로드 가능합니다.");
+			        return false;
+			    }
+			}
+			if($('#title').val()==""){
+				alert("제목을 입력하여 주시기 바랍니다.");
+				return false;
+			}
+			else if($('#name').val()==""){
+				alert("상품명을 입력하여 주시기 바랍니다.");
+				return false;
+			}
+			else if($('#content').val()==""){
+				alert("내용을 입력하여 주시기 바랍니다.");
+				return false;
+			}
+			else if($('#minPrice').val()==""){
+				alert("최소가격을 입력하여 주시기 바랍니다.");
+				return false;
+			}
+			else if($('#buyPrice').val()==""){
+				alert("즉시구매가를 입력하여 주시기 바랍니다.");
+				return false;
+			}
+			$('#frm').submit();
+			
+		});
+	});
+</script>
+	 	
 </head>
 <body>
 <div style="text-align:center;font-size:16px;">
 		<br><br><br>
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/auctionGoodsInsert" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/auctionGoodsInsert" id="frm" method="post" enctype="multipart/form-data">
 		<input type="hidden" value="${sessionScope.id}" name="userId">
 			<table class="table table-bordered">
 				<tbody>	
@@ -32,18 +79,18 @@
 					</tr>	            
 					<tr>	            
 						<th colspan="2" class="active">제목 </th>
-						<td colspan="4"><input type="text" placeholder="제목을 입력하세요. " name="auctionGoodsTitle" class="form-control"/></td>	                
+						<td colspan="4"><input type="text" placeholder="제목을 입력하세요." id="title" name="auctionGoodsTitle" class="form-control"/></td>	                
 					</tr>
 					
 					<tr>
 						<th colspan="2" class="active">상품명</th>
 							<td>
-								<input type="text" placeholder="상품명을 입력하세요 " name="auctionGoodsName" class="form-control"/>
+								<input type="text" placeholder="상품명을 입력하세요 " id="name" name="auctionGoodsName" class="form-control"/>
 							</td>
 					</tr>
 					<tr>	            
 						<th colspan="2" class="active">내용 </th>
-						<td colspan="4"><textarea placeholder="내용을 입력하세요. " rows="15" name="auctionGoodsContent" class="form-control"></textarea></td>	            
+						<td colspan="4"><textarea placeholder="내용을 입력하세요." id="content" rows="15" name="auctionGoodsContent" class="form-control"></textarea></td>	            
 					</tr>
 					<tr>	           
 						<th colspan="2" class="active">사진파일 </th>
@@ -53,11 +100,11 @@
 					<tr>
 						<th class="active">최소가</th>
 							<td>	
-								<input type="text" placeholder="숫자만 입력해주세요. " name="auctionGoodsMinPrice" class="form-control"/>
+								<input type="text" placeholder="숫자만 입력해주세요." id="minPrice" name="auctionGoodsMinPrice" class="form-control"/>
 							</td>	                
 						<th class="active">즉시구매가</th>
 							<td>
-								<input type="text" placeholder="즉시구매가를 입력해 주세요. " name="auctionGoodsInstanceBuyPrice" class="form-control"/>
+								<input type="text" placeholder="즉시구매가를 입력해 주세요."  id="buyPrice" name="auctionGoodsInstanceBuyPrice" class="form-control"/>
 							</td>	                
 						<th class="active">입찰단위 (원)</th>
 						<td>
@@ -90,9 +137,7 @@
 					</tr>
 		    	</tbody>
 			</table>		
-            <input type="button" value="reset" class="pull-left"/>
-            <input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
-		 	<input type="button" value="등록" onclick="submit()" class="pull-right"/>
+		 	<input type="button" value="등록" id="btn" class="pull-right"/>
 		 	<br><br><br>
 		 </form>
 	</div>

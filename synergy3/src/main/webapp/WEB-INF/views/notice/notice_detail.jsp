@@ -22,7 +22,7 @@
 		            <tr>  	            
 		                <th class="active">내용 </th>
 		                <td><img src="resources/file/${detail.file.fileName}.${detail.file.fileExt}"  width="100%" height="100%">
-		                <textarea cols="10" readonly placeholder="500자 이내에 입력하세요 " rows="30" name="noticeContent" class="form-control" maxlength="3000">value="${detail.noticeContent}"</textarea></td>	            
+		                <textarea cols="10" readonly placeholder="500자 이내에 입력하세요 " rows="30" name="noticeContent" class="form-control" maxlength="3000">${detail.noticeContent}</textarea></td>	            
 		            </tr>
 		    	</tbody>
 			</table>
