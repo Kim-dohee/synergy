@@ -8,8 +8,7 @@
 <head>
 </head>
 <body>
-<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 마이페이지 > 캐쉬 > 캐쉬충전 > 캐쉬충전완료</h4>
+	<br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 마이페이지 > 캐쉬 > 캐쉬충전 > 캐쉬충전완료</h4>
 	<br><br><br><br><br><br><br>
 	<div class="text-center">	
 		<h1>캐쉬 충전 완료</h1><br>

@@ -181,4 +181,21 @@
 			successful_bid.auction_goods_no = auction_goods.auction_goods_no
 		
 	</select>
-</mapper>  
+	<select id="donationCashSelectOne"  
+			parameterType="Integer"
+			resultType="Integer">
+		SELECT  abs(cash_record_total-#{donationUsePrice}) 
+		FROM cash_record WHERE user_id=1 
+		ORDER BY cash_record_change_date DESC 
+		LIMIT 1
+	</select>
+	<update id="cashRecordTotalUpdateOne"  
+			parameterType="com.synergy.auction.cash.service.CashRecordDto">
+		UPDATE cash_record
+		SET
+		cash_record_total=#{cashRecordTotal}
+		WHERE user_id=#{userId}
+		ORDER BY cash_record_change_date DESC
+		LIMIT 1
+	</update>		
+</mapper> 

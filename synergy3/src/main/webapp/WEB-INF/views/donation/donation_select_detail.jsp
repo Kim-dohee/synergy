@@ -26,8 +26,7 @@
 	</script>	
 </head>
 <body>
-	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기  </h4><br><br><br>
+	<br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 기부 > 기부하기 </h4>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<img class="img-thumbnail" style="width:80%; height:20%;" src="${pageContext.request.contextPath}/resources/image/donationSelectDetailLogo.png" data-holder-rendered="true">
 		<c:forEach var="donation" items="${list}">

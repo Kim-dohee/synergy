@@ -27,7 +27,7 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 계획서 > 계획서 동의</h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 기부 > 계획서 > 계획서 동의</h4>
 	<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/donationPlanInsertView">
 		<div style="text-align:center;font-size:16px;">
 			<br><br><br><img src="${pageContext.request.contextPath}/resources/image/planAgreement.png" width="50%" height="10%"><br>

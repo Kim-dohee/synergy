@@ -3,33 +3,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../module/top.jsp"></jsp:include>
 <!DOCTYPE html>
-
 <html>
 <head>
 </head>
 <body>
-	<div>
-		<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
-		<h1 class="my-4 text-center">캐시</h1><br><br>
-		<!-- Marketing Icons Section -->
-		<div class="row justify-content-center">
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">충전</h4>
-					<div class="card-body">
-						<a href="${pageContext.request.contextPath}/cashRecordInsert">cashRecordInsert</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">사용 내역 조회</h4>
-					<div class="card-body">
-						<a href="${pageContext.request.contextPath}/cashRecordSelect?userId=${sessionScope.id}">cashSelect</a>
-					</div>
-				</div>
-			</div>
-		</div>
+<br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 마이페이지 > 캐쉬 </h4>
+	<div class="text-center">
+		<form class="form-horizontal" role="form" id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/cashRecordInsert">
+			<br><h1>캐쉬 사용 내역 조회</h1><br>
+			<div class="container bs-example" data-example-id="simple-table">
+				<table class="table table-hover">
+					<thead>
+						<tr class="active">
+							<th>사용 내역</th>
+							<th>사용 금액</th>
+							<th>현 총잔액</th>
+							<th>충전 날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="cash" items="${list}">
+							<tr>
+								<th scope="row">${cash.cashCategory}</th>
+								<td>${cash.cashRecordChange}</td>
+								<td>${cash.cashRecordTotal}</td>
+								<td>${cash.cashRecordChangeDate}</td>    
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>	 
+			<c:forEach var="start" begin="1" end="${lastPage}">
+				<a href="${pageContext.request.contextPath}/cashRecordSelect?currentPage=${start}&userId=${sessionScope.id}">[${start}]</a>
+			</c:forEach><br>     
+		</form><br><br>
+		<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/cashRecordInsert'">충전</button><br><br><br>
 	</div>
 </body>
 </html>

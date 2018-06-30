@@ -38,11 +38,11 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 보고서 > 보고서 등록</h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 기부 > 보고서 > 보고서 등록</h4>
 	<div style="text-align:center;font-size:16px;" class="container">
 		<br><br><br>
 		<img src="${pageContext.request.contextPath}/resources/image/reportInsert.png" width="75%" height="10%">
-		<br><br><br> 
+		<br><br><br>
 		<form action="${pageContext.request.contextPath}/donationSpendReportInsert" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tbody>		            	           

@@ -18,8 +18,8 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 마이페이지 > 캐쉬 > 캐쉬충전</h4>
-	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
+	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 마이페이지 > 캐쉬 > 캐쉬충전</h4>
+	<br><br><br><br>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<form class="form-horizontal" role="form" id="frm" name="frm"
 			method="post"

@@ -1,8 +1,9 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../module/top.jsp"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:include page="../module/top.jsp"></jsp:include>
+<!DOCTYPE html>
+
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -47,7 +48,7 @@
 </head>
 <body>
 	<br><br><br>
-	<h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 기부하기 </h4>
+	<br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 기부 > 기부하기 </h4>
 	<div style="text-align: center; font-size: 16px" class="container">
 		<h2>[연도별 기부현황]</h2>
 		<!-- 평균 기부금 -->
@@ -106,7 +107,15 @@
 						</div>
 					</div>
 				</div>
-			</c:forEach>	
+			</c:forEach>
+			<%-- <c:forEach var="donationPrice" items="${donationPrice}">
+				<div class="progress">
+					기부금 현황
+					<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+					${donationPrice}
+					</div>
+				</div>	
+			</c:forEach> --%>
 		</div>
 	</div>	
 </body>

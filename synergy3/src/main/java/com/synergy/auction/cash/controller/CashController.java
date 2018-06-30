@@ -28,9 +28,16 @@ public class CashController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CashController.class);
 	
-	//캐쉬메인 화면
+	//캐쉬 사용내역 검색(페이징)
 	@RequestMapping(value = "/cashMain", method = RequestMethod.GET)
-	public String cashMain() {
+	public String cashRecordSelect(Model model
+									,HttpSession session
+									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
+		String userId = (String) session.getAttribute("id");
+		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
+		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("lastPage",map.get("lastPage"));
 		return "cash/cash_main";
 	}
 
@@ -98,18 +105,6 @@ public class CashController {
 	public String cashRecordInsertCommit(Model model,@RequestParam(value="cashRecordChange") String cashRecordChange) {
 		model.addAttribute("cashRecordChange", cashRecordChange);
 		return "cash/cash_record_insert_commit";
-	}
-	
-	//캐쉬 사용내역 검색(페이징)
-	@RequestMapping(value = "/cashRecordSelect", method = RequestMethod.GET)
-	public String cashRecordSelect(Model model
-									,@RequestParam(value="userId") String userId
-									,@RequestParam(value="currentPage",defaultValue="1") int currentPage) {
-		logger.debug("CashController.cashRecordSelect >> userId :"+userId);
-		Map<String, Object> map = cashRecordService.totalCashRecord(userId,currentPage);
-		model.addAttribute("list",map.get("list"));
-		model.addAttribute("lastPage",map.get("lastPage"));
-		return "cash/cash_record_select";
 	}
 	
 	//캐쉬 사용내역 검색 관리 관리자 (페이징)

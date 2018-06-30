@@ -45,7 +45,7 @@
 	
 	</script>
 <body>
-	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 보고서 </h4>
+	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈 </a>> 기부 > 보고서 </h4>
 	<div style="text-align: center; font-size: 12px;" class="container">
 		<h2>[기부단체별 기부현황]</h2>
 		<input type="hidden" id="donator1" value="${incomeDonationPriceTotal1}"/>

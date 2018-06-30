@@ -8,7 +8,7 @@
 <head>
 </head>
 <body>
-	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈 > 기부 > 계획서 </h4>
+	<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 기부 > 계획서 </h4>
 	<div style="text-align: center; font-size: 12px;" class="container">
 		<br><br><br>
 		<table class="table table-hover" style="font-size: 13px;">

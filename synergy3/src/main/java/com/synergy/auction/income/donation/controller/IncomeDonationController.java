@@ -31,6 +31,7 @@ public class IncomeDonationController {
 	private IncomeDonationService incomeDonationService;
 	@Autowired
 	private PayService payService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(IncomeDonationController.class);
 	
 	//기부금 기부하기
@@ -38,12 +39,20 @@ public class IncomeDonationController {
 	public String incomeDonation(HttpSession session
 								,@RequestParam(value="incomeDonationPrice") int incomeDonationPrice
 								,@RequestParam(value="donationPlanNo") int donationPlanNo
-								,IncomeDonationDto incomeDonationDto) {
+								,IncomeDonationDto incomeDonationDto
+								,CashRecordDto cashRecordDto) {
 		
 		String userId = (String) session.getAttribute("id");
 		logger.debug("IncomeDonationController.donationUse userId>>"+userId);
 		logger.debug("IncomeDonationController.donationUse incomeDonationPrice>>"+incomeDonationPrice);
 		logger.debug("IncomeDonationController.donationUse donationPlanNo>>"+donationPlanNo);
+		//(보유 총 캐쉬 - 기부한 금액)총캐쉬
+		int donationUsePrice = cashRecordService.donationCashSelectOne(incomeDonationPrice);
+		logger.debug("IncomeDonationController.donationUse donationUsePrice>>"+donationUsePrice);
+		cashRecordDto.setUserId(userId);
+		cashRecordDto.setCashRecordTotal(donationUsePrice);
+		//기부즉시 총 보유캐쉬금액 수정
+		cashRecordService.cashRecordTotalUpdateOne(cashRecordDto);
 		incomeDonationDto.setUserId(userId);
 		incomeDonationDto.setIncomeDonationPrice(incomeDonationPrice);
 		incomeDonationDto.setDonationPlanNo(donationPlanNo);

@@ -232,7 +232,7 @@ $(function(){
 </script>
 </head>
 <body>
-<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
+<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a>> 회원가입</h4>
 	<div style="font-size: 16px; text-align: center">
 		<br><br><br><img src="${pageContext.request.contextPath}/resources/image/join.png" width="50%" height="10%"><br><br><br>
 		<br><h1 class="text-center">기부단체 회원가입</h1><br>

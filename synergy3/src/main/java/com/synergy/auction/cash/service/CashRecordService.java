@@ -116,4 +116,16 @@ public class CashRecordService {
 	public List<CashRecordDto> cashSelectGoods() { 
 		return cashRecordDao.cashSelectGoods(); 
 	}
+	
+	//기부즉시 캐쉬 차감
+	public int donationCashSelectOne(int donationUsePrice) { 
+		int row = cashRecordDao.donationCashSelectOne(donationUsePrice); 		
+		return row;
+	}
+	
+	//기부즉시 총 보유캐쉬금액 수정
+	public int cashRecordTotalUpdateOne(CashRecordDto cashRecordDto) { 
+		int row = cashRecordDao.cashRecordTotalUpdateOne(cashRecordDto); 		
+		return row;
+	}
 }

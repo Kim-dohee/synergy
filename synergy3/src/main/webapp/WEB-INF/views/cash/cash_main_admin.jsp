@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<br><br><br><br><h4>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>홈</a></h4>
+		<br><br><br><h4>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="${pageContext.request.contextPath}/home">홈</a> > 마이페이지 > 캐쉬 > 캐쉬조회</h4>
 		<h1 class="my-4 text-center">캐시</h1><br><br>
 		<!-- Marketing Icons Section -->
 		<div class="row justify-content-center">
